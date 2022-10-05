@@ -3,11 +3,6 @@ import { register } from '../controllers/users.controller.js';
 
 const router = Router();
 
-router.get('/', register, (req, res) => {
-    res.json({
-        name: 'Nicolay',
-        type: 'user',
-    });
-});
+router.get('/', register);
 
 export default router;
