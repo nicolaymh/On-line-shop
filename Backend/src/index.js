@@ -1,9 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
-import dbConnection from './database/config.js';
-
 import userRoutes from './routes/users.routes.js';
+
+// DB Connection
+import dbConnection from './database/config.js';
 
 // Create server express
 const app = express();
