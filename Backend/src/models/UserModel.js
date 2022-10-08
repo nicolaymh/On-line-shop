@@ -17,14 +17,20 @@ const userSchema = new mongoose.Schema(
         email: {
             type: String,
             require: true,
-            unique: [true, 'There is already a user with that email'],
+            unique: [true, 'already a user thit that email'],
+            trim: true,
+        },
+
+        address: {
+            type: String,
+            require: true,
             trim: true,
         },
 
         phone: {
-            type: Number,
-            trim: true,
+            type: String,
             require: true,
+            trim: true,
         },
 
         token: {
