@@ -5,9 +5,11 @@ import User from '../models/UserModel.js';
 import internalServerError from '../helpers/internalServerError.js';
 import generateTokenUnique from '../helpers/generateTokenUnique.js';
 
+import { sendEmailRegister } from '../helpers/emailSending.js';
+
 export const register = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { name, email, password } = req.body;
 
         //? Repeated email check
         const emailExists = await User.findOne({ email });
@@ -34,6 +36,9 @@ export const register = async (req, res) => {
 
         //? Save user in DB
         await userNew.save();
+
+        //? Send confirmation email
+        sendEmailRegister({ name, email, token: userNew.token });
 
         res.status(201).json({ ok: true, msg: 'User created successfully, check your email to confirm the account' });
     } catch (error) {
