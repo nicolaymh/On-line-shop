@@ -1,15 +1,17 @@
 import bcrypt from 'bcryptjs';
 
-import internalServerError from '../helpers/internalServerError.js';
 import User from '../models/UserModel.js';
+
+import internalServerError from '../helpers/internalServerError.js';
+import generateTokenUnique from '../helpers/generateTokenUnique.js';
 
 export const register = async (req, res) => {
     try {
         const { email, password } = req.body;
 
         //? Repeated email check
-        const emailExist = await User.findOne({ email });
-        if (emailExist) {
+        const emailExists = await User.findOne({ email });
+        if (emailExists) {
             return res.status(400).json({
                 ok: false,
                 msg: 'There is already a registered user with this email',
@@ -26,6 +28,9 @@ export const register = async (req, res) => {
 
         //? save encrypted password
         userNew.password = hash;
+
+        //? Generating and saving one time use token
+        userNew.token = generateTokenUnique();
 
         //? Save user in DB
         await userNew.save();
