@@ -12,7 +12,8 @@ export const register = async (req, res) => {
         if (emailExist) {
             return res.status(400).json({
                 ok: false,
-                msg: `There is already a registered user with the email ${email}`,
+                msg: 'There is already a registered user with this email',
+                email: `${email}`,
             });
         }
 
@@ -27,9 +28,9 @@ export const register = async (req, res) => {
         userNew.password = hash;
 
         //? Save user in DB
-        const userHash = await userNew.save();
+        await userNew.save();
 
-        res.status(201).json({ ok: true, msg: 'Created user successfully', data: userHash });
+        res.status(201).json({ ok: true, msg: 'User created successfully, check your email to confirm the account' });
     } catch (error) {
         internalServerError(error, res);
     }

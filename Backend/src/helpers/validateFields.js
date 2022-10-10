@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator';
 
 import internalServerError from './internalServerError.js';
 
-const validateFields = (req, res, next) => {
+const validateErrors = (req, res, next) => {
     try {
         const errors = validationResult(req);
 
@@ -21,4 +21,4 @@ const validateFields = (req, res, next) => {
     }
 };
 
-export default validateFields;
+export default validateErrors;
