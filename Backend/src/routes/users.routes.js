@@ -7,5 +7,6 @@ import * as userController from '../controllers/users.controller.js';
 const router = Router();
 
 router.post('/register', validateFields.validateRegister, userController.register);
+router.put('/confirm/:token', userController.confirmAccount);
 
 export default router;

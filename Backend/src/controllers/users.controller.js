@@ -45,3 +45,21 @@ export const register = async (req, res) => {
         internalServerError(error, res);
     }
 };
+
+export const confirmAccount = async (req, res) => {
+    try {
+        const token = req.params;
+        const userExists = await User.findOne(token);
+
+        if (!userExists) {
+            return res.status(400).json({ ok: false, msg: 'invalid token' });
+        }
+
+        userExists.token = '';
+        userExists.confirmed = true;
+        await userExists.save();
+        res.status(201).json({ ok: true, msg: 'User confirmed successfully' });
+    } catch (error) {
+        internalServerError(error, res);
+    }
+};
