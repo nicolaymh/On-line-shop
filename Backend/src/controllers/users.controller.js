@@ -15,11 +15,7 @@ export const register = async (req, res) => {
         //? Repeated email check
         const emailExists = await User.findOne({ email });
         if (emailExists) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'There is already a registered user with this email',
-                email: `${email}`,
-            });
+            return res.status(400).json({ ok: false, msg: 'There is already a registered user with this email', email });
         }
 
         //? user creation model instance
@@ -66,18 +62,22 @@ export const confirmAccount = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    const { email, password } = req.body;
+    try {
+        const { email, password } = req.body;
 
-    const userLogin = await User.findOne({ email });
+        const userLogin = await User.findOne({ email });
 
-    if (!userLogin) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
+        if (!userLogin) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
 
-    if (!userLogin.confirmed) return res.status(400).json({ ok: false, msg: 'This account has not beeen confirmed', email });
+        if (!userLogin.confirmed) return res.status(400).json({ ok: false, msg: 'This account has not beeen confirmed', email });
 
-    const comparePassword = bcrypt.compareSync(password, userLogin.password);
+        const comparePassword = bcrypt.compareSync(password, userLogin.password);
 
-    if (!comparePassword) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
+        if (!comparePassword) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
 
-    const { _id, name } = userLogin;
-    res.status(400).json({ _id, name, email, token: generateJWT(_id) });
+        const { _id, name } = userLogin;
+        res.status(400).json({ _id, name, email, token: generateJWT(_id) });
+    } catch (error) {
+        internalServerError(error, res);
+    }
 };
