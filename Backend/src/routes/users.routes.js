@@ -8,5 +8,6 @@ const router = Router();
 
 router.post('/register', validateFields.validateRegister, userController.register);
 router.put('/confirm/:token', userController.confirmAccount);
+router.get('/login', validateFields.validateLogin, userController.login);
 
 export default router;

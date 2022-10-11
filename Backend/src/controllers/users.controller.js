@@ -3,9 +3,10 @@ import bcrypt from 'bcryptjs';
 import User from '../models/UserModel.js';
 
 import internalServerError from '../helpers/internalServerError.js';
-import generateTokenUnique from '../helpers/generateTokenUnique.js';
+import generateTokenUnique from '../helpers/tokens/generateTokenUnique.js';
+import generateJWT from '../helpers/tokens/generateJWT.js';
 
-import { sendEmailRegister } from '../helpers/emailSending.js';
+import { sendEmailRegister } from '../helpers/email/emailSending.js';
 
 export const register = async (req, res) => {
     try {
@@ -62,4 +63,21 @@ export const confirmAccount = async (req, res) => {
     } catch (error) {
         internalServerError(error, res);
     }
+};
+
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    const userLogin = await User.findOne({ email });
+
+    if (!userLogin) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
+
+    if (!userLogin.confirmed) return res.status(400).json({ ok: false, msg: 'This account has not beeen confirmed', email });
+
+    const comparePassword = bcrypt.compareSync(password, userLogin.password);
+
+    if (!comparePassword) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
+
+    const { _id, name } = userLogin;
+    res.status(400).json({ _id, name, email, token: generateJWT(_id) });
 };
