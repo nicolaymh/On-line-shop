@@ -49,7 +49,7 @@ export const confirmAccount = async (req, res) => {
         const userExists = await User.findOne(token);
 
         if (!userExists) {
-            return res.status(400).json({ ok: false, msg: 'invalid token' });
+            return res.status(400).json({ ok: false, msg: 'Invalid token' });
         }
 
         userExists.token = '';
@@ -95,6 +95,39 @@ export const restorePassword = async (req, res) => {
 
         // Send forget-password email
         sendEmailForgetPass(user);
+    } catch (error) {
+        internalServerError(error, res);
+    }
+};
+
+export const checkToken = async (req, res) => {
+    try {
+        const { token } = req.params;
+
+        const userToken = await User.findOne({ token });
+
+        if (!userToken) return res.status(404).json({ ok: false, msg: 'Invalid token' });
+
+        return res.status(201).json({ ok: true, msg: 'valid token' });
+    } catch (error) {
+        internalServerError(error, res);
+    }
+};
+
+export const newPassword = async (req, res) => {
+    try {
+        const { token } = req.params;
+        const { password } = req.body;
+
+        const userNewPassword = await User.findOne({ token });
+
+        if (!userNewPassword) return res.status(400).json({ ok: false, msg: 'Invalid token' });
+
+        userNewPassword.token = '';
+        userNewPassword.password = password;
+        await userNewPassword.save();
+
+        res.status(201).json({ ok: true, msg: 'Password changed successfully' });
     } catch (error) {
         internalServerError(error, res);
     }
