@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"NicOlay\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"nicolacho87@gmaiL.com\",\r\n    \"address\": \"calle 5c\",\r\n    \"phone\": 3016569590\r\n}",
+							"raw": "{\r\n    \"name\": \"NicOlay\",\r\n    \"password\": \"NiMoHe2020*\",\r\n    \"email\": \"nicolacho87@gmaiL.com\",\r\n    \"address\": \"calle 5c\",\r\n    \"phone\": 3016569590\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/users/confirm/tfcod268b181665797466052",
+							"raw": "http://localhost:3000/api/users/confirm/7rqt3k3spgg1665841246809",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -55,7 +55,7 @@
 								"api",
 								"users",
 								"confirm",
-								"tfcod268b181665797466052"
+								"7rqt3k3spgg1665841246809"
 							]
 						}
 					},
@@ -71,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"nicolacho87@gmaiL.com\",\r\n    \"password\": 123456\r\n}",
+							"raw": "{\r\n    \"email\": \"nicolacho87@gmail.com\",\r\n    \"password\": \"NiMoHe2020*\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -142,7 +142,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/forget-password/rmk1g5lof881665797511579",
+							"raw": "http://localhost:3000/api/users/forget-password/6fqtjnuekk81665842225535",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -152,7 +152,7 @@
 								"api",
 								"users",
 								"forget-password",
-								"rmk1g5lof881665797511579"
+								"6fqtjnuekk81665842225535"
 							]
 						}
 					},
@@ -165,7 +165,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"password\": \"NiMoHe2020*\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -173,7 +173,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/forget-password/rmk1g5lof881665797511579",
+							"raw": "http://localhost:3000/api/users/forget-password/6fqtjnuekk81665842225535",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -183,7 +183,7 @@
 								"api",
 								"users",
 								"forget-password",
-								"rmk1g5lof881665797511579"
+								"6fqtjnuekk81665842225535"
 							]
 						}
 					},
