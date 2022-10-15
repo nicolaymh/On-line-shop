@@ -8,7 +8,7 @@ import generateJWT from '../helpers/tokens/generateJWT.js';
 
 import { sendEmailForgetPass, sendEmailRegister } from '../helpers/email/emailSending.js';
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
@@ -43,7 +43,7 @@ export const register = async (req, res) => {
     }
 };
 
-export const confirmAccount = async (req, res) => {
+const confirmAccount = async (req, res) => {
     try {
         const token = req.params;
         const userExists = await User.findOne(token);
@@ -61,7 +61,7 @@ export const confirmAccount = async (req, res) => {
     }
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -82,7 +82,7 @@ export const login = async (req, res) => {
     }
 };
 
-export const restorePassword = async (req, res) => {
+const restorePassword = async (req, res) => {
     try {
         const { email } = req.body;
 
@@ -100,7 +100,7 @@ export const restorePassword = async (req, res) => {
     }
 };
 
-export const checkToken = async (req, res) => {
+const checkToken = async (req, res) => {
     try {
         const { token } = req.params;
 
@@ -108,13 +108,13 @@ export const checkToken = async (req, res) => {
 
         if (!userToken) return res.status(404).json({ ok: false, msg: 'Invalid token' });
 
-        return res.status(201).json({ ok: true, msg: 'valid token' });
+        res.status(201).json({ ok: true, msg: 'valid token' });
     } catch (error) {
         internalServerError(error, res);
     }
 };
 
-export const newPassword = async (req, res) => {
+const newPassword = async (req, res) => {
     try {
         const { token } = req.params;
         const { password } = req.body;
@@ -123,8 +123,12 @@ export const newPassword = async (req, res) => {
 
         if (!userNewPassword) return res.status(400).json({ ok: false, msg: 'Invalid token' });
 
+        // Encrypt new password before saving
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+
         userNewPassword.token = '';
-        userNewPassword.password = password;
+        userNewPassword.password = hash;
         await userNewPassword.save();
 
         res.status(201).json({ ok: true, msg: 'Password changed successfully' });
@@ -132,3 +136,5 @@ export const newPassword = async (req, res) => {
         internalServerError(error, res);
     }
 };
+
+export { register, confirmAccount, login, restorePassword, checkToken, newPassword };

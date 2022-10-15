@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "52ae87e5-926b-453e-be0f-16a31c032d07",
+		"_postman_id": "a9809fcd-0f86-4c70-b895-6173cdb24782",
 		"name": "Ecommerce",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16307495"
 	},
 	"item": [
 		{
@@ -44,7 +45,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/users/confirm/d5ns958s8u81665501187888",
+							"raw": "http://localhost:3000/api/users/confirm/tfcod268b181665797466052",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -54,7 +55,7 @@
 								"api",
 								"users",
 								"confirm",
-								"d5ns958s8u81665501187888"
+								"tfcod268b181665797466052"
 							]
 						}
 					},
@@ -88,6 +89,101 @@
 								"api",
 								"users",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/users/forget-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nicolacho87@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/forget-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/users/forget-password/:token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/forget-password/rmk1g5lof881665797511579",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"forget-password",
+								"rmk1g5lof881665797511579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/users/forget-password/:token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/forget-password/rmk1g5lof881665797511579",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"forget-password",
+								"rmk1g5lof881665797511579"
 							]
 						}
 					},
