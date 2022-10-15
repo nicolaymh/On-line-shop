@@ -10,6 +10,6 @@ router.post('/register', validateFields.register, userController.register);
 router.put('/confirm/:token', userController.confirmAccount);
 router.get('/login', validateFields.login, userController.login);
 router.post('/forget-password', validateFields.forgetPassword, userController.restorePassword);
-router.route('/forget-password/:token').get(userController.checkToken).post(validateFields.checkToken, userController.newPassword);
+router.route('/forget-password/:token').get(userController.checkToken).post(validateFields.newPassword, userController.newPassword);
 
 export default router;
