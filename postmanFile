@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"NicOlay\",\r\n    \"password\": \"NiMoHe2020*\",\r\n    \"email\": \"nicolacho87@gmaiL.com\",\r\n    \"address\": \"calle 5c\",\r\n    \"phone\": 3016569590\r\n}",
+							"raw": "{\r\n    \"name\": \"NicOlay\",\r\n    \"password\": \"NiMoHe2020*\",\r\n    \"email\": \"nicolacho87@gmaiL.com\",\r\n    \"address\": \"calle 5c # 92 - 72\",\r\n    \"phone\": 3016569590\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
