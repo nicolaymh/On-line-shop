@@ -22,5 +22,5 @@ dbConnection();
 app.use('/api/users', userRoutes);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Running on port ${process.env.PORT}`);
+    console.log(`🚀 Running on port ${process.env.PORT} 🚀`);
 });
