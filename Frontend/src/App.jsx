@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
     return (
-        <div>
+        <div className='inverse'>
             <h1>Hola mundo!!!</h1>
         </div>
     );
