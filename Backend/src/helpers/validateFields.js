@@ -2,9 +2,9 @@ import { validationResult } from 'express-validator';
 
 import internalServerError from './internalServerError.js';
 
-const validateErrors = (req, res, next) => {
+const validateErrors = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
+        const errors = await validationResult(req);
 
         if (!errors.isEmpty()) {
             console.log(errors);

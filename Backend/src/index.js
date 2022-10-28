@@ -13,6 +13,7 @@ const app = express();
 dotenv.config();
 
 // Parse to body json
+app.use(express.json());
 
 // Connect database
 dbConnection();
@@ -20,6 +21,6 @@ dbConnection();
 // Routing
 app.use('/api/users', userRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log(`🚀 Running on port ${process.env.PORT} 🚀`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`🚀 Running on port ${process.env.PORT || 3000} 🚀`);
 });
