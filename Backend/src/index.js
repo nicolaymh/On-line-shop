@@ -13,7 +13,6 @@ const app = express();
 dotenv.config();
 
 // Parse to body json
-app.use(express.json());
 
 // Connect database
 dbConnection();
@@ -24,3 +23,4 @@ app.use('/api/users', userRoutes);
 app.listen(process.env.PORT, () => {
     console.log(`🚀 Running on port ${process.env.PORT} 🚀`);
 });
+git 
