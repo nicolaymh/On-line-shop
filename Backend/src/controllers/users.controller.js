@@ -68,6 +68,7 @@ const login = async (req, res) => {
         const { email, password } = req.body;
 
         const userLogin = await User.findOne({ email });
+
         if (!userLogin) return res.status(400).json({ ok: false, msg: 'Wrong email or password!' });
         if (!userLogin.confirmed) return res.status(400).json({ ok: false, msg: 'This account has not beeen confirmed', email });
 
@@ -78,7 +79,7 @@ const login = async (req, res) => {
 
         // Generate token
         const token = await generateJWT(_id, name);
-        res.status(400).json({ _id, name, token });
+        res.json({ ok: true, _id, name, token });
     } catch (error) {
         internalServerError(error, res);
     }

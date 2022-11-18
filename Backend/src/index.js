@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 
 import userRoutes from './routes/users.routes.js';
 
-// DB Connection
 import dbConnection from './database/config.js';
 
 // Create server express
@@ -15,7 +14,7 @@ dotenv.config();
 // Parse to body json
 app.use(express.json());
 
-// Connect database
+// DB Connection Connect database
 dbConnection();
 
 // Routing
