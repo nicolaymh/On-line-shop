@@ -1,9 +1,13 @@
-import React from 'react';
+import estilo from './sass/login/login.module.scss';
 
 function App() {
+    console.log(estilo);
+
     return (
-        <div className='inverse'>
-            <h1>Hola mundo!!!</h1>
+        <div className='contenedor'>
+            <header className={estilo.contenedor_login}>
+                <h1>Hola Mundo</h1>
+            </header>
         </div>
     );
 }
