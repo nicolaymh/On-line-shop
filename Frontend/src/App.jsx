@@ -1,15 +1,15 @@
-import estilo from './sass/login/login.module.scss';
+import estilo from "./sass/login/login.module.scss";
 
 function App() {
-    console.log(estilo);
+  console.log(estilo);
 
-    return (
-        <div className='contenedor'>
-            <header className={estilo.contenedor_login}>
-                <h1>Hola Mundo</h1>
-            </header>
-        </div>
-    );
+  return (
+    <div className="contenedor">
+      <header className={estilo.contenedor_login}>
+        <h1>Hola Mundo</h1>
+      </header>
+    </div>
+  );
 }
 
 export default App;

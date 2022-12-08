@@ -1,24 +1,24 @@
-import { validationResult } from 'express-validator';
+import { validationResult } from "express-validator";
 
-import internalServerError from './internalServerError.js';
+import internalServerError from "./internalServerError.js";
 
 const validateErrors = async (req, res, next) => {
-    try {
-        const errors = await validationResult(req);
+  try {
+    const errors = await validationResult(req);
 
-        if (!errors.isEmpty()) {
-            console.log(errors);
+    if (!errors.isEmpty()) {
+      console.log(errors);
 
-            return res.status(400).json({
-                ok: false,
-                errors: errors.mapped(),
-            });
-        }
-
-        next();
-    } catch (error) {
-        internalServerError(error, res);
+      return res.status(400).json({
+        ok: false,
+        errors: errors.mapped(),
+      });
     }
+
+    next();
+  } catch (error) {
+    internalServerError(error, res);
+  }
 };
 
 export default validateErrors;

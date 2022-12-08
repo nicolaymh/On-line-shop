@@ -1,35 +1,35 @@
-@use '../base/variables' as v;
+@use "../base/variables" as v;
 
 html {
-    font-size: 62.5%; /* 1REM === 10PX */
-    box-sizing: border-box;
+  font-size: 62.5%; /* 1REM === 10PX */
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .contenedor {
-    width: 95%;
-    max-width: 120rem;
-    margin: 0 auto;
-    background-color: #369457;
+  width: 95%;
+  max-width: 120rem;
+  margin: 0 auto;
+  background-color: #369457;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
