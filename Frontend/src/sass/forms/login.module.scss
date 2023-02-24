@@ -1,0 +1,18 @@
+@use "../base/variables" as v;
+
+.h1 {
+  color: blue;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+
+  .size {
+    font-size: 5rem;
+
+    .h3Color {
+      color: orange;
+      @media only screen and (min-width: 710px) {
+        color: pink;
+      }
+    }
+  }
+}

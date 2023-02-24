@@ -1,14 +1,33 @@
-import estilo from "./sass/login/login.module.scss";
+// Private Routes
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import ForgotPassword from "./components/ForgotPassword";
+import NewPassword from "./components/NewPassword";
+import ConfirmAccount from "./components/ConfirmAccount";
+
+// React-router-Dom
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Auth
+import AuthLayout from "./layouts/AuthLayout";
+
+// CSS Styles (SASS Modules)
+import estilo from "./sass/forms/login.module.scss";
+import logo from "./assets/logo.png";
 
 function App() {
-  console.log(estilo);
-
   return (
-    <div className="contenedor">
-      <header className={estilo.contenedor_login}>
-        <h1>Hola Mundo</h1>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<LoginForm />} />
+          <Route path="register" element={<RegisterForm />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="forgot-password/:token" element={<NewPassword />} />
+          <Route path="confirm/:id" element={<ConfirmAccount />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
