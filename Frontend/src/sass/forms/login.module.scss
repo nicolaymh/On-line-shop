@@ -1,18 +1,103 @@
 @use "../base/variables" as v;
 
-.h1 {
-  color: blue;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 800;
+.container {
+  display: flex;
+  justify-content: center;
 
-  .size {
-    font-size: 5rem;
+  .loginBox {
+    background-color: white;
+    margin-top: 10rem;
+    width: 40rem;
+  }
+}
 
-    .h3Color {
-      color: orange;
-      @media only screen and (min-width: 710px) {
-        color: pink;
+.logoTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20rem;
+  border-radius: 1rem;
+  margin: 2rem auto 0 auto;
+
+  .logo {
+    max-width: 8rem;
+    margin-bottom: 0;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  h1 {
+    color: #2196f3;
+    margin-top: 0.5rem;
+    font-size: 2.5rem;
+
+    span {
+      color: black;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .field {
+    margin: 0 2rem;
+
+    label {
+      display: block;
+      text-transform: uppercase;
+      color: #2196f3;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      border: none;
+      background-color: v.$backgroundColor;
+      margin: 1rem auto;
+      width: 100%;
+      padding: 1rem;
+      font-size: 14px;
+      outline: none;
+
+      &:focus {
+        border: 2px solid #2196f3;
+        &::placeholder {
+          color: v.$backgroundColor;
+        }
+      }
+
+      &::placeholder {
+        color: gray;
       }
     }
+
+    input[type="submit"] {
+      background-color: #2196f3;
+      color: v.$backgroundColor;
+      font-weight: bold;
+      font-size: 1.4rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .containerLink {
+      margin: 0.8rem auto 0.8rem 0;
+
+      .link {
+        color: #2196f3;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .field:last-child {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }

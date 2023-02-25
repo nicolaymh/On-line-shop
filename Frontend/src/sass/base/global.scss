@@ -1,9 +1,11 @@
+@use "./variables.scss" as v;
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap");
 
 html {
   box-sizing: border-box;
   font-size: 62.5%; //* 1REM = 10px
-  background-color: white;
+  background-color: v.$backgroundColor;
 }
 *,
 *:before,
@@ -14,7 +16,7 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-  line-height: 1.8;
+  line-height: 1;
 }
 
 a {
@@ -31,8 +33,10 @@ ul {
   padding: 0;
   margin: 0;
 }
-.container {
+
+.mainContainer {
   width: 95%;
   max-width: 120rem;
   margin: 0 auto;
+  background-color: v.$backgroundColor;
 }
