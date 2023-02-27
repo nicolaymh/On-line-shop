@@ -1,13 +1,25 @@
 @use "../base/variables" as v;
 
 .container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 15rem;
+
+  .loginImg {
+    background-color: #2196f3;
+    border-radius: 0 10rem 10rem 0;
+    overflow: hidden;
+
+    img {
+      height: 43rem;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+  }
 
   .loginBox {
     background-color: white;
-    margin-top: 10rem;
-    width: 40rem;
+    border-radius: 1rem 0 0 1rem;
   }
 }
 
