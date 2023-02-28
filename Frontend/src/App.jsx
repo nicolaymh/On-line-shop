@@ -11,10 +11,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Auth
 import AuthLayout from "./layouts/AuthLayout";
 
-// CSS Styles (SASS Modules)
-import estilo from "./sass/forms/login.module.scss";
-import logo from "./assets/logo.png";
-
 function App() {
   return (
     <BrowserRouter>

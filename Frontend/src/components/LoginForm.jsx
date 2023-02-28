@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { useForm } from "../Hooks/useForm";
 
 // assets
 import logo from "../assets/logo-final.png";
-import loginImage from "../assets/login-image.png";
+import loginImage from "../assets/images/login-image.png";
 
 // CSS Styles ( SASS Modules )
-import styles from "../sass/forms/login.module.scss";
+import styles from "../sass/forms/generalFormStyle.module.scss";
 
 const LoginForm = () => {
   const { formState, onInputChange } = useForm({
@@ -57,27 +58,27 @@ const LoginForm = () => {
             </div>
 
             <div className={styles.field}>
-              <input type="submit" value="Log In" />
+              <input type="submit" value="LOG IN" />
             </div>
 
-            <div className={styles.field}>
+            <nav className={styles.field}>
               <div className={styles.containerLink}>
-                <a className={styles.link} href="#">
+                <Link to="/register" className={styles.link}>
                   Create a New Account
-                </a>
+                </Link>
               </div>
 
               <div className={styles.containerLink}>
-                <a className={styles.link} href="#">
+                <Link to="/forgot-password" className={styles.link} href="#">
                   Forgot Password?
-                </a>
+                </Link>
               </div>
-            </div>
+            </nav>
           </form>
         </div>
 
         <div className={styles.loginImg}>
-          <img src={loginImage} alt="login-image" />
+          <img height={430} src={loginImage} alt="login-image" />
         </div>
       </div>
     </div>

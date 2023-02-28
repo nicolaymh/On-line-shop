@@ -11,9 +11,7 @@
     overflow: hidden;
 
     img {
-      height: 43rem;
       object-fit: cover;
-      margin: 0 auto;
     }
   }
 
@@ -43,7 +41,7 @@
   h1 {
     color: #2196f3;
     margin-top: 0.5rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
 
     span {
       color: black;
@@ -62,7 +60,7 @@
       display: block;
       text-transform: uppercase;
       color: #2196f3;
-      font-size: 15px;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
@@ -72,7 +70,7 @@
       margin: 1rem auto;
       width: 100%;
       padding: 1rem;
-      font-size: 14px;
+      font-size: 12px;
       outline: none;
 
       &:focus {
@@ -91,7 +89,7 @@
       background-color: #2196f3;
       color: v.$backgroundColor;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
 
       &:hover {
         cursor: pointer;
@@ -103,7 +101,7 @@
 
       .link {
         color: #2196f3;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
     }
   }
