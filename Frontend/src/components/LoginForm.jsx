@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../Hooks/useForm";
 
-// assets
+// Assets
 import logo from "../assets/logo-final.png";
 import loginImage from "../assets/images/login-image.png";
 

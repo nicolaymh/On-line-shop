@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Assets
 import logo from "../assets/logo-final.png";
-import loginImage from "../assets/images/register-image.png";
+import registerImage from "../assets/images/register-image.png";
 
 // CSS styles ( SASS Modules )
 import styles from "../sass/forms/generalFormStyle.module.scss";
@@ -119,7 +119,7 @@ const RegisterForm = () => {
       </div>
 
       <div className={styles.loginImg}>
-        <img height={620} src={loginImage} alt="register-image" />
+        <img height={620} src={registerImage} alt="register-image" />
       </div>
     </div>
   );
