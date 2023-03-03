@@ -6,13 +6,13 @@
   margin-top: 5rem;
 
   .loginBox {
-    background-color: #fafbfd;
+    background-color: v.$backgroundPrimary;
     border-radius: 1rem 0 0 1rem;
-    border: 1px solid #fff8e7;
+    border: 1px solid v.$borderLine;
   }
 
   .loginImg {
-    background-color: #2196f3;
+    background-color: v.$primary;
     border-radius: 0 10rem 10rem 0;
     overflow: hidden;
 
@@ -41,7 +41,7 @@
   }
 
   h1 {
-    color: #2196f3;
+    color: v.$primary;
     margin-top: 0.5rem;
     font-size: 2rem;
 
@@ -61,14 +61,14 @@
     label {
       display: block;
       text-transform: uppercase;
-      color: #2196f3;
+      color: v.$primary;
       font-size: 1.5rem;
       font-weight: bold;
     }
 
     input {
       border: none;
-      background-color: v.$backgroundColor;
+      background-color: v.$backgroundBody;
       margin: 1rem auto;
       width: 100%;
       padding: 1rem;
@@ -76,20 +76,20 @@
       outline: none;
 
       &:focus {
-        border: 2px solid #2196f3;
+        border: 2px solid v.$primary;
         &::placeholder {
-          color: v.$backgroundColor;
+          color: v.$backgroundBody;
         }
       }
 
       &::placeholder {
-        color: gray;
+        color: v.$secondary;
       }
     }
 
     input[type="submit"] {
-      background-color: #2196f3;
-      color: v.$backgroundColor;
+      background-color: v.$primary;
+      color: v.$backgroundBody;
       font-weight: bold;
       font-size: 1.6rem;
 
@@ -102,7 +102,7 @@
       margin: 0.8rem auto 0.8rem 0;
 
       .link {
-        color: #2196f3;
+        color: v.$primary;
         font-size: 1.3rem;
       }
     }
