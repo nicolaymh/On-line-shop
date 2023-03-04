@@ -88,11 +88,15 @@
       background-color: v.$backgroundBody;
       margin: 1rem auto;
       width: 100%;
-      padding: 1rem;
+      padding: 0.7rem;
       font-family: v.$fontSecondary;
       font-style: italic;
       font-size: 12px;
       outline: none;
+
+      @include m.generalFormMq {
+        padding: 1rem;
+      }
 
       &:focus {
         border: 2px solid v.$primary;
@@ -109,13 +113,13 @@
     input[type="submit"] {
       background-color: v.$primary;
       color: v.$backgroundBody;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 800;
       transition-property: transform background-color;
       transition-duration: 0.5s;
 
       @include m.generalFormMq {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
       }
 
       &:hover {

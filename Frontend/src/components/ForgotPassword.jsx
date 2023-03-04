@@ -43,7 +43,7 @@ const ForgotPassword = () => {
           </div>
 
           <div className={styles.field}>
-            <input type="submit" value="LOG IN" />
+            <input type="submit" value="GET A NEW PASSWORD" />
           </div>
 
           <nav className={styles.field}>
