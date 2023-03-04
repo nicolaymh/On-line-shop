@@ -62,8 +62,9 @@
       display: block;
       text-transform: uppercase;
       color: v.$primary;
+      font-family: v.$fontSecondary;
       font-size: 1.5rem;
-      font-weight: bold;
+      font-weight: 900;
     }
 
     input {
@@ -72,6 +73,8 @@
       margin: 1rem auto;
       width: 100%;
       padding: 1rem;
+      font-family: v.$fontSecondary;
+      font-style: italic;
       font-size: 12px;
       outline: none;
 
@@ -90,8 +93,8 @@
     input[type="submit"] {
       background-color: v.$primary;
       color: v.$backgroundBody;
-      font-weight: bold;
       font-size: 1.6rem;
+      font-weight: 800;
 
       &:hover {
         cursor: pointer;
