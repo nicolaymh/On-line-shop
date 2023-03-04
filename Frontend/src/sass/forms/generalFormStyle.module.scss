@@ -91,11 +91,12 @@
       padding: 0.7rem;
       font-family: v.$fontSecondary;
       font-style: italic;
-      font-size: 12px;
+      font-size: 1.2rem;
       outline: none;
 
       @include m.generalFormMq {
         padding: 1rem;
+        font-size: 1.3rem;
       }
 
       &:focus {
