@@ -114,5 +114,8 @@
   .field:last-child {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-family: v.$fontSecondary;
+    font-style: italic;
+    font-weight: 500;
   }
 }
