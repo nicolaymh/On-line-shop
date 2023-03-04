@@ -95,9 +95,13 @@
       color: v.$backgroundBody;
       font-size: 1.6rem;
       font-weight: 800;
+      transition-property: transform background-color;
+      transition-duration: 0.5s;
 
       &:hover {
         cursor: pointer;
+        transform: scale(1.02);
+        background-color: #00bfff;
       }
     }
 
