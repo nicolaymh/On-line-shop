@@ -12,12 +12,13 @@ const RegisterForm = () => {
   const { formState, onInputChange } = useForm({
     nombre: "",
     password: "",
+    confirmPassword: "",
     email: "",
     address: "",
     phone: "",
   });
 
-  const { nombre, password, email, address, phone } = formState;
+  const { nombre, password, confirmPassword, email, address, phone } = formState;
 
   return (
     <div className={styles.container}>
@@ -60,12 +61,25 @@ const RegisterForm = () => {
           </div>
 
           <div className={styles.field}>
+            <label htmlFor="confirmPassword">Confirm-password </label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="confirmPassword"
+              placeholder="Create a password"
+              autoComplete="off"
+              value={confirmPassword}
+              onChange={onInputChange}
+            />
+          </div>
+
+          <div className={styles.field}>
             <label htmlFor="email">E-mail: </label>
             <input
               id="email"
               name="email"
               type="email"
-              placeholder="Your Email"
+              placeholder="Your e-mail"
               autoComplete="off"
               value={email}
               onChange={onInputChange}

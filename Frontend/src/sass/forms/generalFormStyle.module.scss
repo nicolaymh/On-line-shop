@@ -77,6 +77,7 @@
       font-family: v.$fontSecondary;
       font-size: 1.2rem;
       font-weight: 900;
+      margin-bottom: 0;
 
       @include m.generalFormMq {
         font-size: 1.5rem;
@@ -93,6 +94,7 @@
       font-style: italic;
       font-size: 1.2rem;
       outline: none;
+      margin-top: 0.5rem;
 
       @include m.generalFormMq {
         padding: 1rem;
