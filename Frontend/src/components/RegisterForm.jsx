@@ -66,7 +66,7 @@ const RegisterForm = () => {
               id="confirmPassword"
               name="confirmPassword"
               type="confirmPassword"
-              placeholder="Create a password"
+              placeholder="Confirm your password"
               autoComplete="off"
               value={confirmPassword}
               onChange={onInputChange}
