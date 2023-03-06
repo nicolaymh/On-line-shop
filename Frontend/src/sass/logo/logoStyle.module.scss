@@ -1,0 +1,29 @@
+@use "../base/variables" as v;
+
+.logoTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20rem;
+  border-radius: 1rem;
+  margin: 2rem auto 0 auto;
+
+  .logo {
+    max-width: 8rem;
+    margin-bottom: 0;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  h1 {
+    color: v.$primary;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+
+    span {
+      color: black;
+    }
+  }
+}

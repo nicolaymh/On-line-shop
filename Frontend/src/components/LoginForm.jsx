@@ -6,6 +6,7 @@ import logo from "../assets/logo-final.png";
 import loginImage from "../assets/images/login-image.png";
 
 // CSS Styles ( SASS Modules )
+import logoStyle from "../sass/logo/logoStyle.module.scss";
 import styles from "../sass/forms/generalFormStyle.module.scss";
 
 const LoginForm = () => {
@@ -19,8 +20,8 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
-        <div className={styles.logoTitle}>
-          <div className={styles.logo}>
+        <div className={logoStyle.logoTitle}>
+          <div className={logoStyle.logo}>
             <img src={logo} alt="logo" />
           </div>
 
