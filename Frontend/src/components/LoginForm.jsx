@@ -20,7 +20,7 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
-        <div className={logoStyle.logoTitle}>
+        <div className={logoStyle.logoTitle1}>
           <div className={logoStyle.logo}>
             <img src={logo} alt="logo" />
           </div>

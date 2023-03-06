@@ -1,12 +1,14 @@
 @use "../base/variables" as v;
+@use "../base//mixins" as m;
 
-.logoTitle {
+.logoTitle1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 20rem;
   border-radius: 1rem;
   margin: 2rem auto 1rem auto;
+  text-align: center;
 
   .logo {
     max-width: 8rem;
@@ -21,6 +23,40 @@
     color: v.$primary;
     margin-top: 0.5rem;
     font-size: 2rem;
+
+    span {
+      color: black;
+    }
+  }
+}
+
+.logoTitle2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 3rem;
+  margin: 0 auto;
+  background-color: v.$backgroundPrimary;
+  width: 100%;
+  text-align: center;
+
+  .logo {
+    max-width: 15rem;
+    margin-bottom: 0;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  h1 {
+    color: v.$primary;
+    margin-top: 0.5rem;
+    font-size: 2.2rem;
+
+    @include m.generalFormMq {
+      font-size: 3rem;
+    }
 
     span {
       color: black;

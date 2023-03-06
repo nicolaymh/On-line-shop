@@ -1,0 +1,44 @@
+@use "./base/variables.scss" as v;
+@use "./base/mixins.scss" as m;
+
+.confirmAccountContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 8rem auto;
+  border: 0.2rem solid v.$borderLine;
+  border-radius: 2rem;
+  overflow: hidden;
+
+  @include m.generalFormMq {
+    border-radius: 2rem 8rem 2rem 8rem;
+  }
+
+  .containerImage {
+    img {
+      height: 13rem;
+      object-fit: cover;
+      width: 100%;
+
+      @include m.generalFormMq {
+        height: 32rem;
+      }
+    }
+  }
+
+  .h2 {
+    color: black;
+    text-align: center;
+    font-family: v.$fontSecondary;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: 0.09rem dashed v.$primary;
+
+    @include m.generalFormMq {
+      font-size: 3rem;
+    }
+
+    span {
+      color: v.$primary;
+    }
+  }
+}
