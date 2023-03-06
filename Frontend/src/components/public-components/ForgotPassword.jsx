@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { useForm } from "../Hooks/useForm";
+import { useForm } from "../../Hooks/useForm";
 
 // Assets
-import logo from "../assets/logo-final.png";
-import forgotPasswordImage from "../assets/images/forgot-password.png";
+import logo from "../../assets/logo-final.png";
+import forgotPasswordImage from "../../assets/images/forgot-password.png";
 
 // CSS Styles ( SASS Modules )
-import logoStyle from "../sass/logo/logoStyle.module.scss";
-import styles from "../sass/forms/generalFormStyle.module.scss";
+import logoStyle from "../../sass/logo/logoStyle.module.scss";
+import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const ForgotPassword = () => {
   const { formState, onInputChange } = useForm({

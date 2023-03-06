@@ -1,10 +1,10 @@
 // Assets
-import logo from "../assets/logo-final.png";
-import confirmAccountImage from "../assets/images/confirmAccount-image.png";
+import logo from "../../assets/logo-final.png";
+import confirmAccountImage from "../../assets/images/confirmAccount-image.png";
 
 // CSS style ( SASS Modules )
-import logoStyle from "../sass/logo/logoStyle.module.scss";
-import style from "../sass/confirmAccount.module.scss";
+import logoStyle from "../../sass/logo/logoStyle.module.scss";
+import style from "../../sass/confirmAccount.module.scss";
 
 const ConfirmAccount = () => {
   return (

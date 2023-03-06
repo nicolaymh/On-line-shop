@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { useForm } from "../Hooks/useForm";
+import { useForm } from "../../Hooks/useForm";
 
 // Assets
-import logo from "../assets/logo-final.png";
-import loginImage from "../assets/images/login-image.png";
+import logo from "../../assets/logo-final.png";
+import loginImage from "../../assets/images/login-image.png";
 
 // CSS Styles ( SASS Modules )
-import logoStyle from "../sass/logo/logoStyle.module.scss";
-import styles from "../sass/forms/generalFormStyle.module.scss";
+import logoStyle from "../../sass/logo/logoStyle.module.scss";
+import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const LoginForm = () => {
   const { formState, onInputChange } = useForm({

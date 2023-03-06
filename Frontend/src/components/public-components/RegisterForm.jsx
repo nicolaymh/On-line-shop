@@ -1,13 +1,13 @@
-import { useForm } from "../Hooks/useForm";
+import { useForm } from "../../Hooks/useForm";
 import { Link } from "react-router-dom";
 
 // Assets
-import logo from "../assets/logo-final.png";
-import registerImage from "../assets/images/register-image.png";
+import logo from "../../assets/logo-final.png";
+import registerImage from "../../assets/images/register-image.png";
 
 // CSS styles ( SASS Modules )
-import logoStyle from "../sass/logo/logoStyle.module.scss";
-import styles from "../sass/forms/generalFormStyle.module.scss";
+import logoStyle from "../../sass/logo/logoStyle.module.scss";
+import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const RegisterForm = () => {
   const { formState, onInputChange } = useForm({
@@ -20,6 +20,14 @@ const RegisterForm = () => {
   });
 
   const { nombre, password, confirmPassword, email, address, phone } = formState;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if ([nombre, password, confirmPassword, email, address, phone].includes("")) {
+      return console.log("Todos los campos deben ser ingresados");
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -34,7 +42,7 @@ const RegisterForm = () => {
           </h1>
         </div>
 
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
             <label htmlFor="nombre">Nombre: </label>
             <input

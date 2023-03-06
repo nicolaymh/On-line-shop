@@ -1,9 +1,9 @@
 // Private Routes
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-import ForgotPassword from "./components/ForgotPassword";
-import NewPassword from "./components/NewPassword";
-import ConfirmAccount from "./components/ConfirmAccount";
+import LoginForm from "./components/public-components/LoginForm";
+import RegisterForm from "./components/public-components/RegisterForm";
+import ForgotPassword from "./components/public-components/ForgotPassword";
+import NewPassword from "./components/public-components/NewPassword";
+import ConfirmAccount from "./components/public-components/ConfirmAccount";
 
 // React-router-Dom
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";

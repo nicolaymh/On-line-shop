@@ -1,12 +1,12 @@
-import { useForm } from "../Hooks/useForm";
+import { useForm } from "../../Hooks/useForm";
 
 // Assets
-import logo from "../assets/logo-final.png";
-import newPasswordImage from "../assets/images/new-password.png";
+import logo from "../../assets/logo-final.png";
+import newPasswordImage from "../../assets/images/new-password.png";
 
 // CSS styles ( SASS Modules )
-import logoStyle from "../sass/logo/logoStyle.module.scss";
-import styles from "../sass/forms/generalFormStyle.module.scss";
+import logoStyle from "../../sass/logo/logoStyle.module.scss";
+import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const NewPassword = () => {
   const { formState, onInputChange } = useForm({
