@@ -134,7 +134,7 @@ const RegisterForm = () => {
       </div>
 
       <div className={styles.loginImg}>
-        <img height={660} src={registerImage} alt="register-image" />
+        <img height={667} src={registerImage} alt="register-image" />
       </div>
     </div>
   );

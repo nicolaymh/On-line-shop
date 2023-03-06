@@ -78,7 +78,7 @@ const LoginForm = () => {
       </div>
 
       <div className={styles.loginImg}>
-        <img height={430} src={loginImage} alt="login-image" />
+        <img height={435} src={loginImage} alt="login-image" />
       </div>
     </div>
   );
