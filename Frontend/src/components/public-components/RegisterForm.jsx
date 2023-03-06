@@ -25,7 +25,7 @@ const RegisterForm = () => {
     e.preventDefault();
 
     if ([nombre, password, confirmPassword, email, address, phone].includes("")) {
-      return console.log("Todos los campos deben ser ingresados");
+      return console.log("Todos los campos son obligatorios");
     }
   };
 
