@@ -10,12 +10,10 @@ import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const LoginForm = () => {
-  const { formState, onInputChange } = useForm({
+  const { email, password, onInputChange } = useForm({
     email: "",
     password: "",
   });
-
-  const { email, password } = formState;
 
   return (
     <div className={styles.container}>

@@ -10,11 +10,9 @@ import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const ForgotPassword = () => {
-  const { formState, onInputChange } = useForm({
+  const { email, onInputChange } = useForm({
     email: "",
   });
-
-  const { email } = formState;
 
   return (
     <div className={styles.container}>
