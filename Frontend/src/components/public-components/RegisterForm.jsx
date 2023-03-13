@@ -1,7 +1,9 @@
 import { useForm } from "../../Hooks/useForm";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+// Components
 import { Alert } from "../general-components/Alert";
 
 // Assets
@@ -24,7 +26,7 @@ const RegisterForm = () => {
 
   const [alert, setAlert] = useState({ msg: "", error: false });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if ([nombre, password, confirmPassword, email, address, phone].includes("")) {
@@ -39,7 +41,22 @@ const RegisterForm = () => {
       return setAlert({ msg: "The password must be at least 6 characters", error: true });
     }
 
-    setAlert({ msg: "User created, check your email to confirm the account", error: false });
+    try {
+      // setAlert({ msg: "User created, check your email to confirm the account", error: false });
+
+      const response = await axios.post("http://localhost:3000/api/users", {
+        nombre,
+        password,
+        confirmPassword,
+        email,
+        address,
+        phone,
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -17,6 +17,9 @@ app.use(express.json());
 // DB Connection Connect database
 dbConnection();
 
+// CORS Configuration
+const whitelist = ["http://localhost:3000"];
+
 // Routing
 app.use("/api/users", userRoutes);
 
