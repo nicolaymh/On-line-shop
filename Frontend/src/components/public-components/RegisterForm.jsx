@@ -31,7 +31,15 @@ const RegisterForm = () => {
       return setAlert({ msg: "All fields are required", error: true });
     }
 
-    setAlert({ msg: "", error: false });
+    if (password !== confirmPassword) {
+      return setAlert({ msg: "Password and Confirm-Password must be the same ", error: true });
+    }
+
+    if (password.length < 6) {
+      return setAlert({ msg: "The password must be at least 6 characters", error: true });
+    }
+
+    setAlert({ msg: "User created, check your email to confirm the account", error: false });
   };
 
   return (
@@ -49,7 +57,7 @@ const RegisterForm = () => {
           </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            {alert.error && <Alert alert={alert} />}
+            {alert.msg && <Alert {...alert} />}
 
             <div className={styles.field}>
               <label htmlFor="nombre">Nombre: </label>
@@ -82,7 +90,7 @@ const RegisterForm = () => {
               <input
                 id="confirmPassword"
                 name="confirmPassword"
-                type="confirmPassword"
+                type="password"
                 placeholder="Confirm your password"
                 autoComplete="off"
                 value={confirmPassword}
