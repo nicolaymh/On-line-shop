@@ -14,10 +14,10 @@
     color: whitesmoke;
     text-align: center;
     font-size: 1.3rem;
+    padding: 0.02rem 1rem;
 
     @include m.generalFormMq {
       font-size: 1.6rem;
-      padding: 0.02rem 1rem;
     }
   }
 }

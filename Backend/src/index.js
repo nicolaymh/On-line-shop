@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 
 import userRoutes from "./routes/users.routes.js";
@@ -8,21 +9,30 @@ import dbConnection from "./database/config.js";
 // Create server express
 const app = express();
 
-// activate environment variables
-dotenv.config();
-
 // Parse to body json
 app.use(express.json());
 
-// DB Connection Connect database
+// Activate environment variables
+dotenv.config();
+
+// DB Connection
 dbConnection();
 
-// CORS Configuration
-const whitelist = ["http://localhost:3000"];
+// CORS configuration
+const whitelist = ["http://127.0.0.1:5173"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+app.use(cors(corsOptions));
 
 // Routing
 app.use("/api/users", userRoutes);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`🚀 Running on port ${process.env.PORT || 3000} 🚀`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Running on port ${process.env.PORT} 🚀`));

@@ -15,8 +15,8 @@ import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const RegisterForm = () => {
-  const { nombre, password, confirmPassword, email, address, phone, onInputChange } = useForm({
-    nombre: "",
+  const { name, password, confirmPassword, email, address, phone, onInputChange } = useForm({
+    name: "",
     password: "",
     confirmPassword: "",
     email: "",
@@ -29,33 +29,52 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([nombre, password, confirmPassword, email, address, phone].includes("")) {
+    // Form Validations
+    if ([name, password, confirmPassword, email, address, phone].includes("")) {
       return setAlert({ msg: "All fields are required", error: true });
     }
 
     if (password !== confirmPassword) {
-      return setAlert({ msg: "Password and Confirm-Password must be the same ", error: true });
+      return setAlert({
+        msg: "Password and Confirm-Password must be the same",
+        error: true,
+      });
     }
 
     if (password.length < 6) {
       return setAlert({ msg: "The password must be at least 6 characters", error: true });
     }
 
-    try {
-      // setAlert({ msg: "User created, check your email to confirm the account", error: false });
+    if (address.length < 8) {
+      return setAlert({ msg: "Address is required and min 8 characters", error: true });
+    }
 
-      const response = await axios.post("http://localhost:3000/api/users", {
-        nombre,
+    if (phone.length < 10) {
+      return setAlert({ msg: "Phone is required and min 10 characters", error: true });
+    }
+
+    // API call
+    try {
+      const { data } = await axios.post("http://localhost:3000/api/users/register", {
+        name,
         password,
-        confirmPassword,
         email,
         address,
         phone,
       });
 
-      console.log(response);
+      console.log(data);
+
+      setAlert({ msg: data.msg, error: false });
     } catch (error) {
+      console.log(error.response.data);
       console.log(error);
+
+      const { response: { data } } = error;
+
+      console.log(data);
+
+      setAlert({ msg: data.msg || data.errors[0].msg, error: true });
     }
   };
 
@@ -77,20 +96,22 @@ const RegisterForm = () => {
             {alert.msg && <Alert {...alert} />}
 
             <div className={styles.field}>
-              <label htmlFor="nombre">Nombre: </label>
+              <label htmlFor="name">Name: </label>
+
               <input
-                id="nombre"
-                name="nombre"
+                id="name"
+                name="name"
                 type="text"
                 placeholder="Full Name"
                 autoComplete="off"
-                value={nombre}
+                value={name}
                 onChange={onInputChange}
               />
             </div>
 
             <div className={styles.field}>
               <label htmlFor="password">Password: </label>
+
               <input
                 id="password"
                 name="password"
@@ -104,6 +125,7 @@ const RegisterForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="confirmPassword">Confirm-password </label>
+
               <input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -117,6 +139,7 @@ const RegisterForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="email">E-mail: </label>
+
               <input
                 id="email"
                 name="email"
@@ -130,6 +153,7 @@ const RegisterForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="address">Address: </label>
+
               <input
                 id="address"
                 name="address"
@@ -143,6 +167,7 @@ const RegisterForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="phone">Phone: </label>
+
               <input
                 id="phone"
                 name="phone"

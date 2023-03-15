@@ -10,8 +10,6 @@ import * as emailSend from "../helpers/email/emailSending.js";
 
 const register = async (req, res) => {
   try {
-    console.log(req.body);
-
     const { name, email, password } = req.body;
 
     // Repeated email check
