@@ -65,9 +65,9 @@ const RegisterForm = () => {
       // Delete form fields
       setFormState(initialForm);
     } catch (error) {
-      const data = error.response.data;
+      const data = error.response.data.msg || error.response.data.errors[0].msg;
 
-      setAlert({ msg: data.msg || data.errors[0].msg, error: true });
+      setAlert({ msg: data, error: true });
     }
   };
 
