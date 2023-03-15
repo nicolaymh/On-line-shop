@@ -7,8 +7,8 @@ import * as userController from "../controllers/users.controller.js";
 const router = Router();
 
 router.post("/register", validateFields.register, userController.register);
+router.post("/login", validateFields.login, userController.login);
 router.put("/confirm/:token", userController.confirmAccount);
-router.get("/login", validateFields.login, userController.login);
 router.post("/forget-password", validateFields.forgetPassword, userController.restorePassword);
 router
   .route("/forget-password/:token")

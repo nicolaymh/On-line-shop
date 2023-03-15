@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
+import axios from "axios";
+import initialFormInputs from "../../helpers/initialFormInputs";
+
+// Components
+import { Alert } from "../general-components/Alert";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -8,12 +13,37 @@ import loginImage from "../../assets/images/login-image.png";
 // CSS Styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
+import { useState } from "react";
 
 const LoginForm = () => {
-  const { email, password, onInputChange } = useForm({
-    email: "",
-    password: "",
-  });
+  const { loginForm: initialForm } = initialFormInputs();
+
+  const { email, password, setFormState, onInputChange } = useForm(initialForm);
+
+  const [alert, setAlert] = useState({ msg: "", error: false });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validations Form
+    if ([email, password].includes("")) {
+      return setAlert({ msg: "All fields are required", error: true });
+    }
+
+    // API Call
+    try {
+      const response = await axios.post("http://localhost:3000/api/users/login", {
+        email,
+        password,
+      });
+
+      console.log(response);
+    } catch (error) {
+      const data = error.response.data.msg || error.response.data.errors[0].msg;
+
+      setAlert({ msg: data, error: true });
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -28,9 +58,12 @@ const LoginForm = () => {
           </h1>
         </div>
 
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {alert.msg && <Alert {...alert} />}
+
           <div className={styles.field}>
             <label htmlFor="email">E-mail:</label>
+
             <input
               id="email"
               name="email"
@@ -44,6 +77,7 @@ const LoginForm = () => {
 
           <div className={styles.field}>
             <label htmlFor="password">Password:</label>
+
             <input
               id="password"
               name="password"

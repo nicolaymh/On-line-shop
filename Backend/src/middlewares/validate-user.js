@@ -19,12 +19,7 @@ const register = [
 ];
 
 const login = [
-  check("email", "The email must be valid")
-    .trim()
-    .notEmpty()
-    .normalizeEmail()
-    .isEmail()
-    .toLowerCase(),
+  check("email", "The email must be valid").trim().normalizeEmail().isEmail().toLowerCase(),
   check("password", "Password is required").trim().notEmpty(),
   validateErrors,
 ];

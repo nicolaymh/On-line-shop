@@ -8,8 +8,14 @@ const initialFormInputs = () => {
     phone: "",
   };
 
+  const loginForm = {
+    email: "",
+    password: "",
+  };
+
   return {
     registerForm,
+    loginForm,
   };
 };
 
