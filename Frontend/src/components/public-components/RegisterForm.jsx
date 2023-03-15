@@ -67,12 +67,7 @@ const RegisterForm = () => {
 
       setAlert({ msg: data.msg, error: false });
     } catch (error) {
-      console.log(error.response.data);
-      console.log(error);
-
       const { response: { data } } = error;
-
-      console.log(data);
 
       setAlert({ msg: data.msg || data.errors[0].msg, error: true });
     }
