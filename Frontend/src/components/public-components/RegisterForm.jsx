@@ -13,17 +13,13 @@ import registerImage from "../../assets/images/register-image.png";
 // CSS styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
+import initialFormInputs from "../../helpers/initialFormInputs";
 
 const RegisterForm = () => {
+  const { registerForm: initialForm } = initialFormInputs();
+
   const { name, password, confirmPassword, email, address, phone, setFormState, onInputChange } =
-    useForm({
-      name: "",
-      password: "",
-      confirmPassword: "",
-      email: "",
-      address: "",
-      phone: "",
-    });
+    useForm(initialForm);
 
   const [alert, setAlert] = useState({ msg: "", error: false });
 
@@ -67,9 +63,9 @@ const RegisterForm = () => {
       setAlert({ msg: data.msg, error: false });
 
       // Delete form fields
-      setFormState({ name: "", password: "", confirmPassword: "", email: "", address: "", phone: "",});
+      setFormState(initialForm);
     } catch (error) {
-      const { response: { data } } = error;
+      const data = error.response.data;
 
       setAlert({ msg: data.msg || data.errors[0].msg, error: true });
     }
