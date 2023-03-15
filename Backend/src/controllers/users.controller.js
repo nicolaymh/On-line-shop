@@ -51,6 +51,7 @@ const register = async (req, res) => {
   }
 };
 
+// Confirm account
 const confirmAccount = async (req, res) => {
   try {
     const token = req.params;

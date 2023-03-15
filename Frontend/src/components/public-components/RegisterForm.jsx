@@ -52,7 +52,7 @@ const RegisterForm = () => {
 
     // API call
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/register`, {
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/register`, {
         name,
         password,
         email,

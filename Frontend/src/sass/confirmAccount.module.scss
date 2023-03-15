@@ -26,7 +26,7 @@
   }
 
   .h2 {
-    color: black;
+    color: v.$primary;
     text-align: center;
     font-family: v.$fontSecondary;
     font-size: 1.5rem;
@@ -35,10 +35,6 @@
 
     @include m.generalFormMq {
       font-size: 3rem;
-    }
-
-    span {
-      color: v.$primary;
     }
   }
 }
