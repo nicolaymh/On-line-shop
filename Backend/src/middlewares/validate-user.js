@@ -3,7 +3,7 @@ import validateErrors from "../helpers/validateFields.js";
 
 const register = [
   check("name", "Name is required").trim().notEmpty().toLowerCase(),
-  check("email", "The email must be valid").trim().normalizeEmail().isEmail().toLowerCase(),
+  check("email", "The email must be valid").trim().isEmail().toLowerCase(),
   check("password", "The password must be at least 6 characters").isLength({
     min: 6,
   }),
@@ -19,18 +19,13 @@ const register = [
 ];
 
 const login = [
-  check("email", "The email must be valid").trim().normalizeEmail().isEmail().toLowerCase(),
+  check("email", "The email must be valid").trim().isEmail().toLowerCase(),
   check("password", "Password is required").trim().notEmpty(),
   validateErrors,
 ];
 
 const forgetPassword = [
-  check("email", "The email must be valid")
-    .trim()
-    .notEmpty()
-    .normalizeEmail()
-    .isEmail()
-    .toLowerCase(),
+  check("email", "The email must be valid").trim().notEmpty().isEmail().toLowerCase(),
   validateErrors,
 ];
 

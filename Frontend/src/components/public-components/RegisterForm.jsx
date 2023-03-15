@@ -52,7 +52,7 @@ const RegisterForm = () => {
 
     // API call
     try {
-      const { data } = await axios.post("http://localhost:3000/api/users/register", {
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/register`, {
         name,
         password,
         email,
