@@ -63,8 +63,6 @@ const RegisterForm = () => {
         phone,
       });
 
-      console.log(data);
-
       setAlert({ msg: data.msg, error: false });
     } catch (error) {
       const { response: { data } } = error;
