@@ -8,6 +8,7 @@ import generateJWT from "../helpers/tokens/generateJWT.js";
 
 import * as emailSend from "../helpers/email/emailSending.js";
 
+// Register
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -68,6 +69,7 @@ const confirmAccount = async (req, res) => {
   }
 };
 
+// Login
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;

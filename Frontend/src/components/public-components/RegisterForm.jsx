@@ -15,14 +15,15 @@ import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 
 const RegisterForm = () => {
-  const { name, password, confirmPassword, email, address, phone, onInputChange } = useForm({
-    name: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    address: "",
-    phone: "",
-  });
+  const { name, password, confirmPassword, email, address, phone, setFormState, onInputChange } =
+    useForm({
+      name: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
+      address: "",
+      phone: "",
+    });
 
   const [alert, setAlert] = useState({ msg: "", error: false });
 
@@ -64,6 +65,9 @@ const RegisterForm = () => {
       });
 
       setAlert({ msg: data.msg, error: false });
+
+      // Delete form fields
+      setFormState({ name: "", password: "", confirmPassword: "", email: "", address: "", phone: "",});
     } catch (error) {
       const { response: { data } } = error;
 

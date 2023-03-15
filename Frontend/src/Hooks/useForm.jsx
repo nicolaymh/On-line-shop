@@ -12,5 +12,5 @@ export const useForm = (initialForm = {}) => {
     });
   };
 
-  return { ...formState, onInputChange };
+  return { ...formState, setFormState, onInputChange };
 };
