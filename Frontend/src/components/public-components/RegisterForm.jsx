@@ -1,6 +1,8 @@
 import { useForm } from "../../Hooks/useForm";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import initialFormInputs from "../../helpers/initialFormInputs";
+import axiosInstance from "../../helpers/axiosInstance";
 
 // Components
 import { Alert } from "../general-components/Alert";
@@ -12,8 +14,6 @@ import registerImage from "../../assets/images/register-image.png";
 // CSS styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
-import initialFormInputs from "../../helpers/initialFormInputs";
-import axiosInstance from "../../helpers/axiosInstance";
 
 const RegisterForm = () => {
   const { registerForm: initialForm } = initialFormInputs();

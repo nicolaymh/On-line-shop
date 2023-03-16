@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import axiosInstance from "../../helpers/axiosInstance";
 
 // Components
@@ -7,12 +8,10 @@ import { Alert } from "../general-components/Alert";
 // Assets
 import logo from "../../assets/logo-final.png";
 import confirmAccountImage from "../../assets/images/confirmAccount-image.png";
-import { useParams } from "react-router-dom";
 
 // CSS style ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import style from "../../sass/confirmAccount.module.scss";
-import alertStyle from "../../sass/forms/alertForm.module.scss";
 
 const ConfirmAccount = () => {
   const [alert, setAlert] = useState({ msg: "", error: false });
@@ -48,9 +47,17 @@ const ConfirmAccount = () => {
         <h1 className={style.h1}>
           GAMER <span>STORE</span>
         </h1>
-      </div>
 
-      {alert.msg && <Alert {...alert} />}
+        {alert.msg && <Alert {...alert} />}
+
+        <nav>
+          <div className={style.containerNav}>
+            <Link className={style.link} to="/">
+              Sign in
+            </Link>
+          </div>
+        </nav>
+      </div>
     </div>
   );
 };
