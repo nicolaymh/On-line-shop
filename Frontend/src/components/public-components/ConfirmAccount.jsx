@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Components
+import { Alert } from "../general-components/Alert";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -9,10 +12,10 @@ import { useParams } from "react-router-dom";
 // CSS style ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import style from "../../sass/confirmAccount.module.scss";
-import axiosInstance from "../../helpers/axiosInstance";
+import alertStyle from "../../sass/forms/alertForm.module.scss";
 
 const ConfirmAccount = () => {
-  const [alert, setAlert] = useState({ msg: "" });
+  const [alert, setAlert] = useState({ msg: "", error: false });
 
   const { id: token } = useParams();
 
@@ -21,10 +24,10 @@ const ConfirmAccount = () => {
       try {
         const response = await axiosInstance.put(`/users/confirm/${token}`);
         const notice = response.data.msg;
-        setAlert({ msg: notice });
+        setAlert({ msg: notice, error: false });
       } catch (error) {
         const notice = error.response.data.msg;
-        setAlert({ msg: notice });
+        setAlert({ msg: notice, error: true });
       }
     };
 
@@ -45,11 +48,9 @@ const ConfirmAccount = () => {
         <h1 className={style.h1}>
           GAMER <span>STORE</span>
         </h1>
-
-        <div>
-          <h2 className={style.h2}>{alert.msg}</h2>
-        </div>
       </div>
+
+      {alert.msg && <Alert {...alert} />}
     </div>
   );
 };

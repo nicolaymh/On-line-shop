@@ -1,7 +1,6 @@
 import { useForm } from "../../Hooks/useForm";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 // Components
 import { Alert } from "../general-components/Alert";

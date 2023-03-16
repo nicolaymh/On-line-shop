@@ -25,16 +25,16 @@
     }
   }
 
-  .h2 {
-    color: v.$primary;
-    text-align: center;
-    font-family: v.$fontSecondary;
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
-    border: 0.09rem dashed v.$primary;
+  // .h2 {
+  //   color: v.$primary;
+  //   text-align: center;
+  //   font-family: v.$fontSecondary;
+  //   font-size: 1.5rem;
+  //   padding: 1rem 2rem;
+  //   border: 0.09rem dashed v.$primary;
 
-    @include m.generalFormMq {
-      font-size: 3rem;
-    }
-  }
+  //   @include m.generalFormMq {
+  //     font-size: 3rem;
+  //   }
+  // }
 }
