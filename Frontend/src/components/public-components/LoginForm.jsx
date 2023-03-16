@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
-import axios from "axios";
 import initialFormInputs from "../../helpers/initialFormInputs";
+import axiosInstance from "../../helpers/axiosInstance";
 
 // Components
 import { Alert } from "../general-components/Alert";
@@ -18,7 +18,7 @@ import { useState } from "react";
 const LoginForm = () => {
   const { loginForm: initialForm } = initialFormInputs();
 
-  const { email, password, setFormState, onInputChange } = useForm(initialForm);
+  const { email, password, onInputChange } = useForm(initialForm);
 
   const [alert, setAlert] = useState({ msg: "", error: false });
 
@@ -32,10 +32,7 @@ const LoginForm = () => {
 
     // API Call
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, {
-        email,
-        password,
-      });
+      const response = await axiosInstance.post("/users/login", { email, password });
 
       console.log(response);
     } catch (error) {

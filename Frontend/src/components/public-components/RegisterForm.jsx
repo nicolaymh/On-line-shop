@@ -14,6 +14,7 @@ import registerImage from "../../assets/images/register-image.png";
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 import initialFormInputs from "../../helpers/initialFormInputs";
+import axiosInstance from "../../helpers/axiosInstance";
 
 const RegisterForm = () => {
   const { registerForm: initialForm } = initialFormInputs();
@@ -52,9 +53,10 @@ const RegisterForm = () => {
 
     // API call
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/register`, {
+      const { data } = await axiosInstance.post("/users/register", {
         name,
         password,
+        confirmPassword,
         email,
         address,
         phone,

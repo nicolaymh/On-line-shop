@@ -9,19 +9,17 @@ import { useParams } from "react-router-dom";
 // CSS style ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import style from "../../sass/confirmAccount.module.scss";
+import axiosInstance from "../../helpers/axiosInstance";
 
 const ConfirmAccount = () => {
   const [alert, setAlert] = useState({ msg: "" });
 
-  const { id } = useParams();
+  const { id: token } = useParams();
 
   useEffect(() => {
     const confirmAccount = async () => {
       try {
-        const response = await axios.put(
-          `${import.meta.env.VITE_BACKEND_URL}/api/users/confirm/${id}`
-        );
-
+        const response = await axiosInstance.put(`/users/confirm/${token}`);
         const notice = response.data.msg;
         setAlert({ msg: notice });
       } catch (error) {
