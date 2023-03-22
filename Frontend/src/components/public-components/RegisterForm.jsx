@@ -26,6 +26,8 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setAlert({ msg: "", error: false });
+
     // Form Validations
     if ([name, password, confirmPassword, email, address, phone].includes("")) {
       return setAlert({ msg: "All fields are required", error: true });
