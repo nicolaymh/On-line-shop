@@ -13,9 +13,14 @@ const initialFormInputs = () => {
     password: "",
   };
 
+  const forgotPasswordForm = {
+    email: "",
+  };
+
   return {
     registerForm,
     loginForm,
+    forgotPasswordForm,
   };
 };
 

@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
+import { useState } from "react";
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Components
+import { Alert } from "../general-components/Alert";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -8,11 +13,34 @@ import forgotPasswordImage from "../../assets/images/forgot-password.png";
 // CSS Styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
+import initialFormInputs from "../../helpers/initialFormInputs";
 
 const ForgotPassword = () => {
-  const { email, onInputChange } = useForm({
-    email: "",
-  });
+  const { forgotPasswordForm: initialForm } = initialFormInputs();
+
+  const { email, setFormState, onInputChange } = useForm(initialForm);
+
+  const [alert, setAlert] = useState({ msg: "", error: false });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setAlert({ msg: "", error: false });
+
+    if (!email) {
+      return setAlert({ msg: "The email must be valid", error: true });
+    }
+
+    try {
+      const { data } = await axiosInstance.post("/users/forget-password", { email });
+
+      setAlert({ msg: data.msg, error: false });
+      setFormState(initialForm);
+    } catch (error) {
+      const data = error.response.data.msg || error.response.data.errors[0].msg;
+      setAlert({ msg: data, error: true });
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -27,7 +55,9 @@ const ForgotPassword = () => {
           </h1>
         </div>
 
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {alert.msg && <Alert {...alert} />}
+
           <div className={styles.field}>
             <label htmlFor="email">E-mail:</label>
             <input
@@ -62,7 +92,7 @@ const ForgotPassword = () => {
       </div>
 
       <div className={styles.loginImg}>
-        <img height={345} src={forgotPasswordImage} alt="login-image" />
+        <img height={415} src={forgotPasswordImage} alt="login-image" />
       </div>
     </div>
   );

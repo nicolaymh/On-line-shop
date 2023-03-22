@@ -95,6 +95,7 @@ const login = async (req, res) => {
   }
 };
 
+// Restore password
 const restorePassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -113,6 +114,7 @@ const restorePassword = async (req, res) => {
   }
 };
 
+// Check if token exists
 const checkToken = async (req, res) => {
   try {
     const { token } = req.params;

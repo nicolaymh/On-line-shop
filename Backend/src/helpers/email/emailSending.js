@@ -29,7 +29,7 @@ const sendEmailForgetPass = async ({ name, email, token }) => {
       subject: "On-line-shop - restore your password ✔", // Subject line
       html: ` <p>Hello ${name} restore your password is almost ready, you just have to check the following link</p>
     
-            <a href="pruebadecorreo/confirmar/${token}">Comprobar Cuenta</a>
+            <a href="${process.env.FRONTEND_URL}/forget-password/${token}">Get a new password</a>
     
             <p>If you didn't do this request, please ignore it</p>
             `,
