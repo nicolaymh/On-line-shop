@@ -17,10 +17,16 @@ const initialFormInputs = () => {
     email: "",
   };
 
+  const newPasswordForm = {
+    newPassword: "",
+    confirmPassword: "",
+  };
+
   return {
     registerForm,
     loginForm,
     forgotPasswordForm,
+    newPasswordForm,
   };
 };
 

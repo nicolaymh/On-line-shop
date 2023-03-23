@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axiosInstance from "../../helpers/axiosInstance";
 
@@ -16,6 +16,8 @@ import style from "../../sass/confirmAccount.module.scss";
 const ConfirmAccount = () => {
   const [alert, setAlert] = useState({ msg: "", error: false });
 
+  const firstMount = useRef(true);
+
   const { id: token } = useParams();
 
   useEffect(() => {
@@ -30,7 +32,10 @@ const ConfirmAccount = () => {
       }
     };
 
-    confirmAccount();
+    if (firstMount) {
+      confirmAccount();
+      firstMount.current = false;
+    }
   }, []);
 
   return (

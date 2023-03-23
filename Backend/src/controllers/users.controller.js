@@ -144,6 +144,7 @@ const newPassword = async (req, res) => {
 
     userNewPassword.token = "";
     userNewPassword.password = hash;
+
     await userNewPassword.save();
 
     res.status(201).json({ ok: true, msg: "Password changed successfully" });
