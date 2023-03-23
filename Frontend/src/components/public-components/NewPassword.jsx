@@ -39,7 +39,36 @@ const NewPassword = () => {
     tokenValidate();
   }, []);
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Form Validations
+    if ([newPassword, confirmPassword].includes("")) {
+      return setAlert({ msg: "All fields are required", error: true });
+    }
+
+    if (newPassword !== confirmPassword) {
+      return setAlert({ msg: "NewPassword and ConfirmPassword must be the same", error: true });
+    }
+
+    if (newPassword.length < 6) {
+      return setAlert({ msg: "The NewPassword must be at least 6 characters", error: true });
+    }
+
+    // API call to restore password
+    try {
+      const { data } = await axiosInstance.post(`/users/forget-password/${token}`, {
+        password: newPassword,
+      });
+
+      setAlert({ msg: data.msg, error: false });
+      setTokenExists(false);
+    } catch (error) {
+      console.log(error);
+      const data = error.response.data.msg || error.response.data.errors[0].msg;
+      setAlert({ msg: data, error: true });
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -64,7 +93,7 @@ const NewPassword = () => {
                 <input
                   id="newPassword"
                   name="newPassword"
-                  type="newPassword"
+                  type="password"
                   placeholder="Create a new password"
                   autoComplete="off"
                   value={newPassword}
@@ -77,7 +106,7 @@ const NewPassword = () => {
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
-                  type="confirmPassword"
+                  type="password"
                   placeholder="Confirm your password"
                   autoComplete="off"
                   value={confirmPassword}
