@@ -13,8 +13,7 @@ import loginImage from "../../assets/images/login-image.png";
 // CSS Styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
-import { useContext, useState } from "react";
-import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
 
 const LoginForm = () => {
   const { loginForm: initialForm } = initialFormInputs();
@@ -33,13 +32,11 @@ const LoginForm = () => {
 
     // API Call
     try {
-      const data = await axiosInstance.post("/users/login", { email, password });
+      const { data } = await axiosInstance.post("/users/login", { email, password });
 
       setAlert({ msg: "", error: false });
 
       localStorage.setItem("user", JSON.stringify(data));
-
-      console.log(data);
     } catch (error) {
       const data = error.response.data.msg || error.response.data.errors[0].msg;
 
