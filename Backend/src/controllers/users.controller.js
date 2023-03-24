@@ -153,4 +153,10 @@ const newPassword = async (req, res) => {
   }
 };
 
-export { register, confirmAccount, login, restorePassword, checkToken, newPassword };
+const profile = async (req, res) => {
+  const { user } = req;
+
+  res.json(user);
+};
+
+export { register, confirmAccount, login, restorePassword, checkToken, newPassword, profile };

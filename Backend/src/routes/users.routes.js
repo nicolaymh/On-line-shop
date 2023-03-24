@@ -4,6 +4,8 @@ import * as validateFields from "../middlewares/validate-user.js";
 
 import * as userController from "../controllers/users.controller.js";
 
+import checkAuth from "../middlewares/checkAuth.js";
+
 const router = Router();
 
 router.post("/register", validateFields.register, userController.register);
@@ -14,5 +16,7 @@ router
   .route("/forget-password/:token")
   .get(userController.checkToken)
   .post(validateFields.newPassword, userController.newPassword);
+
+router.get("/profile", checkAuth, userController.profile);
 
 export default router;
