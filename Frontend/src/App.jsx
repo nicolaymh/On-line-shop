@@ -1,4 +1,4 @@
-// Private Routes
+// Public Routes
 import LoginForm from "./components/public-components/LoginForm";
 import RegisterForm from "./components/public-components/RegisterForm";
 import ForgotPassword from "./components/public-components/ForgotPassword";
