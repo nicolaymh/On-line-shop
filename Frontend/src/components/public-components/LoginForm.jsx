@@ -15,12 +15,17 @@ import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 import { useState } from "react";
 
+// Context
+import useAuth from "../../Hooks/useAuth";
+
 const LoginForm = () => {
   const { loginForm: initialForm } = initialFormInputs();
 
   const { email, password, onInputChange } = useForm(initialForm);
 
   const [alert, setAlert] = useState({ msg: "", error: false });
+
+  const { setAuth } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +41,9 @@ const LoginForm = () => {
 
       setAlert({ msg: "", error: false });
 
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("token", data.token);
+
+      setAuth(data);
     } catch (error) {
       const data = error.response.data.msg || error.response.data.errors[0].msg;
 

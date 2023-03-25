@@ -5,8 +5,6 @@ import User from "../models/UserModel.js";
 const checkAuth = async (req, res, next) => {
   let token;
 
-  console.log(req.headers);
-
   try {
     if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
       token = req.headers.authorization.split(" ")[1];
