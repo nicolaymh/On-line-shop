@@ -28,8 +28,6 @@ const AuthProvider = ({ children }) => {
         const { data } = await axiosInstance("/users/profile", config);
 
         setAuth(data);
-
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +36,7 @@ const AuthProvider = ({ children }) => {
     authenticateUser();
   }, []);
 
-  return <AuthContext.Provider value={{ setAuth }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthProvider };

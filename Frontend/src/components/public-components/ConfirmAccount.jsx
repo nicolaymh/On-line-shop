@@ -32,7 +32,7 @@ const ConfirmAccount = () => {
       }
     };
 
-    if (firstMount) {
+    if (firstMount.current) {
       confirmAccount();
       firstMount.current = false;
     }
