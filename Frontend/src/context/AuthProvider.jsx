@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axiosInstance from "../helpers/axiosInstance";
 
@@ -9,11 +10,16 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
+  const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const authenticateUser = async () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
+        setLoading(false);
         return;
       }
 
@@ -28,7 +34,12 @@ const AuthProvider = ({ children }) => {
         const { data } = await axiosInstance("/users/profile", config);
 
         setAuth(data);
+
+        setLoading(true);
+
+        navigate("/shop");
       } catch (error) {
+        console.log("error:");
         console.log(error);
       }
     };
@@ -36,7 +47,7 @@ const AuthProvider = ({ children }) => {
     authenticateUser();
   }, []);
 
-  return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ auth, setAuth, loading }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthProvider };
