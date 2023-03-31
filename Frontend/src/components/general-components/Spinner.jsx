@@ -1,15 +1,11 @@
-
-
 const Spinner = () => {
   return (
-    <>
-      <h1>Loading Animation w/ Translate and Z-index</h1>
-      <div class="container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-    </>
+    <div className="loading">
+      <div className="circle"></div>
+      <div className="circle"></div>
+      <div className="circle"></div>
+      <div className="circle"></div>
+    </div>
   );
 };
 
