@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        setLoading(false);
+        // setLoading(false);
         return;
       }
 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
         setAuth(data);
 
-        setLoading(true);
+        // setLoading(true);
 
         navigate("/shop");
       } catch (error) {

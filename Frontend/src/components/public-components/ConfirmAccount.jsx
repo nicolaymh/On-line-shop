@@ -11,7 +11,7 @@ import confirmAccountImage from "../../assets/images/confirmAccount-image.png";
 
 // CSS style ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
-import style from "../../sass/confirmAccount.module.scss";
+import style from "../../sass/confirmAccount/confirmAccount.module.scss";
 
 const ConfirmAccount = () => {
   const [alert, setAlert] = useState({ msg: "", error: false });

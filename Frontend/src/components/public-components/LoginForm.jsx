@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useForm } from "../../Hooks/useForm";
 import initialFormInputs from "../../helpers/initialFormInputs";
 import axiosInstance from "../../helpers/axiosInstance";
 
 // Components
 import { Alert } from "../general-components/Alert";
+import Loader from "../general-components/Loader";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -13,7 +15,6 @@ import loginImage from "../../assets/images/login-image.png";
 // CSS Styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
-import { useState } from "react";
 
 // Context
 import useAuth from "../../Hooks/useAuth";
@@ -65,7 +66,7 @@ const LoginForm = () => {
   return (
     <>
       {loading ? (
-        <div>Loading</div>
+        <Loader />
       ) : (
         <div className={styles.container}>
           <div className={styles.loginBox}>
