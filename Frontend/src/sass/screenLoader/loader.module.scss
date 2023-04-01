@@ -1,0 +1,25 @@
+@use "../base/variables.scss" as v;
+
+.logerContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10rem;
+  height: 40rem;
+  align-items: center;
+
+  .imageContainer {
+    max-width: 18rem;
+  }
+
+  .noticeContainer {
+    color: red;
+    border: 1px solid v.$primary;
+    margin-top: 2rem;
+    border-radius: 2rem;
+
+    h1 {
+      margin: 1rem;
+    }
+  }
+}
