@@ -23,7 +23,7 @@ const createCategory = async (req, res) => {
 };
 
 const getCategoriesInfo = (req, res) => {
-  console.log("hola");
+  console.log("From getCategoriesInfo");
 };
 
 const updateCategory = async (req, res) => {};
