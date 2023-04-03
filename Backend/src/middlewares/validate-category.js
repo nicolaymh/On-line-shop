@@ -1,7 +1,7 @@
 import { check } from "express-validator";
 import validateErrors from "../helpers/validateFields.js";
 
-const create = [
+const verifyCategoryFields = [
   check("name", "Name must be between 3 and 30 characters")
     .trim()
     .toLowerCase()
@@ -13,4 +13,4 @@ const create = [
   validateErrors,
 ];
 
-export { create };
+export default verifyCategoryFields;
