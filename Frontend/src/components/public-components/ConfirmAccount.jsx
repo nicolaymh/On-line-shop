@@ -24,6 +24,9 @@ const ConfirmAccount = () => {
     const confirmAccount = async () => {
       try {
         const response = await axiosInstance.put(`/users/confirm/${token}`);
+
+        console.log(response);
+
         const notice = response.data.msg;
         setAlert({ msg: notice, error: false });
       } catch (error) {
