@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        // setLoading(false);
+        setLoading(false);
         return;
       }
 
@@ -34,8 +34,6 @@ const AuthProvider = ({ children }) => {
         const { data } = await axiosInstance("/users/profile", config);
 
         setAuth(data);
-
-        // setLoading(true);
 
         navigate("/shop");
       } catch (error) {

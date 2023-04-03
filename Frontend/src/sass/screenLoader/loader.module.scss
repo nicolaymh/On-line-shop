@@ -13,13 +13,13 @@
   }
 
   .noticeContainer {
-    color: red;
-    border: 1px solid v.$primary;
+    color: v.$backgroundBody;
+    background-color: v.$primary;
     margin-top: 2rem;
     border-radius: 2rem;
 
     h1 {
-      margin: 1rem;
+      margin: 2rem;
     }
   }
 }
