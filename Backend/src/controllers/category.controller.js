@@ -22,8 +22,10 @@ const createCategory = async (req, res) => {
   }
 };
 
-const updateCategory = (req, res) => {
-  console.log("From updateCategory");
+const getCategoriesInfo = (req, res) => {
+  
 };
+
+const updateCategory = async (req, res) => {};
 
 export { createCategory, updateCategory };
