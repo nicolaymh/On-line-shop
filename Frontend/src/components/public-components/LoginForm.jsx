@@ -52,10 +52,10 @@ const LoginForm = () => {
     } catch (error) {
       console.log(error);
 
-      if (error.message) {
-        setAlert({ msg: error.message, error: true });
-        return;
-      }
+      // if (error.message) {
+      //   setAlert({ msg: error.message, error: true });
+      //   return;
+      // }
 
       const data = error.response.data.msg || error.response.data.errors[0].msg;
 
