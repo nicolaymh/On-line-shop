@@ -2,7 +2,7 @@ import { check } from "express-validator";
 import validateErrors from "../helpers/validateFields.js";
 
 const verifyCategoryFields = [
-  check("name", "Name must be between 3 and 30 characters")
+  check("name", "Name must be between 3 and 20 characters")
     .trim()
     .toLowerCase()
     .isLength({ min: 3, max: 30 }),
