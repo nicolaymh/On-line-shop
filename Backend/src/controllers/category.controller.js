@@ -28,7 +28,7 @@ const getCategoriesInfo = async (req, res) => {
   try {
     const { _id, name } = req.user;
 
-    const allCategories = await Category.find().select("-__v -createdAt -updatedAt");
+    const allCategories = await Category.find().select("id name description");
 
     if (!allCategories.length) {
       return res.status(400).json({ ok: false, msg: "There are no categories" });
