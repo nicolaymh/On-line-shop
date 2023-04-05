@@ -8,7 +8,7 @@ import checkAuth from "../middlewares/checkAuth.js";
 const router = Router();
 
 router.post("/create", checkAuth, verifyCategoryFields, categoryController.createCategory);
-router.get("/get-categories-info");
+router.get("/get-categories", checkAuth, categoryController.getCategoriesInfo);
 router.put("/update-category", verifyCategoryFields, categoryController.updateCategory);
 
 export default router;

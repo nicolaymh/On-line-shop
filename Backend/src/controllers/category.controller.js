@@ -2,7 +2,7 @@ import internalServerError from "../helpers/internalServerError.js";
 import Category from "../models/CatagoryModel.js";
 
 const createCategory = async (req, res) => {
-  console.log(req.user);
+  const { _id: creator } = req.user;
 
   const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createCategory = async (req, res) => {
       return res.status(400).json({ ok: false, msg: `There is already a category called ${name}` });
     }
 
-    const newCategory = new Category(req.body);
+    const newCategory = new Category({ ...req.body, creator });
 
     await newCategory.save();
 
@@ -24,8 +24,23 @@ const createCategory = async (req, res) => {
   }
 };
 
-const getCategoriesInfo = async (req, res) => {};
+const getCategoriesInfo = async (req, res) => {
+  try {
+    const { _id, name } = req.user;
+
+    const allCategories = await Category.find().select("-__v -createdAt -updatedAt");
+
+    if (!allCategories.length) {
+      return res.status(400).json({ ok: false, msg: "There are no categories" });
+    }
+
+    res.status(201).json({ ok: true, user: { _id, name }, categories: [...allCategories] });
+  } catch (error) {
+    console.log(error);
+    internalServerError(error, res);
+  }
+};
 
 const updateCategory = async (req, res) => {};
 
-export { createCategory, updateCategory };
+export { createCategory, getCategoriesInfo, updateCategory };
