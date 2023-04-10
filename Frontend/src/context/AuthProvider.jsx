@@ -38,6 +38,8 @@ const AuthProvider = ({ children }) => {
         navigate("/shop");
       } catch (error) {
         console.log(error);
+        setLoading(false);
+        localStorage.removeItem("token");
       }
     };
 
