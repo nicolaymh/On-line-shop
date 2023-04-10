@@ -5,7 +5,7 @@ const Shop = () => {
   const { auth } = useAuth();
 
   return (
-    <main>
+    <main className="mainContainer">
       {auth._id ? (
         <div>
           <nav>
