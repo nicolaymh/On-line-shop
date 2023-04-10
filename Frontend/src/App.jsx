@@ -13,6 +13,7 @@ import ConfirmAccount from "./components/public-components/ConfirmAccount";
 
 // Private Routes
 import WebSite from "./components/private-components/WebSite";
+import Products from "./components/private-components/Products";
 
 // Context
 import { AuthProvider } from "./context/AuthProvider";
@@ -36,6 +37,7 @@ function App() {
 
           <Route path="shop" element={<Shop />}>
             <Route index element={<WebSite />} />
+            <Route path="products" element={<Products />} />
           </Route>
         </Routes>
       </AuthProvider>
