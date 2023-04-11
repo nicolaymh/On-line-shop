@@ -12,14 +12,15 @@ import NewPassword from "./components/public-components/NewPassword";
 import ConfirmAccount from "./components/public-components/ConfirmAccount";
 
 // Private Routes
-import WebSite from "./components/private-components/WebSite";
-import Products from "./components/private-components/Products";
+import Home from "./components/private-components/Home";
+import Products from "./components/private-components/Categories";
 
 // Context
 import { AuthProvider } from "./context/AuthProvider";
 
 // React-router-Dom
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Settings from "./components/private-components/Settings";
 
 function App() {
   return (
@@ -36,8 +37,9 @@ function App() {
           </Route>
 
           <Route path="shop" element={<Shop />}>
-            <Route index element={<WebSite />} />
-            <Route path="products" element={<Products />} />
+            <Route index element={<Home />} />
+            <Route path="categories" element={<Products />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </AuthProvider>

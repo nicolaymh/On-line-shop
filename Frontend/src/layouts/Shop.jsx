@@ -1,31 +1,24 @@
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Header from "../components/private-components/Header";
 
 const Shop = () => {
   const { auth } = useAuth();
 
   return (
-    <main className="mainContainer">
+    <div className="mainContainer">
       {auth._id ? (
         <div>
-          <nav>
-            <Link to="/shop">
-              <h2>WebSite</h2>
-            </Link>
+          <Header />
 
-            <Link to="/shop/products">
-              <h2>Products</h2>
-            </Link>
-          </nav>
-
-          <div>
+          <main>
             <Outlet />
-          </div>
+          </main>
         </div>
       ) : (
         <Navigate to="/" />
       )}
-    </main>
+    </div>
   );
 };
 
