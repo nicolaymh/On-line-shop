@@ -6,7 +6,12 @@ import logo from "../../assets/logo-final.png";
 // Styles
 import style from "../../sass/Header/header.module.scss";
 
+// Context
+import useAuth from "../../Hooks/useAuth";
+
 const Header = () => {
+  const { auth } = useAuth();
+
   return (
     <div className={style.headerContainer}>
       <div className={style.containerLogo}>
@@ -20,21 +25,37 @@ const Header = () => {
       </div>
 
       <nav className={style.containerNav}>
-        <NavLink className={style.navLink} to="/shop">
+        <NavLink
+          to="/shop"
+          end
+          className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
+        >
           Home
         </NavLink>
 
-        <NavLink className={style.navLink} to="/shop/Categories">
+        <NavLink
+          to="/shop/Categories"
+          className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
+        >
           Categories
         </NavLink>
 
-        <NavLink className={style.navLink} to="/shop/settings">
+        <NavLink
+          to="/shop/settings"
+          className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
+        >
           Settings
         </NavLink>
       </nav>
 
+      <div className={style.inputContainer}>
+        <input type="text" placeholder="Look your product" />
+      </div>
+
       <div className={style.containerUser}>
-        <h3>User</h3>
+        <h3>
+          Welcome <span>{auth.name.split(" ")[0].toUpperCase()}</span>
+        </h3>
       </div>
     </div>
   );

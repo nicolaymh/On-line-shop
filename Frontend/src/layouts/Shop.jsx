@@ -6,19 +6,19 @@ const Shop = () => {
   const { auth } = useAuth();
 
   return (
-    <div className="mainContainer">
+    <>
       {auth._id ? (
         <div>
           <Header />
 
-          <main>
+          <main className="mainContainer">
             <Outlet />
           </main>
         </div>
       ) : (
         <Navigate to="/" />
       )}
-    </div>
+    </>
   );
 };
 
