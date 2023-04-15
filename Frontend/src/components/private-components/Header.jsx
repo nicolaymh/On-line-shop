@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 // React-Icons
-import { AiOutlineMonitor, AiFillAlert, AiFillCaretUp } from "react-icons/ai";
+import { HiSearchCircle } from "react-icons/Hi";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -52,10 +52,9 @@ const Header = () => {
       </nav>
 
       <div className={style.inputContainer}>
-        <input type="text" placeholder="Look your product" />
-        <AiOutlineMonitor style={{ color: "blue", fontSize: "3rem" }} />
-        <AiOutlineMonitor />
-        <AiFillCaretUp />
+        <input type="text" placeholder="look for your product" />
+
+        <HiSearchCircle className={style.searchIcon} />
       </div>
 
       <div className={style.containerUser}>

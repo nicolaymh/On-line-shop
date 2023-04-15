@@ -2,11 +2,12 @@
 
 .headerContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   border: 2px solid v.$borderLine;
   align-items: center;
   padding: 0.5rem;
   background-color: v.$backgroundPrimary;
+  border: 0.2rem solid v.$borderLine;
 
   .containerLogo {
     display: flex;
@@ -67,7 +68,10 @@
   }
 
   .inputContainer {
-    max-width: 20rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 30rem;
 
     input {
       border: none;
@@ -79,26 +83,43 @@
       font-family: v.$fontSecondary;
       font-style: italic;
       font-size: 1.4rem;
-      outline: none;
+      outline: 0.3rem solid v.$borderLine;
 
       &::placeholder {
         color: rgba(0, 0, 0, 0.584);
       }
 
       &:focus {
-        border: 2px solid v.$primary;
+        outline: 2px solid v.$primary;
+
         &::placeholder {
           color: v.$backgroundBody;
         }
       }
     }
-  }
 
+    .searchIcon {
+      position: absolute;
+      color: v.$primary;
+      font-size: 3rem;
+      right: 0.8rem;
+      transform: transform color;
+      transition: duration 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        transform: rotate(250deg);
+        font-size: 3.4rem;
+        color: #00cdff;
+      }
+    }
+  }
   .containerUser {
     h3 {
       color: v.$primary;
       font-family: v.$fontSecondary;
       font-weight: 300;
+      font-size: 1.6rem;
 
       &::first-letter {
         text-transform: uppercase;
@@ -106,6 +127,7 @@
 
       span {
         font-weight: bold;
+        font-size: 1.4rem;
 
         &::first-letter {
           text-transform: uppercase;
