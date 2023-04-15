@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 
+// React-Icons
+import { AiOutlineMonitor, AiFillAlert, AiFillCaretUp } from "react-icons/ai";
+
 // Assets
 import logo from "../../assets/logo-final.png";
 
@@ -50,6 +53,9 @@ const Header = () => {
 
       <div className={style.inputContainer}>
         <input type="text" placeholder="Look your product" />
+        <AiOutlineMonitor style={{ color: "blue", fontSize: "3rem" }} />
+        <AiOutlineMonitor />
+        <AiFillCaretUp />
       </div>
 
       <div className={style.containerUser}>
