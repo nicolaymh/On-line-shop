@@ -103,13 +103,11 @@
       color: v.$primary;
       font-size: 3rem;
       right: 0.8rem;
-      transform: transform color;
-      transition: duration 0.3s;
+      transition-property: transform color;
+      transition-duration: 0.9s;
 
       &:hover {
-        cursor: pointer;
-        transform: rotate(250deg);
-        font-size: 3.4rem;
+        transform: scale(1.2) rotate(360deg);
         color: #00cdff;
       }
     }
