@@ -1,8 +1,9 @@
 @use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
 
 .headerContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   border: 2px solid v.$borderLine;
   align-items: center;
   padding: 0.5rem;
@@ -16,17 +17,25 @@
 
     .containerImg {
       img {
-        max-width: 5rem;
+        max-width: 3rem;
+
+        @include m.headerMq(990px) {
+          max-width: 5rem;
+        }
       }
     }
 
     h1 {
       color: v.$primary;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       display: flex;
       border-left: 2px solid v.$primary;
       margin: 0 0 0 0.8rem;
       padding: 0 0 0 0.7rem;
+
+      @include m.headerMq(990px) {
+        font-size: 2rem;
+      }
 
       span {
         color: black;
@@ -36,6 +45,12 @@
   }
 
   .containerNav {
+    font-size: 1.3rem;
+
+    @include m.headerMq(990px) {
+      font-size: 1.6rem;
+    }
+
     .activeLink {
       color: v.$primary;
       font-family: v.$fontSecondary;
@@ -56,7 +71,7 @@
       transition-duration: 0.3s;
 
       &:nth-child(2) {
-        margin: 0 1rem;
+        margin: 0 0.8rem;
       }
 
       &:hover {
@@ -71,14 +86,18 @@
     display: flex;
     align-items: center;
     position: relative;
-    width: 30rem;
+    width: 15rem;
+
+    @include m.headerMq(990px) {
+      width: 30rem;
+    }
 
     input {
       border: none;
       border-radius: 9rem;
       background-color: v.$backgroundBody;
       margin: 1rem auto;
-      width: 100%;
+      max-width: 80%;
       padding: 1rem 2rem;
       font-family: v.$fontSecondary;
       font-style: italic;
@@ -102,7 +121,7 @@
       position: absolute;
       color: v.$primary;
       font-size: 3rem;
-      right: 0.8rem;
+      right: 21%;
       transition-property: transform color;
       transition-duration: 0.9s;
 
@@ -112,25 +131,47 @@
       }
     }
   }
+
   .containerUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     h3 {
+      display: none;
       color: v.$primary;
       font-family: v.$fontSecondary;
-      font-weight: 300;
-      font-size: 1.6rem;
+      font-weight: bold;
+      font-size: 1.4rem;
+
+      @include m.headerMq(990px) {
+        display: block;
+      }
 
       &::first-letter {
         text-transform: uppercase;
       }
+    }
 
-      span {
-        font-weight: bold;
-        font-size: 1.4rem;
+    .signOff {
+      margin: 0 0 0 1rem;
+      font-size: 2.5rem;
+      color: v.$primary;
+      transition-property: transform color;
+      transition-duration: 0.9s;
 
-        &::first-letter {
-          text-transform: uppercase;
-        }
+      @include m.headerMq(990px) {
+        font-size: 2rem;
+      }
+
+      &:hover {
+        transform: scale(1.3);
+        color: #00cdff;
       }
     }
   }
+}
+
+.burguerButton {
+  color: blue;
 }

@@ -4,6 +4,8 @@
   }
 }
 
-@mixin headerMq {
-  
+@mixin headerMq($screen) {
+  @media (min-width: $screen) {
+    @content;
+  }
 }

@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // React-Icons
 import { HiSearchCircle } from "react-icons/Hi";
+import { ImExit } from "react-icons/Im";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -11,9 +12,19 @@ import style from "../../sass/Header/header.module.scss";
 
 // Context
 import useAuth from "../../Hooks/useAuth";
+import BurguerButton from "./BurguerButton";
 
 const Header = () => {
-  const { auth } = useAuth();
+  const { auth, setAuth, setLoading } = useAuth();
+
+  const navigate = useNavigate();
+
+  const signOff = () => {
+    localStorage.removeItem("token");
+    setAuth({});
+    navigate("/");
+    setLoading(false);
+  };
 
   return (
     <div className={style.headerContainer}>
@@ -25,6 +36,12 @@ const Header = () => {
         <h1>
           GAMER <span>STORE</span>
         </h1>
+      </div>
+
+      <div className={style.inputContainer}>
+        <input type="text" placeholder="Search" />
+
+        <HiSearchCircle className={style.searchIcon} />
       </div>
 
       <nav className={style.containerNav}>
@@ -51,16 +68,11 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <div className={style.inputContainer}>
-        <input type="text" placeholder="look for your product" />
-
-        <HiSearchCircle className={style.searchIcon} />
-      </div>
+      <BurguerButton />
 
       <div className={style.containerUser}>
-        <h3>
-          Welcome <span>{auth.name.split(" ")[0].toUpperCase()}</span>
-        </h3>
+        <h3>{auth.name.split(" ")[0].toUpperCase()}</h3>
+        <ImExit onClick={signOff} alt="Sign off" className={style.signOff} />
       </div>
     </div>
   );
