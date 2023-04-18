@@ -14,8 +14,11 @@ import style from "../../sass/Header/header.module.scss";
 // Context
 import useAuth from "../../Hooks/useAuth";
 import BurguerButton from "./BurgerButton";
+import { useState } from "react";
 
 const Header = () => {
+  const [clicked, setClicked] = useState(false);
+
   const { auth, setAuth, setLoading } = useAuth();
 
   const navigate = useNavigate();
