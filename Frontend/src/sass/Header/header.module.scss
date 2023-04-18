@@ -12,6 +12,7 @@
     justify-content: space-evenly;
   }
 
+  // Logo
   .containerLogo {
     display: flex;
     flex-direction: column;
@@ -54,6 +55,7 @@
     }
   }
 
+  // Nav
   .containerNav {
     font-size: 1.3rem;
     display: none;
@@ -94,6 +96,7 @@
     }
   }
 
+  // Searching Input
   .inputContainer {
     display: flex;
     align-items: center;
@@ -119,6 +122,11 @@
 
       &::placeholder {
         color: rgba(0, 0, 0, 0.584);
+        font-size: 1.2rem;
+
+        @include m.headerMq(650px) {
+          font-size: 1.4rem;
+        }
       }
 
       &:focus {
@@ -130,6 +138,7 @@
       }
     }
 
+    // Search icon
     .searchIcon {
       position: absolute;
       color: v.$primary;
@@ -145,6 +154,7 @@
     }
   }
 
+  // User
   .containerUser {
     display: flex;
     align-items: center;
@@ -166,6 +176,7 @@
       }
     }
 
+    // Log out icon
     .signOff {
       margin: 0 0 0 1rem;
       font-size: 2.5rem;
@@ -187,6 +198,21 @@
   }
 }
 
+// Shopping Cart
+.shoppingCart {
+  color: v.$primary;
+  font-size: 3rem;
+  margin-right: 1rem;
+  transition-property: transform color;
+  transition: 0.7s;
+
+  &:hover {
+    transform: scale(1.3);
+    color: #00cdff;
+  }
+}
+
+// Burger button container
 .burgerButton {
   margin-left: auto;
   @include m.headerMq(650px) {

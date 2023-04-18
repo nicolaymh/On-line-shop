@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 // React-Icons
 import { HiSearchCircle } from "react-icons/Hi";
 import { ImExit } from "react-icons/im";
+import { BsCart } from "react-icons/bs";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -67,6 +68,10 @@ const Header = () => {
           Settings
         </NavLink>
       </nav>
+
+      <div className={style.shoppingCart}>
+        <BsCart />
+      </div>
 
       <div className={style.burgerButton}>
         <BurguerButton />
