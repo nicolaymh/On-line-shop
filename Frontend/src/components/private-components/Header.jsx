@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 // React-Icons
 import { HiSearchCircle } from "react-icons/Hi";
-import { ImExit } from "react-icons/Im";
+import { ImExit } from "react-icons/im";
 
 // Assets
 import logo from "../../assets/logo-final.png";
@@ -12,7 +12,7 @@ import style from "../../sass/Header/header.module.scss";
 
 // Context
 import useAuth from "../../Hooks/useAuth";
-import BurguerButton from "./BurguerButton";
+import BurguerButton from "./BurgerButton";
 
 const Header = () => {
   const { auth, setAuth, setLoading } = useAuth();
@@ -68,10 +68,13 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <BurguerButton />
+      <div className={style.burgerButton}>
+        <BurguerButton />
+      </div>
 
       <div className={style.containerUser}>
         <h3>{auth.name.split(" ")[0].toUpperCase()}</h3>
+
         <ImExit onClick={signOff} alt="Sign off" className={style.signOff} />
       </div>
     </div>
