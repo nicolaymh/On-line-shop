@@ -14,12 +14,11 @@ import style from "../../sass/Header/header.module.scss";
 // Context
 import useAuth from "../../Hooks/useAuth";
 import BurguerButton from "./BurgerButton";
-import { useState } from "react";
 
 const Header = () => {
-  const [clicked, setClicked] = useState(false);
-
   const { auth, setAuth, setLoading } = useAuth();
+
+  const userName = auth.name.split(" ")[0].toUpperCase();
 
   const navigate = useNavigate();
 
@@ -81,7 +80,7 @@ const Header = () => {
       </div>
 
       <div className={style.containerUser}>
-        <h3>{auth.name.split(" ")[0].toUpperCase()}</h3>
+        <h3>{userName}</h3>
 
         <ImExit onClick={signOff} alt="Sign off" className={style.signOff} />
       </div>
