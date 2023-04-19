@@ -14,11 +14,14 @@ import style from "../../sass/Header/header.module.scss";
 // Context
 import useAuth from "../../Hooks/useAuth";
 import BurguerButton from "./BurgerButton";
+import { useState } from "react";
 
 const Header = () => {
   const { auth, setAuth, setLoading } = useAuth();
-
   const userName = auth.name.split(" ")[0].toUpperCase();
+
+  const [clicked, setClicked] = useState(false);
+  const handleClicked = () => setClicked(!clicked);
 
   const navigate = useNavigate();
 
@@ -76,7 +79,7 @@ const Header = () => {
       </div>
 
       <div className={style.burgerButton}>
-        <BurguerButton />
+        <BurguerButton clicked={clicked} handleClicked={handleClicked} />
       </div>
 
       <div className={style.containerUser}>
