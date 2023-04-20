@@ -50,9 +50,10 @@ const Header = () => {
         <HiSearchCircle className={style.searchIcon} />
       </div>
 
-      <nav className={style.containerNav}>
+      <nav className={`${style.containerNav} ${clicked ? style.burguerNavBurger : ""}`}>
         <NavLink
           to="/shop"
+          onClick={() => setClicked(false)}
           end
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
@@ -61,6 +62,7 @@ const Header = () => {
 
         <NavLink
           to="/shop/Categories"
+          onClick={() => setClicked(false)}
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
           Categories
@@ -68,6 +70,7 @@ const Header = () => {
 
         <NavLink
           to="/shop/settings"
+          onClick={() => setClicked(false)}
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
           Settings
