@@ -24,18 +24,14 @@ const Header = () => {
   const handleClicked = () => setClicked(!clicked);
 
   useEffect(() => {
-    const wide = ({ target }) => {
-      const width = target.window.innerWidth;
-
-      if (width >= 650) {
+    const wide = () => {
+      if (window.innerWidth >= 650) {
         setClicked(false);
       }
     };
     window.addEventListener("resize", wide);
 
-    return () => {
-      window.removeEventListener("resize", wide);
-    };
+    return () => window.removeEventListener("resize", wide);
   }, []);
 
   const navigate = useNavigate();
