@@ -183,10 +183,6 @@
       @include m.headerMq(990px) {
         display: block;
       }
-
-      &::first-letter {
-        text-transform: uppercase;
-      }
     }
 
     // Log out icon
