@@ -14,7 +14,7 @@ import style from "../../sass/Header/header.module.scss";
 // Context
 import useAuth from "../../Hooks/useAuth";
 import BurguerButton from "./BurgerButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const { auth, setAuth, setLoading } = useAuth();
@@ -22,6 +22,21 @@ const Header = () => {
 
   const [clicked, setClicked] = useState(false);
   const handleClicked = () => setClicked(!clicked);
+
+  useEffect(() => {
+    const wide = ({ target }) => {
+      const width = target.window.innerWidth;
+
+      if (width >= 650) {
+        setClicked(false);
+      }
+    };
+    window.addEventListener("resize", wide);
+
+    return () => {
+      window.removeEventListener("resize", wide);
+    };
+  }, []);
 
   const navigate = useNavigate();
 
@@ -50,7 +65,7 @@ const Header = () => {
         <HiSearchCircle className={style.searchIcon} />
       </div>
 
-      <nav className={`${style.containerNav} ${clicked ? style.burguerNavBurger : ""}`}>
+      <nav className={`${style.containerNav} ${clicked ? style.burguerNavButton : ""}`}>
         <NavLink
           to="/shop"
           onClick={() => setClicked(false)}
