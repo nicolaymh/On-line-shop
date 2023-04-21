@@ -6,7 +6,9 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/users.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
 
+// mongodb and mongoose
 import dbConnection from "./database/config.js";
+import createRoles from "./helpers/createRoles/userRoles..js";
 
 // Create server express
 const app = express();
@@ -19,6 +21,9 @@ dotenv.config();
 
 // DB Connection
 dbConnection();
+
+// Create Roles
+createRoles();
 
 // CORS configuration
 const whitelist = [process.env.FRONTEND_URL];
