@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // React-Icons
 import { HiSearchCircle } from "react-icons/Hi";
@@ -14,7 +15,6 @@ import style from "../../sass/Header/header.module.scss";
 // Context
 import useAuth from "../../Hooks/useAuth";
 import BurguerButton from "./BurgerButton";
-import { useEffect, useState } from "react";
 
 const Header = () => {
   const { auth, setAuth, setLoading } = useAuth();
@@ -69,7 +69,6 @@ const Header = () => {
         <NavLink
           to="/shop"
           onClick={() => setClicked(false)}
-          end
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
           Home
@@ -85,6 +84,7 @@ const Header = () => {
 
         <NavLink
           to="/shop/settings"
+          end
           onClick={() => setClicked(false)}
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
@@ -92,9 +92,9 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <div className={style.shoppingCart}>
+      <NavLink to="/shop/shoping-cart" className={style.shoppingCart}>
         <BsCart />
-      </div>
+      </NavLink>
 
       <div className={style.burgerButton}>
         <BurguerButton clicked={clicked} handleClicked={handleClicked} />

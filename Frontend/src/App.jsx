@@ -1,3 +1,6 @@
+// React-router-Dom
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 // Auth
 import AuthLayout from "./layouts/AuthLayout";
 
@@ -14,13 +17,11 @@ import ConfirmAccount from "./components/public-components/ConfirmAccount";
 // Private Routes
 import Home from "./components/private-components/Home";
 import Products from "./components/private-components/Categories";
+import ShopingCart from "./components/private-components/ShopingCart";
+import Settings from "./components/private-components/Settings";
 
 // Context
 import { AuthProvider } from "./context/AuthProvider";
-
-// React-router-Dom
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Settings from "./components/private-components/Settings";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="categories" element={<Products />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="shoping-cart" element={<ShopingCart />} />
           </Route>
         </Routes>
       </AuthProvider>
