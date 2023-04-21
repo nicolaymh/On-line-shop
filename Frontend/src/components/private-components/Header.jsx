@@ -92,7 +92,11 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <NavLink to="/shop/shoping-cart" className={style.shoppingCart}>
+      <NavLink
+        to="/shop/shoping-cart"
+        onClick={() => setClicked(false)}
+        className={style.shoppingCart}
+      >
         <BsCart />
       </NavLink>
 
