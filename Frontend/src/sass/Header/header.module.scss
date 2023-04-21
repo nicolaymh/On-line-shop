@@ -186,16 +186,16 @@
     }
 
     // Log out icon
-    .signOff {
+    .logOut {
       margin: 0 0 0 1rem;
       font-size: 2.5rem;
       color: v.$primary;
       transition-property: transform color;
       transition-duration: 0.9s;
-      display: none;
+      margin-left: 1rem;
+      font-size: 3.4rem;
 
       @include m.headerMq(650px) {
-        display: block;
         font-size: 3rem;
       }
 
@@ -209,15 +209,27 @@
 
 // Shopping Cart
 .shoppingCart {
-  color: v.$primary;
-  font-size: 3rem;
-  margin-right: 1rem;
-  transition-property: transform color;
-  transition: 0.7s;
+  .activeCart {
+    .cart {
+      color: #00cdff;
+      font-size: 3.5rem;
+      margin-right: 1rem;
+    }
+  }
 
-  &:hover {
-    transform: scale(1.3);
-    color: #00cdff;
+  .inactiveCart {
+    .cart {
+      color: v.$primary;
+      font-size: 3rem;
+      margin-right: 1rem;
+      transition-property: transform color;
+      transition: 0.7s;
+
+      &:hover {
+        transform: scale(1.3);
+        color: #00cdff;
+      }
+    }
   }
 }
 

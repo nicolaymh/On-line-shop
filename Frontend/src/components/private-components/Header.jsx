@@ -25,11 +25,8 @@ const Header = () => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    const wide = () => {
-      if (window.innerWidth >= 650) {
-        setClicked(false);
-      }
-    };
+    const wide = () => window.innerWidth >= 650 && setClicked(false);
+
     window.addEventListener("resize", wide);
 
     return () => window.removeEventListener("resize", wide);
@@ -37,7 +34,7 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const signOff = () => {
+  const logOut = () => {
     localStorage.removeItem("token");
     setAuth({});
     navigate("/");
@@ -93,22 +90,24 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <Link
-        to="/shop/shoping-cart"
-        onClick={() => setClicked(false)}
-        className={style.shoppingCart}
-      >
-        <BsCart />
-      </Link>
+      <div className={style.shoppingCart}>
+        <NavLink
+          to="/shop/shoping-cart"
+          onClick={() => setClicked(false)}
+          className={({ isActive }) => (isActive ? style.activeCart : style.inactiveCart)}
+        >
+          <BsCart className={style.cart} />
+        </NavLink>
+      </div>
 
       <div className={style.burgerButton}>
-        <BurguerButton props={(clicked, setClicked)} />
+        <BurguerButton clicked={clicked} setClicked={setClicked} />
       </div>
 
       <div className={style.containerUser}>
         <h3>{userName}</h3>
 
-        <ImExit onClick={signOff} alt="Sign off" className={style.signOff} />
+        <ImExit onClick={logOut} alt="Sign off" className={style.logOut} />
       </div>
     </div>
   );
