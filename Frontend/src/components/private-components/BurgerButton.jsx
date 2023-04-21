@@ -1,9 +1,12 @@
 // Styles
 import style from "../../sass/Header/burgerButton.module.scss";
 
-const BurgerButton = ({ clicked, handleClicked }) => {
+const BurgerButton = ({ clicked, setClicked }) => {
   return (
-    <div onClick={handleClicked} className={`${style.navIcon5} ${clicked ? style.open : ""}`}>
+    <div
+      onClick={() => setClicked(!clicked)}
+      className={`${style.navIcon5} ${clicked ? style.open : ""}`}
+    >
       <span></span>
       <span></span>
       <span></span>

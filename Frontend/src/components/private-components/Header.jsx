@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // React-Icons
@@ -14,6 +14,8 @@ import style from "../../sass/Header/header.module.scss";
 
 // Context
 import useAuth from "../../Hooks/useAuth";
+
+//Components
 import BurguerButton from "./BurgerButton";
 
 const Header = () => {
@@ -21,7 +23,6 @@ const Header = () => {
   const userName = auth.name.split(" ")[0].toUpperCase();
 
   const [clicked, setClicked] = useState(false);
-  const handleClicked = () => setClicked(!clicked);
 
   useEffect(() => {
     const wide = () => {
@@ -68,6 +69,7 @@ const Header = () => {
       >
         <NavLink
           to="/shop"
+          end
           onClick={() => setClicked(false)}
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
@@ -84,7 +86,6 @@ const Header = () => {
 
         <NavLink
           to="/shop/settings"
-          end
           onClick={() => setClicked(false)}
           className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
         >
@@ -92,16 +93,16 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <NavLink
+      <Link
         to="/shop/shoping-cart"
         onClick={() => setClicked(false)}
         className={style.shoppingCart}
       >
         <BsCart />
-      </NavLink>
+      </Link>
 
       <div className={style.burgerButton}>
-        <BurguerButton clicked={clicked} handleClicked={handleClicked} />
+        <BurguerButton props={(clicked, setClicked)} />
       </div>
 
       <div className={style.containerUser}>
