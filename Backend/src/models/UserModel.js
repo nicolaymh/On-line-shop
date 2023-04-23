@@ -1,6 +1,8 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 
+import Role from "./RoleModel.js";
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -43,9 +45,23 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    role: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+    },
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", async function (next) {
+  if (this.role) return;
+
+  const { _id } = await Role.findOne({ name: "user" });
+  this.role = _id;
+
+  next();
+});
 
 userSchema.methods.comparePassword = async function (userPassword) {
   return bcrypt.compareSync(userPassword, this.password);
