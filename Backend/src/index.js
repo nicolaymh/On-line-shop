@@ -8,7 +8,10 @@ import categoryRoutes from "./routes/category.routes.js";
 
 // mongodb and mongoose
 import dbConnection from "./database/config.js";
-import createRoles from "./helpers/createRoles/userRoles..js";
+
+// Initial Setup
+import createRoles from "./helpers/initialSetup/userRoles..js";
+import createAdmin from "./helpers/initialSetup/CreateAdmin.js";
 
 // Create server express
 const app = express();
@@ -22,8 +25,9 @@ dotenv.config();
 // DB Connection
 dbConnection();
 
-// Create Roles
+// Initial Setup
 createRoles();
+createAdmin();
 
 // CORS configuration
 const whitelist = [process.env.FRONTEND_URL];

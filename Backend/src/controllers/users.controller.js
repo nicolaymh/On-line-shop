@@ -26,11 +26,11 @@ const register = async (req, res) => {
     // user creation model instance
     const userNew = new User(req.body);
 
-    // encrypt password before saving
+    // Encrypt password before saving
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
-    // save encrypted password
+    // Save encrypted password
     userNew.password = hash;
 
     // Generating and saving one time use token
