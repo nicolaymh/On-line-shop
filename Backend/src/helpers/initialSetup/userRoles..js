@@ -17,6 +17,9 @@ const createRoles = async () => {
       new Role({ name: "moderator" }).save(),
       new Role({ name: "admin" }).save(),
     ]);
+
+    console.log("Created Roles:");
+    console.log(roles);
   } catch (error) {
     console.log(error);
   }

@@ -12,20 +12,21 @@ const adminInfo = User({
 });
 
 /**
- * This function creates an admin user with encrypted password and assigns the admin role if it doesn't
- * already exist.
+ * This function creates an admin user with encrypted password and assigns admin role if the user does
+ * not already exist.
  * @returns If `adminExists` is truthy, the function will return without doing anything. If
- * `adminExists` is falsy, the function will create a new admin user and save it to the database.
+ * `adminExists` is falsy, the function will create a new admin user and save it to the database. No
+ * explicit value is returned in this case.
  */
 const createAdmin = async () => {
   try {
-    const { _id } = await Role.findOne({ name: "admin" });
-
     // Verify if admin exists
     const { name, email } = adminInfo;
     const adminExists = await User.findOne({ name, email });
     if (adminExists) return;
 
+    // Create admin
+    const id = await Role.findOne({ name: "admin" }).select("_id");
     const admin = new User(adminInfo);
 
     // Encrypt password before saving
@@ -35,7 +36,7 @@ const createAdmin = async () => {
 
     admin.token = "";
     admin.confirmed = true;
-    admin.role = _id;
+    admin.role = id;
 
     await admin.save();
   } catch (error) {
