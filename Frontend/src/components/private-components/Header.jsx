@@ -107,7 +107,7 @@ const Header = () => {
       <div className={style.containerUser}>
         <h3>{userName}</h3>
 
-        <ImExit onClick={logOut} alt="Sign off" className={style.logOut} />
+        <ImExit onClick={logOut} className={style.logOut} />
       </div>
     </div>
   );
