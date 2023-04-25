@@ -12,10 +12,6 @@ const categorySchema = new mongoose.Schema(
       require: true,
       trim: true,
     },
-    creator: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
   },
 
   { timestamps: true }

@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 
 // Routes
 import userRoutes from "./routes/users.routes.js";
-import categoryRoutes from "./routes/category.routes.js";
 
 // mongodb and mongoose
 import dbConnection from "./database/config.js";
@@ -44,7 +43,6 @@ app.use(cors(corsOptions));
 
 // Routing
 app.use("/api/users", userRoutes);
-app.use("/api/category", categoryRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Running on port ${process.env.PORT} 🚀`));
