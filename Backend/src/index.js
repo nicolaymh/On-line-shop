@@ -11,6 +11,7 @@ import dbConnection from "./database/config.js";
 // Initial Setup
 import createRoles from "./helpers/initialSetup/userRoles..js";
 import createAdmin from "./helpers/initialSetup/CreateAdmin.js";
+import createCategories from "./helpers/initialSetup/createCategories.js";
 
 // Create server express
 const app = express();
@@ -27,6 +28,7 @@ dbConnection();
 // Initial Setup
 createRoles();
 createAdmin();
+createCategories();
 
 // CORS configuration
 const whitelist = [process.env.FRONTEND_URL];
