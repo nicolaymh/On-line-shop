@@ -41,7 +41,8 @@ const createSubcategory = async (req, res) => {
 };
 
 const getSubcategories = async () => {
-  console.log("From getSubcategories controller");
+  const subcategories = await Subcategory.find({ name: "consoles" });
+  console.log(subcategories);
 };
 
 export { createSubcategory, getSubcategories };
