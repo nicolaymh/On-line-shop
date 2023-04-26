@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 // Routes
 import userRoutes from "./routes/users.routes.js";
+import subCategoriesRoutes from "./routes/subcategories.routes.js";
 
 // mongodb and mongoose
 import dbConnection from "./database/config.js";
@@ -45,9 +46,7 @@ app.use(cors(corsOptions));
 
 // Routing
 app.use("/api/users", userRoutes);
-app.get("/api/subcategories", (req, res) => {
-  console.log("From subcategories");
-});
+app.use("/api/subcategories", subCategoriesRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Running on port ${process.env.PORT} 🚀`));
