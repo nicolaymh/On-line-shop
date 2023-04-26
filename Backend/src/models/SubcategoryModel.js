@@ -8,12 +8,6 @@ const subcategorySchema = new mongoose.Schema(
       trim: true,
     },
 
-    description: {
-      type: String,
-      require: true,
-      trim: true,
-    },
-
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
