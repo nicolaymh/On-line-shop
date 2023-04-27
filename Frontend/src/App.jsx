@@ -40,7 +40,10 @@ function App() {
           <Route path="shop" element={<Shop />}>
             <Route index element={<Home />} />
             <Route path="categories" element={<Products />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="settings" element={<Settings />}>
+              <Route index element={<div>Manage</div>} />
+              <Route path="update-data" element={<div>Update Data</div>} />
+            </Route>
             <Route path="shoping-cart" element={<ShopingCart />} />
           </Route>
         </Routes>
