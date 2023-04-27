@@ -9,13 +9,11 @@ const Settings = () => {
   return (
     <div>
       <div>
-        <Link to="/shop/settings">settings home</Link>
-        <Link to="/shop/settings/update-data">update data</Link>
-        <Link to="/shop/settings/manage-products">Manage Products</Link>
-
-        {auth.role === "admin" && (
-          <Link to="/shop/settings/manage-subcategories">Manage Subcategories</Link>
-        )}
+        <Link to="/shop/settings">My shopping</Link>
+        <Link to="/shop/settings/edit-info">Edit Info</Link>
+        <Link to="/shop/settings/add-products">Add Products</Link>
+        <Link to="/shop/settings/manage-users">Manage Users</Link>
+        <Link to="/shop/settings/manage-subcategories">Manage Subcategories</Link>
       </div>
 
       <div>

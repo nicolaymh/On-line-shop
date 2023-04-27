@@ -40,12 +40,10 @@ const RouterProvider = () => {
         <Route path="categories" element={<Products />} />
         <Route path="settings" element={<Settings />}>
           <Route index element={<div>My shopping</div>} />
-          <Route path="update-data" element={<div>Update Data</div>} />
-          <Route path="manage-products" element={<div>Manage products</div>} />
-
-          {auth.role === "admin" && (
-            <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
-          )}
+          <Route path="edit-info" element={<div>Edit Info</div>} />
+          <Route path="add-products" element={<div>Add Products</div>} />
+          <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
+          <Route path="manage-users" element={<div>Manage users</div>} />
         </Route>
         <Route path="shoping-cart" element={<ShopingCart />} />
       </Route>
