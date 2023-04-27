@@ -19,8 +19,11 @@ import Home from "./components/private-components/Home";
 import Products from "./components/private-components/Categories";
 import ShopingCart from "./components/private-components/ShopingCart";
 import Settings from "./layouts/Settings";
+import useAuth from "./Hooks/useAuth";
 
 const RouterProvider = () => {
+  const { auth } = useAuth();
+
   return (
     <Routes>
       <Route path="/" element={<AuthLayout />}>
@@ -39,7 +42,10 @@ const RouterProvider = () => {
           <Route index element={<div>My shopping</div>} />
           <Route path="update-data" element={<div>Update Data</div>} />
           <Route path="manage-products" element={<div>Manage products</div>} />
-          <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
+
+          {auth.role === "admin" && (
+            <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
+          )}
         </Route>
         <Route path="shoping-cart" element={<ShopingCart />} />
       </Route>
