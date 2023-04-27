@@ -41,8 +41,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="categories" element={<Products />} />
             <Route path="settings" element={<Settings />}>
-              <Route index element={<div>Manage</div>} />
+              <Route index element={<div>My shopping</div>} />
               <Route path="update-data" element={<div>Update Data</div>} />
+              <Route path="manage-products" element={<div>Manage products</div>} />
+              <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
             </Route>
             <Route path="shoping-cart" element={<ShopingCart />} />
           </Route>
