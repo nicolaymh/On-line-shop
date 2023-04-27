@@ -18,7 +18,7 @@ import ConfirmAccount from "./components/public-components/ConfirmAccount";
 import Home from "./components/private-components/Home";
 import Products from "./components/private-components/Categories";
 import ShopingCart from "./components/private-components/ShopingCart";
-import Settings from "./components/private-components/Settings";
+import Settings from "./layouts/Settings";
 
 // Context
 import { AuthProvider } from "./context/AuthProvider";
