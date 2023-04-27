@@ -7,8 +7,8 @@ const Settings = () => {
   const { auth } = useAuth();
 
   return (
-    <div style={{ width: "100%" }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div>
+      <div>
         <Link to="/shop/settings">settings home</Link>
         <Link to="/shop/settings/update-data">update data</Link>
         <Link to="/shop/settings/manage-products">Manage Products</Link>
@@ -18,7 +18,7 @@ const Settings = () => {
         )}
       </div>
 
-      <div style={{ marginTop: "3rem" }}>
+      <div>
         <Outlet />
       </div>
     </div>
