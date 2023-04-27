@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import generateJWT from "../helpers/tokens/generateJWT.js";
 
 import User from "../models/UserModel.js";
+import Role from "../models/RoleModel.js";
 
 import internalServerError from "../helpers/internalServerError.js";
 
@@ -86,11 +87,14 @@ const login = async (req, res) => {
     if (!verifyPassword)
       return res.status(400).json({ ok: false, msg: "Wrong email or password!" });
 
-    const { _id, name } = userLogin;
+    const { _id, name, role } = userLogin;
+
+    // Get role name
+    const roleInfo = await Role.findById(role);
 
     // Generate token
     const token = await generateJWT(_id, name);
-    res.json({ ok: true, _id, name, token });
+    res.json({ ok: true, _id, name, role: roleInfo.name, token });
   } catch (error) {
     internalServerError(error, res);
   }

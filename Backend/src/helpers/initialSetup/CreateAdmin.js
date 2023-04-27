@@ -33,7 +33,6 @@ const createAdmin = async () => {
     admin.role = id;
 
     const adm = await admin.save();
-    console.log(adm);
   } catch (error) {
     console.log(error);
   }

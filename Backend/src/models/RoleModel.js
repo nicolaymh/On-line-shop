@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const rolesSchema = new mongoose.Schema({
+const roleSchema = new mongoose.Schema({
   name: {
     type: String,
     require: true,
   },
 });
 
-const Role = mongoose.model("Role", rolesSchema);
+const Role = mongoose.model("Role", roleSchema);
 
 export default Role;
