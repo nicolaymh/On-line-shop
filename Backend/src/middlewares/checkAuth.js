@@ -17,10 +17,10 @@ import Role from "../models/RoleModel.js";
  * the stack. It is typically used to move on to the next function after the current function has
  * completed its task.
  * @returns If the token is successfully decoded and the user information is retrieved, the function
- * will call the `next()` function to move on to the next middleware function. If the token is not
- * found or invalid, the function will return a JSON response with a status code of 400 and a message
- * of "Invalid Token". If there is an error during the decoding or retrieval of user information, the
- * function will call
+ * will call `next()` to move on to the next middleware function. If the token is not found or invalid,
+ * the function will return a JSON response with a status code of 400 and a message of "Invalid Token".
+ * If there is an error during the decoding or retrieval of user information, the function will call
+ * the `
  */
 const checkAuth = async (req, res, next) => {
   let token;

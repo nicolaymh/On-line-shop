@@ -1,12 +1,13 @@
 import bcrypt from "bcryptjs";
-import generateJWT from "../helpers/tokens/generateJWT.js";
 
+import generateJWT from "../helpers/tokens/generateJWT.js";
+import generateTokenUnique from "../helpers/tokens/generateTokenUnique.js";
+
+// Model import
 import User from "../models/UserModel.js";
 import Role from "../models/RoleModel.js";
 
 import internalServerError from "../helpers/internalServerError.js";
-
-import generateTokenUnique from "../helpers/tokens/generateTokenUnique.js";
 
 import * as emailSend from "../helpers/email/emailSending.js";
 
