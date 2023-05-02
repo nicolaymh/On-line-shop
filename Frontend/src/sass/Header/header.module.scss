@@ -80,7 +80,7 @@
       font-size: 1.6rem;
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
     }
 
     .activeLink {
@@ -90,7 +90,7 @@
       font-weight: 500;
 
       &:nth-child(2) {
-        margin: 0 1rem;
+        margin: 0 2rem;
       }
     }
 
@@ -103,7 +103,7 @@
       transition-duration: 0.6s;
 
       &:nth-child(2) {
-        margin: 0 0.8rem;
+        margin: 0 2rem;
       }
 
       &:hover {
