@@ -7,7 +7,7 @@ const Settings = () => {
   const { auth } = useAuth();
 
   return (
-    <div>
+    <main>
       <div>
         <Link to="/shop/settings">My shopping</Link>
         <Link to="/shop/settings/edit-info">Edit Info</Link>
@@ -19,7 +19,7 @@ const Settings = () => {
       <div>
         <Outlet />
       </div>
-    </div>
+    </main>
   );
 };
 

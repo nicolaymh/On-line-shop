@@ -20,7 +20,6 @@ const createRoles = async () => {
     ]);
 
     console.log("**********⭐⭐⭐ Created Roles: ⭐⭐⭐**********");
-    console.log(roles);
   } catch (error) {
     console.log(error);
   }
