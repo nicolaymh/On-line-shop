@@ -7,7 +7,7 @@ const Settings = () => {
   const { auth } = useAuth();
 
   return (
-    <main>
+    <main className="mainContainer">
       <div>
         <Link to="/shop/settings">My shopping</Link>
         <Link to="/shop/settings/edit-info">Edit Info</Link>
