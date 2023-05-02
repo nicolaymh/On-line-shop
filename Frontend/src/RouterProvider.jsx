@@ -1,11 +1,8 @@
 // React-router-Dom
 import { Routes, Route, Navigate } from "react-router-dom";
 
-// Auth
+// Public Route => Auth
 import AuthLayout from "./layouts/AuthLayout";
-
-// Private Route
-import Shop from "./layouts/Shop";
 
 // Public Routes
 import LoginForm from "./components/public-components/LoginForm";
@@ -14,11 +11,16 @@ import ForgotPassword from "./components/public-components/ForgotPassword";
 import NewPassword from "./components/public-components/NewPassword";
 import ConfirmAccount from "./components/public-components/ConfirmAccount";
 
+// Private Route => Shop
+import Shop from "./layouts/Shop";
+
 // Private Routes
 import Home from "./components/private-components/Home";
 import Products from "./components/private-components/Categories";
 import ShopingCart from "./components/private-components/ShopingCart";
 import Settings from "./layouts/Settings";
+
+// Context
 import useAuth from "./Hooks/useAuth";
 
 const RouterProvider = () => {
