@@ -1,20 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 // Context
 import useAuth from "../Hooks/useAuth";
+import SettingsNav from "../components/private-components/SettingsNav";
 
 const Settings = () => {
   const { auth } = useAuth();
 
   return (
-    <div className="mainContainer">
-      <nav>
-        <Link to="/shop/settings">My shopping</Link>
-        <Link to="/shop/settings/edit-info">Edit Info</Link>
-        <Link to="/shop/settings/add-products">Add Products</Link>
-        <Link to="/shop/settings/manage-users">Manage Users</Link>
-        <Link to="/shop/settings/manage-subcategories">Manage Subcategories</Link>
-      </nav>
+    <div>
+      <SettingsNav />
 
       <main>
         <Outlet />
