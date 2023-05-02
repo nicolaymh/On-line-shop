@@ -59,11 +59,7 @@ const Header = () => {
         <HiSearchCircle className={style.searchIcon} />
       </div>
 
-      <nav
-        className={`animate__animated animate__fadeInDown animate__fast ${style.containerNav} ${
-          clicked ? style.burguerNavButton : ""
-        }`}
-      >
+      <nav className={`${style.containerNav} ${clicked ? style.burguerNavButton : ""}`}>
         <NavLink
           to="/shop"
           end

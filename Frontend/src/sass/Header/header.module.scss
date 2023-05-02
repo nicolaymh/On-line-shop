@@ -58,24 +58,29 @@
   // Nav
   .containerNav {
     font-size: 1.3rem;
-    display: none;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: -20rem;
+    transition: all 0.8s ease;
 
     &.burguerNavButton {
       background-color: v.$backgroundPrimary;
-      width: 100%;
-      height: 7rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      position: absolute;
-      margin-top: 12rem;
+      top: 5rem;
       padding: 0;
     }
 
     @include m.headerMq(650px) {
+      width: auto;
+      position: initial;
       font-size: 1.6rem;
-      display: block;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
 
     .activeLink {
