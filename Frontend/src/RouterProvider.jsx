@@ -45,8 +45,8 @@ const RouterProvider = () => {
           <Route index element={<div>My shopping</div>} />
           <Route path="edit-info" element={<div>Edit Info</div>} />
           <Route path="add-products" element={<div>Add Products</div>} />
-          <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
           <Route path="manage-users" element={<div>Manage users</div>} />
+          <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
         </Route>
 
         <Route path="shoping-cart" element={<ShopingCart />} />

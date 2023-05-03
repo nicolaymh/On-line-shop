@@ -1,0 +1,30 @@
+@use "../base/variables.scss" as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  padding-top: 7rem;
+  background-color: v.$backgroundPrimary;
+  height: 100vh;
+
+  & > * {
+    text-align: left;
+    margin: 0.7rem 2rem;
+    font-family: v.$fontSecondary;
+    font-style: italic;
+    font-size: 1.2rem;
+    transition: all 0.6s ease;
+
+    &.activeLink {
+      transform: scale(1.1);
+      color: v.$primary;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      color: v.$primary;
+    }
+  }
+}
