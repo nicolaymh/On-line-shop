@@ -12,9 +12,7 @@ import useAuth from "../Hooks/useAuth";
 const Settings = () => {
   return (
     <div className={style.settingsContainer}>
-      <div>
-        <SettingsNav />
-      </div>
+      <SettingsNav />
 
       <main>
         <Outlet />

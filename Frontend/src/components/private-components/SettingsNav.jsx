@@ -5,7 +5,7 @@ import { useState } from "react";
 import style from "../../sass/settings/settingsNav.module.scss";
 
 // React-Icons
-import { FaAngleLeft } from "react-icons/fa";
+import { IoIosCode } from "react-icons/io";
 
 const SettingsNav = () => {
   const [clicked, setClicked] = useState(false);
@@ -13,8 +13,8 @@ const SettingsNav = () => {
   const openMenu = () => setClicked(!clicked);
 
   return (
-    <nav className={style.containerNav}>
-      <div className={`${style.containerLinks} ${clicked ? style.open : ""}`}>
+    <nav className={`${style.containerNav} ${clicked ? style.open : ""}`}>
+      <div className={`${style.containerLinks}`}>
         <NavLink
           onClick={openMenu}
           className={({ isActive }) => (isActive ? style.activeLink : null)}
@@ -53,7 +53,7 @@ const SettingsNav = () => {
         </NavLink>
       </div>
 
-      <FaAngleLeft onClick={openMenu} className={`${style.icon} ${clicked ? style.open : ""}`} />
+      <IoIosCode onClick={openMenu} className={`${style.icon} ${clicked ? style.open : ""}`} />
     </nav>
   );
 };

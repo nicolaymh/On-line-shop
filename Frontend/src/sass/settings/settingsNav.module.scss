@@ -4,20 +4,19 @@
   height: 100vh;
   display: flex;
   position: absolute;
-  z-index: 3;
+  left: -18.152rem;
+  transition: all 0.6s ease;
+  z-index: 2;
+
+  &.open {
+    left: 0rem;
+  }
 
   .containerLinks {
     display: flex;
     flex-direction: column;
     margin-right: auto;
     padding-top: 7rem;
-    position: absolute;
-    left: -40rem;
-    transition: all 0.3s ease-in;
-
-    &.open {
-      position: initial;
-    }
 
     & > * {
       text-align: left;

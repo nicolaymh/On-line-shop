@@ -67,6 +67,7 @@
     position: absolute;
     top: -20rem;
     transition: top 0.8s ease;
+    z-index: 3;
 
     &.burguerNavButton {
       background-color: v.$backgroundPrimary;
