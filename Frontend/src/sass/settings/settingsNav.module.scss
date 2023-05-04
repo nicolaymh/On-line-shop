@@ -3,6 +3,8 @@
   background-color: v.$backgroundPrimary;
   height: 100vh;
   display: flex;
+  position: absolute;
+  z-index: 3;
 
   .containerLinks {
     display: flex;
@@ -14,7 +16,7 @@
     transition: all 0.3s ease-in;
 
     &.open {
-      position: inherit;
+      position: initial;
     }
 
     & > * {
