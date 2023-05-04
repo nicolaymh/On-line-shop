@@ -23,6 +23,9 @@ import Settings from "./layouts/Settings";
 // Context
 import useAuth from "./Hooks/useAuth";
 
+//Settings Routes
+import EditUserInfo from "./components/private-components/settings/EditUserInfo";
+
 const RouterProvider = () => {
   const { auth } = useAuth();
 
@@ -44,7 +47,7 @@ const RouterProvider = () => {
 
         <Route path="settings" element={<Settings />}>
           <Route index element={<div>My shopping</div>} />
-          <Route path="edit-info" element={<div>Edit Info</div>} />
+          <Route path="edit-info" element={<EditUserInfo />} />
           <Route path="add-products" element={<div>Add Products</div>} />
           {auth.role === "admin" && (
             <>
