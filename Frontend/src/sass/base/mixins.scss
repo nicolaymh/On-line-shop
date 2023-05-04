@@ -10,7 +10,7 @@
   }
 }
 
-@mixin settingsNavMQ {
+@mixin settingsNavMq {
   @media (min-width: 650px) {
     @content;
   }

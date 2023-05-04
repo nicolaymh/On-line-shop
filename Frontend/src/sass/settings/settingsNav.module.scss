@@ -10,6 +10,10 @@
   transition: all 0.6s ease;
   z-index: 2;
 
+  @include m.settingsNavMq {
+    position: initial;
+  }
+
   &.open {
     left: 0rem;
   }
@@ -46,6 +50,10 @@
     margin: auto;
     color: v.$primary;
     transition: all 0.7s ease;
+
+    @include m.settingsNavMq {
+      display: none;
+    }
 
     &.open {
       color: v.$hoverHeader;
