@@ -6,9 +6,6 @@ import style from "../sass/settings/settings.module.scss";
 // Components
 import SettingsNav from "../components/private-components/settings/SettingsNav";
 
-// Context
-import useAuth from "../Hooks/useAuth";
-
 const Settings = () => {
   return (
     <div className={style.settingsContainer}>
