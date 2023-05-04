@@ -15,9 +15,9 @@ import ConfirmAccount from "./components/public-components/ConfirmAccount";
 import Shop from "./layouts/Shop";
 
 // Private Routes
-import Home from "./components/private-components/Home";
-import Products from "./components/private-components/Categories";
-import ShopingCart from "./components/private-components/ShopingCart";
+import Home from "./components/private-components/home/Home";
+import Products from "./components/private-components/categories/Categories";
+import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
 import Settings from "./layouts/Settings";
 
 // Context

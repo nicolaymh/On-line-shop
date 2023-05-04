@@ -7,13 +7,13 @@ import { ImExit } from "react-icons/im";
 import { BsCart } from "react-icons/bs";
 
 // Assets
-import logo from "../../assets/logo-final.png";
+import logo from "../../../assets/logo-final.png";
 
 // Styles
-import style from "../../sass/Header/header.module.scss";
+import style from "../../../sass/Header/header.module.scss";
 
 // Context
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
 
 //Components
 import BurguerButton from "./BurgerButton";

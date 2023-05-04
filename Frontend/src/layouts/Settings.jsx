@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import style from "../sass/settings/settings.module.scss";
 
 // Components
-import SettingsNav from "../components/private-components/SettingsNav";
+import SettingsNav from "../components/private-components/settings/SettingsNav";
 
 // Context
 import useAuth from "../Hooks/useAuth";

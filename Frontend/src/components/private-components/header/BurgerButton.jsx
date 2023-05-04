@@ -1,5 +1,5 @@
 // Styles
-import style from "../../sass/Header/burgerButton.module.scss";
+import style from "../../../sass/Header/burgerButton.module.scss";
 
 const BurgerButton = ({ clicked, setClicked }) => {
   return (

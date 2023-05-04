@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 // CSS Styles ( SASS Modules )
-import style from "../../sass/settings/settingsNav.module.scss";
+import style from "../../../sass/settings/settingsNav.module.scss";
 
 // React-Icons
 import { IoIosCode } from "react-icons/io";
