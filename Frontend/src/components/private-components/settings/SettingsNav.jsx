@@ -7,7 +7,12 @@ import style from "../../../sass/settings/settingsNav.module.scss";
 // React-Icons
 import { IoIosCode } from "react-icons/io";
 
+// Context
+import useAuth from "../../../Hooks/useAuth";
+
 const SettingsNav = () => {
+  const { auth } = useAuth();
+
   const [clicked, setClicked] = useState(false);
 
   const openMenu = () => setClicked(!clicked);
@@ -37,20 +42,26 @@ const SettingsNav = () => {
         >
           Add Products
         </NavLink>
-        <NavLink
-          onClick={openMenu}
-          className={({ isActive }) => (isActive ? style.activeLink : null)}
-          to="/shop/settings/manage-users"
-        >
-          Manage Users
-        </NavLink>
-        <NavLink
-          onClick={openMenu}
-          className={({ isActive }) => (isActive ? style.activeLink : null)}
-          to="/shop/settings/manage-subcategories"
-        >
-          Manage Subcategories
-        </NavLink>
+
+        {auth.role === "admin" && (
+          <>
+            <NavLink
+              onClick={openMenu}
+              className={({ isActive }) => (isActive ? style.activeLink : null)}
+              to="/shop/settings/manage-users"
+            >
+              Manage Users
+            </NavLink>
+
+            <NavLink
+              onClick={openMenu}
+              className={({ isActive }) => (isActive ? style.activeLink : null)}
+              to="/shop/settings/manage-subcategories"
+            >
+              Manage Subcategories
+            </NavLink>
+          </>
+        )}
       </div>
 
       <IoIosCode onClick={openMenu} className={`${style.icon} ${clicked ? style.open : ""}`} />
