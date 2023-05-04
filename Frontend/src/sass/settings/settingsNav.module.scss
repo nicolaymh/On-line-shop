@@ -1,5 +1,7 @@
 @use "../base/variables.scss" as v;
 .containerNav {
+  background-color: v.$backgroundPrimary;
+  height: 100vh;
   display: flex;
 
   .containerLinks {
@@ -7,8 +9,13 @@
     flex-direction: column;
     margin-right: auto;
     padding-top: 7rem;
-    background-color: v.$backgroundPrimary;
-    height: 100vh;
+    position: absolute;
+    left: -40rem;
+    transition: all 0.3s ease-in;
+
+    &.open {
+      position: inherit;
+    }
 
     & > * {
       text-align: left;
@@ -28,6 +35,23 @@
         transform: scale(1.1);
         color: v.$primary;
       }
+    }
+  }
+
+  .icon {
+    font-size: 3.5rem;
+    margin: auto;
+    color: v.$primary;
+    transition: all 0.7s ease;
+
+    &.open {
+      color: v.$hoverHeader;
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      color: v.$hoverHeader;
+      transform: rotate(180deg);
     }
   }
 }
