@@ -159,8 +159,38 @@ const newPassword = async (req, res) => {
   }
 };
 
-const editInfoUser = () => {
-  console.log("desde editInfoUser function");
+const editInfoUser = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { name, email, address, phone, password } = req.body;
+
+    //Repeated email check
+    const emailExists = await User.findOne({ email });
+    if (emailExists) {
+      return res
+        .status(400)
+        .json({ ok: false, msg: "There is already a registered user with this email", email });
+    }
+
+    // Check Password
+    let checkPassword = await User.findById(_id);
+    checkPassword = await checkPassword.comparePassword(password);
+    if (!checkPassword) {
+      return res.status(400).json({ ok: false, msg: "Wrong password" });
+    }
+
+    // Update user info
+    await User.findByIdAndUpdate(_id, {
+      name,
+      email,
+      address,
+      phone,
+    });
+
+    res.status(201).json({ ok: true, msg: "User updated successfully" });
+  } catch (error) {
+    internalServerError(error, res);
+  }
 };
 
 const profile = async (req, res) => {

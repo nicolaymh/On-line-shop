@@ -36,22 +36,4 @@ const newPassword = [
   validateErrors,
 ];
 
-const editInfoUser = [
-  check("name", "Name is required").trim().notEmpty().toLowerCase(),
-  check("email", "The email must be valid").trim().isEmail().toLowerCase(),
-  check("address", "Address is required and min 8 characters ")
-    .trim()
-    .isLength({ min: 8 })
-    .toLowerCase(),
-  check("phone", "Phone is required and min 10 characters")
-    .trim()
-    .isLength({ min: 10 })
-    .toLowerCase(),
-  check("password", "The password must be at least 6 characters").isLength({
-    min: 6,
-  }),
-  check("newPassword", "The password must be at least 6 characters").isLength({ min: 6 }),
-  validateErrors,
-];
-
-export { register, login, forgetPassword, newPassword, editInfoUser };
+export { register, login, forgetPassword, newPassword };

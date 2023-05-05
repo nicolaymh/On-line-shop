@@ -25,16 +25,7 @@ const EditUserInfo = () => {
 
   const [alert, setAlert] = useState({ msg: "", error: false });
 
-  const {
-    name,
-    email,
-    address,
-    phone,
-    oldPassword,
-    newPassword,
-    confirmNewPassword,
-    onInputChange,
-  } = useForm({
+  const { name, email, address, phone, password, onInputChange } = useForm({
     ...initialForm,
     name: auth.name,
     email: auth.email,
@@ -135,43 +126,15 @@ const EditUserInfo = () => {
           />
         </div>
         <div className={formStyle.field}>
-          <label htmlFor="oldPassword">Old-Password: </label>
+          <label htmlFor="password">Password: </label>
 
           <input
-            id="oldPassword"
-            name="oldPassword"
+            id="password"
+            name="password"
             type="password"
-            placeholder="Old Password"
+            placeholder="password"
             autoComplete="off"
-            value={oldPassword}
-            onChange={onInputChange}
-          />
-        </div>
-
-        <div className={formStyle.field}>
-          <label htmlFor="newPassword">New-password: </label>
-
-          <input
-            id="newPassword"
-            name="newPassword"
-            type="password"
-            placeholder="Create a new password"
-            autoComplete="off"
-            value={newPassword}
-            onChange={onInputChange}
-          />
-        </div>
-
-        <div className={formStyle.field}>
-          <label htmlFor="confirmNewPassword">Confirm-New-Password: </label>
-
-          <input
-            id="confirmNewPassword"
-            name="confirmNewPassword"
-            type="password"
-            placeholder="Confirm New Password"
-            autoComplete="off"
-            value={confirmNewPassword}
+            value={password}
             onChange={onInputChange}
           />
         </div>

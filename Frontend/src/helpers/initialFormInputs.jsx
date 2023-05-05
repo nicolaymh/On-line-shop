@@ -27,9 +27,7 @@ const initialFormInputs = () => {
     email: "",
     address: "",
     phone: "",
-    oldPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
+    password: "",
   };
 
   return {
