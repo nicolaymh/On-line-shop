@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+import initialFormInputs from "../../../helpers/initialFormInputs";
+
 // Custom Hook
 import { useForm } from "../../../Hooks/useForm";
 
-import initialFormInputs from "../../../helpers/initialFormInputs";
+import axiosInstance from "../../../helpers/axiosInstance";
 
 // CSS formStyle ( SASS Modules )
 import formStyle from "../../../sass/forms/generalFormStyle.module.scss";
@@ -41,14 +43,7 @@ const EditUserInfo = () => {
       return setAlert({ msg: "All fields are required", error: true });
     }
 
-    if (newPassword !== confirmNewPassword) {
-      return setAlert({
-        msg: "New-Password and Confirm-New-Password must be the same",
-        error: true,
-      });
-    }
-
-    if (newPassword.length < 6) {
+    if (password.length < 6) {
       return setAlert({ msg: "The password must be at least 6 characters", error: true });
     }
 
@@ -63,6 +58,9 @@ const EditUserInfo = () => {
     console.log("ok");
 
     // API Call
+    try {
+      // const response = await axiosInstance
+    } catch (error) {}
   };
 
   return (
