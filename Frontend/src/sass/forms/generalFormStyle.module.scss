@@ -126,13 +126,13 @@
     font-family: v.$fontSecondary;
     font-style: italic;
     font-weight: 500;
+  }
+}
 
-    .link {
-      font-size: 1.1rem;
+.link {
+  font-size: 1.1rem;
 
-      @include m.generalFormMq {
-        font-size: 1.3rem;
-      }
-    }
+  @include m.generalFormMq {
+    font-size: 1.3rem;
   }
 }

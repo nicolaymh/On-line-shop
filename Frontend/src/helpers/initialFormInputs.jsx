@@ -22,11 +22,22 @@ const initialFormInputs = () => {
     confirmPassword: "",
   };
 
+  const editUser = {
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+    oldPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  };
+
   return {
     registerForm,
     loginForm,
     forgotPasswordForm,
     newPasswordForm,
+    editUser,
   };
 };
 

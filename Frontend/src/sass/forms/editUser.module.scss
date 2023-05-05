@@ -1,0 +1,37 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.editUserContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  background-color: v.$backgroundPrimary;
+  border-radius: 0;
+  overflow: hidden;
+  margin: 2rem;
+  padding-top: 4rem;
+  height: 50rem;
+
+  @include m.editUserInfoMq(695px) {
+    height: 58rem;
+  }
+
+  @include m.editUserInfoMq(1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 2rem 33rem 20rem 2rem;
+    padding: 4rem;
+    margin: 6rem;
+  }
+
+  .imgContainer {
+    visibility: hidden;
+
+    @include m.editUserInfoMq(1200px) {
+      visibility: visible;
+    }
+
+    img {
+      border-radius: 2rem 30rem 15rem 2rem;
+      padding: 0;
+    }
+  }
+}
