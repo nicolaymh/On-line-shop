@@ -88,14 +88,16 @@ const login = async (req, res) => {
     if (!verifyPassword)
       return res.status(400).json({ ok: false, msg: "Wrong email or password!" });
 
-    const { _id, name, role } = userLogin;
+    const { _id, name, address, phone, role } = userLogin;
 
     // Get role name
     const roleInfo = await Role.findById(role);
 
     // Generate token
     const token = await generateJWT(_id, name);
-    res.json({ ok: true, _id, name, role: roleInfo.name, token });
+    res
+      .status(201)
+      .json({ ok: true, _id, name, email, address, phone, role: roleInfo.name, token });
   } catch (error) {
     internalServerError(error, res);
   }
