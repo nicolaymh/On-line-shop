@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+// Custom Hook
 import { useForm } from "../../../Hooks/useForm";
 
 import initialFormInputs from "../../../helpers/initialFormInputs";
@@ -9,6 +12,9 @@ import containerStyle from "../../../sass/forms/editUser.module.scss";
 // Assets
 import registerImage from "../../../assets/images/register-image.png";
 
+// Components
+import { Alert } from "../../general-components/Alert";
+
 // Context
 import useAuth from "../../../Hooks/useAuth";
 
@@ -16,6 +22,8 @@ const EditUserInfo = () => {
   const { auth } = useAuth();
 
   const { editUser: initialForm } = initialFormInputs();
+
+  const [alert, setAlert] = useState({ msg: "", error: false });
 
   const {
     name,
@@ -39,13 +47,38 @@ const EditUserInfo = () => {
 
     // Form Validations
     if ([name, email, address, phone, oldPassword, newPassword, confirmNewPassword].includes("")) {
-      return console.log("debe llenar todos los campos");
+      return setAlert({ msg: "All fields are required", error: true });
     }
+
+    if (newPassword !== confirmNewPassword) {
+      return setAlert({
+        msg: "New-Password and Confirm-New-Password must be the same",
+        error: true,
+      });
+    }
+
+    if (newPassword.length < 6) {
+      return setAlert({ msg: "The password must be at least 6 characters", error: true });
+    }
+
+    if (address.length < 8) {
+      return setAlert({ msg: "Address is required and min 8 characters", error: true });
+    }
+
+    if (phone.length < 10) {
+      return setAlert({ msg: "Phone is required and min 10 characters", error: true });
+    }
+
+    console.log("ok");
+
+    // API Call
   };
 
   return (
     <div className={containerStyle.editUserContainer}>
       <form onSubmit={handleSubmit} className={formStyle.form}>
+        {alert.msg && <Alert {...alert} />}
+
         <div className={formStyle.field}>
           <label htmlFor="name">Name: </label>
 
@@ -130,7 +163,7 @@ const EditUserInfo = () => {
         </div>
 
         <div className={formStyle.field}>
-          <label htmlFor="confirmNewPassword">New-Password: </label>
+          <label htmlFor="confirmNewPassword">Confirm-New-Password: </label>
 
           <input
             id="confirmNewPassword"

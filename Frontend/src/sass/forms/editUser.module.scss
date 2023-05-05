@@ -8,16 +8,17 @@
   border-radius: 0;
   overflow: hidden;
   margin: 2rem;
-  padding-top: 4rem;
-  height: 50rem;
+  padding-top: 2rem;
+  height: 51rem;
 
   @include m.editUserInfoMq(695px) {
-    height: 58rem;
+    height: 60rem;
   }
 
   @include m.editUserInfoMq(1200px) {
     grid-template-columns: repeat(2, 1fr);
     border-radius: 2rem 33rem 20rem 2rem;
+    height: 63rem;
     padding: 4rem;
     margin: 6rem;
   }
