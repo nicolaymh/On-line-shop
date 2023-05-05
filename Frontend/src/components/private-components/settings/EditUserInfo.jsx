@@ -37,7 +37,10 @@ const EditUserInfo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(e);
+    // Form Validations
+    if ([name, email, address, phone, oldPassword, newPassword, confirmNewPassword].includes("")) {
+      return console.log("debe llenar todos los campos");
+    }
   };
 
   return (
@@ -53,48 +56,6 @@ const EditUserInfo = () => {
             placeholder="Full Name"
             autoComplete="off"
             value={name}
-            onChange={onInputChange}
-          />
-        </div>
-
-        <div className={formStyle.field}>
-          <label htmlFor="oldPassword">Old-Password: </label>
-
-          <input
-            id="oldPassword"
-            name="oldPassword"
-            type="password"
-            placeholder="Old Password"
-            autoComplete="off"
-            value={oldPassword}
-            onChange={onInputChange}
-          />
-        </div>
-
-        <div className={formStyle.field}>
-          <label htmlFor="newPassword">New-password: </label>
-
-          <input
-            id="newPassword"
-            name="newPassword"
-            type="password"
-            placeholder="Create a new password"
-            autoComplete="off"
-            value={newPassword}
-            onChange={onInputChange}
-          />
-        </div>
-
-        <div className={formStyle.field}>
-          <label htmlFor="confirmNewPassword">New-password: </label>
-
-          <input
-            id="confirmNewPassword"
-            name="confirmNewPassword"
-            type="password"
-            placeholder="Confirm New Password"
-            autoComplete="off"
-            value={confirmNewPassword}
             onChange={onInputChange}
           />
         </div>
@@ -140,9 +101,50 @@ const EditUserInfo = () => {
             onChange={onInputChange}
           />
         </div>
+        <div className={formStyle.field}>
+          <label htmlFor="oldPassword">Old-Password: </label>
+
+          <input
+            id="oldPassword"
+            name="oldPassword"
+            type="password"
+            placeholder="Old Password"
+            autoComplete="off"
+            value={oldPassword}
+            onChange={onInputChange}
+          />
+        </div>
 
         <div className={formStyle.field}>
-          <input type="submit" value="SIGN UP" />
+          <label htmlFor="newPassword">New-password: </label>
+
+          <input
+            id="newPassword"
+            name="newPassword"
+            type="password"
+            placeholder="Create a new password"
+            autoComplete="off"
+            value={newPassword}
+            onChange={onInputChange}
+          />
+        </div>
+
+        <div className={formStyle.field}>
+          <label htmlFor="confirmNewPassword">New-Password: </label>
+
+          <input
+            id="confirmNewPassword"
+            name="confirmNewPassword"
+            type="password"
+            placeholder="Confirm New Password"
+            autoComplete="off"
+            value={confirmNewPassword}
+            onChange={onInputChange}
+          />
+        </div>
+
+        <div className={formStyle.field}>
+          <input type="submit" value="EDIT INFO" />
         </div>
       </form>
 
