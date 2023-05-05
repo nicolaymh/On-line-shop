@@ -17,6 +17,8 @@ router
   .get(userController.checkToken)
   .post(validateFields.newPassword, userController.newPassword);
 
+router.post("/edit-info", checkAuth, validateFields.editInfoUser, userController.editInfoUser);
+
 router.get("/profile", checkAuth, userController.profile);
 
 export default router;

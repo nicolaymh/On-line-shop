@@ -159,9 +159,22 @@ const newPassword = async (req, res) => {
   }
 };
 
+const editInfoUser = () => {
+  console.log("desde editInfoUser function");
+};
+
 const profile = async (req, res) => {
   const { user } = req;
   res.json(user);
 };
 
-export { register, confirmAccount, login, restorePassword, checkToken, newPassword, profile };
+export {
+  register,
+  confirmAccount,
+  login,
+  restorePassword,
+  checkToken,
+  newPassword,
+  editInfoUser,
+  profile,
+};
