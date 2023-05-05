@@ -137,6 +137,7 @@ const checkToken = async (req, res) => {
   }
 };
 
+// Create a new password
 const newPassword = async (req, res) => {
   try {
     const { token } = req.params;
@@ -161,6 +162,7 @@ const newPassword = async (req, res) => {
   }
 };
 
+// Edit user info
 const editInfoUser = async (req, res) => {
   try {
     const { _id } = req.user;
@@ -195,6 +197,7 @@ const editInfoUser = async (req, res) => {
   }
 };
 
+// check if user is logged in
 const profile = async (req, res) => {
   const { user } = req;
   res.json(user);
