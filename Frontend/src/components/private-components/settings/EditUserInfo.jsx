@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import initialFormInputs from "../../../helpers/initialFormInputs";
 
@@ -19,9 +19,25 @@ import { Alert } from "../../general-components/Alert";
 
 // Context
 import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const EditUserInfo = () => {
    const { auth, setAuth } = useAuth();
+
+   const navigate = useNavigate();
+
+   const refMount = useRef(false);
+   const [formDisabled, setFormDisabled] = useState(false);
+
+   useEffect(() => {
+      const goHome = setTimeout(() => {
+         if (!refMount.current) return;
+
+         navigate("/shop", { replace: true });
+      }, 4000);
+
+      return () => clearTimeout(goHome);
+   }, [refMount.current]);
 
    const { editUser: initialForm } = initialFormInputs();
 
@@ -71,13 +87,13 @@ const EditUserInfo = () => {
             { name, email, address, phone, password },
             config
          );
+         setAlert({ msg: data.msg, error: false });
 
          setAuth(data.user);
 
-         setAlert({ msg: data.msg, error: false });
+         refMount.current = true;
+         setFormDisabled(true);
       } catch (error) {
-         console.log(error);
-
          const data = error.response.data.msg || error.response.data.errors[0].msg;
          setAlert({ msg: data, error: true });
       }
@@ -99,6 +115,7 @@ const EditUserInfo = () => {
                   autoComplete="off"
                   value={name}
                   onChange={onInputChange}
+                  disabled={formDisabled}
                />
             </div>
 
@@ -113,6 +130,7 @@ const EditUserInfo = () => {
                   autoComplete="off"
                   value={email}
                   onChange={onInputChange}
+                  disabled={formDisabled}
                />
             </div>
 
@@ -127,6 +145,7 @@ const EditUserInfo = () => {
                   autoComplete="off"
                   value={address}
                   onChange={onInputChange}
+                  disabled={formDisabled}
                />
             </div>
 
@@ -141,6 +160,7 @@ const EditUserInfo = () => {
                   autoComplete="off"
                   value={phone}
                   onChange={onInputChange}
+                  disabled={formDisabled}
                />
             </div>
             <div className={formStyle.field}>
@@ -154,11 +174,12 @@ const EditUserInfo = () => {
                   autoComplete="off"
                   value={password}
                   onChange={onInputChange}
+                  disabled={formDisabled}
                />
             </div>
 
             <div className={formStyle.field}>
-               <input type="submit" value="EDIT INFO" />
+               <input type="submit" value="EDIT INFO" disabled={formDisabled} />
             </div>
          </form>
 
