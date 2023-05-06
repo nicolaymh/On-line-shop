@@ -2,37 +2,37 @@
 @use "../base/mixins" as m;
 
 .editUserContainer {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  background-color: v.$backgroundPrimary;
-  border-radius: 0;
-  overflow: hidden;
-  margin: 2rem;
-  padding-top: 2rem;
-  height: 51rem;
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   background-color: v.$backgroundPrimary;
+   border-radius: 0;
+   overflow: hidden;
+   margin: 2rem;
+   padding-top: 2rem;
+   height: 41rem;
 
-  @include m.editUserInfoMq(695px) {
-    height: 60rem;
-  }
+   @include m.editUserInfoMq(695px) {
+      height: 48rem;
+   }
 
-  @include m.editUserInfoMq(1200px) {
-    grid-template-columns: repeat(2, 1fr);
-    border-radius: 2rem 33rem 20rem 2rem;
-    height: 63rem;
-    padding: 4rem;
-    margin: 6rem;
-  }
+   @include m.editUserInfoMq(1200px) {
+      grid-template-columns: repeat(2, 1fr);
+      border-radius: 2rem 33rem 20rem 2rem;
+      height: 50rem;
+      padding: 4rem;
+      margin: 6rem;
+   }
 
-  .imgContainer {
-    visibility: hidden;
+   .imgContainer {
+      visibility: hidden;
 
-    @include m.editUserInfoMq(1200px) {
-      visibility: visible;
-    }
+      @include m.editUserInfoMq(1200px) {
+         visibility: visible;
+      }
 
-    img {
-      border-radius: 2rem 30rem 15rem 2rem;
-      padding: 0;
-    }
-  }
+      img {
+         border-radius: 2rem 30rem 15rem 2rem;
+         padding: 0;
+      }
+   }
 }
