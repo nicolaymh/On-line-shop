@@ -21,7 +21,7 @@ import { Alert } from "../../general-components/Alert";
 import useAuth from "../../../Hooks/useAuth";
 
 const EditUserInfo = () => {
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const { editUser: initialForm } = initialFormInputs();
 
@@ -55,8 +55,6 @@ const EditUserInfo = () => {
       return setAlert({ msg: "Phone is required and min 10 characters", error: true });
     }
 
-    console.log("ok");
-
     try {
       // API Call
       const token = localStorage.getItem("token");
@@ -68,14 +66,20 @@ const EditUserInfo = () => {
         },
       };
 
-      const response = await axiosInstance.put(
+      const { data } = await axiosInstance.put(
         "/users/edit-info",
         { name, email, address, phone, password },
         config
       );
-      console.log(response);
+
+      setAuth(data.user);
+
+      setAlert({ msg: data.msg, error: false });
     } catch (error) {
       console.log(error);
+
+      const data = error.response.data.msg || error.response.data.errors[0].msg;
+      setAlert({ msg: data, error: true });
     }
   };
 

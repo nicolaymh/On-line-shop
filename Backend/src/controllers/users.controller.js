@@ -186,14 +186,20 @@ const editInfoUser = async (req, res) => {
     }
 
     // Update user info
-    await User.findByIdAndUpdate(_id, {
-      name,
-      email,
-      address,
-      phone,
-    });
+    const updated = await User.findByIdAndUpdate(
+      _id,
+      {
+        name,
+        email,
+        address,
+        phone,
+      },
+      { new: true }
+    ).select("_id name email address phone");
 
-    res.status(201).json({ ok: true, msg: "User updated successfully" });
+    res
+      .status(201)
+      .json({ ok: true, msg: "User updated successfully", user: { ...updated._doc, role } });
   } catch (error) {
     internalServerError(error, res);
   }
