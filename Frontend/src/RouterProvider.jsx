@@ -27,40 +27,42 @@ import useAuth from "./Hooks/useAuth";
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 
 const RouterProvider = () => {
-  const { auth } = useAuth();
+   const { auth } = useAuth();
 
-  return (
-    <Routes>
-      <Route path="/" element={<AuthLayout />}>
-        <Route index element={<LoginForm />} />
-        <Route path="register" element={<RegisterForm />} />
-        <Route path="confirm/:id" element={<ConfirmAccount />} />
-        <Route path="forgot-password" element={<ForgotPassword />} />
-        <Route path="forgot-password/:token" element={<NewPassword />} />
-        <Route path="*" element={<Navigate to="/" />} replace />
-      </Route>
+   return (
+      <Routes>
+         <Route path="/" element={<AuthLayout />}>
+            <Route index element={<LoginForm />} />
+            <Route path="register" element={<RegisterForm />} />
+            <Route path="confirm/:id" element={<ConfirmAccount />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="forgot-password/:token" element={<NewPassword />} />
+            <Route path="*" element={<Navigate to="/" />} replace />
+         </Route>
 
-      <Route path="shop" element={<Shop />}>
-        <Route index element={<Home />} />
+         <Route path="shop" element={<Shop />}>
+            <Route index element={<Home />} />
+            <Route path="categories" element={<Products />} />
+            <Route path="settings" element={<Settings />}>
+               <Route index element={<div>My shopping</div>} />
 
-        <Route path="categories" element={<Products />} />
+               {auth.role !== "admin" && <Route path="edit-info" element={<EditUserInfo />} />}
 
-        <Route path="settings" element={<Settings />}>
-          <Route index element={<div>My shopping</div>} />
-          <Route path="edit-info" element={<EditUserInfo />} />
-          <Route path="add-products" element={<div>Add Products</div>} />
-          {auth.role === "admin" && (
-            <>
-              <Route path="manage-users" element={<div>Manage users</div>} />
-              <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
-            </>
-          )}
-        </Route>
+               {auth.role !== "user" && (
+                  <Route path="add-products" element={<div>Add Products</div>} />
+               )}
 
-        <Route path="shoping-cart" element={<ShopingCart />} />
-      </Route>
-    </Routes>
-  );
+               {auth.role === "admin" && (
+                  <>
+                     <Route path="manage-users" element={<div>Manage users</div>} />
+                     <Route path="manage-subcategories" element={<div>Manage Subcategories</div>} />
+                  </>
+               )}
+            </Route>
+            <Route path="shoping-cart" element={<ShopingCart />} />
+         </Route>
+      </Routes>
+   );
 };
 
 export default RouterProvider;

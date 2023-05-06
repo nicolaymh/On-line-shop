@@ -8,13 +8,13 @@ import RouterProvider from "./RouterProvider";
 import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <AuthProvider>
-        <RouterProvider />
-      </AuthProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <AuthProvider>
+                <RouterProvider />
+            </AuthProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;

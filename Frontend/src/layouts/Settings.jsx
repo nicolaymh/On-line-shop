@@ -7,15 +7,15 @@ import style from "../sass/settings/settings.module.scss";
 import SettingsNav from "../components/private-components/settings/SettingsNav";
 
 const Settings = () => {
-  return (
-    <div className={style.settingsContainer}>
-      <SettingsNav />
+   return (
+      <div className={style.settingsContainer}>
+         <SettingsNav />
 
-      <main>
-        <Outlet />
-      </main>
-    </div>
-  );
+         <main>
+            <Outlet />
+         </main>
+      </div>
+   );
 };
 
 export default Settings;
