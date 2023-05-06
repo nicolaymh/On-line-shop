@@ -165,8 +165,10 @@ const newPassword = async (req, res) => {
 // Edit user info
 const editInfoUser = async (req, res) => {
   try {
-    const { _id } = req.user;
+    const { _id, role } = req.user;
     const { name, email, address, phone, password } = req.body;
+
+    if (role === "admin") return;
 
     //Repeated email check
     const emailExists = await User.findOne({ email });
