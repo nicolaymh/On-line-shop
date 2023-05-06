@@ -35,11 +35,11 @@ const EditUserInfo = () => {
     phone: auth.phone,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Form Validations
-    if ([name, email, address, phone, oldPassword, newPassword, confirmNewPassword].includes("")) {
+    if ([name, email, address, phone, password].includes("")) {
       return setAlert({ msg: "All fields are required", error: true });
     }
 
@@ -57,10 +57,26 @@ const EditUserInfo = () => {
 
     console.log("ok");
 
-    // API Call
     try {
-      // const response = await axiosInstance
-    } catch (error) {}
+      // API Call
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axiosInstance.put(
+        "/users/edit-info",
+        { name, email, address, phone, password },
+        config
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
