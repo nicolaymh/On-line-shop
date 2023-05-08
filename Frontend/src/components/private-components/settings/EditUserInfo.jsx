@@ -34,7 +34,7 @@ const EditUserInfo = () => {
          if (!refMount.current) return;
 
          navigate("/shop", { replace: true });
-      }, 4000);
+      }, 3000);
 
       return () => clearTimeout(goHome);
    }, [refMount.current]);
@@ -114,21 +114,6 @@ const EditUserInfo = () => {
                   placeholder="Full Name"
                   autoComplete="off"
                   value={name}
-                  onChange={onInputChange}
-                  disabled={formDisabled}
-               />
-            </div>
-
-            <div className={formStyle.field}>
-               <label htmlFor="email">E-mail: </label>
-
-               <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Your e-mail"
-                  autoComplete="off"
-                  value={email}
                   onChange={onInputChange}
                   disabled={formDisabled}
                />
