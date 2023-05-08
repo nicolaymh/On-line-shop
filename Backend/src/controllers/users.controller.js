@@ -177,7 +177,7 @@ const editInfoUser = async (req, res) => {
       const { _id, role } = req.user;
       const { name, email, address, phone, password } = req.body;
 
-      //Admin can not his/her change info
+      //Admin can not change his/her info
       if (role === "admin") return;
 
       // Check Password and User
