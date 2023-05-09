@@ -30,6 +30,8 @@ const EditUserInfo = () => {
    const [formDisabled, setFormDisabled] = useState(false);
 
    useEffect(() => {
+      console.log("Hey");
+
       const goHome = setTimeout(() => {
          if (!refMount.current) return;
 

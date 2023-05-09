@@ -23,32 +23,32 @@ import Role from "../models/RoleModel.js";
  * the `
  */
 const checkAuth = async (req, res, next) => {
-  let token;
+   let token;
 
-  try {
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-      token = req.headers.authorization.split(" ")[1];
+   try {
+      if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+         token = req.headers.authorization.split(" ")[1];
 
-      const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
+         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
 
-      const userInfo = await User.findById(tokenDecode.id);
+         const userInfo = await User.findById(tokenDecode.id);
 
-      // Get info role
-      const roleInfo = await Role.findById(userInfo.role);
+         // Get info role
+         const roleInfo = await Role.findById(userInfo.role);
 
-      const { _id, name, address, email, phone } = userInfo;
+         const { _id, name, address, email, phone } = userInfo;
 
-      req.user = { _id, name, address, email, phone, role: roleInfo.name };
+         req.user = { _id, name, address, email, phone, role: roleInfo.name };
 
-      next();
-    }
+         next();
+      }
 
-    if (!token) {
-      return res.status(400).json({ ok: false, msg: "Invalid Token" });
-    }
-  } catch (error) {
-    internalServerError(error, res);
-  }
+      if (!token) {
+         return res.status(400).json({ ok: false, msg: "Invalid Token" });
+      }
+   } catch (error) {
+      internalServerError(error, res);
+   }
 };
 
 export default checkAuth;

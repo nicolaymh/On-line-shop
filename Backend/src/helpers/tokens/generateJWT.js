@@ -4,23 +4,23 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 const generateJWT = (id, name) => {
-  return new Promise((resolve, reject) => {
-    const payload = { id, name };
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "4h",
-      },
-      (err, token) => {
-        if (err) {
-          console.log(err);
-          reject("could not generate token");
-        }
-        resolve(token);
-      }
-    );
-  });
+   return new Promise((resolve, reject) => {
+      const payload = { id, name };
+      jwt.sign(
+         payload,
+         process.env.JWT_SECRET,
+         {
+            expiresIn: "15s",
+         },
+         (err, token) => {
+            if (err) {
+               console.log(err);
+               reject("could not generate token");
+            }
+            resolve(token);
+         }
+      );
+   });
 };
 
 export default generateJWT;
