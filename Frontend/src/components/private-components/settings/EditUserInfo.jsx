@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import initialFormInputs from "../../../helpers/initialFormInputs";
 
@@ -19,7 +20,6 @@ import { Alert } from "../../general-components/Alert";
 
 // Context
 import useAuth from "../../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 
 const EditUserInfo = () => {
    const { auth, setAuth } = useAuth();
