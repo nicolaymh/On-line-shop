@@ -2,14 +2,13 @@ import jwt from "jsonwebtoken";
 import generateJWT from "../helpers/tokens/generateJWT.js";
 
 /**
- * This function renews a JWT token by verifying the existing token and generating a new one with a
- * shorter expiration time.
- * @param req - req stands for request and it is an object that contains information about the HTTP
- * request that was made, such as the request method, headers, URL, and any data that was sent with the
- * request. It is typically passed as the first parameter to an Express route handler function.
+ * This function renews a JWT token by verifying the existing token and generating a new one with a 30
+ * minute expiration time.
+ * @param req - req stands for request and it is an object that contains information about the incoming
+ * HTTP request such as the request headers, request parameters, request body, etc.
  * @param res - `res` is the response object that is used to send a response back to the client making
- * the request. It contains methods like `status` to set the HTTP status code of the response, `json`
- * to send a JSON response, and many others.
+ * the request. It contains methods like `status` to set the HTTP status code, `json` to send a JSON
+ * response, and many others. In this code snippet, `res` is used to
  */
 const renewToken = async (req, res) => {
    try {
