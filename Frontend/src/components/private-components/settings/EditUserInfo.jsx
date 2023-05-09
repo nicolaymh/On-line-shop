@@ -30,12 +30,10 @@ const EditUserInfo = () => {
    const [formDisabled, setFormDisabled] = useState(false);
 
    useEffect(() => {
-      console.log("Hey");
-
       const goHome = setTimeout(() => {
-         if (!refMount.current) return;
-
-         navigate("/shop", { replace: true });
+         if (refMount.current) {
+            navigate("/shop", { replace: true });
+         }
       }, 3000);
 
       return () => clearTimeout(goHome);

@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import renewToken from "./middlewares/renewToken.js";
+
 // Routes
 import userRoutes from "./routes/users.routes.js";
 import subCategoriesRoutes from "./routes/subcategories.routes.js";
@@ -47,9 +49,7 @@ app.use(cors(corsOptions));
 
 // Routing
 app.use("/api/users", userRoutes);
-app.use("/api/renew-token/:token", () => {
-   console.log("From renew token");
-});
+app.use("/api/renew-token/:token", renewToken);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/subcategories", subCategoriesRoutes);
 
