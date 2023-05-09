@@ -47,6 +47,9 @@ app.use(cors(corsOptions));
 
 // Routing
 app.use("/api/users", userRoutes);
+app.use("/api/renew-token/:token", () => {
+   console.log("From renew token");
+});
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/subcategories", subCategoriesRoutes);
 
