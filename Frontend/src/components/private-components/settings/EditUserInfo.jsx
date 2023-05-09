@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import initialFormInputs from "../../../helpers/initialFormInputs";
 
+import refreshToken from "../../../helpers/refreshToken";
+
 // Custom Hook
 import { useForm } from "../../../Hooks/useForm";
 
@@ -22,12 +24,17 @@ import { Alert } from "../../general-components/Alert";
 import useAuth from "../../../Hooks/useAuth";
 
 const EditUserInfo = () => {
-   const { auth, setAuth } = useAuth();
+   const { auth, setAuth, setLoading } = useAuth();
 
    const navigate = useNavigate();
 
    const refMount = useRef(false);
    const [formDisabled, setFormDisabled] = useState(false);
+
+   // useEffect to renew token
+   useEffect(() => {
+      refreshToken(setAuth, setLoading, navigate);
+   }, []);
 
    useEffect(() => {
       const goHome = setTimeout(() => {
