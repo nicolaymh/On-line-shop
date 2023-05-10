@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
 
    const [loading, setLoading] = useState(true);
 
-   const [showModal, setShowModal] = useState(false);
+   const [showModal, setShowModal] = useState(true);
 
    const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-const refreshToken = async (setAuth, setLoading, navigate) => {
+const refreshToken = async (setAuth, setLoading, navigate, setShowModal) => {
    try {
       const token = localStorage.getItem("token");
 
@@ -8,12 +8,11 @@ const refreshToken = async (setAuth, setLoading, navigate) => {
 
       localStorage.setItem("token", data.token);
    } catch (error) {
-      console.log(error.response.data);
-
       localStorage.clear();
       setAuth({});
       navigate("/", { replace: true });
       setLoading(false);
+      setShowModal(true);
    }
 };
 

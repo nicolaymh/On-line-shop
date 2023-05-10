@@ -2,137 +2,137 @@
 @use "../base/mixins" as m;
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  padding-bottom: 0;
-  margin-top: 1rem;
-  margin: 0 auto;
-  max-width: 120rem;
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   padding-bottom: 0;
+   margin-top: 1rem;
+   margin: 0 auto;
+   max-width: 120rem;
 
-  @include m.generalFormMq {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 5rem;
-  }
+   @include m.generalFormMq {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 5rem;
+   }
 
-  .loginBox {
-    background-color: v.$backgroundPrimary;
-    border: 1px solid v.$borderLine;
-    border-radius: 1rem;
+   .loginBox {
+      background-color: v.$backgroundPrimary;
+      border: 1px solid v.$borderLine;
+      border-radius: 1rem;
 
-    @include m.generalFormMq {
-      border-radius: 1rem 0 0 1rem;
-    }
-  }
+      @include m.generalFormMq {
+         border-radius: 1rem 0 0 1rem;
+      }
+   }
 
-  .loginImg {
-    background-color: v.$primary;
-    border-radius: 0 10rem 10rem 0;
-    overflow: hidden;
-    visibility: hidden;
+   .loginImg {
+      background-color: v.$primary;
+      border-radius: 0 10rem 10rem 0;
+      overflow: hidden;
+      visibility: hidden;
 
-    @include m.generalFormMq {
-      visibility: visible;
-    }
+      @include m.generalFormMq {
+         visibility: visible;
+      }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-  }
+      img {
+         object-fit: cover;
+         width: 100%;
+      }
+   }
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+   flex-direction: column;
 
-  .field {
-    margin: 0 2rem;
+   .field {
+      margin: 0 2rem;
 
-    label {
-      display: block;
-      text-transform: uppercase;
-      color: v.$primary;
-      font-family: v.$fontSecondary;
-      font-size: 1.2rem;
-      font-weight: 900;
-      margin-bottom: 0;
+      label {
+         display: block;
+         text-transform: uppercase;
+         color: v.$primary;
+         font-family: v.$fontSecondary;
+         font-size: 1.2rem;
+         font-weight: 900;
+         margin-bottom: 0;
 
-      @include m.generalFormMq {
-        font-size: 1.5rem;
+         @include m.generalFormMq {
+            font-size: 1.5rem;
+         }
       }
-    }
 
-    input {
-      border: none;
-      background-color: v.$backgroundBody;
-      margin: 1rem auto;
-      width: 100%;
-      padding: 0.7rem;
+      input {
+         border: none;
+         background-color: v.$backgroundBody;
+         margin: 1rem auto;
+         width: 100%;
+         padding: 0.7rem;
+         font-family: v.$fontSecondary;
+         font-style: italic;
+         font-size: 1.2rem;
+         outline: none;
+         margin-top: 0.5rem;
+
+         @include m.generalFormMq {
+            padding: 1rem;
+            font-size: 1.3rem;
+         }
+
+         &:focus {
+            border: 2px solid v.$primary;
+            &::placeholder {
+               color: v.$backgroundBody;
+            }
+         }
+
+         &::placeholder {
+            color: v.$secondary;
+         }
+      }
+
+      input[type="submit"] {
+         background-color: v.$primary;
+         color: v.$backgroundBody;
+         font-size: 1.1rem;
+         font-weight: 800;
+         transition-property: transform background-color;
+         transition-duration: 0.5s;
+
+         @include m.generalFormMq {
+            font-size: 1.3rem;
+         }
+
+         &:hover {
+            cursor: pointer;
+            transform: scale(1.02);
+            background-color: #1e90ff;
+         }
+      }
+
+      .containerLink {
+         margin: 0.8rem auto 0.8rem 0;
+
+         .link {
+            color: v.$primary;
+            font-size: 1.3rem;
+         }
+      }
+   }
+
+   .field:last-child {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       font-family: v.$fontSecondary;
       font-style: italic;
-      font-size: 1.2rem;
-      outline: none;
-      margin-top: 0.5rem;
-
-      @include m.generalFormMq {
-        padding: 1rem;
-        font-size: 1.3rem;
-      }
-
-      &:focus {
-        border: 2px solid v.$primary;
-        &::placeholder {
-          color: v.$backgroundBody;
-        }
-      }
-
-      &::placeholder {
-        color: v.$secondary;
-      }
-    }
-
-    input[type="submit"] {
-      background-color: v.$primary;
-      color: v.$backgroundBody;
-      font-size: 1.1rem;
-      font-weight: 800;
-      transition-property: transform background-color;
-      transition-duration: 0.5s;
-
-      @include m.generalFormMq {
-        font-size: 1.3rem;
-      }
-
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.02);
-        background-color: #1e90ff;
-      }
-    }
-
-    .containerLink {
-      margin: 0.8rem auto 0.8rem 0;
-
-      .link {
-        color: v.$primary;
-        font-size: 1.3rem;
-      }
-    }
-  }
-
-  .field:last-child {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-family: v.$fontSecondary;
-    font-style: italic;
-    font-weight: 500;
-  }
+      font-weight: 500;
+   }
 }
 
 .link {
-  font-size: 1.1rem;
+   font-size: 1.1rem;
 
-  @include m.generalFormMq {
-    font-size: 1.3rem;
-  }
+   @include m.generalFormMq {
+      font-size: 1.3rem;
+   }
 }

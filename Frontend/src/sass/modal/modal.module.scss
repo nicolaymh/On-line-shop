@@ -4,6 +4,7 @@
    background-color: v.$backgroundPrimary;
    color: v.$primary;
    display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
    width: 100%;
@@ -15,5 +16,22 @@
       text-align: center;
       font-family: v.$fontSecondary;
       font-style: italic;
+   }
+
+   button {
+      border: 1px solid v.$primary;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-family: v.$fontSecondary;
+      font-style: italic;
+      background-color: white;
+      color: v.$primary;
+      transition: background-color 0.1s, color 0.6s;
+
+      &:hover {
+         cursor: pointer;
+         background-color: v.$primary;
+         color: white;
+      }
    }
 }

@@ -19,22 +19,21 @@ import registerImage from "../../../assets/images/register-image.png";
 
 // Components
 import { Alert } from "../../general-components/Alert";
-import { Modal } from "../../general-components/Modal";
 
 // Context
 import useAuth from "../../../Hooks/useAuth";
 
 const EditUserInfo = () => {
-   const { auth, setAuth, setLoading } = useAuth();
+   const { auth, setAuth, setLoading, showModal, setShowModal } = useAuth();
 
    const navigate = useNavigate();
 
    const refMount = useRef(false);
    const [formDisabled, setFormDisabled] = useState(false);
 
-   // useEffect to renew token
+   // useEffect to renew token and log out if token has expired.
    useEffect(() => {
-      refreshToken(setAuth, setLoading, navigate);
+      refreshToken(setAuth, setLoading, navigate, setShowModal);
    }, []);
 
    useEffect(() => {
