@@ -18,7 +18,7 @@ const renewToken = async (req, res) => {
       const { id, name } = jwt.verify(token, process.env.JWT_SECRET);
 
       // Generate a new token
-      token = await generateJWT(id, name, "5s");
+      token = await generateJWT(id, name, "50m");
 
       res.status(201).json({ ok: true, token, msg: "new token" });
    } catch (error) {

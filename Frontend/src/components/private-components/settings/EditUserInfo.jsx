@@ -19,6 +19,7 @@ import registerImage from "../../../assets/images/register-image.png";
 
 // Components
 import { Alert } from "../../general-components/Alert";
+import { Modal } from "../../general-components/Modal";
 
 // Context
 import useAuth from "../../../Hooks/useAuth";
@@ -107,78 +108,80 @@ const EditUserInfo = () => {
    };
 
    return (
-      <div className={containerStyle.editUserContainer}>
-         <form onSubmit={handleSubmit} className={formStyle.form}>
-            {alert.msg && <Alert {...alert} />}
+      <>
+         <div className={containerStyle.editUserContainer}>
+            <form onSubmit={handleSubmit} className={formStyle.form}>
+               {alert.msg && <Alert {...alert} />}
 
-            <div className={formStyle.field}>
-               <label htmlFor="name">Name: </label>
+               <div className={formStyle.field}>
+                  <label htmlFor="name">Name: </label>
 
-               <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Full Name"
-                  autoComplete="off"
-                  value={name}
-                  onChange={onInputChange}
-                  disabled={formDisabled}
-               />
+                  <input
+                     id="name"
+                     name="name"
+                     type="text"
+                     placeholder="Full Name"
+                     autoComplete="off"
+                     value={name}
+                     onChange={onInputChange}
+                     disabled={formDisabled}
+                  />
+               </div>
+
+               <div className={formStyle.field}>
+                  <label htmlFor="address">Address: </label>
+
+                  <input
+                     id="address"
+                     name="address"
+                     type="text"
+                     placeholder="Your Address"
+                     autoComplete="off"
+                     value={address}
+                     onChange={onInputChange}
+                     disabled={formDisabled}
+                  />
+               </div>
+
+               <div className={formStyle.field}>
+                  <label htmlFor="phone">Phone: </label>
+
+                  <input
+                     id="phone"
+                     name="phone"
+                     type="tel"
+                     placeholder="Your Tel"
+                     autoComplete="off"
+                     value={phone}
+                     onChange={onInputChange}
+                     disabled={formDisabled}
+                  />
+               </div>
+               <div className={formStyle.field}>
+                  <label htmlFor="password">Password: </label>
+
+                  <input
+                     id="password"
+                     name="password"
+                     type="password"
+                     placeholder="password"
+                     autoComplete="off"
+                     value={password}
+                     onChange={onInputChange}
+                     disabled={formDisabled}
+                  />
+               </div>
+
+               <div className={formStyle.field}>
+                  <input type="submit" value="EDIT INFO" disabled={formDisabled} />
+               </div>
+            </form>
+
+            <div className={containerStyle.imgContainer}>
+               <img height="100%" src={registerImage} alt="register-image" />
             </div>
-
-            <div className={formStyle.field}>
-               <label htmlFor="address">Address: </label>
-
-               <input
-                  id="address"
-                  name="address"
-                  type="text"
-                  placeholder="Your Address"
-                  autoComplete="off"
-                  value={address}
-                  onChange={onInputChange}
-                  disabled={formDisabled}
-               />
-            </div>
-
-            <div className={formStyle.field}>
-               <label htmlFor="phone">Phone: </label>
-
-               <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="Your Tel"
-                  autoComplete="off"
-                  value={phone}
-                  onChange={onInputChange}
-                  disabled={formDisabled}
-               />
-            </div>
-            <div className={formStyle.field}>
-               <label htmlFor="password">Password: </label>
-
-               <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  autoComplete="off"
-                  value={password}
-                  onChange={onInputChange}
-                  disabled={formDisabled}
-               />
-            </div>
-
-            <div className={formStyle.field}>
-               <input type="submit" value="EDIT INFO" disabled={formDisabled} />
-            </div>
-         </form>
-
-         <div className={containerStyle.imgContainer}>
-            <img height="100%" src={registerImage} alt="register-image" />
          </div>
-      </div>
+      </>
    );
 };
 

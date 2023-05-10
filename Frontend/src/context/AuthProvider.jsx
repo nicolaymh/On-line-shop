@@ -12,6 +12,8 @@ const AuthProvider = ({ children }) => {
 
    const [loading, setLoading] = useState(true);
 
+   const [showModal, setShowModal] = useState(false);
+
    const navigate = useNavigate();
 
    useEffect(() => {
@@ -47,7 +49,7 @@ const AuthProvider = ({ children }) => {
    }, []);
 
    return (
-      <AuthContext.Provider value={{ auth, setAuth, loading, setLoading }}>
+      <AuthContext.Provider value={{ auth, setAuth, loading, setLoading, showModal, setShowModal }}>
          {children}
       </AuthContext.Provider>
    );
