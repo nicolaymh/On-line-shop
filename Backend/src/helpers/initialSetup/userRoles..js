@@ -21,7 +21,7 @@ const createRoles = async () => {
          })
       );
 
-      console.log("**********⭐⭐⭐ Created Roles: ⭐⭐⭐**********");
+      console.log("**********⭐⭐⭐ Created Roles: ⭐⭐⭐**********" + "\n");
    } catch (error) {
       console.error(`Error creating roles: ${error.message}`);
       throw error;

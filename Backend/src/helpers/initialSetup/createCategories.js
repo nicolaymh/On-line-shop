@@ -16,13 +16,12 @@ const createCategories = async () => {
 
             const exists = await Category.findOne({ name });
 
-            if (exists) return { ...c, CreateInDb: "It already exists in the DB 🔴" };
-
             if (!exists) {
                new Category({ name, description }).save();
-
                return { ...c, CreateInDb: "Created in the DB 🟢" };
             }
+
+            return { ...c, CreateInDb: "It already exists in the DB 🔴" };
          })
       );
 
