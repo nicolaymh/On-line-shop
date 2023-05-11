@@ -3,6 +3,14 @@ import { createContext } from "react";
 // Context
 const CategoryContext = createContext();
 
-const CategoryProvider = () => {};
+const CategoryProvider = ({ children }) => {
+   return (
+      <CategoryContext.Provider value="hola desde CategoryContext">
+         {children}
+      </CategoryContext.Provider>
+   );
+};
 
-export default CategoriesProvider;
+export { CategoryProvider };
+
+export default CategoryContext;

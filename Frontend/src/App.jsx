@@ -6,15 +6,18 @@ import RouterProvider from "./RouterProvider";
 
 // Context
 import { AuthProvider } from "./context/AuthProvider";
+import { CategoryProvider } from "./context/CategoryProvider";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <AuthProvider>
-                <RouterProvider />
-            </AuthProvider>
-        </BrowserRouter>
-    );
+   return (
+      <BrowserRouter>
+         <AuthProvider>
+            <CategoryProvider>
+               <RouterProvider />
+            </CategoryProvider>
+         </AuthProvider>
+      </BrowserRouter>
+   );
 }
 
 export default App;

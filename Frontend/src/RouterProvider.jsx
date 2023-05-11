@@ -1,6 +1,11 @@
 // React-router-Dom
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import { Modal } from "./components/general-components/Modal";
+
+// Context
+import useAuth from "./Hooks/useAuth";
+
 // Public Route => Auth
 import AuthLayout from "./layouts/AuthLayout";
 
@@ -20,12 +25,9 @@ import Products from "./components/private-components/categories/Categories";
 import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
 import Settings from "./layouts/Settings";
 
-// Context
-import useAuth from "./Hooks/useAuth";
-
-//Settings Routes
+//Settings Routes ==> Private Routes
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
-import { Modal } from "./components/general-components/Modal";
+import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -62,10 +64,7 @@ const RouterProvider = () => {
                      {auth.role === "admin" && (
                         <>
                            <Route path="manage-users" element={<div>Manage users</div>} />
-                           <Route
-                              path="manage-subcategories"
-                              element={<div>Manage Subcategories</div>}
-                           />
+                           <Route path="manage-subcategories" element={<ManageSubcategories />} />
                         </>
                      )}
                   </Route>
