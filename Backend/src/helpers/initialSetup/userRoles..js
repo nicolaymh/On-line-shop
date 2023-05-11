@@ -3,6 +3,12 @@ import Role from "../../models/RoleModel.js";
 // Roles
 const roles = ["user", "moderator", "admin"];
 
+/**
+ * This function creates roles in a database if they do not already exist.
+ * @returns If `countRoles` is greater than 0, the function will return nothing (`undefined`). If
+ * `countRoles` is less than or equal to 0, the function will return a Promise that resolves when all
+ * the roles in the `roles` array have been created and saved to the database.
+ */
 const createRoles = async () => {
    try {
       const countRoles = await Role.estimatedDocumentCount();
