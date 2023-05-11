@@ -24,7 +24,7 @@ import { Alert } from "../../general-components/Alert";
 import useAuth from "../../../Hooks/useAuth";
 
 const EditUserInfo = () => {
-   const { auth, setAuth, setLoading, showModal, setShowModal } = useAuth();
+   const { auth, setAuth, setLoading, setShowModal } = useAuth();
 
    const navigate = useNavigate();
 
