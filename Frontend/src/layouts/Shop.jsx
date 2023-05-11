@@ -5,7 +5,7 @@ import useAuth from "../Hooks/useAuth";
 import Header from "../components/private-components/header/Header";
 
 const Shop = () => {
-   const { auth, showModal } = useAuth();
+   const { auth } = useAuth();
 
    return (
       <>
