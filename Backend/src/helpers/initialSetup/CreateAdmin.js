@@ -39,7 +39,7 @@ const createAdmin = async () => {
       console.log("Admin user created successfully");
       console.log("✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔" + "\n");
    } catch (error) {
-      console.error(`Error creating admin user: ${error.message}`);
+      console.error("\n" + `Error creating admin user: ${error.message}`);
       throw error;
    }
 };
