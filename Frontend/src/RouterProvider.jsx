@@ -28,14 +28,20 @@ import Settings from "./layouts/Settings";
 //Settings Routes ==> Private Routes
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
+import useCategory from "./Hooks/useCategory";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
+   const { setCategoryinfoAll } = useCategory();
 
    return (
       <>
          {showModal.ok ? (
-            <Modal showModal={showModal} setShowModal={setShowModal} />
+            <Modal
+               showModal={showModal}
+               setShowModal={setShowModal}
+               setCategoryinfoAll={setCategoryinfoAll}
+            />
          ) : (
             <Routes>
                <Route path="/" element={<AuthLayout />}>
