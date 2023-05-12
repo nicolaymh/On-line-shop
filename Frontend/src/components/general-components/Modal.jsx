@@ -7,7 +7,7 @@ export const Modal = ({ showModal, setShowModal }) => {
       <div className={style.containerModal}>
          <h3>{`${msg}, please log in again`}</h3>
 
-         <button onClick={() => setShowModal({ ...showModal, ok: false })}>OK</button>
+         <button onClick={() => setShowModal({ ok: false, msg: "" })}>OK</button>
       </div>
    );
 };

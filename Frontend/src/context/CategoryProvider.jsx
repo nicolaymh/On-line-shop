@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 const CategoryContext = createContext();
 
 import axiosInstance from "../helpers/axiosInstance";
@@ -10,7 +12,9 @@ import useAuth from "../Hooks/useAuth";
 const CategoryProvider = ({ children }) => {
    const [categoryinfoAll, setCategoryinfoAll] = useState({});
 
-   const { auth, sethAuth, setLoading, setShowModal } = useAuth();
+   const { auth, setAuth, setLoading, setShowModal } = useAuth();
+
+   const navigate = useNavigate();
 
    useEffect(() => {
       const token = localStorage.getItem("token") || null;
@@ -26,10 +30,20 @@ const CategoryProvider = ({ children }) => {
          try {
             const { data } = await axiosInstance("/categories/get-categories", config);
             setCategoryinfoAll(data.categories);
-         } catch (error) {}
+         } catch (error) {
+            setShowModal({ ok: true, msg: error.response.data.msg });
+
+            navigate("/", { replace: true });
+
+            localStorage.clear();
+
+            setAuth({});
+
+            setLoading(false);
+         }
       };
 
-      if (auth._id) {
+      if (auth?._id) {
          getCategoriesInfo();
       }
    }, [auth]);
