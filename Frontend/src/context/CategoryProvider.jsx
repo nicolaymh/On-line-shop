@@ -2,15 +2,15 @@ import { createContext, useState, useEffect } from "react";
 
 const CategoryContext = createContext();
 
+import axiosInstance from "../helpers/axiosInstance";
+
 // Auth Context
 import useAuth from "../Hooks/useAuth";
-
-import axiosInstance from "../helpers/axiosInstance";
 
 const CategoryProvider = ({ children }) => {
    const [categoryinfoAll, setCategoryinfoAll] = useState({});
 
-   const { auth } = useAuth();
+   const { auth, sethAuth, setLoading, setShowModal } = useAuth();
 
    useEffect(() => {
       const token = localStorage.getItem("token") || null;
@@ -25,11 +25,8 @@ const CategoryProvider = ({ children }) => {
 
          try {
             const { data } = await axiosInstance("/categories/get-categories", config);
-            console.log(data.categories);
             setCategoryinfoAll(data.categories);
-         } catch (error) {
-            
-         }
+         } catch (error) {}
       };
 
       if (auth._id) {

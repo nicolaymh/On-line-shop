@@ -1,11 +1,13 @@
 import style from "../../sass/modal/modal.module.scss";
 
-export const Modal = ({ setShowModal }) => {
+export const Modal = ({ showModal, setShowModal }) => {
+   const { msg } = showModal;
+
    return (
       <div className={style.containerModal}>
-         <h3>Your session has expired, please log in again.</h3>
+         <h3>{`${msg}, please log in again`}</h3>
 
-         <button onClick={() => setShowModal(false)}>OK</button>
+         <button onClick={() => setShowModal({ ...showModal, ok: false })}>OK</button>
       </div>
    );
 };

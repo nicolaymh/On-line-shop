@@ -34,8 +34,8 @@ const RouterProvider = () => {
 
    return (
       <>
-         {showModal ? (
-            <Modal setShowModal={setShowModal} />
+         {showModal.ok ? (
+            <Modal showModal={showModal} setShowModal={setShowModal} />
          ) : (
             <Routes>
                <Route path="/" element={<AuthLayout />}>

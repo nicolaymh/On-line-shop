@@ -9,10 +9,16 @@ const refreshToken = async (setAuth, setLoading, navigate, setShowModal) => {
       localStorage.setItem("token", data.token);
    } catch (error) {
       localStorage.clear();
+
       setAuth({});
-      navigate("/", { replace: true });
+
       setLoading(false);
-      setShowModal(true);
+
+      navigate("/", { replace: true });
+
+      setShowModal((prev) => {
+         return { ...prev, ok: true, msg: error.response.data.msg };
+      });
    }
 };
 

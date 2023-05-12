@@ -14,13 +14,15 @@
    @include m.editUserInfoMq(695px) {
       height: 41rem;
    }
-
    @include m.editUserInfoMq(1200px) {
       grid-template-columns: repeat(2, 1fr);
       border-radius: 2rem 33rem 20rem 2rem;
-      height: 60rem;
+      height: 45rem;
       padding: 4rem;
       margin: 6rem;
+   }
+   @include m.editUserInfoMq(1500px) {
+      height: 60rem;
    }
 
    .imgContainer {
