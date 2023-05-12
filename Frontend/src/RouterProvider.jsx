@@ -29,6 +29,7 @@ import Settings from "./layouts/Settings";
 // Settings Routes ==> Private Routes
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
+import ManageUsers from "./components/private-components/settings/ManageUsers";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -69,7 +70,7 @@ const RouterProvider = () => {
 
                      {auth.role === "admin" && (
                         <>
-                           <Route path="manage-users" element={<div>Manage users</div>} />
+                           <Route path="manage-users" element={<ManageUsers />} />
                            <Route path="manage-subcategories" element={<ManageSubcategories />} />
                         </>
                      )}

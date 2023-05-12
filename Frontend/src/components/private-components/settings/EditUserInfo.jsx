@@ -108,7 +108,7 @@ const EditUserInfo = () => {
 
    return (
       <>
-         <div className={containerStyle.editUserContainer}>
+         <section className={containerStyle.editUserContainer}>
             <form onSubmit={handleSubmit} className={formStyle.form}>
                {alert.msg && <Alert {...alert} />}
 
@@ -179,7 +179,7 @@ const EditUserInfo = () => {
             <div className={containerStyle.imgContainer}>
                <img height="100%" src={registerImage} alt="register-image" />
             </div>
-         </div>
+         </section>
       </>
    );
 };
