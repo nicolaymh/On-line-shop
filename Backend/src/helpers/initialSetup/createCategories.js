@@ -8,6 +8,9 @@ let categories = [
    { name: "laptops", description: "laptop brands", CreateInDb: "" },
 ];
 
+/**
+ * This function creates categories in a database and checks if they already exist.
+ */
 const createCategories = async () => {
    try {
       const newCategories = await Promise.all(

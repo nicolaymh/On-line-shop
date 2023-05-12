@@ -12,6 +12,12 @@ const adminInfo = {
    phone: process.env.PHONE,
 };
 
+/**
+ * This is an asynchronous function that creates an admin user with encrypted password and a specific
+ * role, after verifying if the admin already exists.
+ * @returns If the admin already exists, the function will return without creating a new admin. If
+ * there are no errors, the function will not return anything.
+ */
 const createAdmin = async () => {
    try {
       // Verify if admin exists
