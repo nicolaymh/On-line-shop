@@ -2,9 +2,9 @@ import { createContext, useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-const CategoryContext = createContext();
+import getCategoriesInfo from "../helpers/getCategoriesInfo";
 
-import axiosInstance from "../helpers/axiosInstance";
+const CategoryContext = createContext();
 
 // Auth Context
 import useAuth from "../Hooks/useAuth";
@@ -17,39 +17,15 @@ const CategoryProvider = ({ children }) => {
    const navigate = useNavigate();
 
    useEffect(() => {
-      const token = localStorage.getItem("token") || null;
-
-      const getCategoriesInfo = async () => {
-         const config = {
-            headers: {
-               "Content-Type": "application/json",
-               Authorization: `Bearer ${token}`,
-            },
-         };
-
-         try {
-            const { data } = await axiosInstance("/categories/get-categories", config);
-            setCategoryinfoAll(data.categories);
-         } catch (error) {
-            setShowModal({ ok: true, msg: error.response.data.msg });
-
-            navigate("/", { replace: true });
-
-            localStorage.clear();
-
-            setAuth({});
-
-            setLoading(false);
-         }
-      };
-
       if (auth?._id) {
-         getCategoriesInfo();
+         getCategoriesInfo({ setCategoryinfoAll, setAuth, setLoading, setShowModal, navigate });
       }
    }, [auth]);
 
    return (
-      <CategoryContext.Provider value={{ categoryinfoAll }}>{children}</CategoryContext.Provider>
+      <CategoryContext.Provider value={{ categoryinfoAll, setCategoryinfoAll }}>
+         {children}
+      </CategoryContext.Provider>
    );
 };
 

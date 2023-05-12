@@ -14,6 +14,7 @@ import style from "../../../sass/Header/header.module.scss";
 
 // Context
 import useAuth from "../../../Hooks/useAuth";
+import useCategory from "../../../Hooks/useCategory";
 
 //Components
 import BurguerButton from "./BurgerButton";
@@ -23,6 +24,8 @@ const Header = () => {
    const userName = auth.name.split(" ")[0].toUpperCase();
 
    const [clicked, setClicked] = useState(false);
+
+   const { setCategoryinfoAll } = useCategory();
 
    useEffect(() => {
       const wide = () => window.innerWidth >= 650 && setClicked(false);
@@ -39,6 +42,7 @@ const Header = () => {
       setAuth({});
       navigate("/");
       setLoading(false);
+      setCategoryinfoAll({});
    };
 
    return (
