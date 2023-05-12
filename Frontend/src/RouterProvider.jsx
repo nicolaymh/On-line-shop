@@ -26,7 +26,7 @@ import Products from "./components/private-components/categories/Categories";
 import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
 import Settings from "./layouts/Settings";
 
-//Settings Routes ==> Private Routes
+// Settings Routes ==> Private Routes
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
 
