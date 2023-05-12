@@ -5,6 +5,7 @@ import { Modal } from "./components/general-components/Modal";
 
 // Context
 import useAuth from "./Hooks/useAuth";
+import useCategory from "./Hooks/useCategory";
 
 // Public Route => Auth
 import AuthLayout from "./layouts/AuthLayout";
@@ -28,7 +29,6 @@ import Settings from "./layouts/Settings";
 //Settings Routes ==> Private Routes
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
-import useCategory from "./Hooks/useCategory";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
