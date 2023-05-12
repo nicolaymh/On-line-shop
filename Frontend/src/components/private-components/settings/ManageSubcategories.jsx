@@ -1,7 +1,9 @@
 import useCategory from "../../../Hooks/useCategory";
 
 const ManageSubcategories = () => {
-   console.log(useCategory());
+   const { categoryinfoAll } = useCategory();
+
+   console.log(categoryinfoAll);
 
    return <div>ManageSubcategories</div>;
 };

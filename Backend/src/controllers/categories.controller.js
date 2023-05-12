@@ -2,16 +2,13 @@ import internalServerError from "../helpers/internalServerError.js";
 import Category from "../models/CatagoryModel.js";
 
 const getcategories = async (req, res) => {
-  try {
-    const { _id, name } = req.user;
-    console.log(_id, name);
+   try {
+      const categories = await Category.find().select("_id name description");
 
-    const categories = await Category.find();
-
-    console.log(req.user);
-  } catch (error) {
-    internalServerError(error, res);
-  }
+      res.status(201).json({ userInfo: { ...req.user }, categories });
+   } catch (error) {
+      internalServerError(error, res);
+   }
 };
 
 export { getcategories };
