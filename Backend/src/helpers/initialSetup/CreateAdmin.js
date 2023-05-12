@@ -12,34 +12,32 @@ const adminInfo = {
    phone: process.env.PHONE,
 };
 
-/**
- * This function creates an admin user with encrypted password and saves it to the database if the
- * admin does not already exist.
- * @returns If `adminExists` is truthy, the function will return without doing anything. If
- * `adminExists` is falsy, the function will create a new admin user and save it to the database. No
- * explicit value is returned in this case.
- */
 const createAdmin = async () => {
    try {
       // Verify if admin exists
-      const { name, email } = adminInfo;
-      const adminExists = await User.findOne({ name, email });
+      const { name, email, password } = adminInfo;
+      const adminExists = await User.exists({ name, email });
       if (adminExists) return;
 
-      // Create admin
-      const id = await Role.findOne({ name: "admin" }).select("_id");
-      const admin = new User(adminInfo);
+      // Finding for admin role name
+      const { _id } = await Role.findOne({ name });
 
       // Encrypt password before saving
       const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(admin.password, salt);
-      admin.password = hash;
+      const hash = bcrypt.hashSync(password, salt);
 
-      admin.token = "";
-      admin.confirmed = true;
-      admin.role = id;
+      // Create admin
+      await User.create({
+         ...adminInfo,
+         password: hash,
+         token: "",
+         confirmed: true,
+         role: _id,
+      });
 
-      await admin.save();
+      console.log("\n" + "✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔");
+      console.log("Admin user created successfully");
+      console.log("✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔" + "\n");
    } catch (error) {
       console.error(`Error creating admin user: ${error.message}`);
       throw error;
