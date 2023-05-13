@@ -16,7 +16,7 @@ import style from "../../../sass/Header/header.module.scss";
 import useAuth from "../../../Hooks/useAuth";
 import useCategory from "../../../Hooks/useCategory";
 
-//Components
+// Components
 import BurguerButton from "./BurgerButton";
 
 const Header = () => {
