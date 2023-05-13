@@ -1,4 +1,4 @@
-import { name, createPassword, password, email, address, phone } from "./validations-user.js";
+import { name, createPassword, password, email, address, phone } from "./validations.js";
 
 import validateErrors from "../validateFields.js";
 
