@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import checkAuth from "../middlewares/checkAuth.js";
+import checkAuth from "../middlewares/auth/checkAuth.js";
 
 import * as categoriesController from "../controllers/categories.controller.js";
 

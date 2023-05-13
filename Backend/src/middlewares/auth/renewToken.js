@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import generateJWT from "../helpers/tokens/generateJWT.js";
+import generateJWT from "../../helpers/tokens/generateJWT.js";
 
 /**
  * This function renews a JWT token by verifying the existing token and generating a new one with a

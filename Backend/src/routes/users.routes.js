@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import * as validateFields from "../middlewares/validate/validate-user.js";
+import * as validateFields from "../middlewares/validate/validationsUser/validate-user.js";
 
 import * as userController from "../controllers/users.controller.js";
 
-import checkAuth from "../middlewares/checkAuth.js";
+import checkAuth from "../middlewares/auth/checkAuth.js";
 
-import renewToken from "../middlewares/renewToken.js";
+import renewToken from "../middlewares/auth/renewToken.js";
 
 const router = Router();
 

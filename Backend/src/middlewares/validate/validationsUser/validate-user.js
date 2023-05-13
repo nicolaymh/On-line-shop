@@ -1,6 +1,6 @@
 import { name, createPassword, password, email, address, phone } from "./validations-user.js";
 
-import validateErrors from "./validateFields.js";
+import validateErrors from "../validateFields.js";
 
 /* These are arrays that contain functions or variables that are used for validating user input in
 different scenarios. */

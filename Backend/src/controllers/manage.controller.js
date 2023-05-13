@@ -1,5 +1,3 @@
-const manageUser = (req, res) => {
-   console.log("From manage user🟢");
-};
+const manageUser = (req, res) => {};
 
 export { manageUser };

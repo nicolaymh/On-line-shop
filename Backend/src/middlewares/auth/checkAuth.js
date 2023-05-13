@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import internalServerError from "../helpers/internalServerError.js";
+import internalServerError from "../../helpers/internalServerError.js";
 
 // Models
-import User from "../models/UserModel.js";
-import Role from "../models/RoleModel.js";
+import User from "../../models/UserModel.js";
+import Role from "../../models/RoleModel.js";
 
 /**
  * This function checks the validity of a token in the authorization header of a request and retrieves
