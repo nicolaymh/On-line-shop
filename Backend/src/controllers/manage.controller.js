@@ -3,6 +3,13 @@ import User from "../models/UserModel.js";
 
 import internalServerError from "../helpers/internalServerError.js";
 
+/**
+ * This function manages user permissions by allowing an admin to change the role of a user, except for
+ * the admin role.
+ * @returns If the admin's role is not "admin", a console log message is returned. If the user to
+ * modify permission is an admin, a JSON response with status 400 and an error message is returned.
+ * Otherwise, a JSON response with status 201 and the user's information and role options is returned.
+ */
 const manageUser = async (req, res) => {
    try {
       // Info admin
