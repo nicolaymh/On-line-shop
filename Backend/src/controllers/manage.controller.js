@@ -20,13 +20,13 @@ const manageUser = async (req, res) => {
       const { email } = req.params;
 
       // Find user to modify permission.
-      const userInfo = await User.findOne({ email })
+      const modifyUserPermissions = await User.findOne({ email })
          .populate("role", "name")
          .select("_id name email address phone role")
          .lean();
 
       // you can not change the permissions for the admin.
-      if (userInfo.role.name === "admin") {
+      if (modifyUserPermissions.role.name === "admin") {
          return res.status(400).json({
             ok: false,
             msg: "you cannot change the permissions for this user.",
@@ -39,7 +39,7 @@ const manageUser = async (req, res) => {
       // Response ==> request ok.
       res.status(201).json({
          ok: true,
-         userInfo: { ...userInfo, role: userInfo.role.name },
+         modifyUserPermissions: { ...modifyUserPermissions, role: modifyUserPermissions.role.name },
          roleOptions: roles,
       });
    } catch (error) {
