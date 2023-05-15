@@ -1,0 +1,65 @@
+.field {
+   margin: 0 2rem;
+
+   label {
+      display: block;
+      text-transform: uppercase;
+      color: v.$primary;
+      font-family: v.$fontSecondary;
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 0;
+
+      @include m.generalFormMq {
+         font-size: 1.5rem;
+      }
+   }
+
+   input {
+      border: none;
+      background-color: v.$backgroundBody;
+      margin: 1rem auto;
+      width: 100%;
+      padding: 0.7rem;
+      font-family: v.$fontSecondary;
+      font-style: italic;
+      font-size: 1.2rem;
+      outline: none;
+      margin-top: 0.5rem;
+
+      @include m.generalFormMq {
+         padding: 1rem;
+         font-size: 1.3rem;
+      }
+
+      &:focus {
+         border: 2px solid v.$primary;
+         &::placeholder {
+            color: v.$backgroundBody;
+         }
+      }
+
+      &::placeholder {
+         color: v.$secondary;
+      }
+   }
+
+   input[type="submit"] {
+      background-color: v.$primary;
+      color: v.$backgroundBody;
+      font-size: 1.1rem;
+      font-weight: 800;
+      transition-property: transform background-color;
+      transition-duration: 0.5s;
+
+      @include m.generalFormMq {
+         font-size: 1.3rem;
+      }
+
+      &:hover {
+         cursor: pointer;
+         transform: scale(1.02);
+         background-color: #1e90ff;
+      }
+   }
+}
