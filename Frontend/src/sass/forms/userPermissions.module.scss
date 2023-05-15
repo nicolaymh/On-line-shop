@@ -1,18 +1,39 @@
 @use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
 
 .sectionContainer {
-   .searchUser {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: v.$backgroundPrimary;
-      padding: 20rem 0;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: v.$backgroundPrimary;
+   padding: 3rem 0;
+   max-width: 100%;
 
-      h2 {
-         font-family: v.$fontSecondary;
-         font-size: 2rem;
+   @include m.manageUserMq(1000px) {
+      padding: 10rem 0;
+   }
+
+   h3 {
+      text-align: center;
+      color: v.$hoverHeader;
+      font-family: v.$fontSecondary;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 0.5rem;
+
+      @include m.manageUserMq(1000px) {
+         font-size: 3rem;
+         margin-bottom: 3rem;
+      }
+   }
+
+   form {
+      width: 100%;
+      margin-top: 3rem;
+
+      @include m.manageUserMq(1000px) {
+         max-width: 40%;
       }
    }
 }

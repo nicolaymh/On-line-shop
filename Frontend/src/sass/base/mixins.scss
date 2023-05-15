@@ -1,23 +1,29 @@
 @mixin generalFormMq {
-  @media (min-width: 695px) {
-    @content;
-  }
+   @media (min-width: 695px) {
+      @content;
+   }
 }
 
 @mixin headerMq($screen) {
-  @media (min-width: $screen) {
-    @content;
-  }
+   @media (min-width: $screen) {
+      @content;
+   }
 }
 
 @mixin settingsNavMq {
-  @media (min-width: 650px) {
-    @content;
-  }
+   @media (min-width: 650px) {
+      @content;
+   }
 }
 
 @mixin editUserInfoMq($screen) {
-  @media (min-width: $screen) {
-    @content;
-  }
+   @media (min-width: $screen) {
+      @content;
+   }
+}
+
+@mixin manageUserMq($screen) {
+   @media (min-width: $screen) {
+      @content;
+   }
 }

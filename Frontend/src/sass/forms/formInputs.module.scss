@@ -1,3 +1,6 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
 .field {
    margin: 0 2rem;
 
@@ -47,7 +50,7 @@
    input[type="submit"] {
       background-color: v.$primary;
       color: v.$backgroundBody;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 800;
       transition-property: transform background-color;
       transition-duration: 0.5s;
