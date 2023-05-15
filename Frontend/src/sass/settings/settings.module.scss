@@ -1,16 +1,17 @@
 @use "../base/mixins.scss" as m;
 
 .settingsContainer {
-  display: flex;
+   display: flex;
 
-  main {
-    position: absolute;
-    z-index: 1;
-    margin-left: 3.4rem;
+   main {
+      flex-grow: 1;
+      position: absolute;
+      z-index: 1;
+      margin-left: 3.4rem;
 
-    @include m.settingsNavMq {
-      position: initial;
-      margin: 0;
-    }
-  }
+      @include m.settingsNavMq {
+         position: initial;
+         margin: 0;
+      }
+   }
 }
