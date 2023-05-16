@@ -1,35 +1,54 @@
+import { useState } from "react";
+
+// Custom hook for forms.
+import { useForm } from "../../../Hooks/useForm";
+
 import initialFormInputs from "../../../helpers/initialFormInputs";
 
 import axiosInstance from "../../../helpers/axiosInstance";
 
+// Components
+import { Alert } from "../../general-components/Alert";
+
 // CSS Styles ( SASS Modules )
 import style from "../../../sass/forms/userPermissions.module.scss";
 import formStyle from "../../../sass/forms/formInputs.module.scss";
-import { useForm } from "../../../Hooks/useForm";
 
 const ManageUsers = () => {
+   const [userInfo, setUserInfo] = useState({});
+
+   const [alert, setAlert] = useState({});
+
    const { modifyUserPermission: initialForm } = initialFormInputs();
    const { email, onInputChange } = useForm(initialForm);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
 
+      setAlert({});
+
       if ([email].includes("")) {
-         return console.log("All field are required");
+         return setAlert({ msg: "Enter a valid email", error: true });
       }
 
       // Api Call
       try {
-         const data = await axiosInstance.get(`manage/user/${email || "@"}`, {
+         const { data } = await axiosInstance.get(`manage/user/${email || "@"}`, {
             headers: {
                "Content-Type": "application/json",
                Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
          });
 
-         console.log(data);
+         setUserInfo(data);
       } catch (error) {
          console.log(error);
+
+         setUserInfo({});
+
+         const data = error.response.data.msg || error.response.data.errors[0].msg;
+
+         setAlert({ msg: data, error: true });
       }
    };
 
@@ -55,6 +74,8 @@ const ManageUsers = () => {
                <input type="submit" value="Find User" />
             </div>
          </form>
+
+         {alert.msg && <Alert {...alert} />}
       </section>
    );
 };

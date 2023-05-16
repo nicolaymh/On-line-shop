@@ -4,11 +4,12 @@ import User from "../models/UserModel.js";
 import internalServerError from "../helpers/internalServerError.js";
 
 /**
- * This function manages user permissions by allowing an admin to change the role of a user, except for
- * the admin role.
+ * This function manages user permissions by allowing an admin to modify the permissions of a non-admin
+ * user.
  * @returns If the admin's role is not "admin", a console log message is returned. If the user to
- * modify permission is an admin, a JSON response with status 400 and an error message is returned.
- * Otherwise, a JSON response with status 201 and the user's information and role options is returned.
+ * modify permissions is not found, a JSON response with status 400 and message "User does not exist"
+ * is returned. If the user to modify permissions has the role of "admin", a JSON response with status
+ * 400 and message "You cannot change the permissions for this user" is returned.
  */
 const manageUser = async (req, res) => {
    try {
@@ -25,11 +26,14 @@ const manageUser = async (req, res) => {
          .select("_id name email address phone role")
          .lean();
 
+      if (!modifyUserPermissions)
+         return res.status(400).json({ ok: false, msg: "User does not exist." });
+
       // you can not change the permissions for the admin.
       if (modifyUserPermissions.role.name === "admin") {
          return res.status(400).json({
             ok: false,
-            msg: "you cannot change the permissions for this user.",
+            msg: "You cannot change the permissions for this user.",
          });
       }
 
