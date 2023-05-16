@@ -1,21 +1,35 @@
+// CSS Styles ( SASS Modules )
+import inputStyles from "../../../sass/forms/formInputs.module.scss";
+import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
+
 const UserPermissionInfo = () => {
    return (
-      <form>
+      <form className={formStyle.form}>
+         <h3>Modify user Permissions</h3>
+
          <div>
-            <label htmlFor="name">Name: </label>
-            <input id="name" name="name" type="text" />
-         </div>
-         <div>
-            <label htmlFor="email">Email: </label>
-            <input id="email" name="email" type="email" />
-         </div>
-         <div>
-            <label htmlFor="address">Address: </label>
-            <input id="address" name="address" type="text" />
-         </div>
-         <div>
-            <label htmlFor="phone">phone: </label>
-            <input id="phone" name="phone" type="tel" />
+            <div className={inputStyles.field}>
+               <label htmlFor="name">Name: </label>
+               <input id="name" name="name" type="text" />
+            </div>
+            <div className={inputStyles.field}>
+               <label htmlFor="email">Email: </label>
+               <input id="email" name="email" type="email" />
+            </div>
+            <div className={inputStyles.field}>
+               <label htmlFor="address">Address: </label>
+               <input id="address" name="address" type="text" />
+            </div>
+            <div className={inputStyles.field}>
+               <label htmlFor="phone">phone: </label>
+               <input id="phone" name="phone" type="text" />
+            </div>
+
+            <div></div>
+
+            <div className={inputStyles.field}>
+               <input type="submit" value="Go Back" />
+            </div>
          </div>
       </form>
    );

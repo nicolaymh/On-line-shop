@@ -1,0 +1,16 @@
+@use "../base/variables.scss" as v;
+
+.form {
+   background-color: white;
+   padding: 2rem;
+   outline: 6px solid v.$borderLine;
+
+   h3 {
+      text-align: center;
+      color: v.$hoverHeader;
+      font-family: v.$fontSecondary;
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+   }
+}
