@@ -36,7 +36,7 @@
       }
 
       &:focus {
-         border: 2px solid v.$primary;
+         outline: 2px solid v.$primary;
          &::placeholder {
             color: v.$backgroundBody;
          }

@@ -56,7 +56,7 @@ const ManageUsers = () => {
    return (
       <section className={style.sectionContainer}>
          {userInfo.userData ? (
-            <UserPermissionInfo />
+            <UserPermissionInfo {...userInfo} />
          ) : (
             <>
                <h3>Modify user Permissions</h3>
