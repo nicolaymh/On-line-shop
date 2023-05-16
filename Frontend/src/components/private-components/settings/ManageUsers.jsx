@@ -3,8 +3,8 @@ import { useState } from "react";
 // Custom hook for forms.
 import { useForm } from "../../../Hooks/useForm";
 
+// Helpers
 import initialFormInputs from "../../../helpers/initialFormInputs";
-
 import axiosInstance from "../../../helpers/axiosInstance";
 
 // Components
