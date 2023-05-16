@@ -13,6 +13,7 @@ import { Alert } from "../../general-components/Alert";
 // CSS Styles ( SASS Modules )
 import style from "../../../sass/forms/userPermissions.module.scss";
 import formStyle from "../../../sass/forms/formInputs.module.scss";
+import UserPermissionInfo from "./UserPermissionInfo";
 
 const ManageUsers = () => {
    const [userInfo, setUserInfo] = useState({});
@@ -54,28 +55,34 @@ const ManageUsers = () => {
 
    return (
       <section className={style.sectionContainer}>
-         <h3>Modify user Permissions</h3>
+         {userInfo.userData ? (
+            <UserPermissionInfo />
+         ) : (
+            <>
+               <h3>Modify user Permissions</h3>
 
-         <form onSubmit={handleSubmit}>
-            <div className={formStyle.field}>
-               <label htmlFor="email">Email: </label>
-               <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Search user by email"
-                  autoComplete="off"
-                  value={email}
-                  onChange={onInputChange}
-               />
-            </div>
+               <form onSubmit={handleSubmit}>
+                  <div className={formStyle.field}>
+                     <label htmlFor="email">Email: </label>
+                     <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Search user by email"
+                        autoComplete="off"
+                        value={email}
+                        onChange={onInputChange}
+                     />
+                  </div>
 
-            <div className={formStyle.field}>
-               <input type="submit" value="Find User" />
-            </div>
-         </form>
+                  <div className={formStyle.field}>
+                     <input type="submit" value="Find User" />
+                  </div>
+               </form>
 
-         {alert.msg && <Alert {...alert} />}
+               {alert.msg && <Alert {...alert} />}
+            </>
+         )}
       </section>
    );
 };
