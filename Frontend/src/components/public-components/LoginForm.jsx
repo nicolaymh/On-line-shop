@@ -23,10 +23,9 @@ import useAuth from "../../Hooks/useAuth";
 
 const LoginForm = () => {
    const { loginForm: initialForm } = initialFormInputs();
+   const { email, password, onInputChange } = useForm(initialForm);
 
    const navigate = useNavigate();
-
-   const { email, password, onInputChange } = useForm(initialForm);
 
    const [alert, setAlert] = useState({ msg: "", error: false });
 

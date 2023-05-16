@@ -39,7 +39,7 @@ const manageUser = async (req, res) => {
       // Response ==> request ok.
       res.status(201).json({
          ok: true,
-         modifyUserPermissions: { ...modifyUserPermissions, role: modifyUserPermissions.role.name },
+         userData: { ...modifyUserPermissions, role: modifyUserPermissions.role.name },
          roleOptions: roles,
       });
    } catch (error) {

@@ -15,7 +15,7 @@ dotenv.config();
  * using a secret key specified in the `process.env.JWT_SECRET` environment variable. The `expIn`
  * parameter specifies the expiration time of the token, with a default value of 15
  */
-const generateJWT = (id, name, expIn = "15m") => {
+const generateJWT = (id, name, expIn = "5h") => {
    return new Promise((resolve, reject) => {
       const payload = { id, name };
       jwt.sign(

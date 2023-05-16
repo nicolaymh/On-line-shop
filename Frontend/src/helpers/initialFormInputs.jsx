@@ -1,42 +1,47 @@
 const initialFormInputs = () => {
-  const registerForm = {
-    name: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    address: "",
-    phone: "",
-  };
+   const registerForm = {
+      name: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
+      address: "",
+      phone: "",
+   };
 
-  const loginForm = {
-    email: "",
-    password: "",
-  };
+   const loginForm = {
+      email: "",
+      password: "",
+   };
 
-  const forgotPasswordForm = {
-    email: "",
-  };
+   const forgotPasswordForm = {
+      email: "",
+   };
 
-  const newPasswordForm = {
-    newPassword: "",
-    confirmPassword: "",
-  };
+   const newPasswordForm = {
+      newPassword: "",
+      confirmPassword: "",
+   };
 
-  const editUser = {
-    name: "",
-    email: "",
-    address: "",
-    phone: "",
-    password: "",
-  };
+   const editUser = {
+      name: "",
+      email: "",
+      address: "",
+      phone: "",
+      password: "",
+   };
 
-  return {
-    registerForm,
-    loginForm,
-    forgotPasswordForm,
-    newPasswordForm,
-    editUser,
-  };
+   const modifyUserPermission = {
+      email: "",
+   };
+
+   return {
+      registerForm,
+      loginForm,
+      forgotPasswordForm,
+      newPasswordForm,
+      editUser,
+      modifyUserPermission,
+   };
 };
 
 export default initialFormInputs;
