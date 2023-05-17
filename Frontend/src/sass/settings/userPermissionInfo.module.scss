@@ -5,6 +5,10 @@
    padding: 2rem;
    outline: 1px solid v.$borderLine;
 
+   &::before {
+      content: "Hola perrito";
+   }
+
    h3 {
       text-align: center;
       color: v.$hoverHeader;
