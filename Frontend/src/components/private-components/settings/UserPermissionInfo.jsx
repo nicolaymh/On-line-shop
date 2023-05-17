@@ -1,11 +1,27 @@
 // CSS Styles ( SASS Modules )
+import { useState, useEffect } from "react";
 import inputStyles from "../../../sass/forms/formInputs.module.scss";
 import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
 
-const UserPermissionInfo = ({ userData }, { roleOptions }) => {
+const UserPermissionInfo = ({ userData, roleOptions }) => {
    const { _id, name, email, address, phone, role } = userData;
 
-   console.log(roleOptions);
+   const [whichRole, setWhichRole] = useState({ userRole: false, moderatorRole: false });
+   const { userRole, moderatorRole } = whichRole;
+
+   useEffect(() => {
+      const assignRole = () => {
+         role === "user"
+            ? setWhichRole({ ...whichRole, userRole: true })
+            : setWhichRole({ ...whichRole, moderatorRole: true });
+      };
+
+      assignRole();
+   }, []);
+
+   // Checkboxes Onclick
+   const changetoRoleUser = () => setWhichRole({ userRole: true, moderatorRole: false });
+   const changetoRoleModerator = () => setWhichRole({ userRole: false, moderatorRole: true });
 
    return (
       <form className={formStyle.form}>
@@ -31,18 +47,30 @@ const UserPermissionInfo = ({ userData }, { roleOptions }) => {
 
             <div className={formStyle.checkboxesContainer}>
                <div className={formStyle.checkboxField}>
-                  <label htmlFor="user">User: </label>
+                  <label onClick={changetoRoleUser} htmlFor="user">
+                     User:
+                  </label>
 
-                  <div className={formStyle.checkboxContainer}>
-                     <div className={formStyle.myCheckboxInactive}></div>
+                  <div onClick={changetoRoleUser} className={formStyle.checkboxContainer}>
+                     <div
+                        className={`${
+                           userRole ? formStyle.myCheckboxActive : formStyle.myCheckboxInactive
+                        }`}
+                     ></div>
                   </div>
                </div>
 
                <div className={formStyle.checkboxField}>
-                  <label htmlFor="moderator">Moderator: </label>
+                  <label onClick={changetoRoleModerator} htmlFor="moderator">
+                     Moderator:
+                  </label>
 
-                  <div className={formStyle.checkboxContainer}>
-                     <div className={formStyle.myCheckboxActive}></div>
+                  <div onClick={changetoRoleModerator} className={formStyle.checkboxContainer}>
+                     <div
+                        className={`${
+                           moderatorRole ? formStyle.myCheckboxActive : formStyle.myCheckboxInactive
+                        }`}
+                     ></div>
                   </div>
                </div>
             </div>
