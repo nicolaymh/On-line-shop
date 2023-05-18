@@ -20,8 +20,12 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
    }, []);
 
    // Checkboxes Onclick
-   const changetoRoleUser = () => setWhichRole({ userRole: true, moderatorRole: false });
-   const changetoRoleModerator = () => setWhichRole({ moderatorRole: true, userRole: false });
+   const handleRoleChange = ({ target: { id } }) => {
+      console.log(id);
+      id === "user"
+         ? setWhichRole({ userRole: true, moderatorRole: false })
+         : setWhichRole({ userRole: false, moderatorRole: true });
+   };
 
    return (
       <form className={formStyle.form}>
@@ -47,12 +51,12 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
 
             <div className={formStyle.checkboxesContainer}>
                <div className={formStyle.checkboxField}>
-                  <label onClick={changetoRoleUser} htmlFor="user">
-                     User:
-                  </label>
+                  <label htmlFor="user">User:</label>
 
-                  <div onClick={changetoRoleUser} className={formStyle.checkboxContainer}>
+                  <div className={formStyle.checkboxContainer}>
                      <div
+                        id="user"
+                        onClick={handleRoleChange}
                         className={`${
                            userRole ? formStyle.myCheckboxActive : formStyle.myCheckboxInactive
                         }`}
@@ -61,12 +65,12 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
                </div>
 
                <div className={formStyle.checkboxField}>
-                  <label onClick={changetoRoleModerator} htmlFor="moderator">
-                     Moderator:
-                  </label>
+                  <label htmlFor="moderator">Moderator:</label>
 
-                  <div onClick={changetoRoleModerator} className={formStyle.checkboxContainer}>
+                  <div className={formStyle.checkboxContainer}>
                      <div
+                        id="moderator"
+                        onClick={handleRoleChange}
                         className={`${
                            moderatorRole ? formStyle.myCheckboxActive : formStyle.myCheckboxInactive
                         }`}
