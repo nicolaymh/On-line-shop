@@ -1,5 +1,6 @@
-// CSS Styles ( SASS Modules )
 import { useState, useEffect } from "react";
+
+// CSS Styles ( SASS Modules )
 import inputStyles from "../../../sass/forms/formInputs.module.scss";
 import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
 
@@ -12,16 +13,15 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
    useEffect(() => {
       const assignRole = () => {
          role === "user"
-            ? setWhichRole({ ...whichRole, userRole: true })
-            : setWhichRole({ ...whichRole, moderatorRole: true });
+            ? setWhichRole({ userRole: true, moderatorRole: false })
+            : setWhichRole({ userRole: false, moderatorRole: true });
       };
-
       assignRole();
    }, []);
 
    // Checkboxes Onclick
    const changetoRoleUser = () => setWhichRole({ userRole: true, moderatorRole: false });
-   const changetoRoleModerator = () => setWhichRole({ userRole: false, moderatorRole: true });
+   const changetoRoleModerator = () => setWhichRole({ moderatorRole: true, userRole: false });
 
    return (
       <form className={formStyle.form}>
