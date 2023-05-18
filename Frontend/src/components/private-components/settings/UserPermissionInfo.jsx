@@ -7,9 +7,11 @@ import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
 const UserPermissionInfo = ({ userData, roleOptions }) => {
    const { _id, name, email, address, phone, role } = userData;
 
+   // useState to handle checkboxes events.
    const [whichRole, setWhichRole] = useState({ userRole: false, moderatorRole: false });
    const { userRole, moderatorRole } = whichRole;
 
+   // useState to get user info and request role change to the API.
    const [modifyRoleIn, setModifyRoleIn] = useState({ userId: null, role: {} });
 
    useEffect(() => {
@@ -27,7 +29,6 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
 
    // Checkboxes Onclick
    const handleRoleChange = ({ target: { id } }) => {
-      console.log(id);
       id === "user"
          ? setWhichRole({ userRole: true, moderatorRole: false })
          : setWhichRole({ userRole: false, moderatorRole: true });
