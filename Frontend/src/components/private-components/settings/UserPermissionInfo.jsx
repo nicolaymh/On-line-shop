@@ -10,12 +10,18 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
    const [whichRole, setWhichRole] = useState({ userRole: false, moderatorRole: false });
    const { userRole, moderatorRole } = whichRole;
 
+   const [modifyRoleIn, setModifyRoleIn] = useState({ userId: null, role: {} });
+
    useEffect(() => {
       const assignRole = () => {
          role === "user"
             ? setWhichRole({ userRole: true, moderatorRole: false })
             : setWhichRole({ userRole: false, moderatorRole: true });
+
+         const roleObject = () => roleOptions.find((r) => r.name === role);
+         setModifyRoleIn({ userId: _id, role: roleObject() });
       };
+
       assignRole();
    }, []);
 
@@ -25,6 +31,9 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
       id === "user"
          ? setWhichRole({ userRole: true, moderatorRole: false })
          : setWhichRole({ userRole: false, moderatorRole: true });
+
+      const roleObject = () => roleOptions.find((r) => r.name === id);
+      setModifyRoleIn({ ...modifyRoleIn, role: roleObject() });
    };
 
    return (
