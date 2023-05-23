@@ -48,6 +48,8 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
    const handleSubmit = async (e) => {
       e.preventDefault();
 
+      setAlert({});
+
       // API call
       try {
          const { data } = await axiosInstance.put("/manage/user/change-role", modifyRoleIn, {
