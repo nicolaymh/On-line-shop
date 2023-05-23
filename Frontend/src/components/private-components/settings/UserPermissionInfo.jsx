@@ -7,6 +7,8 @@ import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
 const UserPermissionInfo = ({ userData, roleOptions }) => {
    const { _id, name, email, address, phone, role } = userData;
 
+   console.log(roleOptions);
+
    // useState to handle checkboxes events.
    const [whichRole, setWhichRole] = useState({ userRole: false, moderatorRole: false });
    const { userRole, moderatorRole } = whichRole;
@@ -20,7 +22,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
             ? setWhichRole({ userRole: true, moderatorRole: false })
             : setWhichRole({ userRole: false, moderatorRole: true });
 
-         const roleObject = () => roleOptions.find((r) => r.name === role);
+         const roleObject = () => roleOptions.find(({ name }) => name === role);
          setModifyRoleIn({ userId: _id, role: roleObject() });
       };
 
@@ -33,7 +35,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
          ? setWhichRole({ userRole: true, moderatorRole: false })
          : setWhichRole({ userRole: false, moderatorRole: true });
 
-      const roleObject = () => roleOptions.find((r) => r.name === id);
+      const roleObject = () => roleOptions.find(({ name }) => name === id);
       setModifyRoleIn({ ...modifyRoleIn, role: roleObject() });
    };
 
@@ -59,6 +61,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
                <input id="phone" name="phone" type="text" value={phone} readOnly />
             </div>
 
+            {/* Checkboxes */}
             <div className={formStyle.checkboxesContainer}>
                <div className={formStyle.checkboxField}>
                   <label htmlFor="user">User:</label>
@@ -89,6 +92,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
                </div>
             </div>
 
+            {/* Input Submit */}
             <div className={inputStyles.field}>
                <input type="submit" value="Go Back" />
             </div>
