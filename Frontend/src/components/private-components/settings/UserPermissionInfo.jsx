@@ -56,7 +56,6 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
          });
 
          console.log(data);
-         
       } catch (error) {
          console.log(error);
       }
