@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+// Helpers
+import axiosInstance from "../../../helpers/axiosInstance";
+
 // CSS Styles ( SASS Modules )
 import inputStyles from "../../../sass/forms/formInputs.module.scss";
 import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
@@ -29,7 +32,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
       assignRole();
    }, []);
 
-   // Checkboxes Onclick
+   // Checkboxes Onclick.
    const handleRoleChange = ({ target: { id } }) => {
       id === "user"
          ? setWhichRole({ userRole: true, moderatorRole: false })
@@ -39,9 +42,24 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
       setModifyRoleIn({ ...modifyRoleIn, role: roleObject() });
    };
 
-   const handleSubmit = (e) => {
+   // Change Role => Call API.
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("From handleSubmit");
+
+      // API call
+      try {
+         const { data } = await axiosInstance.put("/manage/user/change-role", modifyRoleIn, {
+            headers: {
+               "Content-Type": "application/json",
+               Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+         });
+
+         console.log(data);
+         
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    return (
