@@ -39,8 +39,13 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
       setModifyRoleIn({ ...modifyRoleIn, role: roleObject() });
    };
 
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("From handleSubmit");
+   };
+
    return (
-      <form className={formStyle.form}>
+      <form onSubmit={handleSubmit} className={formStyle.form}>
          <h3>Modify user Permissions</h3>
 
          <div>
@@ -94,7 +99,7 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
 
             {/* Input Submit */}
             <div className={inputStyles.field}>
-               <input type="submit" value="Go Back" />
+               <input type="submit" value="Change Role" />
             </div>
          </div>
       </form>
