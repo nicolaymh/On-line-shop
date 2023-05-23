@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 // Helpers
 import axiosInstance from "../../../helpers/axiosInstance";
 
+// Components
+import { Alert } from "../../general-components/Alert";
+
 // CSS Styles ( SASS Modules )
 import inputStyles from "../../../sass/forms/formInputs.module.scss";
 import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
-import { Alert } from "../../general-components/Alert";
 
-const UserPermissionInfo = ({ userData, roleOptions }) => {
+const UserPermissionInfo = ({ userData, roleOptions, setUserInfo }) => {
    const { _id, name, email, address, phone, role } = userData;
 
    // useState to handle alerts.
@@ -70,6 +72,10 @@ const UserPermissionInfo = ({ userData, roleOptions }) => {
    return (
       <>
          <form onSubmit={handleSubmit} className={formStyle.form}>
+            <div onClick={() => setUserInfo({})} className={formStyle.close}>
+               X
+            </div>
+
             <h3>Modify user Permissions</h3>
 
             <div>
