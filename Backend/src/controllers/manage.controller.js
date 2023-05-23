@@ -80,7 +80,7 @@ const manageRole = async (req, res) => {
       );
 
       const nameNewRole = await Role.findById({ _id: changeRole.role });
-      res.status(201).json({ ok: true, msg: `New Role: ${nameNewRole.name}` });
+      res.status(201).json({ ok: true, msg: `New role changed: ${nameNewRole.name}` });
    } catch (error) {
       internalServerError(error, res);
    }

@@ -43,8 +43,6 @@ const ManageUsers = () => {
 
          setUserInfo(data);
       } catch (error) {
-         console.log(error);
-
          setUserInfo({});
 
          const data = error.response.data.msg || error.response.data.errors[0].msg;
