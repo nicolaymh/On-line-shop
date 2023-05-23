@@ -14,5 +14,6 @@ const router = Router();
 const validateEmail = [email, validateErrors];
 
 router.get("/user/:email", validateEmail, checkAuth, manage.manageUser);
+router.post("/user/change-role", checkAuth, manage.manageRole);
 
 export default router;

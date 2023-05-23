@@ -51,4 +51,16 @@ const manageUser = async (req, res) => {
    }
 };
 
-export { manageUser };
+const manageRole = async (req, res) => {
+   const { _id } = req.user;
+
+   // Check if user who wants to change role to a user, is an admin.
+   const admin = await User.findById({ _id }).populate("role", "name");
+   if (admin.role.name !== "admin") {
+      return res.status(400).json({ ok: false, msg: "You cannot change permissions." });
+   }
+
+   console.log("Hey");
+};
+
+export { manageUser, manageRole };
