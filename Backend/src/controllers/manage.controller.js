@@ -51,16 +51,39 @@ const manageUser = async (req, res) => {
    }
 };
 
+/**
+ * The function manages the role of a user by checking if the requesting user is an admin and changing
+ * the role of the specified user.
+ * @returns The function `manageRole` returns a response to the client with a status code and a JSON
+ * object containing a boolean `ok` and a message `msg`. The message can be either "You cannot change
+ * permissions." if the user who wants to change the role is not an admin, or "New Role: {role name}"
+ * if the role change was successful.
+ */
 const manageRole = async (req, res) => {
-   const { _id } = req.user;
+   try {
+      const { _id } = req.user;
 
-   // Check if user who wants to change role to a user, is an admin.
-   const admin = await User.findById({ _id }).populate("role", "name");
-   if (admin.role.name !== "admin") {
-      return res.status(400).json({ ok: false, msg: "You cannot change permissions." });
+      // Check if user who wants to change role to a user, is an admin.
+      const admin = await User.findById({ _id }).populate("role", "name");
+      if (admin.role.name !== "admin") {
+         return res.status(400).json({ ok: false, msg: "You cannot change permissions." });
+      }
+
+      // Changing use role.
+      const manageUser = req.body;
+      const changeRole = await User.findByIdAndUpdate(
+         manageUser.userId,
+         {
+            role: manageUser.role._id,
+         },
+         { new: true }
+      );
+
+      const nameNewRole = await Role.findById({ _id: changeRole.role });
+      res.status(201).json({ ok: true, msg: `New Role: ${nameNewRole.name}` });
+   } catch (error) {
+      internalServerError(error, res);
    }
-
-   console.log("Hey");
 };
 
 export { manageUser, manageRole };
