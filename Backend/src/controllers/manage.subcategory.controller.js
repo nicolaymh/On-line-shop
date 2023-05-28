@@ -1,7 +1,7 @@
 import User from "../models/UserModel.js";
 
 const createSubcategory = async (req, res) => {
-   const _id = req.user._id;
+   const { _id } = req.user;
 
    // Verify if user is admin.
    const isAdmin = await User.findById({ _id }).populate("role").select("role");
