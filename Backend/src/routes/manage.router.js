@@ -5,6 +5,7 @@ import { email } from "../middlewares/validate/validationsUser/validations.js";
 import validateErrors from "../middlewares/validate/validateFields.js";
 
 import * as manageUser from "../controllers/manage.user.controller.js";
+import * as manageSubcategory from "../controllers/manage.subcategory.controller.js";
 
 import checkAuth from "../middlewares/auth/checkAuth.js";
 
@@ -20,11 +21,11 @@ router.get("/user/:email", validateEmail, checkAuth, manageUser.manageUser);
 router.put("/user/change-role", checkAuth, manageUser.manageRole);
 
 // Routes to manage subcategory.
-router.post("/subcategory/create-subcategory", checkAuth, validateFieldsSubcategory, (req, res) => {
-   console.log("From create-subcategory");
-   console.log(req.body);
-
-   res.json(req.body);
-});
+router.post(
+   "/subcategory/create-subcategory",
+   checkAuth,
+   validateFieldsSubcategory,
+   manageSubcategory.createSubcategory
+);
 
 export default router;
