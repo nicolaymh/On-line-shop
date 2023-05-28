@@ -4,67 +4,67 @@ import mongoose from "mongoose";
 import Role from "./RoleModel.js";
 
 const userSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      require: true,
-      trim: true,
-    },
+   {
+      name: {
+         type: String,
+         require: true,
+         trim: true,
+      },
 
-    password: {
-      type: String,
-      require: true,
-      trim: true,
-    },
+      password: {
+         type: String,
+         require: true,
+         trim: true,
+      },
 
-    email: {
-      type: String,
-      require: true,
-      unique: true,
-      trim: true,
-    },
+      email: {
+         type: String,
+         require: true,
+         unique: true,
+         trim: true,
+      },
 
-    address: {
-      type: String,
-      require: true,
-      trim: true,
-    },
+      address: {
+         type: String,
+         require: true,
+         trim: true,
+      },
 
-    phone: {
-      type: String,
-      require: true,
-      trim: true,
-    },
+      phone: {
+         type: String,
+         require: true,
+         trim: true,
+      },
 
-    token: {
-      type: String,
-      trim: true,
-    },
+      token: {
+         type: String,
+         trim: true,
+      },
 
-    confirmed: {
-      type: Boolean,
-      default: false,
-    },
+      confirmed: {
+         type: Boolean,
+         default: false,
+      },
 
-    role: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Role",
-    },
-  },
-  { timestamps: true }
+      role: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Role",
+      },
+   },
+   { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {
-  if (this.role) return;
+   if (this.role) return;
 
-  const { _id } = await Role.findOne({ name: "user" });
-  this.role = _id;
+   const { _id } = await Role.findOne({ name: "user" });
+   this.role = _id;
 
-  next();
+   next();
 });
 
 userSchema.methods.comparePassword = async function (userPassword) {
-  return bcrypt.compareSync(userPassword, this.password);
+   return bcrypt.compareSync(userPassword, this.password);
 };
 
 const User = mongoose.model("User", userSchema);
