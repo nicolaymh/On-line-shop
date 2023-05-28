@@ -4,6 +4,7 @@ import Subcategory from "../models/SubcategoryModel.js";
 
 import internalServerError from "../helpers/internalServerError.js";
 
+// Create subcategory.
 const createSubcategory = async (req, res) => {
    try {
       const { _id } = req.user;
