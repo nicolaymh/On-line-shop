@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 
 // Routes
 import userRoutes from "./routes/users.routes.js";
-import subCategoriesRoutes from "./routes/subcategories.routes.js";
 import manageRoutes from "./routes/manage.router.js";
 import categoriesRoutes from "./routes/categories.router.js";
 
@@ -50,8 +49,6 @@ app.use(cors(corsOptions));
 app.use("/api/users", userRoutes);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/manage", manageRoutes);
-
-app.use("/api/subcategories", subCategoriesRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Running on port ${process.env.PORT} 🚀`));
