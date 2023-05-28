@@ -8,6 +8,7 @@ const name = check("name", "Subcategory name is required")
 
 const description = check("description", "Type a description between 5 to 100 characters")
    .trim()
+   .notEmpty()
    .toLowerCase()
    .isLength({ min: 5, max: 100 });
 
