@@ -27,5 +27,11 @@ router.post(
    validateFieldsSubcategory,
    manageSubcategory.createSubcategory
 );
+router.put(
+   "/subcategory/edit-subcategory",
+   checkAuth,
+   validateFieldsSubcategory,
+   manageSubcategory.editSubcategory
+);
 
 export default router;

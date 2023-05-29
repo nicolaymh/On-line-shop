@@ -4,7 +4,7 @@ import Subcategory from "../models/SubcategoryModel.js";
 
 import internalServerError from "../helpers/internalServerError.js";
 
-// Create subcategory.
+//* Create subcategory.
 const createSubcategory = async (req, res) => {
    try {
       const { _id } = req.user;
@@ -41,4 +41,22 @@ const createSubcategory = async (req, res) => {
    }
 };
 
-export { createSubcategory };
+//* Edit Subcategory.
+const editSubcategory = async (req, res) => {
+   try {
+      const { _id } = req.user;
+      const { name, description, categoryId } = req.body;
+
+      // Check if user is admin.
+      const isAdmin = await User.findById({ _id }).populate("role").select("role");
+      if (isAdmin.role.name !== "admin") {
+         return res.status(400).json({ ok: false, msg: "Access denied" });
+      }
+
+      console.log("Hey!!");
+   } catch (error) {
+      internalServerError(error, res);
+   }
+};
+
+export { createSubcategory, editSubcategory };
