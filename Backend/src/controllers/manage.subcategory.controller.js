@@ -75,7 +75,7 @@ const editSubcategory = async (req, res) => {
 
       res.status(201).json({
          ok: true,
-         msg: "Info changed successfully",
+         msg: "Subcategory info changed successfully",
          infoChanged: { _id: subcategoryId, name, description, category: categoryId },
       });
    } catch (error) {
