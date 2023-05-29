@@ -46,6 +46,7 @@ const editSubcategory = async (req, res) => {
    try {
       const { _id } = req.user;
       const { name, description, categoryId } = req.body;
+      const { subcategoryId } = req.params;
 
       // Check if user is admin.
       const isAdmin = await User.findById({ _id }).populate("role").select("role");
@@ -53,7 +54,19 @@ const editSubcategory = async (req, res) => {
          return res.status(400).json({ ok: false, msg: "Access denied" });
       }
 
-      console.log(req.params);
+      // Check if a category exists by its id ( categoryId ).
+      const categoryExists = await Category.findById({ _id: categoryId });
+      if (!categoryExists) {
+         return res.status(400).json({ ok: false, msg: "Category does not exist" });
+      }
+
+      // Check if a subcategory exists by its id ( subcategoryId ).
+      const subcategoryExists = await Subcategory.findById({ _id: subcategoryId });
+      if (!subcategoryExists) {
+         return res.status(400).json({ ok: false, msg: "Subcategory does not exist" });
+      }
+
+      console.log("Hey!!");
    } catch (error) {
       internalServerError(error, res);
    }

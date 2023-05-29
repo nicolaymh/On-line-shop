@@ -28,7 +28,7 @@ router.post(
    manageSubcategory.createSubcategory
 );
 router.put(
-   "/subcategory/edit-subcategory/:categoryId",
+   "/subcategory/edit-subcategory/:subcategoryId",
    checkAuth,
    validateFieldsSubcategory,
    manageSubcategory.editSubcategory
