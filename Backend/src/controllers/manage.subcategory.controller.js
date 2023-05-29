@@ -53,7 +53,7 @@ const editSubcategory = async (req, res) => {
          return res.status(400).json({ ok: false, msg: "Access denied" });
       }
 
-      console.log("Hey!!");
+      console.log(req.params);
    } catch (error) {
       internalServerError(error, res);
    }
