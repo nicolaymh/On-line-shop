@@ -61,12 +61,23 @@ const editSubcategory = async (req, res) => {
       }
 
       // Check if a subcategory exists by its id ( subcategoryId ).
-      const subcategoryExists = await Subcategory.findById({ _id: subcategoryId });
+      let subcategoryExists = await Subcategory.findById({ _id: subcategoryId });
       if (!subcategoryExists) {
          return res.status(400).json({ ok: false, msg: "Subcategory does not exist" });
       }
 
-      console.log("Hey!!");
+      // Modify info subcategory.
+      subcategoryExists.name = name;
+      subcategoryExists.description = description;
+      subcategoryExists.category = categoryId;
+
+      subcategoryExists = await subcategoryExists.save();
+
+      res.status(201).json({
+         ok: true,
+         msg: "Info changed successfully",
+         infoChanged: { _id: subcategoryId, name, description, category: categoryId },
+      });
    } catch (error) {
       internalServerError(error, res);
    }
