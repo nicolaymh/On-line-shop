@@ -18,7 +18,8 @@ const getCategoriesInfo = async ({
 
    try {
       const { data } = await axiosInstance("/categories/get-categories", config);
-      setCategoryinfoAll(data.categories);
+
+      setCategoryinfoAll(data.categoriesSubcategories);
    } catch (error) {
       console.log(error);
       setShowModal({ ok: true, msg: error.response.data.msg || "server error" });
