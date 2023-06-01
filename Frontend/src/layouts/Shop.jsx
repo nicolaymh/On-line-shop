@@ -13,9 +13,9 @@ const Shop = () => {
             <div>
                <Header />
 
-               <main className="mainContainer">
+               <div className="mainContainer">
                   <Outlet />
-               </main>
+               </div>
             </div>
          ) : (
             <Navigate to="/" />
