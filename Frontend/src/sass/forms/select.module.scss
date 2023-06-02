@@ -2,6 +2,21 @@
 
 .select {
    text-align: center;
-   outline: 1px solid v.$backgroundBody;
+   outline: 1px solid v.$hoverHeader;
+   border-radius: 1rem 1rem 0 0;
    color: v.$primary;
+   font-size: 1.2rem;
+   padding: 0.3rem;
+   transition: all 0.3s ease;
+
+   &:hover {
+      background-color: v.$primary;
+      color: v.$backgroundPrimary;
+   }
+
+   .options {
+      background-color: v.$backgroundPrimary;
+      color: v.$primary;
+      border-radius: 2rem;
+   }
 }

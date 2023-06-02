@@ -50,7 +50,7 @@ const ManageSubcategories = () => {
                <SelectOptions
                   handleSelected={handleSelectedSubcategory}
                   arrayOptions={subcategories}
-                  infoTitle="--Select-Subcategory--"
+                  infoTitle="Select Subcategory"
                />
             )}
          </div>

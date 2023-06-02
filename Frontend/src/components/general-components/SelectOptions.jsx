@@ -3,9 +3,11 @@ import style from "../../sass/forms/select.module.scss";
 const SelectOptions = ({ handleSelected, arrayOptions, infoTitle }) => {
    return (
       <select className={style.select} onChange={handleSelected}>
-         <option value="-1">{infoTitle}</option>
+         <option className={style.options} value="-1">
+            {infoTitle.toUpperCase()}
+         </option>
          {arrayOptions.map(({ _id, name }) => (
-            <option key={_id} value={_id}>
+            <option key={_id} value={_id} className={style.options}>
                {name.toUpperCase()}
             </option>
          ))}
