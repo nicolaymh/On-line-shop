@@ -1,8 +1,12 @@
 import { useState } from "react";
 
+// Context
 import useCategory from "../../../Hooks/useCategory";
 
+// CSS Styles ( SASS Modules )
 import style from "../../../sass/settings/manageSubcategories.module.scss";
+
+// Components
 import SelectOptions from "../../general-components/SelectOptions";
 
 const ManageSubcategories = () => {
