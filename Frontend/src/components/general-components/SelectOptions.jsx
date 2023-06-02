@@ -1,6 +1,8 @@
+import style from "../../sass/forms/select.module.scss";
+
 const SelectOptions = ({ handleSelected, arrayOptions, infoTitle }) => {
    return (
-      <select onChange={handleSelected}>
+      <select className={style.select} onChange={handleSelected}>
          <option value="-1">{infoTitle}</option>
          {arrayOptions.map(({ _id, name }) => (
             <option key={_id} value={_id}>

@@ -41,7 +41,7 @@ const ManageSubcategories = () => {
             <SelectOptions
                handleSelected={handleSelectedCategory}
                arrayOptions={categoryinfoAll}
-               infoTitle="--Add-Subcategory--"
+               infoTitle="Add Subcategory"
             />
 
             {!subcategories[0] ? (
