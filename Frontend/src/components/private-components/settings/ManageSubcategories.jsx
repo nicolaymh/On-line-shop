@@ -13,7 +13,9 @@ const ManageSubcategories = () => {
 
    console.log(categoryinfoAll);
 
-   const handleSelected = ({ target }) => {
+   console.log(subcategories[0]);
+
+   const handleSelectedCategory = ({ target }) => {
       if (target.value === "-1") {
          setCategory({});
          setSubcategories([]);
@@ -27,16 +29,30 @@ const ManageSubcategories = () => {
       setSubcategories([...subcategories]);
    };
 
+   const handleSelectedSubcategory = ({ target }) => {
+      console.log(target.value);
+   };
+
    return (
       <section className={style.manageSubcategoriesContainer}>
          <h4>Manage Subcategories</h4>
 
          <div>
             <SelectOptions
-               handleSelected={handleSelected}
+               handleSelected={handleSelectedCategory}
                arrayOptions={categoryinfoAll}
                infoTitle="--Select-Category--"
             />
+
+            {!subcategories[0] ? (
+               "There is no subcategories"
+            ) : (
+               <SelectOptions
+                  handleSelected={handleSelectedSubcategory}
+                  arrayOptions={subcategories}
+                  infoTitle="--Select-Subcategory--"
+               />
+            )}
          </div>
       </section>
    );
