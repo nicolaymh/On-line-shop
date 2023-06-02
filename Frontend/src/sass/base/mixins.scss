@@ -27,3 +27,9 @@
       @content;
    }
 }
+
+@mixin manageSubcategories {
+   @media (min-width: 1000px) {
+      @content;
+   }
+}
