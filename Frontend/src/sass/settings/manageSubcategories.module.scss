@@ -2,5 +2,20 @@
 
 .manageSubcategoriesContainer {
    background-color: v.$backgroundPrimary;
-   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   h4 {
+      font-family: v.$fontSecondary;
+   }
+
+   .containerSelects {
+      display: flex;
+      flex-direction: column;
+
+      select {
+         margin-bottom: 1rem;
+      }
+   }
 }

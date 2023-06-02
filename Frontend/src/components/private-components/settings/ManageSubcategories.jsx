@@ -33,7 +33,7 @@ const ManageSubcategories = () => {
       <section className={style.manageSubcategoriesContainer}>
          <h4>Manage Subcategories</h4>
 
-         <div>
+         <div className={style.containerSelects}>
             <SelectOptions
                handleSelected={handleSelectedCategory}
                arrayOptions={categoryinfoAll}
