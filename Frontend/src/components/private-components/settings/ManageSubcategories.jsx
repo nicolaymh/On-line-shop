@@ -8,6 +8,7 @@ import style from "../../../sass/settings/manageSubcategories.module.scss";
 
 // Components
 import SelectOptions from "../../general-components/SelectOptions";
+import AddSubcategory from "./AddSubcategory";
 
 const ManageSubcategories = () => {
    const [category, setCategory] = useState({});
@@ -58,6 +59,8 @@ const ManageSubcategories = () => {
                />
             )}
          </div>
+
+         {!category._id && <AddSubcategory />}
       </section>
    );
 };
