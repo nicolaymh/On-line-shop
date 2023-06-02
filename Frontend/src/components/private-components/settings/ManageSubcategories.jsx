@@ -11,10 +11,6 @@ const ManageSubcategories = () => {
 
    const { categoryinfoAll } = useCategory();
 
-   console.log(categoryinfoAll);
-
-   console.log(subcategories[0]);
-
    const handleSelectedCategory = ({ target }) => {
       if (target.value === "-1") {
          setCategory({});
