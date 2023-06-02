@@ -45,7 +45,11 @@ const ManageSubcategories = () => {
             />
 
             {!subcategories[0] ? (
-               "There is no subcategories"
+               <SelectOptions
+                  handleSelected={handleSelectedSubcategory}
+                  arrayOptions={subcategories}
+                  infoTitle="No Subcategory"
+               />
             ) : (
                <SelectOptions
                   handleSelected={handleSelectedSubcategory}
