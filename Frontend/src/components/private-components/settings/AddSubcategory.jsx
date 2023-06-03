@@ -17,11 +17,17 @@ const AddSubcategory = () => {
       console.log(categoryinfoAll);
    };
 
+   const handleSubmit = (e) => {
+      e.preventDefault();
+
+      console.log("Hey");
+   };
+
    return (
-      <div className={style.container}>
+      <div className={`${style.container}`}>
          <h2>Add Subcategory</h2>
 
-         <form>
+         <form onSubmit={handleSubmit}>
             <div className={inputStyle.field}>
                <label htmlFor="name">Name: </label>
                <input
@@ -44,12 +50,16 @@ const AddSubcategory = () => {
                />
             </div>
 
-            <div >
+            <div>
                <SelectOptions
                   handleSelected={handleSelectCategory}
                   arrayOptions={categoryinfoAll}
                   infoTitle="Select Category"
                />
+            </div>
+
+            <div className={inputStyle.field}>
+               <input type="submit" value="CREATE SUBCATEGORY" />
             </div>
          </form>
       </div>

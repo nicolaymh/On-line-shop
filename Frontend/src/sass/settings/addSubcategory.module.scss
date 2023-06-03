@@ -2,24 +2,44 @@
 @use "../base/mixins.scss" as m;
 
 .container {
-   outline: 1px solid blue;
+   width: 95%;
+   outline: 1px solid v.$primary;
+   border-radius: 1rem;
    margin: 3rem auto;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
 
+   @include m.manageSubcategoriesMq {
+      width: 45%;
+      border-radius: 0.5rem 6rem 0.5rem 6rem;
+   }
+
    h2 {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       font-family: v.$fontPrimary;
+      font-size: 2rem;
+      color: v.$primary;
+
+      @include m.manageSubcategoriesMq {
+         font-size: 3rem;
+         margin-bottom: 6rem;
+      }
    }
 
    form {
-      width: 90%;
-
       & > div {
-         margin-bottom: 1rem;
+         margin-bottom: 2rem;
          text-align: center;
+      }
+
+      &:last-child {
+         margin-bottom: 1rem;
+      }
+
+      input[type="submit"] {
+         margin-top: 3rem;
       }
    }
 }
