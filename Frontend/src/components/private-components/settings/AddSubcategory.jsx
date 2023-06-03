@@ -13,7 +13,6 @@ const AddSubcategory = () => {
 
    const handleSelectCategory = (e) => {
       console.log(e);
-
       console.log(categoryinfoAll);
    };
 
