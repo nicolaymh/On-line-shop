@@ -23,7 +23,7 @@ const AddSubcategory = () => {
    };
 
    return (
-      <div className={`${style.container}`}>
+      <div className={`${style.container} animate__animated animate__bounceIn`}>
          <h2>Add Subcategory</h2>
 
          <form onSubmit={handleSubmit}>
