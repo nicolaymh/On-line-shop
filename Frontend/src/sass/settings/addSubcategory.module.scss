@@ -1,0 +1,16 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
+.container {
+   outline: 1px solid blue;
+   margin-top: 3rem;
+   margin-bottom: 3rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   h2 {
+      margin-bottom: 2rem;
+   }
+}
