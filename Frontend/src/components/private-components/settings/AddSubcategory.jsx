@@ -8,18 +8,21 @@ import useCategory from "../../../Hooks/useCategory";
 // Generic Components.
 import GenericComponents from "../../generic-components/index";
 
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
+
 const AddSubcategory = () => {
    const { categoryinfoAll } = useCategory();
 
-   const handleSelectCategory = (e) => {
-      console.log(e);
+   const handleSelectCategory = ({ target }) => {
+      console.log(target.value);
       console.log(categoryinfoAll);
    };
 
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      console.log("Hey");
+      console.log(axiosInstance);
    };
 
    return (
@@ -44,7 +47,7 @@ const AddSubcategory = () => {
                   id="description"
                   name="description"
                   type="text"
-                  placeholder="Subcategory description"
+                  placeholder="Short description"
                   autoComplete="off"
                />
             </div>
