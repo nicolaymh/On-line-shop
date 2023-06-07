@@ -29,6 +29,10 @@
    }
 
    form {
+      @include m.manageSubcategoriesMq {
+         width: 90%;
+      }
+
       & > div {
          margin-bottom: 2rem;
          text-align: center;
