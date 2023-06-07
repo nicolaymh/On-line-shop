@@ -2,6 +2,8 @@ import User from "../models/UserModel.js";
 import Category from "../models/CatagoryModel.js";
 import Subcategory from "../models/SubcategoryModel.js";
 
+import mapCategoriesSubcategories from "../helpers/mapCategories.js";
+
 import internalServerError from "../helpers/internalServerError.js";
 
 //* Create subcategory.
@@ -22,8 +24,6 @@ const createSubcategory = async (req, res) => {
          .where("category")
          .equals(categoryId);
 
-      console.log(nameExists);
-
       if (nameExists[0]) {
          return res
             .status(400)
@@ -38,9 +38,14 @@ const createSubcategory = async (req, res) => {
 
       // Create a new subcategory.
       await Subcategory.create({ name, description, category: categoryId });
+
+      // Get the new category data map.
+      const categoriesSubcategories = await mapCategoriesSubcategories();
+
       res.status(201).json({
          ok: true,
          msg: `${name} subcategory created successfully`,
+         categoriesSubcategories,
       });
    } catch (error) {
       internalServerError(error, res);
