@@ -37,7 +37,7 @@ const ManageUsers = () => {
          return setAlert({ msg: "Enter a valid email", error: true });
       }
 
-      // Api Call
+      // Api Call.
       try {
          const { data } = await axiosInstance.get(`manage/user/${email || "@"}`, {
             headers: {

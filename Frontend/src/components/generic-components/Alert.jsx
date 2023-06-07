@@ -4,7 +4,7 @@ import alertStyle from "../../sass/forms/alertForm.module.scss";
 const Alert = ({ msg, error }) => {
    return (
       <div
-         className={`${alertStyle.alertContainer} ${
+         className={`animate__animated animate__tada ${alertStyle.alertContainer} ${
             error ? alertStyle.alertColor1 : alertStyle.alertColor2
          }`}
       >

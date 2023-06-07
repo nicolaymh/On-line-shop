@@ -16,9 +16,15 @@ const createSubcategory = async (req, res) => {
          return res.status(400).json({ ok: false, msg: "Access denied" });
       }
 
-      // Check if there is already a subcategory with the same name.
-      const nameExists = await Subcategory.findOne({ name });
-      if (nameExists) {
+      // Check if there is already a subcategory with the same name and same category.
+      const nameExists = await Subcategory.where("name")
+         .equals(name)
+         .where("category")
+         .equals(categoryId);
+
+      console.log(nameExists);
+
+      if (nameExists[0]) {
          return res
             .status(400)
             .json({ ok: false, msg: "There is already a subcategory with this name" });

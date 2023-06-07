@@ -10,6 +10,6 @@ const description = check("description", "Type a description between 5 to 100 ch
    .trim()
    .notEmpty()
    .toLowerCase()
-   .isLength({ min: 5, max: 100 });
+   .isLength({ min: 5, max: 50 });
 
 export { name, description };

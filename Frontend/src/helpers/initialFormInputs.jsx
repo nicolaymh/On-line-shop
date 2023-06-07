@@ -34,6 +34,12 @@ const initialFormInputs = () => {
       email: "",
    };
 
+   const subcategory = {
+      name: "",
+      description: "",
+      categoryId: "",
+   };
+
    return {
       registerForm,
       loginForm,
@@ -41,6 +47,7 @@ const initialFormInputs = () => {
       newPasswordForm,
       editUser,
       modifyUserPermission,
+      subcategory,
    };
 };
 
