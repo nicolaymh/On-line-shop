@@ -11,11 +11,7 @@ import useCategory from "./Hooks/useCategory";
 import AuthLayout from "./layouts/AuthLayout";
 
 // Public Routes
-import LoginForm from "./components/public-components/LoginForm";
-import RegisterForm from "./components/public-components/RegisterForm";
-import ForgotPassword from "./components/public-components/ForgotPassword";
-import NewPassword from "./components/public-components/NewPassword";
-import ConfirmAccount from "./components/public-components/ConfirmAccount";
+import publicRoutes from "./components/public-components/";
 
 // Private Route => Shop
 import Shop from "./layouts/Shop";
@@ -46,11 +42,11 @@ const RouterProvider = () => {
          ) : (
             <Routes>
                <Route path="/" element={<AuthLayout />}>
-                  <Route index element={<LoginForm />} />
-                  <Route path="register" element={<RegisterForm />} />
-                  <Route path="confirm/:id" element={<ConfirmAccount />} />
-                  <Route path="forgot-password" element={<ForgotPassword />} />
-                  <Route path="forgot-password/:token" element={<NewPassword />} />
+                  <Route index element={<publicRoutes.LoginForm />} />
+                  <Route path="register" element={<publicRoutes.RegisterForm />} />
+                  <Route path="confirm/:id" element={<publicRoutes.ConfirmAccount />} />
+                  <Route path="forgot-password" element={<publicRoutes.ForgotPassword />} />
+                  <Route path="forgot-password/:token" element={<publicRoutes.NewPassword />} />
                   <Route path="*" element={<Navigate to="/" />} replace />
                </Route>
 
