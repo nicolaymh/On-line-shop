@@ -4,7 +4,7 @@ import useAuth from "../Hooks/useAuth";
 
 import Header from "../components/private-components/header/Header";
 
-const Shop = () => {
+const ShopLayout = () => {
    const { auth } = useAuth();
 
    return (
@@ -24,4 +24,4 @@ const Shop = () => {
    );
 };
 
-export default Shop;
+export default ShopLayout;

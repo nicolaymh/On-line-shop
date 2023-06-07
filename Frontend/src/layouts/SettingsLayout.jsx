@@ -6,7 +6,7 @@ import style from "../sass/settings/settings.module.scss";
 // Components
 import SettingsNav from "../components/private-components/settings/SettingsNav";
 
-const Settings = () => {
+const SettingsLayout = () => {
    return (
       <div className={style.settingsContainer}>
          <SettingsNav />
@@ -18,4 +18,4 @@ const Settings = () => {
    );
 };
 
-export default Settings;
+export default SettingsLayout;

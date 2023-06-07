@@ -1,25 +1,20 @@
-// React-router-Dom
+// React-router-Dom.
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { Modal } from "./components/general-components/Modal";
 
-// Context
+// Context.
 import useAuth from "./Hooks/useAuth";
 import useCategory from "./Hooks/useCategory";
 
-// Public Route => Auth
-import AuthLayout from "./layouts/AuthLayout";
+// Layouts.
+import LayoutRoutes from "./layouts/";
 
-// Public Routes
+// Public Routes.
 import publicRoutes from "./components/public-components/";
 
-// Private Route => Shop
-import Shop from "./layouts/Shop";
-
-// Private Routes
+// Private Routes.
 import privateRoutes from "./components/private-components/";
-
-import Settings from "./layouts/Settings";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -35,7 +30,7 @@ const RouterProvider = () => {
             />
          ) : (
             <Routes>
-               <Route path="/" element={<AuthLayout />}>
+               <Route path="/" element={<LayoutRoutes.AuthLayout />}>
                   <Route index element={<publicRoutes.LoginForm />} />
                   <Route path="register" element={<publicRoutes.RegisterForm />} />
                   <Route path="confirm/:id" element={<publicRoutes.ConfirmAccount />} />
@@ -44,10 +39,10 @@ const RouterProvider = () => {
                   <Route path="*" element={<Navigate to="/" />} replace />
                </Route>
 
-               <Route path="shop" element={<Shop />}>
+               <Route path="shop" element={<LayoutRoutes.ShopLayout />}>
                   <Route index element={<privateRoutes.Home />} />
                   <Route path="categories" element={<privateRoutes.Categories />} />
-                  <Route path="settings" element={<Settings />}>
+                  <Route path="settings" element={<LayoutRoutes.SettingsLayout />}>
                      <Route index element={<div>My shopping</div>} />
 
                      {auth.role !== "admin" && (
