@@ -20,7 +20,7 @@ const mapCategoriesSubcategories = async () => {
 
       return mapCategoriesSubcategories;
    } catch (error) {
-      internalServerError;
+      internalServerError(error, res);
    }
 };
 
