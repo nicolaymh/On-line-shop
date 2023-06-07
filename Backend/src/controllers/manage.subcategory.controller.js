@@ -39,7 +39,7 @@ const createSubcategory = async (req, res) => {
       // Create a new subcategory.
       await Subcategory.create({ name, description, category: categoryId });
 
-      // Get the new category data map.
+      // Getting the new categories and subcategories data map.
       const categoriesSubcategories = await mapCategoriesSubcategories();
 
       res.status(201).json({

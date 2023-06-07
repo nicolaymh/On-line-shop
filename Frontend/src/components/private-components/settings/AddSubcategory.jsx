@@ -21,7 +21,7 @@ import initialFormInputs from "../../../helpers/initialFormInputs";
 import { useForm } from "../../../Hooks/useForm";
 
 const AddSubcategory = () => {
-   const { categoryinfoAll } = useCategory();
+   const { categoryinfoAll, setCategoryinfoAll } = useCategory();
 
    const [alert, setAlert] = useState({});
 
@@ -35,6 +35,8 @@ const AddSubcategory = () => {
    const handleSubmit = async (e) => {
       e.preventDefault();
 
+      setAlert({});
+
       if ([name, description].includes("")) {
          return setAlert({ msg: "All fields are required", error: true });
       }
@@ -45,7 +47,7 @@ const AddSubcategory = () => {
 
       try {
          // Api Call.
-         const data = await axiosInstance.post(
+         const { data } = await axiosInstance.post(
             "manage/subcategory/create-subcategory",
             {
                categoryId,
@@ -60,9 +62,14 @@ const AddSubcategory = () => {
             }
          );
 
-         console.log(data);
+         setAlert({ msg: data.msg, error: false });
+         setCategoryinfoAll(data.categoriesSubcategories);
       } catch (error) {
          console.log(error);
+
+         const data = error.response.data.msg || error.response.data.errors[0].msg;
+
+         setAlert({ msg: data, error: true });
       }
    };
 
