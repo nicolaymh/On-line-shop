@@ -17,15 +17,9 @@ import publicRoutes from "./components/public-components/";
 import Shop from "./layouts/Shop";
 
 // Private Routes
-import Home from "./components/private-components/home/Home";
-import Products from "./components/private-components/categories/Categories";
-import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
-import Settings from "./layouts/Settings";
+import privateRoutes from "./components/private-components/";
 
-// Settings Routes ==> Private Routes
-import EditUserInfo from "./components/private-components/settings/EditUserInfo";
-import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
-import ManageUsers from "./components/private-components/settings/ManageUsers";
+import Settings from "./layouts/Settings";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -51,13 +45,13 @@ const RouterProvider = () => {
                </Route>
 
                <Route path="shop" element={<Shop />}>
-                  <Route index element={<Home />} />
-                  <Route path="categories" element={<Products />} />
+                  <Route index element={<privateRoutes.Home />} />
+                  <Route path="categories" element={<privateRoutes.Categories />} />
                   <Route path="settings" element={<Settings />}>
                      <Route index element={<div>My shopping</div>} />
 
                      {auth.role !== "admin" && (
-                        <Route path="edit-info" element={<EditUserInfo />} />
+                        <Route path="edit-info" element={<privateRoutes.EditUserInfo />} />
                      )}
 
                      {auth.role !== "user" && (
@@ -66,12 +60,15 @@ const RouterProvider = () => {
 
                      {auth.role === "admin" && (
                         <>
-                           <Route path="manage-users" element={<ManageUsers />} />
-                           <Route path="manage-subcategories" element={<ManageSubcategories />} />
+                           <Route path="manage-users" element={<privateRoutes.ManageUsers />} />
+                           <Route
+                              path="manage-subcategories"
+                              element={<privateRoutes.ManageSubcategories />}
+                           />
                         </>
                      )}
                   </Route>
-                  <Route path="shoping-cart" element={<ShopingCart />} />
+                  <Route path="shoping-cart" element={<privateRoutes.ShopingCart />} />
                </Route>
             </Routes>
          )}
