@@ -1,4 +1,4 @@
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import style from "../../sass/forms/select.module.scss";
 
 const SelectOptions = ({ handleSelected, arrayOptions, infoTitle }) => {

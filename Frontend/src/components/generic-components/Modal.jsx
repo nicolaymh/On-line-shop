@@ -1,6 +1,7 @@
+// CSS Styles ( SASS Modules ).
 import style from "../../sass/modal/modal.module.scss";
 
-export const Modal = ({ showModal, setShowModal, setCategoryinfoAll }) => {
+const Modal = ({ showModal, setShowModal, setCategoryinfoAll }) => {
    const { msg } = showModal;
 
    const handleModal = () => {
@@ -16,3 +17,5 @@ export const Modal = ({ showModal, setShowModal, setCategoryinfoAll }) => {
       </div>
    );
 };
+
+export default Modal;

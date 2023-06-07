@@ -1,28 +1,35 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useForm } from "../../Hooks/useForm";
-
-import initialFormInputs from "../../helpers/initialFormInputs";
-
-import axiosInstance from "../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../general-components/Alert";
-import Loader from "../general-components/Loader";
-
-// Assets
+// Assets.
 import logo from "../../assets/logo-final.png";
 import loginImage from "../../assets/images/login-image.png";
 
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
 
-// Context
+// React-Router-Dom.
+import { Link, useNavigate } from "react-router-dom";
+
+// React-Hooks.
+import { useState } from "react";
+
+// Custom-Hook to handle forms.
+import { useForm } from "../../Hooks/useForm";
+
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../helpers/initialFormInputs";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Generic Components.
+import GenericComponents from "../generic-components/index";
+
+// Context.
 import useAuth from "../../Hooks/useAuth";
 
 const LoginForm = () => {
    const { loginForm: initialForm } = initialFormInputs();
+
    const { email, password, onInputChange } = useForm(initialForm);
 
    const navigate = useNavigate();
@@ -62,7 +69,7 @@ const LoginForm = () => {
    return (
       <>
          {loading ? (
-            <Loader />
+            <GenericComponents.Loader />
          ) : (
             <div className={styles.container}>
                <div className={styles.loginBox}>
@@ -77,7 +84,7 @@ const LoginForm = () => {
                   </div>
 
                   <form onSubmit={handleSubmit} className={styles.form}>
-                     {alert.msg && <Alert {...alert} />}
+                     {alert.msg && <GenericComponents.Alert {...alert} />}
 
                      <div className={styles.field}>
                         <label htmlFor="email">E-mail:</label>

@@ -1,18 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-
-import axiosInstance from "../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../general-components/Alert";
-
-// Assets
+// Assets.
 import logo from "../../assets/logo-final.png";
 import confirmAccountImage from "../../assets/images/confirmAccount-image.png";
 
-// CSS style ( SASS Modules )
+// CSS style ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import style from "../../sass/confirmAccount/confirmAccount.module.scss";
+
+// React-Router-Dom.
+import { Link, useParams } from "react-router-dom";
+
+// React-Hooks.
+import { useEffect, useRef, useState } from "react";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Generic Components.
+import GenericComponents from "../generic-components/index";
 
 const ConfirmAccount = () => {
    const [alert, setAlert] = useState({ msg: "", error: false });
@@ -57,7 +61,7 @@ const ConfirmAccount = () => {
                GAMER <span>STORE</span>
             </h1>
 
-            {alert.msg && <Alert {...alert} />}
+            {alert.msg && <GenericComponents.Alert {...alert} />}
 
             <nav>
                <div className={style.containerNav}>

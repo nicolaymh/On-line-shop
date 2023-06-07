@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-
-// Helpers
-import axiosInstance from "../../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../../general-components/Alert";
-
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import inputStyles from "../../../sass/forms/formInputs.module.scss";
 import formStyle from "../../../sass/settings/userPermissionInfo.module.scss";
+
+// React-Hooks.
+import { useState, useEffect } from "react";
+
+// Axios Instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
+
+// General Components.
+import GenericComponents from "../../generic-components/";
 
 const UserPermissionInfo = ({ userData, roleOptions, setUserInfo }) => {
    const { _id, name, email, address, phone, role } = userData;
@@ -137,7 +138,7 @@ const UserPermissionInfo = ({ userData, roleOptions, setUserInfo }) => {
          </form>
 
          {/* Alerts */}
-         {alert.msg && <Alert {...alert} />}
+         {alert.msg && <GenericComponents.Alert {...alert} />}
       </>
    );
 };

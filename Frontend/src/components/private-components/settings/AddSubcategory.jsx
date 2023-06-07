@@ -1,12 +1,12 @@
-// Context
-import useCategory from "../../../Hooks/useCategory";
-
 // CSS Styles ( SASS Modules )
 import inputStyle from "../../../sass/forms/formInputs.module.scss";
 import style from "../../../sass/settings/addSubcategory.module.scss";
 
-// Components
-import SelectOptions from "../../general-components/SelectOptions";
+// Context
+import useCategory from "../../../Hooks/useCategory";
+
+// Generic Components.
+import GenericComponents from "../../generic-components/index";
 
 const AddSubcategory = () => {
    const { categoryinfoAll } = useCategory();
@@ -50,7 +50,7 @@ const AddSubcategory = () => {
             </div>
 
             <div>
-               <SelectOptions
+               <GenericComponents.SelectOptions
                   handleSelected={handleSelectCategory}
                   arrayOptions={categoryinfoAll}
                   infoTitle="Select Category"

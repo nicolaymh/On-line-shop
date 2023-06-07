@@ -1,19 +1,24 @@
-import { useState } from "react";
-
-// Custom hook for forms.
-import { useForm } from "../../../Hooks/useForm";
-
-// Helpers
-import initialFormInputs from "../../../helpers/initialFormInputs";
-import axiosInstance from "../../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../../general-components/Alert";
-
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import style from "../../../sass/forms/userPermissions.module.scss";
 import formStyle from "../../../sass/forms/formInputs.module.scss";
-import UserPermissionInfo from "./UserPermissionInfo";
+
+// React-Hooks.
+import { useState } from "react";
+
+// Custom-Hook to handle forms.
+import { useForm } from "../../../Hooks/useForm";
+
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../../helpers/initialFormInputs";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
+
+// Generic Components.
+import GenericComponents from "../../generic-components/index";
+
+// Components.
+import privateRoutes from "../index";
 
 const ManageUsers = () => {
    const [userInfo, setUserInfo] = useState({});
@@ -54,7 +59,7 @@ const ManageUsers = () => {
    return (
       <section className={style.sectionContainer}>
          {userInfo.userData ? (
-            <UserPermissionInfo {...userInfo} setUserInfo={setUserInfo} />
+            <privateRoutes.UserPermissionInfo {...userInfo} setUserInfo={setUserInfo} />
          ) : (
             <>
                <h3>Modify user Permissions</h3>
@@ -78,7 +83,7 @@ const ManageUsers = () => {
                   </div>
                </form>
 
-               {alert.msg && <Alert {...alert} />}
+               {alert.msg && <GenericComponents.Alert {...alert} />}
             </>
          )}
       </section>

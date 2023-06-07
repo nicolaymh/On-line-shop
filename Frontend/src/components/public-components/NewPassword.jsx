@@ -1,21 +1,28 @@
-import { useForm } from "../../Hooks/useForm";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-import initialFormInputs from "../../helpers/initialFormInputs";
-
-import axiosInstance from "../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../general-components/Alert";
-
-// Assets
+// Assets.
 import logo from "../../assets/logo-final.png";
 import newPasswordImage from "../../assets/images/new-password.png";
 
-// CSS styles ( SASS Modules )
+// CSS styles ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
+
+// React-Router-Dom.
+import { useParams } from "react-router-dom";
+
+// React-Hooks.
+import { useEffect, useState } from "react";
+
+// Custom-Hook to handle forms.
+import { useForm } from "../../Hooks/useForm";
+
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../helpers/initialFormInputs";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Generic Components.
+import GenericComponents from "../generic-components/index";
 
 const NewPassword = () => {
    const { newPasswordForm: initialForm } = initialFormInputs();
@@ -86,7 +93,7 @@ const NewPassword = () => {
             </div>
 
             <form onSubmit={handleSubmit} className={styles.form}>
-               {alert.msg && <Alert {...alert} />}
+               {alert.msg && <GenericComponents.Alert {...alert} />}
 
                {tokenExists && (
                   <>

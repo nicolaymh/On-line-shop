@@ -1,14 +1,17 @@
-import { useState } from "react";
-
-// Context
-import useCategory from "../../../Hooks/useCategory";
-
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import style from "../../../sass/settings/manageSubcategories.module.scss";
 
+// React-Router-Dom.
+import { useState } from "react";
+
+// Context.
+import useCategory from "../../../Hooks/useCategory";
+
+// Generic Components.
+import GenericComponents from "../../generic-components/index";
+
 // Components
-import SelectOptions from "../../general-components/SelectOptions";
-import AddSubcategory from "./AddSubcategory";
+import privateRoutes from "../index";
 
 const ManageSubcategories = () => {
    const [category, setCategory] = useState({});
@@ -39,20 +42,20 @@ const ManageSubcategories = () => {
          <h4>Manage Subcategories</h4>
 
          <div className={style.containerSelects}>
-            <SelectOptions
+            <GenericComponents.SelectOptions
                handleSelected={handleSelectedCategory}
                arrayOptions={categoryinfoAll}
                infoTitle="Add Subcategory"
             />
 
             {!subcategories[0] ? (
-               <SelectOptions
+               <GenericComponents.SelectOptions
                   handleSelected={handleSelectedSubcategory}
                   arrayOptions={subcategories}
                   infoTitle="No Subcategory"
                />
             ) : (
-               <SelectOptions
+               <GenericComponents.SelectOptions
                   handleSelected={handleSelectedSubcategory}
                   arrayOptions={subcategories}
                   infoTitle="Select Subcategory"
@@ -60,7 +63,7 @@ const ManageSubcategories = () => {
             )}
          </div>
 
-         {!category._id && <AddSubcategory />}
+         {!category._id && <privateRoutes.AddSubcategory />}
       </section>
    );
 };

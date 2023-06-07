@@ -1,15 +1,3 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-
-import { useForm } from "../../Hooks/useForm";
-
-import initialFormInputs from "../../helpers/initialFormInputs";
-
-import axiosInstance from "../../helpers/axiosInstance";
-
-// Components
-import { Alert } from "../general-components/Alert";
-
 // Assets
 import logo from "../../assets/logo-final.png";
 import registerImage from "../../assets/images/register-image.png";
@@ -17,6 +5,24 @@ import registerImage from "../../assets/images/register-image.png";
 // CSS styles ( SASS Modules )
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
 import styles from "../../sass/forms/generalFormStyle.module.scss";
+
+// React-Router-Dom.
+import { Link } from "react-router-dom";
+
+// React-Hooks.
+import { useState } from "react";
+
+// Custom-Hook to handle forms.
+import { useForm } from "../../Hooks/useForm";
+
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../helpers/initialFormInputs";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../helpers/axiosInstance";
+
+// Generic Components.
+import GenericComponents from "../generic-components/index";
 
 const RegisterForm = () => {
    const { registerForm: initialForm } = initialFormInputs();
@@ -92,7 +98,7 @@ const RegisterForm = () => {
                </div>
 
                <form onSubmit={handleSubmit} className={styles.form}>
-                  {alert.msg && <Alert {...alert} />}
+                  {alert.msg && <GenericComponents.Alert {...alert} />}
 
                   <div className={styles.field}>
                      <label htmlFor="name">Name: </label>

@@ -1,20 +1,21 @@
 // React-router-Dom.
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { Modal } from "./components/general-components/Modal";
-
 // Context.
 import useAuth from "./Hooks/useAuth";
 import useCategory from "./Hooks/useCategory";
 
+// Generic Components.
+import GenericComponents from "./components/generic-components/index";
+
 // Layouts.
-import LayoutRoutes from "./layouts/";
+import LayoutRoutes from "./layouts/index";
 
 // Public Routes.
-import publicRoutes from "./components/public-components/";
+import publicRoutes from "./components/public-components/index";
 
 // Private Routes.
-import privateRoutes from "./components/private-components/";
+import privateRoutes from "./components/private-components/index";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -23,7 +24,7 @@ const RouterProvider = () => {
    return (
       <>
          {showModal.ok ? (
-            <Modal
+            <GenericComponents.Modal
                showModal={showModal}
                setShowModal={setShowModal}
                setCategoryinfoAll={setCategoryinfoAll}

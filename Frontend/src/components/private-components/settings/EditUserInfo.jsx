@@ -1,27 +1,32 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// Assets.
+import registerImage from "../../../assets/images/register-image.png";
 
-import initialFormInputs from "../../../helpers/initialFormInputs";
-
-import refreshToken from "../../../helpers/refreshToken";
-
-// Custom Hook
-import { useForm } from "../../../Hooks/useForm";
-
-// Axios Instance
-import axiosInstance from "../../../helpers/axiosInstance";
-
-// CSS formStyle ( SASS Modules )
+// CSS formStyle ( SASS Modules ).
 import formStyle from "../../../sass/forms/generalFormStyle.module.scss";
 import containerStyle from "../../../sass/forms/editUser.module.scss";
 
-// Assets
-import registerImage from "../../../assets/images/register-image.png";
+// React-Router-Dom.
+import { useNavigate } from "react-router-dom";
 
-// Components
-import { Alert } from "../../general-components/Alert";
+// React-Hooks.
+import { useEffect, useRef, useState } from "react";
 
-// Context
+// Custom-Hook to handle forms.
+import { useForm } from "../../../Hooks/useForm";
+
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../../helpers/initialFormInputs";
+
+// Axios Instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
+
+// API Request function to refresh token or log out.
+import refreshToken from "../../../helpers/refreshToken";
+
+// Components.
+import GenericComponents from "../../generic-components/index";
+
+// Context.
 import useAuth from "../../../Hooks/useAuth";
 
 const EditUserInfo = () => {
@@ -111,7 +116,7 @@ const EditUserInfo = () => {
       <>
          <section className={containerStyle.editUserContainer}>
             <form onSubmit={handleSubmit} className={formStyle.form}>
-               {alert.msg && <Alert {...alert} />}
+               {alert.msg && <GenericComponents.Alert {...alert} />}
 
                <div className={formStyle.field}>
                   <label htmlFor="name">Name: </label>

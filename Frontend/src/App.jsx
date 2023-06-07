@@ -1,7 +1,7 @@
 // React-router-Dom
 import { BrowserRouter } from "react-router-dom";
 
-// Routes
+// Routes Component.
 import RouterProvider from "./RouterProvider";
 
 // Context

@@ -1,23 +1,26 @@
+// Assets.
+import logo from "../../../assets/logo-final.png";
+
+// CSS Styles ( SASS Modules ).
+import style from "../../../sass/Header/header.module.scss";
+
+// React-Router-Dom.
 import { NavLink, useNavigate } from "react-router-dom";
+
+// React-Hooks.
 import { useEffect, useState } from "react";
 
-// React-Icons
+// React-Icons Library.
 import { HiSearchCircle } from "react-icons/Hi";
 import { ImExit } from "react-icons/im";
 import { BsCart } from "react-icons/bs";
 
-// Assets
-import logo from "../../../assets/logo-final.png";
-
-// Styles
-import style from "../../../sass/Header/header.module.scss";
-
-// Context
+// Context.
 import useAuth from "../../../Hooks/useAuth";
 import useCategory from "../../../Hooks/useCategory";
 
-// Components
-import BurguerButton from "./BurgerButton";
+// Components.
+import privateRoutes from "../index";
 
 const Header = () => {
    const { auth, setAuth, setLoading } = useAuth();
@@ -101,7 +104,7 @@ const Header = () => {
          </div>
 
          <div className={style.burgerButton}>
-            <BurguerButton clicked={clicked} setClicked={setClicked} />
+            <privateRoutes.BurgerButton clicked={clicked} setClicked={setClicked} />
          </div>
 
          <div className={style.containerUser}>
