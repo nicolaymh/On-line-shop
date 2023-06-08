@@ -3,9 +3,12 @@ import inputStyle from "../../../sass/forms/formInputs.module.scss";
 import style from "../../../sass/settings/addSubcategory.module.scss";
 
 // React-Hooks.
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-// Context
+// React-Icons Library.
+import { RiLoader3Fill } from "react-icons/Ri";
+
+// Context.
 import useCategory from "../../../Hooks/useCategory";
 
 // Generic Components.
@@ -22,6 +25,8 @@ import { useForm } from "../../../Hooks/useForm";
 
 const AddSubcategory = () => {
    const { categoryinfoAll, setCategoryinfoAll } = useCategory();
+
+   const loadingRef = useRef(false);
 
    const [alert, setAlert] = useState({});
 
@@ -47,6 +52,8 @@ const AddSubcategory = () => {
 
       try {
          // Api Call.
+         loadingRef.current = true;
+
          const { data } = await axiosInstance.post(
             "manage/subcategory/create-subcategory",
             {
@@ -64,10 +71,12 @@ const AddSubcategory = () => {
 
          setAlert({ msg: data.msg, error: false });
          setCategoryinfoAll(data.categoriesSubcategories);
+         loadingRef.current = false;
       } catch (error) {
          const data = error.response.data.msg || error.response.data.errors[0].msg;
 
          setAlert({ msg: data, error: true });
+         loadingRef.current = false;
       }
    };
 
@@ -111,9 +120,17 @@ const AddSubcategory = () => {
                   />
                </div>
 
-               <div className={inputStyle.field}>
-                  <input type="submit" value="CREATE SUBCATEGORY" />
-               </div>
+               {loadingRef.current ? (
+                  <div className={style.iconContainer}>
+                     <RiLoader3Fill
+                        className={`${style.icon} animate__animated animate__rotateIn animate__infinite`}
+                     />
+                  </div>
+               ) : (
+                  <div className={inputStyle.field}>
+                     <input type="submit" value="CREATE SUBCATEGORY" />
+                  </div>
+               )}
             </form>
          </div>
 

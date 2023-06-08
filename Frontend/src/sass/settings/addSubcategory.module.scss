@@ -47,3 +47,13 @@
       }
    }
 }
+
+.iconContainer {
+   margin-top: 1.8rem;
+   margin-bottom: 1rem;
+   .icon {
+      color: v.$primary;
+      font-size: 4rem;
+      align-self: flex-end;
+   }
+}
