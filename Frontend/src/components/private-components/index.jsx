@@ -9,6 +9,7 @@ import SettingsNav from "./settings/SettingsNav";
 import BurgerButton from "./header/BurgerButton";
 import AddSubcategory from "./settings/AddSubcategory";
 import UserPermissionInfo from "./settings/UserPermissionInfo";
+import EditSubcategory from "./settings/EditSubcategory";
 
 const privateRoutes = {
    Home,
@@ -22,6 +23,7 @@ const privateRoutes = {
    BurgerButton,
    AddSubcategory,
    UserPermissionInfo,
+   EditSubcategory,
 };
 
 export default privateRoutes;

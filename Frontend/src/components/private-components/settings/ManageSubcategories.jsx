@@ -16,13 +16,16 @@ import privateRoutes from "../index";
 const ManageSubcategories = () => {
    const [category, setCategory] = useState({});
    const [subcategories, setSubcategories] = useState([]);
+   const [editSubcategory, setEditSubcategory] = useState([]);
 
    const { categoryinfoAll } = useCategory();
 
+   // Handle Category Select
    const handleSelectedCategory = ({ target }) => {
       if (target.value === "-1") {
          setCategory({});
          setSubcategories([]);
+         setEditSubcategory([]);
          return;
       }
 
@@ -33,14 +36,15 @@ const ManageSubcategories = () => {
       setSubcategories([...subcategories]);
    };
 
+   // Handle Subcategory Select.
    const handleSelectedSubcategory = ({ target }) => {
-      console.log(target.value);
+      const subcategory = subcategories.filter((sub) => sub._id === target.value);
+      setEditSubcategory(subcategory);
    };
 
    return (
       <section className={style.manageSubcategoriesContainer}>
          <h4>Manage Subcategories</h4>
-
          <div className={style.containerSelects}>
             <GenericComponents.SelectOptions
                handleSelected={handleSelectedCategory}
@@ -62,8 +66,8 @@ const ManageSubcategories = () => {
                />
             )}
          </div>
-
          {!category._id && <privateRoutes.AddSubcategory />}
+         {editSubcategory[0] && <privateRoutes.EditSubcategory {...editSubcategory} />}
       </section>
    );
 };
