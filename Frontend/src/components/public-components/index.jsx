@@ -5,11 +5,11 @@ import NewPassword from "./NewPassword";
 import RegisterForm from "./RegisterForm";
 
 const publicRoutes = {
+   LoginForm,
+   RegisterForm,
    ConfirmAccount,
    ForgotPassword,
-   LoginForm,
    NewPassword,
-   RegisterForm,
 };
 
 export default publicRoutes;

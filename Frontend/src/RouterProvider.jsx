@@ -8,14 +8,14 @@ import useCategory from "./Hooks/useCategory";
 // Generic Components.
 import GenericComponents from "./components/generic-components/index";
 
-// Layouts.
-import LayoutRoutes from "./layouts/index";
-
 // Public Routes.
 import publicRoutes from "./components/public-components/index";
 
 // Private Routes.
 import privateRoutes from "./components/private-components/index";
+
+// Layouts.
+import LayoutRoutes from "./layouts/index";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
