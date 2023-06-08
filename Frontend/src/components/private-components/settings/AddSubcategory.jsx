@@ -65,8 +65,6 @@ const AddSubcategory = () => {
          setAlert({ msg: data.msg, error: false });
          setCategoryinfoAll(data.categoriesSubcategories);
       } catch (error) {
-         console.log(error);
-
          const data = error.response.data.msg || error.response.data.errors[0].msg;
 
          setAlert({ msg: data, error: true });

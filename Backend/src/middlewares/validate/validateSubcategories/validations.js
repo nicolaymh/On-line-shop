@@ -10,4 +10,6 @@ const description = check("description", "Type a description between 5 to 50 cha
    .toLowerCase()
    .isLength({ min: 5, max: 50 });
 
-export { name, description };
+const categoryId = check("categoryId", "Choose a category").trim().notEmpty();
+
+export { name, description, categoryId };
