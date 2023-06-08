@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 // Components.
-import privateRoutes from "../components/private-components/";
+import Header from "../components/private-components/header/Header";
 
 const ShopLayout = () => {
    const { auth } = useAuth();
@@ -14,7 +14,7 @@ const ShopLayout = () => {
       <>
          {auth._id ? (
             <div>
-               <privateRoutes.Header />
+               <Header />
 
                <div className="mainContainer">
                   <Outlet />

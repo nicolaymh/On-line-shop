@@ -5,12 +5,12 @@ import { Outlet } from "react-router-dom";
 import style from "../sass/settings/settings.module.scss";
 
 // Components
-import privateRoutes from "../components/private-components/";
+import SettingsNav from "../components/private-components/settings/SettingsNav";
 
 const SettingsLayout = () => {
    return (
       <div className={style.settingsContainer}>
-         <privateRoutes.SettingsNav />
+         <SettingsNav />
 
          <main>
             <Outlet />

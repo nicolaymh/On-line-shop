@@ -8,14 +8,25 @@ import useCategory from "./Hooks/useCategory";
 // Generic Components.
 import GenericComponents from "./components/generic-components/index";
 
+// Layouts.
+import AuthLayout from "./layouts/AuthLayout";
+import ShopLayout from "./layouts/ShopLayout";
+import SettingsLayout from "./layouts/SettingsLayout";
+
 // Public Routes.
-import publicRoutes from "./components/public-components/index";
+import LoginForm from "./components/public-components/LoginForm";
+import RegisterForm from "./components/public-components/RegisterForm";
+import ConfirmAccount from "./components/public-components/ConfirmAccount";
+import ForgotPassword from "./components/public-components/ForgotPassword";
+import NewPassword from "./components/public-components/NewPassword";
 
 // Private Routes.
-import privateRoutes from "./components/private-components/index";
-
-// Layouts.
-import LayoutRoutes from "./layouts/index";
+import Home from "./components/private-components/home/Home";
+import Categories from "./components/private-components/categories/Categories";
+import EditUserInfo from "./components/private-components/settings/EditUserInfo";
+import ManageUsers from "./components/private-components/settings/ManageUsers";
+import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
+import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -31,23 +42,23 @@ const RouterProvider = () => {
             />
          ) : (
             <Routes>
-               <Route path="/" element={<LayoutRoutes.AuthLayout />}>
-                  <Route index element={<publicRoutes.LoginForm />} />
-                  <Route path="register" element={<publicRoutes.RegisterForm />} />
-                  <Route path="confirm/:id" element={<publicRoutes.ConfirmAccount />} />
-                  <Route path="forgot-password" element={<publicRoutes.ForgotPassword />} />
-                  <Route path="forgot-password/:token" element={<publicRoutes.NewPassword />} />
+               <Route path="/" element={<AuthLayout />}>
+                  <Route index element={<LoginForm />} />
+                  <Route path="register" element={<RegisterForm />} />
+                  <Route path="confirm/:id" element={<ConfirmAccount />} />
+                  <Route path="forgot-password" element={<ForgotPassword />} />
+                  <Route path="forgot-password/:token" element={<NewPassword />} />
                   <Route path="*" element={<Navigate to="/" />} replace />
                </Route>
 
-               <Route path="shop" element={<LayoutRoutes.ShopLayout />}>
-                  <Route index element={<privateRoutes.Home />} />
-                  <Route path="categories" element={<privateRoutes.Categories />} />
-                  <Route path="settings" element={<LayoutRoutes.SettingsLayout />}>
+               <Route path="shop" element={<ShopLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="categories" element={<Categories />} />
+                  <Route path="settings" element={<SettingsLayout />}>
                      <Route index element={<div>My shopping</div>} />
 
                      {auth.role !== "admin" && (
-                        <Route path="edit-info" element={<privateRoutes.EditUserInfo />} />
+                        <Route path="edit-info" element={<EditUserInfo />} />
                      )}
 
                      {auth.role !== "user" && (
@@ -56,15 +67,12 @@ const RouterProvider = () => {
 
                      {auth.role === "admin" && (
                         <>
-                           <Route path="manage-users" element={<privateRoutes.ManageUsers />} />
-                           <Route
-                              path="manage-subcategories"
-                              element={<privateRoutes.ManageSubcategories />}
-                           />
+                           <Route path="manage-users" element={<ManageUsers />} />
+                           <Route path="manage-subcategories" element={<ManageSubcategories />} />
                         </>
                      )}
                   </Route>
-                  <Route path="shoping-cart" element={<privateRoutes.ShopingCart />} />
+                  <Route path="shoping-cart" element={<ShopingCart />} />
                </Route>
             </Routes>
          )}

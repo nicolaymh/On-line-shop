@@ -18,7 +18,7 @@ import axiosInstance from "../../../helpers/axiosInstance";
 import GenericComponents from "../../generic-components/index";
 
 // Components.
-import privateRoutes from "../index";
+import UserPermissionInfo from "./UserPermissionInfo";
 
 const ManageUsers = () => {
    const [userInfo, setUserInfo] = useState({});
@@ -59,7 +59,7 @@ const ManageUsers = () => {
    return (
       <section className={style.sectionContainer}>
          {userInfo.userData ? (
-            <privateRoutes.UserPermissionInfo {...userInfo} setUserInfo={setUserInfo} />
+            <UserPermissionInfo {...userInfo} setUserInfo={setUserInfo} />
          ) : (
             <>
                <h3>Modify user Permissions</h3>

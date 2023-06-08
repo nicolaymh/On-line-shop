@@ -11,7 +11,8 @@ import useCategory from "../../../Hooks/useCategory";
 import GenericComponents from "../../generic-components/index";
 
 // Components
-import privateRoutes from "../index";
+import EditSubcategory from "./EditSubcategory";
+import AddSubcategory from "./AddSubcategory";
 
 const ManageSubcategories = () => {
    const [category, setCategory] = useState({});
@@ -66,8 +67,8 @@ const ManageSubcategories = () => {
                />
             )}
          </div>
-         {!category._id && <privateRoutes.AddSubcategory />}
-         {editSubcategory[0] && <privateRoutes.EditSubcategory {...editSubcategory} />}
+         {!category._id && <AddSubcategory />}
+         {editSubcategory[0] && <EditSubcategory {...editSubcategory} />}
       </section>
    );
 };

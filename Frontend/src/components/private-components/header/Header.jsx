@@ -20,7 +20,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useCategory from "../../../Hooks/useCategory";
 
 // Components.
-import privateRoutes from "../index";
+import BurgerButton from "./BurgerButton";
 
 const Header = () => {
    const { auth, setAuth, setLoading } = useAuth();
@@ -104,7 +104,7 @@ const Header = () => {
          </div>
 
          <div className={style.burgerButton}>
-            <privateRoutes.BurgerButton clicked={clicked} setClicked={setClicked} />
+            <BurgerButton clicked={clicked} setClicked={setClicked} />
          </div>
 
          <div className={style.containerUser}>
