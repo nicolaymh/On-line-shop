@@ -53,8 +53,33 @@ const createSubcategory = async (req, res) => {
 };
 
 //* Get Subcategory Info
-const getSubcategoryInfo = (req, res) => {
-   console.log(req.params.subcategoryId);
+const getSubcategoryInfo = async (req, res) => {
+   try {
+      const { subcategoryId } = req.params;
+      const { _id } = req.user;
+
+      // Check if user is admin.
+      const isAdmin = await User.findById({ _id }).populate("role").select("role");
+      if (isAdmin.role.name !== "admin") {
+         return res.status(400).json({ ok: false, msg: "Access denied" });
+      }
+
+      // Check if a subcategory exists by its id ( subcategoryId ).
+      const subcategoryExists = await Subcategory.findById({ _id: subcategoryId }).select(
+         "_id name description category"
+      );
+      if (!subcategoryExists) {
+         return res.status(400).json({ ok: false, msg: "Subcategory does not exist" });
+      }
+
+      res.status(201).json({
+         ok: true,
+         msg: `Subcategory: ${subcategoryExists.name}`,
+         subcategoryInfo: subcategoryExists,
+      });
+   } catch (error) {
+      internalServerError(error, res);
+   }
 };
 
 //* Edit Subcategory.
