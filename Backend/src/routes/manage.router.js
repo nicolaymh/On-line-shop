@@ -27,8 +27,10 @@ router.post(
    validateFieldsSubcategory,
    manageSubcategory.createSubcategory
 );
-router.get("/subcategory/info-subcategory/:subcategoryId", (req, res) =>
-   console.log("From get-subcategory " + req.params.subcategoryId)
+router.get(
+   "/subcategory/info-subcategory/:subcategoryId",
+   checkAuth,
+   manageSubcategory.getSubcategoryInfo
 );
 router.put(
    "/subcategory/edit-subcategory/:subcategoryId",

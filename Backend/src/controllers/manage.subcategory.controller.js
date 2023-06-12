@@ -52,6 +52,11 @@ const createSubcategory = async (req, res) => {
    }
 };
 
+//* Get Subcategory Info
+const getSubcategoryInfo = (req, res) => {
+   console.log(req.params.subcategoryId);
+};
+
 //* Edit Subcategory.
 const editSubcategory = async (req, res) => {
    try {
@@ -94,4 +99,4 @@ const editSubcategory = async (req, res) => {
    }
 };
 
-export { createSubcategory, editSubcategory };
+export { createSubcategory, editSubcategory, getSubcategoryInfo };
