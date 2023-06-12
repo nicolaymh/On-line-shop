@@ -68,6 +68,7 @@ const ManageSubcategories = () => {
             )}
          </div>
          {!category._id && <AddSubcategory />}
+
          {editSubcategory[0] && <EditSubcategory {...editSubcategory} />}
       </section>
    );
