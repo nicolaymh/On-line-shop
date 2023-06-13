@@ -11,8 +11,8 @@ import useCategory from "../../../Hooks/useCategory";
 import GenericComponents from "../../generic-components/index";
 
 // Components
-import EditSubcategory from "./EditSubcategory";
 import AddSubcategory from "./AddSubcategory";
+import EditSubcategory from "./EditSubcategory";
 
 const ManageSubcategories = () => {
    const [category, setCategory] = useState({});
@@ -30,6 +30,10 @@ const ManageSubcategories = () => {
          return;
       }
 
+      setCategory({});
+      setSubcategories([]);
+      setEditSubcategory([]);
+
       const categoryInfo = categoryinfoAll.filter(({ _id }) => _id === target.value);
       const { _id, name, subcategories } = categoryInfo[0];
 
@@ -46,6 +50,7 @@ const ManageSubcategories = () => {
    return (
       <section className={style.manageSubcategoriesContainer}>
          <h4>Manage Subcategories</h4>
+
          <div className={style.containerSelects}>
             <GenericComponents.SelectOptions
                handleSelected={handleSelectedCategory}
@@ -69,7 +74,7 @@ const ManageSubcategories = () => {
          </div>
          {!category._id && <AddSubcategory />}
 
-         {editSubcategory[0] && <EditSubcategory {...editSubcategory} />}
+         {editSubcategory[0] && <EditSubcategory editSubcategory={editSubcategory} />}
       </section>
    );
 };

@@ -1,4 +1,4 @@
-// CSS Styles ( SASS Modules )
+// CSS Styles ( SASS Modules ).
 import inputStyle from "../../../sass/forms/formInputs.module.scss";
 import style from "../../../sass/settings/addSubcategory.module.scss";
 
@@ -55,7 +55,7 @@ const AddSubcategory = () => {
          loadingRef.current = true;
 
          const { data } = await axiosInstance.post(
-            "manage/subcategory/create-subcategory",
+            "/manage/subcategory/create-subcategory",
             {
                categoryId,
                name,
