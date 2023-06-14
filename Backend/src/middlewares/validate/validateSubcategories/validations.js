@@ -5,10 +5,10 @@ const name = check("name", "Subcategory name is required")
    .toLowerCase()
    .isLength({ min: 3 });
 
-const description = check("description", "Type a description between 5 to 50 characters")
+const description = check("description", "Type a description between 5 to 30 characters")
    .trim()
    .toLowerCase()
-   .isLength({ min: 5, max: 50 });
+   .isLength({ min: 5, max: 30 });
 
 const categoryId = check("categoryId", "Choose a category").trim().notEmpty();
 
