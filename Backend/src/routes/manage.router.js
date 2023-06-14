@@ -6,6 +6,7 @@ import validateErrors from "../middlewares/validate/validateFields.js";
 
 import * as manageUser from "../controllers/manage.user.controller.js";
 import * as manageSubcategory from "../controllers/manage.subcategory.controller.js";
+import * as manageProduct from "../controllers/manage.product.controller.js";
 
 import checkAuth from "../middlewares/auth/checkAuth.js";
 
@@ -34,8 +35,7 @@ router.put(
    manageSubcategory.editSubcategory
 );
 
-router.post("/product/create-product", (req, res) => {
-   console.log("from create-product");
-});
+// Routes to manage product.
+router.post("/product/create-product", checkAuth, manageProduct.addProduct);
 
 export default router;
