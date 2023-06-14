@@ -17,65 +17,44 @@ import axiosInstance from "../../../helpers/axiosInstance";
 // Generic Components.
 import GenericComponents from "../../generic-components/index";
 
+// Model Object to handle forms. ==> (helpers).
+import initialFormInputs from "../../../helpers/initialFormInputs";
+
 // Custom-Hook to handle forms.
 import { useForm } from "../../../Hooks/useForm";
 
 const EditSubcategory = ({ editSubcategory }) => {
-   const { categoryinfoAll, setCategoryinfoAll } = useCategory();
-
-   const { _id, name, description, category: categoryId } = editSubcategory[0];
-
-   console.log(editSubcategory);
+   const [subcategoryId, setSubcategoryId] = useState("");
 
    const loadingRef = useRef(false);
 
-   const [alert, setAlert] = useState({});
+   const { categoryinfoAll } = useCategory();
 
-   const formValues = useForm({ name, description });
+   const { subcategory: initialForm } = initialFormInputs();
+   const { name, description, categoryId, setFormState, onInputChange } = useForm(initialForm);
+
+   const handleSelectedSubcategory = ({ target }) => {
+      setFormState((prev) => ({ ...prev, categoryId: target.value }));
+   };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("submit");
+   };
 
    useEffect(() => {
-      formValues.setFormState((prev) => ({ ...prev, name, description }));
+      const assignData = () => {
+         setSubcategoryId(editSubcategory._id);
+         setFormState((prev) => ({
+            ...prev,
+            name: editSubcategory.name,
+            description: editSubcategory.description,
+            categoryId: editSubcategory.category,
+         }));
+      };
+
+      assignData();
    }, [editSubcategory]);
-
-   const handleSubmit = async (e) => {
-      e.preventDefault();
-
-      setAlert({});
-
-      if ([formValues.name, formValues.description].includes("")) {
-         return setAlert({ msg: "All fields are required", error: true });
-      }
-
-      // if (!formValues.category || categoryId === "-1") {
-      //    return setAlert({ msg: "Choose a category", error: true });
-      // }
-
-      try {
-         // Api Call
-         loadingRef.current = true;
-
-         const { data } = await axiosInstance.put(
-            `/manage/subcategory/edit-subcategory/${formValues._id}`,
-            {
-               categoryId,
-               name,
-               description,
-            },
-            {
-               headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${localStorage.getItem("token")}`,
-               },
-            }
-         );
-
-         console.log(data);
-
-         loadingRef.current = false;
-      } catch (error) {
-         console.log(error);
-      }
-   };
 
    return (
       <>
@@ -91,8 +70,8 @@ const EditSubcategory = ({ editSubcategory }) => {
                      type="text"
                      placeholder="Subcategory name"
                      autoComplete="off"
-                     value={formValues.name}
-                     onChange={formValues.onInputChange}
+                     value={name}
+                     onChange={onInputChange}
                   />
                </div>
 
@@ -104,12 +83,21 @@ const EditSubcategory = ({ editSubcategory }) => {
                      type="text"
                      placeholder="Short description"
                      autoComplete="off"
-                     value={formValues.description}
-                     onChange={formValues.onInputChange}
+                     value={description}
+                     onChange={onInputChange}
                   />
                </div>
 
-               {/* {loadingRef.current ? (
+               <div>
+                  <GenericComponents.SelectOptions
+                     defaultSelection={editSubcategory.category}
+                     handleSelected={handleSelectedSubcategory}
+                     arrayOptions={categoryinfoAll}
+                     infoTitle="Select Category"
+                  />
+               </div>
+
+               {loadingRef.current ? (
                   <div className={style.iconContainer}>
                      <RiLoader3Fill
                         className={`${style.icon} animate__animated animate__rotateIn animate__infinite`}
@@ -119,7 +107,7 @@ const EditSubcategory = ({ editSubcategory }) => {
                   <div className={inputStyle.field}>
                      <input type="submit" value="EDIT SUBCATEGORY" />
                   </div>
-               )} */}
+               )}
             </form>
          </div>
 
