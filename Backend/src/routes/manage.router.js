@@ -27,16 +27,15 @@ router.post(
    validateFieldsSubcategory,
    manageSubcategory.createSubcategory
 );
-router.get(
-   "/subcategory/info-subcategory/:subcategoryId",
-   checkAuth,
-   manageSubcategory.getSubcategoryInfo
-);
 router.put(
    "/subcategory/edit-subcategory/:subcategoryId",
    checkAuth,
    validateFieldsSubcategory,
    manageSubcategory.editSubcategory
 );
+
+router.post("/product/create-product", (req, res) => {
+   console.log("from create-product");
+});
 
 export default router;

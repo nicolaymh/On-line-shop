@@ -114,4 +114,4 @@ const editSubcategory = async (req, res) => {
    }
 };
 
-export { createSubcategory, editSubcategory, getSubcategoryInfo };
+export { createSubcategory, editSubcategory };
