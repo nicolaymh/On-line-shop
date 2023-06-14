@@ -2,6 +2,9 @@
 import inputStyle from "../../../sass/forms/formInputs.module.scss";
 import style from "../../../sass/settings/addSubcategory.module.scss";
 
+// React-Router-Dom.
+import { useNavigate } from "react-router-dom";
+
 // React-Hooks.
 import { useState, useRef, useEffect } from "react";
 
@@ -24,23 +27,19 @@ import initialFormInputs from "../../../helpers/initialFormInputs";
 import { useForm } from "../../../Hooks/useForm";
 
 const EditSubcategory = ({ editSubcategory }) => {
-   const [subcategoryId, setSubcategoryId] = useState("");
+   const { categoryinfoAll, setCategoryinfoAll } = useCategory();
+
+   const navigate = useNavigate();
 
    const loadingRef = useRef(false);
+   const refMount = useRef(false);
 
-   const { categoryinfoAll } = useCategory();
+   const [formDisabled, setFormDisabled] = useState(false);
+   const [subcategoryId, setSubcategoryId] = useState("");
+   const [alert, setAlert] = useState({});
 
    const { subcategory: initialForm } = initialFormInputs();
    const { name, description, categoryId, setFormState, onInputChange } = useForm(initialForm);
-
-   const handleSelectedSubcategory = ({ target }) => {
-      setFormState((prev) => ({ ...prev, categoryId: target.value }));
-   };
-
-   const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log("submit");
-   };
 
    useEffect(() => {
       const assignData = () => {
@@ -55,6 +54,65 @@ const EditSubcategory = ({ editSubcategory }) => {
 
       assignData();
    }, [editSubcategory]);
+
+   useEffect(() => {
+      const goHome = setTimeout(() => {
+         if (refMount.current) {
+            navigate("/shop", { replace: true });
+         }
+      }, 3000);
+
+      return () => clearTimeout(goHome);
+   }, [refMount.current]);
+
+   const handleSelectedSubcategory = ({ target }) => {
+      setFormState((prev) => ({ ...prev, categoryId: target.value }));
+   };
+
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      setAlert({});
+
+      if ([name, description].includes("")) {
+         return setAlert({ msg: "All fields are required", error: true });
+      }
+
+      if (categoryId === "-1") {
+         return setAlert({ msg: "Choose a category", error: true });
+      }
+
+      try {
+         // Api Call.
+         loadingRef.current = true;
+
+         const { data } = await axiosInstance.put(
+            `/manage/subcategory/edit-subcategory/${subcategoryId}`,
+            {
+               name,
+               description,
+               categoryId,
+            },
+            {
+               headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+               },
+            }
+         );
+
+         setAlert({ msg: data.msg, error: false });
+         setCategoryinfoAll(data.categoriesSubcategories);
+         loadingRef.current = false;
+         refMount.current = true;
+         setFormDisabled(true);
+      } catch (error) {
+         const data = error.response.data.msg || error.response.data.errors[0].msg;
+
+         setAlert({ msg: data, error: true });
+         loadingRef.current = false;
+      }
+   };
 
    return (
       <>
@@ -105,7 +163,7 @@ const EditSubcategory = ({ editSubcategory }) => {
                   </div>
                ) : (
                   <div className={inputStyle.field}>
-                     <input type="submit" value="EDIT SUBCATEGORY" />
+                     <input type="submit" value="EDIT SUBCATEGORY" disabled={formDisabled} />
                   </div>
                )}
             </form>

@@ -114,10 +114,13 @@ const editSubcategory = async (req, res) => {
 
       subcategoryExists = await subcategoryExists.save();
 
+      // Getting the new categories and subcategories data map.
+      const categoriesSubcategories = await mapCategoriesSubcategories();
+
       res.status(201).json({
          ok: true,
          msg: "Subcategory info changed successfully",
-         subcategoryInfoChanged: { _id: subcategoryId, name, description, category: categoryId },
+         categoriesSubcategories,
       });
    } catch (error) {
       internalServerError(error, res);
