@@ -4,23 +4,24 @@ const productSchema = new mongoose.Schema(
    {
       name: {
          type: String,
-         require: true,
+         required: true,
          trim: true,
       },
       price: {
          type: Number,
-         require: true,
+         required: true,
          trim: true,
       },
       description: {
          type: String,
-         require: true,
+         required: true,
          trim: true,
       },
-      imgLink: {
-         type: String,
-         require: true,
-         trim: true,
+      image: {
+         public_id: {
+            type: String,
+            required: true,
+         },
       },
       category: {
          type: mongoose.Schema.Types.ObjectId,
