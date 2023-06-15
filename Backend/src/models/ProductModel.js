@@ -17,14 +17,14 @@ const productSchema = new mongoose.Schema(
          require: true,
          trim: true,
       },
-      category: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: "Category",
-      },
       imgLink: {
          type: String,
          require: true,
          trim: true,
+      },
+      category: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Category",
       },
       subcategory: {
          type: mongoose.Schema.Types.ObjectId,
