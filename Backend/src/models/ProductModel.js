@@ -17,9 +17,13 @@ const productSchema = new mongoose.Schema(
          require: true,
          trim: true,
       },
+      category: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Category",
+      },
       subcategory: {
          type: mongoose.Schema.Types.ObjectId,
-         ref: subcategory,
+         ref: "Subcategory",
       },
       status: {
          type: Boolean,

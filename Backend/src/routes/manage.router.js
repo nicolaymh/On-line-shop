@@ -11,6 +11,7 @@ import * as manageProduct from "../controllers/manage.product.controller.js";
 import checkAuth from "../middlewares/auth/checkAuth.js";
 
 import validateFieldsSubcategory from "../middlewares/validate/validateSubcategories/validate-subcategory.js";
+import * as validateFieldsProduct from "../middlewares/validate/validateProduct/validation-product.js";
 
 const router = Router();
 
@@ -36,6 +37,11 @@ router.put(
 );
 
 // Routes to manage product.
-router.post("/product/create-product", checkAuth, manageProduct.addProduct);
+router.post(
+   "/product/create-product",
+   checkAuth,
+   validateFieldsProduct.validateFieldsCreateProduct,
+   manageProduct.addProduct
+);
 
 export default router;

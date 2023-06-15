@@ -1,5 +1,11 @@
+import internalServerError from "../helpers/internalServerError.js";
+
 const addProduct = (req, res) => {
-   console.log("From addProduct funtcion");
+   try {
+      console.log("Hey!!!");
+   } catch (error) {
+      internalServerError(error, res);
+   }
 };
 
 export { addProduct };

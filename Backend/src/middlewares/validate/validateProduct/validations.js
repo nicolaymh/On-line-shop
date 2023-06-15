@@ -20,7 +20,11 @@ const description = check("description")
    .toLowerCase()
    .notEmpty()
    .withMessage("Product description is required")
-   .isLength({ min: 8, max: 50 })
-   .withMessage("Description must be between 8 and 50 characters");
+   .isLength({ min: 8, max: 150 })
+   .withMessage("Product description must be between 8 and 150 characters");
 
-export { name, price };
+const category = check("category").isMongoId().withMessage("Category id must be valid");
+
+const subcategory = check("subcategory").isMongoId().withMessage("Subcategory id must be valid");
+
+export { name, price, description, category, subcategory };
