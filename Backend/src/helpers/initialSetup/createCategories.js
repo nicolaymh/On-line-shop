@@ -32,7 +32,7 @@ const createCategories = async () => {
          })
       );
 
-      console.log("**********⭐⭐⭐ Categories in the DB: ⭐⭐⭐**********");
+      console.log("\n" + "**********⭐⭐⭐ Categories in the DB: ⭐⭐⭐**********" + "\n");
       console.log(newCategories);
    } catch (error) {
       console.error(`Error creating categories: ${error.message}`);

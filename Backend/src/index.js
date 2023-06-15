@@ -2,13 +2,16 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-// Routes
+// Routes.
 import userRoutes from "./routes/users.routes.js";
 import manageRoutes from "./routes/manage.router.js";
 import categoriesRoutes from "./routes/categories.router.js";
 
 // mongodb and mongoose
 import dbConnection from "./database/config.js";
+
+// Cloudinary config.
+import cloudinaryConfig from "./cloudinary/config.js";
 
 // Initial Setup
 import createRoles from "./helpers/initialSetup/userRoles..js";
@@ -21,18 +24,21 @@ const app = express();
 // Parse to body json
 app.use(express.json());
 
-// Activate environment variables
+// Activate environment variables.
 dotenv.config();
 
-// DB Connection
+// DB Connection.
 dbConnection();
 
-// Initial Setup
+// Cloudinary Config.
+cloudinaryConfig();
+
+// Initial Setup.
 createRoles();
 createAdmin();
 createCategories();
 
-// CORS configuration
+// CORS configuration.
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
    origin: function (origin, callback) {
@@ -45,10 +51,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Routing
+// Routing.
 app.use("/api/users", userRoutes);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/manage", manageRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Running on port ${process.env.PORT} 🚀`));
+app.listen(PORT, () => console.log(`${"\n"}🚀 Running on port ${process.env.PORT} 🚀`));
