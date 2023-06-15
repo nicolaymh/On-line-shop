@@ -2,7 +2,7 @@ import internalServerError from "../helpers/internalServerError.js";
 
 const addProduct = (req, res) => {
    try {
-      console.log("Hey!!!");
+      console.log(req.body);
    } catch (error) {
       internalServerError(error, res);
    }

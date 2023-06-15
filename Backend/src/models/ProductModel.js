@@ -21,6 +21,11 @@ const productSchema = new mongoose.Schema(
          type: mongoose.Schema.Types.ObjectId,
          ref: "Category",
       },
+      imgLink: {
+         type: String,
+         require: true,
+         trim: true,
+      },
       subcategory: {
          type: mongoose.Schema.Types.ObjectId,
          ref: "Subcategory",
