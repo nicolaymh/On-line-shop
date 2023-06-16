@@ -13,16 +13,19 @@ import checkAuth from "../middlewares/auth/checkAuth.js";
 import validateFieldsSubcategory from "../middlewares/validate/validateSubcategories/validate-subcategory.js";
 import * as validateFieldsProduct from "../middlewares/validate/validateProduct/validation-product.js";
 
+// Image handling.
+import uploading from "../middlewares/multer/config.js";
+
 const router = Router();
 
-// Using express-validator to validate email.
+//* Using express-validator to validate email.
 const validateEmail = [email, validateErrors];
 
-// Routes to manage user.
+//* Routes to manage user.
 router.get("/user/:email", validateEmail, checkAuth, manageUser.manageUser);
 router.put("/user/change-role", checkAuth, manageUser.manageRole);
 
-// Routes to manage subcategory.
+//* Routes to manage subcategory.
 router.post(
    "/subcategory/create-subcategory",
    checkAuth,
@@ -36,10 +39,12 @@ router.put(
    manageSubcategory.editSubcategory
 );
 
-// Routes to manage product.
+//* Routes to manage product.
 router.post(
    "/product/create-product",
-   checkAuth,
+   // checkAuth,
+   // manageProduct.addProduct
+   uploading,
    validateFieldsProduct.validateFieldsCreateProduct,
    manageProduct.addProduct
 );

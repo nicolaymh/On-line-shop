@@ -11,4 +11,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage, preservePath: false });
 
-export default upload;
+const uploading = [
+   upload.single("image"),
+   (req, res, next) => {
+      console.log(req.file, req.body);
+      next();
+   },
+];
+
+export default uploading;
