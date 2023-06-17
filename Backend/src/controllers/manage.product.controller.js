@@ -8,6 +8,8 @@ const addProduct = async (req, res) => {
    try {
       const { name, price, description, category, subcategory } = req.body;
 
+      // console.log(req.file);
+
       console.log(name);
 
       console.log(req.user);
