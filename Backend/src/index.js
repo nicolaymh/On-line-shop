@@ -22,7 +22,7 @@ import createCategories from "./helpers/initialSetup/createCategories.js";
 const app = express();
 
 // Parse to body json
-app.use(express.json({ limit: "2mb" }));
+app.use(express.json());
 
 // Activate environment variables.
 dotenv.config();

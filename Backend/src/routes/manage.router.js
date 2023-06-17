@@ -43,7 +43,6 @@ router.put(
 router.post(
    "/product/create-product",
    // checkAuth,
-   // manageProduct.addProduct
    uploading,
    validateFieldsProduct.validateFieldsCreateProduct,
    manageProduct.addProduct
