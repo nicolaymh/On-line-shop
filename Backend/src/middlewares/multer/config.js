@@ -3,7 +3,7 @@ import internalServerError from "../../helpers/internalServerError.js";
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, "./src/middlewares/multer/uploaded/");
+      cb(null, "./src/middlewares/multer/uploads/");
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + "-" + file.originalname);
