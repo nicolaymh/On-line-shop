@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 const upload = multer({
    storage: storage,
    limits: {
-      fileSize: 1024 * 1024, // Tamaño máximo de archivo de 1MB
+      fileSize: 1024 * 1024, // Tamaño máximo de archivo de 2MB
    },
 });
 
