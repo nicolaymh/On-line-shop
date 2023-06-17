@@ -26,6 +26,6 @@ const multerFunction = (req, res, next) => {
    });
 };
 
-const uploading = [multerFunction];
+const multerHandler = [multerFunction];
 
-export default uploading;
+export default multerHandler;

@@ -10,16 +10,15 @@ import * as manageProduct from "../controllers/manage.product.controller.js";
 
 import checkAuth from "../middlewares/auth/checkAuth.js";
 
+// Express Validator.
 import validateFieldsSubcategory from "../middlewares/validate/validateSubcategories/validate-subcategory.js";
 import * as validateFieldsProduct from "../middlewares/validate/validateProduct/validation-product.js";
+const validateEmail = [email, validateErrors];
 
 // Image handling.
-import uploading from "../middlewares/multer/config.js";
+import multerHandler from "../middlewares/multer/config.js";
 
 const router = Router();
-
-//* Using express-validator to validate email.
-const validateEmail = [email, validateErrors];
 
 //* Routes to manage user.
 router.get("/user/:email", validateEmail, checkAuth, manageUser.manageUser);
@@ -42,8 +41,8 @@ router.put(
 //* Routes to manage product.
 router.post(
    "/product/create-product",
-   // checkAuth,
-   uploading,
+   checkAuth,
+   multerHandler,
    validateFieldsProduct.validateFieldsCreateProduct,
    manageProduct.addProduct
 );
