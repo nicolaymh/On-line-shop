@@ -16,7 +16,7 @@ const addProduct = async (req, res) => {
 
       console.log(uploadResult);
 
-      // deleteImageLocal(res);
+      deleteImageLocal(res);
    } catch (error) {
       internalServerError(error, res);
    }
