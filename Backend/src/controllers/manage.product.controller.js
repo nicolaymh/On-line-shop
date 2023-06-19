@@ -10,14 +10,13 @@ const addProduct = async (req, res) => {
 
       console.log(req.file);
 
-      console.log(req.user);
+      const uploadResult = await cloudinary.uploader.upload(
+         `./src/middlewares/multer/uploads/${req.file.filename}`
+      );
 
-      setTimeout(() => {
-         deleteImageLocal(res);
-         console.log("deleted");
-      }, 5000);
+      console.log(uploadResult);
 
-      console.log("Hey!!");
+      // deleteImageLocal(res);
    } catch (error) {
       internalServerError(error, res);
    }

@@ -43,7 +43,7 @@ router.post(
    "/product/create-product",
    checkAuth,
    multerHandler,
-   validateFieldsProduct.validateFieldsCreateProduct,
+   // validateFieldsProduct.validateFieldsCreateProduct,
    manageProduct.addProduct
 );
 

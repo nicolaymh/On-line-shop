@@ -7,21 +7,21 @@ import userRoutes from "./routes/users.routes.js";
 import manageRoutes from "./routes/manage.router.js";
 import categoriesRoutes from "./routes/categories.router.js";
 
-// mongodb and mongoose
+// mongodb and mongoose.
 import dbConnection from "./database/config.js";
 
 // Cloudinary config.
 import cloudinaryConfig from "./cloudinary/config.js";
 
-// Initial Setup
+// Initial Setup.
 import createRoles from "./helpers/initialSetup/userRoles..js";
 import createAdmin from "./helpers/initialSetup/CreateAdmin.js";
 import createCategories from "./helpers/initialSetup/createCategories.js";
 
-// Create server express
+// Create server express.
 const app = express();
 
-// Parse to body json
+// Parse to body json.
 app.use(express.json());
 
 // Activate environment variables.
@@ -30,7 +30,7 @@ dotenv.config();
 // DB Connection.
 dbConnection();
 
-// Cloudinary Config.
+// Run initial cloudinary setup.
 cloudinaryConfig();
 
 // Initial Setup.
