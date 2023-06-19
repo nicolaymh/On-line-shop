@@ -1,5 +1,4 @@
 import multer from "multer";
-import internalServerError from "../../helpers/internalServerError.js";
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -13,7 +12,7 @@ const storage = multer.diskStorage({
 const upload = multer({
    storage: storage,
    limits: {
-      fileSize: 1024 * 1024, // Tamaño máximo de archivo de 2MB
+      fileSize: 1024 * 1024, // Maximum image size 2 MB
    },
 });
 
