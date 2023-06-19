@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from "cloudinary";
+import uploadResult from "../cloudinary/uploadImage.js";
 
 import internalServerError from "../helpers/internalServerError.js";
 
@@ -8,16 +8,16 @@ const addProduct = async (req, res) => {
    try {
       const { name, price, description, category, subcategory } = req.body;
 
-      console.log(req.file);
+      // Upload Image.
+      const uploading = await uploadResult(req, res);
 
-      const uploadResult = await cloudinary.uploader.upload(
-         `./src/middlewares/multer/uploads/${req.file.filename}`
-      );
+      if (!uploading.public_id) return;
 
-      console.log(uploadResult);
+      console.log(uploading);
 
       deleteImageLocal(res);
    } catch (error) {
+      deleteImageLocal(res);
       internalServerError(error, res);
    }
 };

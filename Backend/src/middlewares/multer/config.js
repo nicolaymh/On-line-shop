@@ -18,9 +18,14 @@ const upload = multer({
 
 const multerFunction = (req, res, next) => {
    upload.single("image")(req, res, function (err) {
+      if (!req.file) {
+         return res.status(400).json({ ok: false, msg: "A valid image is required" });
+      }
+
       if (err instanceof multer.MulterError) {
          return res.status(400).json({ ok: false, msg: err.message });
       }
+
       next();
    });
 };
