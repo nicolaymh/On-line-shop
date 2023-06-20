@@ -2,13 +2,6 @@ import { name, description, price, category, subcategory } from "./validations.j
 
 import validateErrors from "../validateFields.js";
 
-const validateFieldsCreateProduct = [
-   name,
-   price,
-   description,
-   category,
-   subcategory,
-   validateErrors,
-];
+const validateFieldsProduct = [name, price, description, category, subcategory, validateErrors];
 
-export { validateFieldsCreateProduct };
+export { validateFieldsProduct };

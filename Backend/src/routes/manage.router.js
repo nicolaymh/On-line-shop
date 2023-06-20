@@ -43,9 +43,15 @@ router.post(
    "/product/create-product",
    checkAuth,
    multerHandler,
-   validateFieldsProduct.validateFieldsCreateProduct,
+   validateFieldsProduct.validateFieldsProduct,
    manageProduct.addProduct
 );
-router.put("/product/edit-product/:productId", checkAuth, multerHandler, manageProduct.editProduct);
+router.put(
+   "/product/edit-product/:productId",
+   checkAuth,
+   multerHandler,
+   validateFieldsProduct.validateFieldsProduct,
+   manageProduct.editProduct
+);
 
 export default router;
