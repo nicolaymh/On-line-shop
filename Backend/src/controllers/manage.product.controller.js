@@ -12,7 +12,7 @@ const addProduct = async (req, res) => {
       const { name, price, description, category, subcategory } = req.body;
 
       if (user.role === "user") {
-         return console.log("No tienes permisos: " + user.role);
+         return res.status(400).json({ ok: false, msg: "Access denied" });
       }
 
       const categoryName = await Category.findById({ _id: category });
