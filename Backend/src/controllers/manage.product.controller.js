@@ -8,7 +8,12 @@ import deleteImageLocal from "../middlewares/multer/deleteImage.js";
 
 const addProduct = async (req, res) => {
    try {
+      const { user } = req;
       const { name, price, description, category, subcategory } = req.body;
+
+      if (user.role === "user") {
+         return console.log("No tienes permisos: " + user.role);
+      }
 
       const categoryName = await Category.findById({ _id: category });
       const subcategoryName = await Subcategory.findById({ _id: subcategory });
