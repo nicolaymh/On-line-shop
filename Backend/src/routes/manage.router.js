@@ -46,8 +46,6 @@ router.post(
    validateFieldsProduct.validateFieldsCreateProduct,
    manageProduct.addProduct
 );
-router.put("/product/edit-product/:productId", checkAuth, (req, res) => {
-   console.log(req.params);
-});
+router.put("/product/edit-product/:productId", checkAuth, multerHandler, manageProduct.editProduct);
 
 export default router;

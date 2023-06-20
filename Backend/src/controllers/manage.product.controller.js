@@ -11,6 +11,10 @@ const addProduct = async (req, res) => {
       const { user } = req;
       const { name, price, description, category, subcategory } = req.body;
 
+      if (!req.file) {
+         return res.status(400).json({ ok: false, msg: "A valid image is required" });
+      }
+
       if (user.role === "user") {
          deleteImageLocal(res);
          return res.status(400).json({ ok: false, msg: "Access denied" });
@@ -54,4 +58,11 @@ const addProduct = async (req, res) => {
    }
 };
 
-export { addProduct };
+const editProduct = async (req, res) => {
+   console.log(req.user);
+   console.log(req.params);
+
+   console.log("from edit-product");
+};
+
+export { addProduct, editProduct };
