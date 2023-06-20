@@ -17,6 +17,8 @@ const uploadResult = async (folderNames = {}, req, res) => {
          }
       );
 
+      deleteImageLocal(res);
+
       return uploading;
    } catch (error) {
       console.log(error);

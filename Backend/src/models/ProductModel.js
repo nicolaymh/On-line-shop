@@ -17,6 +17,18 @@ const productSchema = new mongoose.Schema(
          required: true,
          trim: true,
       },
+      category: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Category",
+      },
+      subcategory: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Subcategory",
+      },
+      status: {
+         type: Boolean,
+         default: true,
+      },
       image: {
          public_id: {
             type: String,
@@ -30,18 +42,6 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: true,
          },
-      },
-      category: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: "Category",
-      },
-      subcategory: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: "Subcategory",
-      },
-      status: {
-         type: Boolean,
-         default: true,
       },
    },
    { timestamps: true }

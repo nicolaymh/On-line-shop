@@ -18,17 +18,24 @@ const addProduct = async (req, res) => {
          subcategoryFolderName: subcategoryName.name,
       };
 
-      // Upload Image.
+      // Upload Image to cloudinary.
       const uploading = await uploadResult(folderNames, req, res);
       if (!uploading.public_id) return;
 
-      console.log(uploading);
+      const newProduct = new Product({
+         name,
+         price,
+         description,
+         category,
+         subcategory,
+         image: {
+            public_id: uploading.public_id,
+            url: uploading.secure_url,
+            folder: uploading.folder,
+         },
+      });
 
-      const newProduct = new Product({ name, price, description, category, subcategory });
-      newProduct.image.public_id = uploading.public_id;
-      newProduct.image.url = uploading.secure_url;
-      newProduct.image.folder = uploading.folder;
-
+      // Saving to DB.
       const createdProduct = await newProduct.save();
 
       res.status(201).json({
