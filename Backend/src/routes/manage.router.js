@@ -43,14 +43,14 @@ router.post(
    "/product/create-product",
    checkAuth,
    multerHandler,
-   validateFieldsProduct.validateFieldsProduct,
+   validateFieldsProduct.validateFieldsCreate,
    manageProduct.addProduct
 );
 router.put(
    "/product/edit-product/:productId",
    checkAuth,
    multerHandler,
-   validateFieldsProduct.validateFieldsProduct,
+   validateFieldsProduct.validateFieldsEdit,
    manageProduct.editProduct
 );
 

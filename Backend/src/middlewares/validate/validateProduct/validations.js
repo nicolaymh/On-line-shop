@@ -27,4 +27,6 @@ const category = check("category").isMongoId().withMessage("Category id must be 
 
 const subcategory = check("subcategory").isMongoId().withMessage("Subcategory id must be valid");
 
-export { name, price, description, category, subcategory };
+const status = check("status").isBoolean();
+
+export { name, price, description, category, subcategory, status };
