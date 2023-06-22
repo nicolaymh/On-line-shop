@@ -34,8 +34,6 @@ const addProduct = async (req, res) => {
       // Upload Image to cloudinary.
       const uploading = await uploadResult(folderNames, req, res);
 
-      console.log(uploading);
-
       // Create product.
       const newProduct = new Product({
          name,
@@ -121,14 +119,12 @@ const editProduct = async (req, res) => {
             mongoose.Types.ObjectId(findProduct.subcategory)
          )
       ) {
-         console.log("entro");
-
          const { categoryFolderName, subcategoryFolderName } = folderNames;
 
          //* If category folder name does not exist, create it.
          const productFolderExist = await cloudinary.api.sub_folders("gamer_store");
          if (!productFolderExist.folders.find((f) => f.name === categoryFolderName)) {
-            await cloudinary.api.create_folder(`gamer_stores/${categoryFolderName}`);
+            await cloudinary.api.create_folder(`gamer_store/${categoryFolderName}`);
          }
 
          //* If subcategory folder name does not exist, create it.
@@ -141,27 +137,31 @@ const editProduct = async (req, res) => {
             );
          }
 
-         // const changeCloudinaryFolder = await cloudinary.api.update(findProduct.image.public_id, {
-         //    folder: `gamer_store/xxx`,
-         //    resource_type: "image",
-         // });
+         //* Move image to another folder.
+         const moveImageCloudinary = await cloudinary.uploader.rename(
+            findProduct.image.public_id,
+            `gamer_store/${categoryFolderName}/${subcategoryFolderName}/${findProduct.name}`
+         );
 
-         // console.log(changeCloudinaryFolder);
+         //* Update image info in DB.
+         findProduct.image = {
+            public_id: moveImageCloudinary.public_id,
+            url: moveImageCloudinary.secure_url,
+            folder: moveImageCloudinary.folder,
+         };
       }
 
-      // Edit info product
-      // findProduct.name = name;
-      // findProduct.price = price;
-      // findProduct.description = description;
-      // findProduct.category = category;
-      // findProduct.subcategory = subcategory;
-      // findProduct.status = status;
+      // Edit info product.
+      findProduct.name = name;
+      findProduct.price = price;
+      findProduct.description = description;
+      findProduct.category = category;
+      findProduct.subcategory = subcategory;
+      findProduct.status = status;
 
-      // // Move image to another folder.
+      const editedProduct = await findProduct.save();
 
-      // const editedProduct = await findProduct.save();
-
-      // console.log(editedProduct);
+      console.log(editedProduct);
 
       res.status(201).json({ ok: true, msg: "Product edited successfully" });
    } catch (error) {
