@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from "cloudinary";
 import mongoose from "mongoose";
+import { v2 as cloudinary } from "cloudinary";
 
 import Category from "../models/CatagoryModel.js";
 import Subcategory from "../models/SubcategoryModel.js";
@@ -79,20 +79,19 @@ const editProduct = async (req, res) => {
          return res.status(400).json({ ok: false, msg: "Product does not exist" });
       }
 
-      // Create folder names for cloudinary.
-      const categoryName = await Category.findById({ _id: category });
-      const subcategoryName = await Subcategory.findById({ _id: subcategory });
-      const folderNames = {
-         categoryFolderName: categoryName.name,
-         subcategoryFolderName: subcategoryName.name,
-      };
+      // Create folder names for cloudinary && check if category and subcategory exist in DB.
+      const categoryFolderName = await Category.findById({ _id: category });
+      const subcategoryFolderName = await Subcategory.findById({ _id: subcategory });
+      if (!categoryFolderName)
+         return res.status(400).json({ ok: false, msg: "Category does not exist" });
+      if (!subcategoryFolderName) {
+         return res.status(400).json({ ok: false, msg: "Subcategory does not exist" });
+      }
 
-      // If an image was not sent when editing the product information, do not upload any to cloudinary.
-      let uploading = null;
+      // If an image was not submitted when editing the product info, no image will be uploaded to Cloudinary.
       if (req.file) {
-         const cloudinaryImgId = findProduct.image.public_id;
-
          //* Delete current image in cloudinary to update by another.
+         const cloudinaryImgId = findProduct.image.public_id;
          const { result } = await deleteImageCloudinary(cloudinaryImgId, res);
          if (result !== "ok") {
             return res
@@ -101,10 +100,14 @@ const editProduct = async (req, res) => {
          }
 
          //* Save new image in cloudinary.
-         uploading = await uploadResult(folderNames, req, res);
+         const folderNames = {
+            categoryFolderName: categoryFolderName.name,
+            subcategoryFolderName: subcategoryFolderName.name,
+         };
+         const uploading = await uploadResult(folderNames, req, res);
          if (!uploading.public_id) return;
 
-         //* Path where the image will be saved in cloudinary.
+         //* Update image info in DB.
          findProduct.image = {
             public_id: uploading.public_id,
             url: uploading.secure_url,
@@ -117,30 +120,29 @@ const editProduct = async (req, res) => {
          !mongoose.Types.ObjectId(category).equals(mongoose.Types.ObjectId(findProduct.category)) ||
          !mongoose.Types.ObjectId(subcategory).equals(
             mongoose.Types.ObjectId(findProduct.subcategory)
-         )
+         ) ||
+         !req.file
       ) {
-         const { categoryFolderName, subcategoryFolderName } = folderNames;
-
          //* If category folder name does not exist, create it.
          const productFolderExist = await cloudinary.api.sub_folders("gamer_store");
-         if (!productFolderExist.folders.find((f) => f.name === categoryFolderName)) {
-            await cloudinary.api.create_folder(`gamer_store/${categoryFolderName}`);
+         if (!productFolderExist.folders.find((f) => f.name === categoryFolderName.name)) {
+            await cloudinary.api.create_folder(`gamer_store/${categoryFolderName.name}`);
          }
 
          //* If subcategory folder name does not exist, create it.
          const subcategoryFolderExist = await cloudinary.api.sub_folders(
-            `gamer_store/${categoryFolderName}`
+            `gamer_store/${categoryFolderName.name}`
          );
-         if (!subcategoryFolderExist.folders.find((f) => f.name === subcategoryFolderName)) {
+         if (!subcategoryFolderExist.folders.find((f) => f.name === subcategoryFolderName.name)) {
             await cloudinary.api.create_folder(
-               `gamer_store/${categoryFolderName}/${subcategoryFolderName}`
+               `gamer_store/${categoryFolderName.name}/${subcategoryFolderName.name}`
             );
          }
 
          //* Move image to another folder.
          const moveImageCloudinary = await cloudinary.uploader.rename(
             findProduct.image.public_id,
-            `gamer_store/${categoryFolderName}/${subcategoryFolderName}/${findProduct.name}`
+            `gamer_store/${categoryFolderName.name}/${subcategoryFolderName.name}/${name}`
          );
 
          //* Update image info in DB.
@@ -160,8 +162,6 @@ const editProduct = async (req, res) => {
       findProduct.status = status;
 
       const editedProduct = await findProduct.save();
-
-      console.log(editedProduct);
 
       res.status(201).json({ ok: true, msg: "Product edited successfully" });
    } catch (error) {

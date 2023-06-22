@@ -3,8 +3,6 @@ import internalServerError from "../helpers/internalServerError.js";
 
 const deleteImageCloudinary = async (cloudinaryImgId = "", res) => {
    try {
-      console.log(cloudinaryImgId);
-
       const deleteImg = await cloudinary.uploader.destroy(cloudinaryImgId);
 
       return deleteImg;
