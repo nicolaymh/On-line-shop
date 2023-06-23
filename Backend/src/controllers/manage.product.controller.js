@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
 
-import Category from "../models/CatagoryModel.js";
-import Subcategory from "../models/SubcategoryModel.js";
 import Product from "../models/ProductModel.js";
 
 import uploadResult from "../cloudinary/uploadImage.js";
@@ -24,18 +22,11 @@ const addProduct = async (req, res) => {
          return res.status(400).json({ ok: false, msg: "Access denied" });
       }
 
-      const categoryName = await Category.findById({ _id: category });
-      const subcategoryName = await Subcategory.findById({ _id: subcategory });
-      const folderNames = {
-         categoryFolderName: categoryName.name,
-         subcategoryFolderName: subcategoryName.name,
-      };
-
       // Upload Image to cloudinary.
-      const uploading = await uploadResult(folderNames, req, res);
+      const uploading = await uploadResult(req, res);
 
       // Create product.
-      const newProduct = new Product({
+      const newProduct = await Product.create({
          name,
          price,
          description,
@@ -44,16 +35,12 @@ const addProduct = async (req, res) => {
          image: {
             public_id: uploading.public_id,
             url: uploading.secure_url,
-            folder: uploading.folder,
          },
       });
 
-      // Saving to DB.
-      const createdProduct = await newProduct.save();
-
       res.status(201).json({
          ok: true,
-         msg: `The product ${createdProduct.name} has been created successfully`,
+         msg: `The product ${newProduct.name} has been created successfully`,
       });
    } catch (error) {
       deleteImageLocal(res);
@@ -61,7 +48,7 @@ const addProduct = async (req, res) => {
    }
 };
 
-const editProduct = async (req, res) => {
+/* const editProduct = async (req, res) => {
    try {
       const { user } = req;
       const { productId } = req.params;
@@ -169,5 +156,5 @@ const editProduct = async (req, res) => {
       internalServerError(error, res);
    }
 };
-
-export { addProduct, editProduct };
+ */
+export { addProduct /* editProduct */ };
