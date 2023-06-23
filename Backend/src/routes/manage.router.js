@@ -46,12 +46,12 @@ router.post(
    validateFieldsProduct.validateFieldsCreate,
    manageProduct.addProduct
 );
-/* router.put(
+router.put(
    "/product/edit-product/:productId",
    checkAuth,
    multerHandler,
    validateFieldsProduct.validateFieldsEdit,
    manageProduct.editProduct
-); */
+);
 
 export default router;
