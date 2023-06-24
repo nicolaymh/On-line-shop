@@ -28,6 +28,8 @@ import EditUserInfo from "./components/private-components/settings/EditUserInfo"
 import ManageUsers from "./components/private-components/settings/ManageUsers";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
 import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
+import AddProduct from "./components/private-components/settings/AddProduct";
+import ManageProduct from "./components/private-components/settings/ManageProduct";
 
 const RouterProvider = () => {
    const { auth, showModal, setShowModal } = useAuth();
@@ -59,11 +61,18 @@ const RouterProvider = () => {
                      <Route index element={<div>My shopping</div>} />
 
                      {auth.role !== "admin" && (
-                        <Route path="edit-info" element={<EditUserInfo />} />
+                        <>
+                           <Route path="edit-info" element={<EditUserInfo />} />
+                        </>
                      )}
 
                      {auth.role !== "user" && (
-                        <Route path="manage-products" element={<ManageProductsLayout />} />
+                        <>
+                           <Route path="manage-products" element={<ManageProductsLayout />}>
+                              <Route index element={<AddProduct />} />
+                              <Route path="manage-product" element={<ManageProduct />} />
+                           </Route>
+                        </>
                      )}
 
                      {auth.role === "admin" && (

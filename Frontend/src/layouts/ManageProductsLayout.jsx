@@ -1,12 +1,14 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
+import ManageProductsNav from "../components/private-components/settings/ManageProductsNav";
 
 const ManageProductsLayout = () => {
    return (
       <div>
+         <ManageProductsNav />
 
-        
-
-         <main></main>
+         <main>
+            <Outlet />
+         </main>
       </div>
    );
 };
