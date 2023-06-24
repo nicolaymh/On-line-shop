@@ -12,6 +12,7 @@ import GenericComponents from "./components/generic-components/index";
 import AuthLayout from "./layouts/AuthLayout";
 import ShopLayout from "./layouts/ShopLayout";
 import SettingsLayout from "./layouts/SettingsLayout";
+import ManageProductsLayout from "./layouts/ManageProductsLayout";
 
 // Public Routes.
 import LoginForm from "./components/public-components/LoginForm";
@@ -62,7 +63,7 @@ const RouterProvider = () => {
                      )}
 
                      {auth.role !== "user" && (
-                        <Route path="add-products" element={<div>Add Products</div>} />
+                        <Route path="manage-products" element={<ManageProductsLayout />} />
                      )}
 
                      {auth.role === "admin" && (

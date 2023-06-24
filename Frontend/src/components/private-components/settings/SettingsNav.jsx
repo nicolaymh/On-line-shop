@@ -46,9 +46,9 @@ const SettingsNav = () => {
                <NavLink
                   onClick={openMenu}
                   className={({ isActive }) => (isActive ? style.activeLink : null)}
-                  to="/shop/settings/add-products"
+                  to="/shop/settings/manage-products"
                >
-                  Add Products
+                  Manage Products
                </NavLink>
             )}
 
