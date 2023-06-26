@@ -14,20 +14,28 @@ const ManageProductsNav = () => {
          <h3>Manage Products</h3>
 
          <div className={style.linksContainer}>
-            <div className={style.LinkContainer}>
-               <NavLink className={style.Link} to="/shop/settings/manage-products">
-                  Add Product
-               </NavLink>
+            <NavLink
+               className={({ isActive }) =>
+                  isActive ? `${style.navLink} ${style.clickedLink}` : style.navLink
+               }
+               to="/shop/settings/manage-products"
+               end
+            >
+               <h4>Add Product</h4>
 
                <SiAddthis className={style.icon} />
-            </div>
-            <div className={style.LinkContainer}>
-               <NavLink className={style.Link} to="/shop/settings/manage-products/manage-product">
-                  Manage Product
-               </NavLink>
+            </NavLink>
+
+            <NavLink
+               className={({ isActive }) =>
+                  isActive ? `${style.navLink} ${style.clickedLink}` : style.navLink
+               }
+               to="/shop/settings/manage-products/manage-product"
+            >
+               <h4>Manage Product</h4>
 
                <AiFillEdit className={style.icon} />
-            </div>
+            </NavLink>
          </div>
       </nav>
    );

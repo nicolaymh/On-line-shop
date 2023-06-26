@@ -2,6 +2,7 @@
 @use "../base/mixins.scss" as m;
 
 .navContainer {
+   height: 20rem;
    padding: 5rem;
    display: flex;
    flex-direction: column;
@@ -18,28 +19,39 @@
    }
 
    .linksContainer {
-      width: 70%;
+      width: 60%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
-      .LinkContainer {
+      .navLink {
          display: flex;
+         font-family: v.$fontSecondary;
          color: v.$primary;
-         transition: all 0.6s ease;
+         transform: transform color;
+         transition: 0.5s;
 
          &:hover {
             cursor: pointer;
-            transform: scale(1.5);
             color: v.$hoverHeader;
+            transform: scale(1.2);
          }
 
-         .Link {
-            font-family: v.$fontPrimary;
+         h4 {
             display: none;
          }
 
          .icon {
             font-size: 3rem;
+         }
+      }
+
+      .clickedLink {
+         color: v.$hoverHeader;
+
+         .icon {
+            font-size: 4rem;
+            transition: all 0.4s ease;
          }
       }
    }
