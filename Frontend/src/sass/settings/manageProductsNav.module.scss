@@ -4,13 +4,43 @@
 .navContainer {
    padding: 5rem;
    display: flex;
+   flex-direction: column;
    justify-content: center;
+   align-items: center;
    background-color: v.$backgroundPrimary;
    text-align: center;
 
+   h3 {
+      font-family: v.$hoverHeader;
+      font-size: 1.8rem;
+      color: v.$primary;
+      margin-bottom: 3rem;
+   }
+
    .linksContainer {
-      width: 100%;
+      width: 70%;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+
+      .LinkContainer {
+         display: flex;
+         color: v.$primary;
+         transition: all 0.6s ease;
+
+         &:hover {
+            cursor: pointer;
+            transform: scale(1.5);
+            color: v.$hoverHeader;
+         }
+
+         .Link {
+            font-family: v.$fontPrimary;
+            display: none;
+         }
+
+         .icon {
+            font-size: 3rem;
+         }
+      }
    }
 }
