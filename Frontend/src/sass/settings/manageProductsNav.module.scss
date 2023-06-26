@@ -12,10 +12,14 @@
    text-align: center;
 
    h3 {
-      font-family: v.$hoverHeader;
+      font-family: v.$fontSecondary;
       font-size: 1.8rem;
       color: v.$primary;
       margin-bottom: 3rem;
+
+      @include m.manageProductsNav {
+         font-size: 3rem;
+      }
    }
 
    .linksContainer {
@@ -24,8 +28,14 @@
       justify-content: space-between;
       align-items: center;
 
+      @include m.manageProductsNav {
+         width: 100%;
+         justify-content: space-evenly;
+      }
+
       .navLink {
          display: flex;
+         align-items: center;
          font-family: v.$fontSecondary;
          color: v.$primary;
          transform: transform color;
@@ -34,11 +44,17 @@
          &:hover {
             cursor: pointer;
             color: v.$hoverHeader;
-            transform: scale(1.2);
+            transform: scale(1.1);
          }
 
          h4 {
             display: none;
+
+            @include m.manageProductsNav {
+               display: block;
+               margin-right: 1rem;
+               font-size: 2rem;
+            }
          }
 
          .icon {
