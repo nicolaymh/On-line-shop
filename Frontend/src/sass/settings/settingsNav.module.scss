@@ -3,6 +3,7 @@
 
 .containerNav {
    background-color: v.$backgroundPrimary;
+   outline: 0.5px solid v.$backgroundBody;
    height: 100vh;
    display: flex;
    position: absolute;

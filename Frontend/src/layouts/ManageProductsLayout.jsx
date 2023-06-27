@@ -6,9 +6,9 @@ const ManageProductsLayout = () => {
       <div>
          <ManageProductsNav />
 
-         <main>
+         <section>
             <Outlet />
-         </main>
+         </section>
       </div>
    );
 };

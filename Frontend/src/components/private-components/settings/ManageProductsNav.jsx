@@ -2,7 +2,7 @@
 import style from "../../../sass/settings/manageProductsNav.module.scss";
 
 // React-Icons Library.
-import { SiAddthis } from "react-icons/Si";
+import { MdLibraryAdd } from "react-icons/md";
 import { AiFillEdit } from "react-icons/Ai";
 
 // React-Router-Dom.
@@ -23,7 +23,7 @@ const ManageProductsNav = () => {
             >
                <h4>Add Product</h4>
 
-               <SiAddthis className={style.icon} />
+               <MdLibraryAdd className={style.icon} />
             </NavLink>
 
             <NavLink

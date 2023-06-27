@@ -1,7 +1,7 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/settings/manageSubcategories.module.scss";
 
-// React-Router-Dom.
+// Hooks.
 import { useState } from "react";
 
 // Context.
