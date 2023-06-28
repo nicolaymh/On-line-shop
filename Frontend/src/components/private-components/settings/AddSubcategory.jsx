@@ -6,7 +6,7 @@ import style from "../../../sass/settings/addSubcategory.module.scss";
 import { useRef, useState } from "react";
 
 // React-Icons Library.
-import { RiLoader3Fill } from "react-icons/Ri";
+import { RiLoader3Fill } from "react-icons/ri";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
