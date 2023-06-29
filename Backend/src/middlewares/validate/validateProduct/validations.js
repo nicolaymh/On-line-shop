@@ -20,8 +20,8 @@ const description = check("description")
    .toLowerCase()
    .notEmpty()
    .withMessage("Product description is required")
-   .isLength({ min: 8, max: 150 })
-   .withMessage("Product description must be between 8 and 150 characters");
+   .isLength({ min: 8, max: 200 })
+   .withMessage("Product description must be between 8 and 200 characters");
 
 const category = check("category").isMongoId().withMessage("Category id must be valid");
 

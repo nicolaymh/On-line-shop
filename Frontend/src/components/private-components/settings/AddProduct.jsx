@@ -62,7 +62,7 @@ const AddProducts = () => {
       const file = target.files[0];
 
       setImageFile(file);
-      if (target.files.len !== 0) {
+      if (target.files.length !== 0) {
          setPreviewUrl(URL.createObjectURL(file));
       }
    };
