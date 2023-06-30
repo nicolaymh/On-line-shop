@@ -110,6 +110,7 @@ const AddProducts = () => {
          });
          fileInputRef.current.value = null;
          loadingRef.current = false;
+         setSubcategoryList([]);
       } catch (error) {
          const data = error.response.data.msg || error.response.data.errors[0].msg;
          setAlert({ msg: data, error: true });
