@@ -120,7 +120,7 @@ const AddProducts = () => {
 
    return (
       <div className={mainStyle.mainContainer}>
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} className="animate__animated animate__pulse">
             <div className={inputStyle.field}>
                <label htmlFor="name">Name:</label>
                <input
