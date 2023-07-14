@@ -53,5 +53,6 @@ router.put(
    validateFieldsProduct.validateFieldsEdit,
    manageProduct.editProduct
 );
+router.get("/product/get-products", checkAuth, manageProduct.getProducts);
 
 export default router;

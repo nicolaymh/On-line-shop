@@ -7,6 +7,19 @@ import deleteImageCloudinary from "../cloudinary/deleteImage.js";
 import deleteImageLocal from "../middlewares/multer/deleteImage.js";
 import internalServerError from "../helpers/internalServerError.js";
 
+const getProducts = async (_, res) => {
+   try {
+      const getAllProductsInfo = await Product.find()
+         .lean()
+         .select("_id name price description category subcategory status image");
+
+      console.log(getAllProductsInfo);
+      res.status(200).json({ ok: true, getAllProductsInfo });
+   } catch (error) {
+      internalServerError(error, res);
+   }
+};
+
 const addProduct = async (req, res) => {
    try {
       const { user } = req;
@@ -123,4 +136,4 @@ const editProduct = async (req, res) => {
    }
 };
 
-export { addProduct, editProduct };
+export { getProducts, addProduct, editProduct };
