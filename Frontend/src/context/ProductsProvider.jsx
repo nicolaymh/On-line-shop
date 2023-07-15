@@ -27,7 +27,7 @@ const ProductsProvider = ({ children }) => {
          };
 
          try {
-            const { data } = await axiosInstance.get("/manage/product/get-productss", config);
+            const { data } = await axiosInstance.get("/manage/product/get-products", config);
 
             setProductsInfo(data.products);
          } catch (error) {
