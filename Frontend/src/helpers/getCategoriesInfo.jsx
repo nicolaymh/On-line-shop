@@ -22,7 +22,7 @@ const getCategoriesInfo = async ({
       setCategoryinfoAll(data.categoriesSubcategories);
    } catch (error) {
       console.log(error);
-      setShowModal({ ok: true, msg: error.response.data.msg || "server error" });
+      setShowModal({ ok: true, msg: error.response.data.msg || "Server error" });
 
       navigate("/", { replace: true });
 

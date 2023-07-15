@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
    const navigate = useNavigate();
 
    useEffect(() => {
+      console.log("HEy!!");
       const authenticateUser = async () => {
          const token = localStorage.getItem("token");
 
