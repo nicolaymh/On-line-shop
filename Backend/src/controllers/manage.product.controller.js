@@ -13,7 +13,6 @@ const getProducts = async (_, res) => {
    try {
       const products = await getAllProductsInfo();
 
-      console.log(products.length);
       res.status(200).json({ ok: true, products });
    } catch (error) {
       internalServerError(error, res);
