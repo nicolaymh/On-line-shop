@@ -1,6 +1,7 @@
 // Context
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
+import ProductTable from "./ProductTable";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
@@ -11,29 +12,7 @@ const ManageProduct = () => {
 
    return (
       <div>
-         <table>
-            <thead>
-               <tr>
-                  <th>Name</th>
-                  <th>description</th>
-                  <th>Price</th>
-                  <th>Status</th>
-               </tr>
-            </thead>
-
-            <tbody>
-               {ProductsInfo.map((product) => {
-                  return (
-                     <tr key={product._id}>
-                        <td>{product.name}</td>
-                        <td>{product.description}</td>
-                        <td>{product.price}</td>
-                        <td>{product.status ? "Active" : "Inactive"}</td>
-                     </tr>
-                  );
-               })}
-            </tbody>
-         </table>
+         <ProductTable ProductsInfo={ProductsInfo} />
       </div>
    );
 };
