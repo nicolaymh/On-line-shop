@@ -1,6 +1,9 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/settings/tableProduct.module.scss";
 
+// React-Icons Library.
+import { FaEdit } from "react-icons/fa";
+
 const ProductTable = ({ ProductsInfo }) => {
    return (
       <div className={style.containerTable}>
@@ -11,22 +14,41 @@ const ProductTable = ({ ProductsInfo }) => {
                   <th className={style.tDescription}>Description</th>
                   <th className={style.tPrice}>Price</th>
                   <th>Status</th>
+                  <th>Edit</th>
                </tr>
             </thead>
 
             <tbody>
-               {ProductsInfo.slice(0, 6).map((product) => {
+               {ProductsInfo.slice(0, 6).map(({ _id, name, description, price, status }) => {
+                  const Name = name.slice(0, 1).toUpperCase() + name.slice(1);
+                  const Description = description.slice(0, 1).toUpperCase() + description.slice(1);
+
                   return (
-                     <tr key={product._id}>
-                        <td>{product.name}</td>
-                        <td className={style.tDescription}>{product.description}</td>
+                     <tr key={_id}>
+                        <td>{Name}</td>
+                        <td className={style.tDescription}>{Description}</td>
                         <td className={style.tPrice}>
-                           {product.price.toLocaleString("es-CO", {
-                              style: "currency",
-                              currency: "COP",
-                           })}
+                           {
+                              price
+                                 .toLocaleString("es-CO", {
+                                    style: "currency",
+                                    currency: "COP",
+                                 })
+                                 .split(",")[0]
+                           }
                         </td>
-                        <td>{product.status ? "Active" : "Inactive"}</td>
+                        <td>
+                           <span
+                              className={`${style.statusLabel} ${
+                                 status ? style.active : style.inactive
+                              }`}
+                           >
+                              {status ? "Active" : "Inactive"}
+                           </span>
+                        </td>
+                        <td>
+                           <FaEdit className={style.icon} />
+                        </td>
                      </tr>
                   );
                })}
