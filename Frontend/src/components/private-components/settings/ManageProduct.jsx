@@ -1,6 +1,8 @@
 // CSS Styles ( SASS Modules ).
 import buttonsStyle from "../../../sass/settings/buttonsPreviousNextProducts.module.scss";
 
+import { useState } from "react";
+
 // Context
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
@@ -13,13 +15,27 @@ const ManageProduct = () => {
    console.log(ProductsInfo);
    console.log(categoryinfoAll);
 
+   const [currentPage, setCurrentPage] = useState(0);
+
+   const filterProducts = () => {
+      return ProductsInfo.slice(currentPage, currentPage + 5);
+   };
+
+   const nextPage = () => {
+      if (ProductsInfo.length > currentPage + 5) setCurrentPage(currentPage + 5);
+   };
+
+   const prevPage = () => {
+      if (currentPage > 0) setCurrentPage(currentPage - 5);
+   };
+
    return (
       <div>
-         <ProductTable ProductsInfo={ProductsInfo} />
+         <ProductTable filterProducts={filterProducts} />
 
          <div className={buttonsStyle.containerButtons}>
-            <button>Previous</button>
-            <button>Next</button>
+            <button onClick={prevPage}>Previous</button>
+            <button onClick={nextPage}>Next</button>
          </div>
       </div>
    );

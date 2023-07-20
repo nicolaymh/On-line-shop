@@ -4,7 +4,7 @@ import style from "../../../sass/settings/tableProduct.module.scss";
 // React-Icons Library.
 import { FaEdit } from "react-icons/fa";
 
-const ProductTable = ({ ProductsInfo }) => {
+const ProductTable = ({ filterProducts }) => {
    return (
       <div className={style.containerTable}>
          <table className={style.table}>
@@ -19,7 +19,7 @@ const ProductTable = ({ ProductsInfo }) => {
             </thead>
 
             <tbody>
-               {ProductsInfo.slice(0, 5).map(({ _id, name, description, price, status }) => {
+               {filterProducts()?.map(({ _id, name, description, price, status }) => {
                   const Name = name.slice(0, 1).toUpperCase() + name.slice(1);
                   const Description = description.slice(0, 1).toUpperCase() + description.slice(1);
 
