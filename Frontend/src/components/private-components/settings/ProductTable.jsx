@@ -11,8 +11,8 @@ const ProductTable = ({ ProductsInfo }) => {
             <thead>
                <tr>
                   <th>Name</th>
-                  <th className={style.tDescription}>Description</th>
-                  <th className={style.tPrice}>Price</th>
+                  <th className={style.expand}>Description</th>
+                  <th>Price</th>
                   <th>Status</th>
                   <th>Edit</th>
                </tr>
