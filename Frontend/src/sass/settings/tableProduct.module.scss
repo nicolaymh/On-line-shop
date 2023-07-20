@@ -1,11 +1,13 @@
 @use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
 
 .containerTable {
    background-color: v.$backgroundPrimary;
 
    .table {
       border-collapse: collapse;
-      max-width: 95%;
+      width: 100%;
+      max-width: 98%;
       margin: auto;
       box-shadow: 0px 10px 10px v.$secondary;
       border-radius: 10px;
@@ -15,29 +17,32 @@
          background-color: v.$primary;
          color: v.$backgroundBody;
          font-family: v.$fontPrimary;
-         font-size: 1.8rem;
+         font-size: 1.3rem;
+      }
+
+      .tName {
+         color: rgba(0, 0, 0, 0.882);
       }
 
       th,
       td {
-         padding: 1.5rem;
+         padding: 0.7rem;
          text-align: center;
       }
 
       td {
+         font-size: 1.2rem;
          border-top: 1px solid v.$secondary;
          color: v.$secondary;
-         overflow: hidden;
-         white-space: nowrap;
-         text-overflow: ellipsis;
       }
 
       .expand {
          width: 100%;
+         display: none;
       }
       .statusLabel {
          color: v.$borderLine;
-         padding: 0.8rem;
+         padding: 0.6rem;
          border-radius: 10px;
 
          &.active {
@@ -51,7 +56,7 @@
 
       .icon {
          color: v.$primary;
-         font-size: 2.5rem;
+         font-size: 1.7rem;
          transition: all 0.6s ease;
 
          &:hover {
@@ -62,3 +67,48 @@
 }
 
 // Media queries
+
+@include m.productTableMq(700px) {
+   .containerTable {
+      .table {
+         thead {
+            font-size: 1.8rem;
+         }
+
+         th,
+         td {
+            font-size: 1.4rem;
+            padding: 1rem;
+         }
+
+         .icon {
+            font-size: 2.4rem;
+         }
+      }
+   }
+}
+
+@include m.productTableMq(1000px) {
+   .containerTable {
+      .table {
+         max-width: 95%;
+
+         .expand {
+            display: table-cell;
+         }
+
+         th {
+            font-size: 1.7rem;
+         }
+
+         th,
+         td {
+            padding: 1.2rem;
+         }
+
+         .icon {
+            font-size: 2.8rem;
+         }
+      }
+   }
+}

@@ -39,3 +39,9 @@
       @content;
    }
 }
+
+@mixin productTableMq($screen) {
+   @media (min-width: $screen) {
+      @content;
+   }
+}

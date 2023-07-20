@@ -19,14 +19,14 @@ const ProductTable = ({ ProductsInfo }) => {
             </thead>
 
             <tbody>
-               {ProductsInfo.slice(0, 6).map(({ _id, name, description, price, status }) => {
+               {ProductsInfo.slice(0, 5).map(({ _id, name, description, price, status }) => {
                   const Name = name.slice(0, 1).toUpperCase() + name.slice(1);
                   const Description = description.slice(0, 1).toUpperCase() + description.slice(1);
 
                   return (
                      <tr key={_id}>
-                        <td>{Name}</td>
-                        <td className={style.tDescription}>{Description}</td>
+                        <td className={style.tName}>{Name}</td>
+                        <td className={style.expand}>{Description}</td>
                         <td className={style.tPrice}>
                            {
                               price
