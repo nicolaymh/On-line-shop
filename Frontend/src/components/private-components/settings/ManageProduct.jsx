@@ -1,3 +1,6 @@
+// CSS Styles ( SASS Modules ).
+import buttonsStyle from "../../../sass/settings/buttonsPreviousNextProducts.module.scss";
+
 // Context
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
@@ -13,6 +16,11 @@ const ManageProduct = () => {
    return (
       <div>
          <ProductTable ProductsInfo={ProductsInfo} />
+
+         <div className={buttonsStyle.containerButtons}>
+            <button>Previous</button>
+            <button>Next</button>
+         </div>
       </div>
    );
 };

@@ -1,0 +1,33 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
+.containerButtons {
+   background-color: v.$backgroundPrimary;
+   max-width: 100%;
+   padding: 1rem;
+   display: flex;
+   justify-content: center;
+
+   button {
+      margin: 0 0.3rem;
+      border: none;
+      border-radius: 10px;
+      background-color: v.$primary;
+      padding: 1rem;
+      color: v.$backgroundBody;
+      font-size: 1.3rem;
+      font-weight: 800;
+      transition-property: transform background-color;
+      transition-duration: 0.4s;
+
+      @include m.generalFormMq {
+         font-size: 1.3rem;
+      }
+
+      &:hover {
+         cursor: pointer;
+         transform: scale(1.02);
+         background-color: #1e90ff;
+      }
+   }
+}
