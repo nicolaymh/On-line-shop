@@ -1,7 +1,3 @@
-// CSS Styles ( SASS Modules ).
-import buttonsStyle from "../../../sass/settings/buttonsPreviousNextProducts.module.scss";
-import inputStyle from "../../../sass/forms/inputSearchProduct.module.scss";
-
 // Context.
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
@@ -9,7 +5,10 @@ import ProductTable from "./ProductTable";
 
 // Custom Hook.
 import useProductsFiltering from "../../../Hooks/useProductsFiltering";
+
+// Components.
 import SearchProduct from "../../generic-components/SearchProduct";
+import PaginationButton from "../../generic-components/PaginationButton";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
@@ -24,10 +23,7 @@ const ManageProduct = () => {
 
          <ProductTable filterProducts={filterProducts} />
 
-         <div className={buttonsStyle.containerButtons}>
-            <button onClick={prevPage}>Previous</button>
-            <button onClick={nextPage}>Next</button>
-         </div>
+         <PaginationButton prevPage={prevPage} nextPage={nextPage} />
       </div>
    );
 };
