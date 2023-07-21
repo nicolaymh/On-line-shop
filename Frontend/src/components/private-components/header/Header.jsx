@@ -11,7 +11,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // React-Icons Library.
-import { HiSearchCircle } from "react-icons/Hi";
 import { ImExit } from "react-icons/im";
 import { BsCart } from "react-icons/bs";
 
@@ -58,12 +57,6 @@ const Header = () => {
             <h1>
                GAMER <span>STORE</span>
             </h1>
-         </div>
-
-         <div className={style.inputContainer}>
-            <input type="text" placeholder="Search" />
-
-            <HiSearchCircle className={style.searchIcon} />
          </div>
 
          <nav className={`${style.containerNav} ${clicked ? style.burguerNavButton : ""}`}>

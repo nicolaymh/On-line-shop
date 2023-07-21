@@ -2,250 +2,190 @@
 @use "../base/mixins.scss" as m;
 
 .headerContainer {
-  display: flex;
-  justify-content: space-between;
-  outline: 2px solid v.$borderLine;
-  align-items: center;
-  background-color: v.$backgroundPrimary;
+   display: flex;
+   justify-content: space-between;
+   outline: 2px solid v.$borderLine;
+   align-items: center;
+   background-color: v.$backgroundPrimary;
 
-  @include m.headerMq(990px) {
-    justify-content: space-evenly;
-  }
+   @include m.headerMq(990px) {
+      justify-content: space-evenly;
+   }
 
-  // Logo
-  .containerLogo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 1rem;
-
-    @include m.headerMq(990px) {
-      flex-direction: row;
-    }
-
-    .containerImg {
-      img {
-        max-width: 3rem;
-
-        @include m.headerMq(990px) {
-          max-width: 5rem;
-        }
-      }
-    }
-
-    h1 {
-      color: v.$primary;
-      font-size: 1.2rem;
+   // Logo
+   .containerLogo {
       display: flex;
-      line-height: 0;
-
-      @include m.headerMq(990px) {
-        font-size: 2rem;
-        margin: 0 0 0 0.8rem;
-        padding: 0 0 0 0.7rem;
-        border-left: 2px solid v.$primary;
-        line-height: 1;
-      }
-
-      span {
-        color: black;
-        margin-left: 0.6rem;
-      }
-    }
-  }
-
-  // Nav
-  .containerNav {
-    font-size: 1.3rem;
-    width: 100%;
-    height: 7rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: absolute;
-    top: -20rem;
-    transition: top 0.8s ease;
-    z-index: 3;
-
-    &.burguerNavButton {
-      background-color: v.$backgroundPrimary;
-      top: 5rem;
-    }
-
-    @include m.headerMq(650px) {
-      width: auto;
-      position: initial;
-      font-size: 1.6rem;
-      display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
-    }
-
-    .activeLink {
-      color: v.$primary;
-      font-family: v.$fontSecondary;
-      font-style: italic;
-      font-weight: 500;
-      transition: all 0.6s ease;
-
-      &:nth-child(2) {
-        margin: 0 2rem;
-      }
-    }
-
-    .inactiveLink {
-      color: black;
-      font-family: v.$fontSecondary;
-      font-style: italic;
-      font-weight: 500;
-      transform: transform color;
-      transition-duration: 0.6s;
-
-      &:nth-child(2) {
-        margin: 0 1.5rem;
-      }
-
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.2);
-        color: v.$primary;
-      }
-    }
-  }
-
-  // Searching Input
-  .inputContainer {
-    display: flex;
-    align-items: center;
-    position: relative;
-    max-width: 50%;
-    margin-left: auto;
-
-    @include m.headerMq(650px) {
-      margin: 0;
-    }
-
-    input {
-      border: none;
-      border-radius: 9rem;
-      background-color: v.$backgroundBody;
-      margin: 1rem auto;
-      width: 80%;
-      padding: 1rem 2rem;
-      font-family: v.$fontSecondary;
-      font-style: italic;
-      font-size: 1.4rem;
-      outline: 0.3rem solid v.$borderLine;
-
-      &::placeholder {
-        color: rgba(0, 0, 0, 0.584);
-        font-size: 1.2rem;
-
-        @include m.headerMq(650px) {
-          font-size: 1.4rem;
-        }
-      }
-
-      &:focus {
-        outline: 2px solid v.$primary;
-
-        &::placeholder {
-          color: v.$backgroundBody;
-        }
-      }
-    }
-
-    // Search icon
-    .searchIcon {
-      position: absolute;
-      color: v.$primary;
-      font-size: 3rem;
-      right: 15%;
-      transition-property: transform color;
-      transition-duration: 0.9s;
-
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.2) rotate(360deg);
-        color: v.$hoverHeader;
-      }
-    }
-  }
-
-  // User
-  .containerUser {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    h3 {
-      display: none;
-      color: v.$primary;
-      font-family: v.$fontSecondary;
-      font-weight: bold;
-      font-size: 1.4rem;
+      align-items: center;
+      margin-left: 1rem;
 
       @include m.headerMq(990px) {
-        display: block;
+         flex-direction: row;
       }
-    }
 
-    // Log out icon
-    .logOut {
-      margin: 0 0 0 1rem;
-      font-size: 2.5rem;
-      color: v.$primary;
-      transition-property: transform color;
-      transition-duration: 0.9s;
-      margin-left: 1rem;
-      font-size: 3.4rem;
+      .containerImg {
+         img {
+            max-width: 3rem;
+
+            @include m.headerMq(990px) {
+               max-width: 5rem;
+            }
+         }
+      }
+
+      h1 {
+         color: v.$primary;
+         font-size: 1.2rem;
+         display: flex;
+         line-height: 0;
+
+         @include m.headerMq(990px) {
+            font-size: 2rem;
+            margin: 0 0 0 0.8rem;
+            padding: 0 0 0 0.7rem;
+            border-left: 2px solid v.$primary;
+            line-height: 1;
+         }
+
+         span {
+            color: black;
+            margin-left: 0.6rem;
+         }
+      }
+   }
+
+   // Nav
+   .containerNav {
+      font-size: 1.3rem;
+      width: 100%;
+      height: 7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      position: absolute;
+      top: -20rem;
+      transition: top 0.8s ease;
+      z-index: 3;
+
+      &.burguerNavButton {
+         background-color: v.$backgroundPrimary;
+         top: 5rem;
+      }
 
       @include m.headerMq(650px) {
-        font-size: 3rem;
+         width: auto;
+         position: initial;
+         font-size: 1.6rem;
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
       }
 
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.3);
-        color: v.$hoverHeader;
+      .activeLink {
+         color: v.$primary;
+         font-family: v.$fontSecondary;
+         font-style: italic;
+         font-weight: 500;
+         transition: all 0.6s ease;
+
+         &:nth-child(2) {
+            margin: 0 2rem;
+         }
       }
-    }
-  }
+
+      .inactiveLink {
+         color: black;
+         font-family: v.$fontSecondary;
+         font-style: italic;
+         font-weight: 500;
+         transform: transform color;
+         transition-duration: 0.6s;
+
+         &:nth-child(2) {
+            margin: 0 1.5rem;
+         }
+
+         &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+            color: v.$primary;
+         }
+      }
+   }
+
+   // User
+   .containerUser {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+         display: none;
+         color: v.$primary;
+         font-family: v.$fontSecondary;
+         font-weight: bold;
+         font-size: 1.4rem;
+
+         @include m.headerMq(990px) {
+            display: block;
+         }
+      }
+
+      // Log out icon
+      .logOut {
+         margin: 0 0 0 1rem;
+         font-size: 2.5rem;
+         color: v.$primary;
+         transition-property: transform color;
+         transition-duration: 0.9s;
+         margin-left: 1rem;
+         font-size: 3.4rem;
+
+         @include m.headerMq(650px) {
+            font-size: 3rem;
+         }
+
+         &:hover {
+            cursor: pointer;
+            transform: scale(1.3);
+            color: v.$hoverHeader;
+         }
+      }
+   }
 }
 
 // Shopping Cart
 .shoppingCart {
-  .activeCart {
-    .cart {
-      color: v.$hoverHeader;
-      font-size: 3.5rem;
-      margin-right: 1rem;
-      transition: all 0.9s ease;
-    }
-  }
-
-  .inactiveCart {
-    .cart {
-      color: v.$primary;
-      font-size: 3rem;
-      margin-right: 1rem;
-      transition-property: transform color;
-      transition: 0.7s;
-
-      &:hover {
-        transform: scale(1.3);
-        color: v.$hoverHeader;
+   .activeCart {
+      .cart {
+         color: v.$hoverHeader;
+         font-size: 3.5rem;
+         margin-right: 1rem;
+         transition: all 0.9s ease;
       }
-    }
-  }
+   }
+
+   .inactiveCart {
+      .cart {
+         color: v.$primary;
+         font-size: 3rem;
+         margin-right: 1rem;
+         transition-property: transform color;
+         transition: 0.7s;
+
+         &:hover {
+            transform: scale(1.3);
+            color: v.$hoverHeader;
+         }
+      }
+   }
 }
 
 // Burger button container
 .burgerButton {
-  margin-left: auto;
-  @include m.headerMq(650px) {
-    display: none;
-  }
+   @include m.headerMq(650px) {
+      display: none;
+   }
 }
