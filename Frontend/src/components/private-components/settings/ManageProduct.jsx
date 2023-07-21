@@ -9,6 +9,7 @@ import ProductTable from "./ProductTable";
 
 // Custom Hook.
 import useProductsFiltering from "../../../Hooks/useProductsFiltering";
+import SearchProduct from "../../generic-components/SearchProduct";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
@@ -19,9 +20,7 @@ const ManageProduct = () => {
 
    return (
       <div>
-         <div className={inputStyle.inputContainer}>
-            <input type="text" placeholder="Search Product" onChange={onSearchChange} />
-         </div>
+         <SearchProduct onSearchChange={onSearchChange} />
 
          <ProductTable filterProducts={filterProducts} />
 
