@@ -28,6 +28,8 @@ const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
 
    const handleSelectCategory = ({ target }) => {
       if (target.value === "-1") return setsubcategoriesList([]);
+
+      setsubcategoriesList(categoryinfoAll.filter((c) => c._id === target.value)[0].subcategories);
    };
    const handleSelectSubcategory = () => {};
 
