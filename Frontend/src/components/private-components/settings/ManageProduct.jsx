@@ -11,21 +11,20 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 
 // Components.
 import GenericComponents from "../../generic-components";
-import { useState } from "react";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
 
-   const [subcategoryList, setSubcategoryList] = useState([]);
-
-   console.log(categoryinfoAll);
-
-   const { filterProducts, nextPage, prevPage, onSearchChange } =
-      useProductsFiltering(ProductsInfo);
-
-   const handleSelectCategory = () => {};
-   const handleSelectSubcategory = () => {};
+   const {
+      filterProducts,
+      nextPage,
+      prevPage,
+      onSearchChange,
+      subcategoriesList,
+      handleSelectCategory,
+      handleSelectSubcategory,
+   } = useProductsFiltering(ProductsInfo);
 
    return (
       <div className={style.container}>
@@ -38,8 +37,8 @@ const ManageProduct = () => {
 
             <GenericComponents.SelectOptions
                handleSelected={handleSelectSubcategory}
-               arrayOptions={subcategoryList}
-               infoTitle={"Subcategory"}
+               arrayOptions={subcategoriesList}
+               infoTitle={"Subcategories"}
             />
          </div>
 

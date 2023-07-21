@@ -3,6 +3,7 @@ import { useState } from "react";
 const useProductsFiltering = (productsContext = [], categoriesContext = []) => {
    const [currentPage, setCurrentPage] = useState(0);
    const [search, setSearch] = useState("");
+   const [subcategoriesList, setsubcategoriesList] = useState([]);
 
    const filterProducts = () => {
       if (search.length === 0) return productsContext.slice(currentPage, currentPage + 5);
@@ -25,11 +26,17 @@ const useProductsFiltering = (productsContext = [], categoriesContext = []) => {
       setSearch(target.value);
    };
 
+   const handleSelectCategory = () => {};
+   const handleSelectSubcategory = () => {};
+
    return {
       filterProducts,
       nextPage,
       prevPage,
       onSearchChange,
+      subcategoriesList,
+      handleSelectCategory,
+      handleSelectSubcategory,
    };
 };
 
