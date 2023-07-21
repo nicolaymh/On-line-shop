@@ -2,40 +2,20 @@
 import buttonsStyle from "../../../sass/settings/buttonsPreviousNextProducts.module.scss";
 import inputStyle from "../../../sass/forms/inputSearchProduct.module.scss";
 
-import { useState } from "react";
-
-// Context
+// Context.
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
 import ProductTable from "./ProductTable";
+
+// Custom Hook.
+import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
 
-   const [currentPage, setCurrentPage] = useState(0);
-   const [search, setSearch] = useState("");
-
-   const filterProducts = () => {
-      if (search.length === 0) return ProductsInfo.slice(currentPage, currentPage + 5);
-
-      const filtered = ProductsInfo.filter((p) => p.description.includes(search.toLowerCase()));
-      return filtered.slice(currentPage, currentPage + 5);
-   };
-
-   const nextPage = () => {
-      if (ProductsInfo.filter((p) => p.description.includes(search)).length > currentPage + 5)
-         return setCurrentPage(currentPage + 5);
-   };
-
-   const prevPage = () => {
-      if (currentPage > 0) setCurrentPage(currentPage - 5);
-   };
-
-   const onSearchChange = ({ target }) => {
-      setCurrentPage(0);
-      setSearch(target.value);
-   };
+   const { filterProducts, nextPage, prevPage, onSearchChange } =
+      useProductsFiltering(ProductsInfo);
 
    return (
       <div>

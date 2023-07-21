@@ -19,7 +19,7 @@ const ProductTable = ({ filterProducts }) => {
             </thead>
 
             <tbody>
-               {filterProducts()?.map(({ _id, name, description, price, status }) => {
+               {filterProducts().map(({ _id, name, description, price, status }) => {
                   const Name = name.slice(0, 1).toUpperCase() + name.slice(1);
                   const Description = description.slice(0, 1).toUpperCase() + description.slice(1);
 
