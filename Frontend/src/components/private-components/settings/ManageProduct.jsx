@@ -24,7 +24,7 @@ const ManageProduct = () => {
       subcategoriesList,
       handleSelectCategory,
       handleSelectSubcategory,
-   } = useProductsFiltering(ProductsInfo);
+   } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
    return (
       <div className={style.container}>

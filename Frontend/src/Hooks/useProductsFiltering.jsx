@@ -1,19 +1,19 @@
 import { useState } from "react";
 
-const useProductsFiltering = (productsContext = [], categoriesContext = []) => {
+const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
    const [currentPage, setCurrentPage] = useState(0);
    const [search, setSearch] = useState("");
    const [subcategoriesList, setsubcategoriesList] = useState([]);
 
    const filterProducts = () => {
-      if (search.length === 0) return productsContext.slice(currentPage, currentPage + 5);
+      if (search.length === 0) return ProductsInfo.slice(currentPage, currentPage + 5);
 
-      const filtered = productsContext.filter((p) => p.description.includes(search.toLowerCase()));
+      const filtered = ProductsInfo.filter((p) => p.description.includes(search.toLowerCase()));
       return filtered.slice(currentPage, currentPage + 5);
    };
 
    const nextPage = () => {
-      if (productsContext.filter((p) => p.description.includes(search)).length > currentPage + 5)
+      if (ProductsInfo.filter((p) => p.description.includes(search)).length > currentPage + 5)
          return setCurrentPage(currentPage + 5);
    };
 
@@ -26,7 +26,9 @@ const useProductsFiltering = (productsContext = [], categoriesContext = []) => {
       setSearch(target.value);
    };
 
-   const handleSelectCategory = () => {};
+   const handleSelectCategory = ({ target }) => {
+      if (target.value === "-1") return setsubcategoriesList([]);
+   };
    const handleSelectSubcategory = () => {};
 
    return {
