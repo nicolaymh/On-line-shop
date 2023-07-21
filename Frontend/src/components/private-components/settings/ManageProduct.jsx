@@ -13,27 +13,34 @@ const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
 
-   console.log(ProductsInfo);
-   console.log(categoryinfoAll);
-
    const [currentPage, setCurrentPage] = useState(0);
+   const [search, setSearch] = useState("");
 
    const filterProducts = () => {
-      return ProductsInfo.slice(currentPage, currentPage + 5);
+      if (search.length === 0) return ProductsInfo.slice(currentPage, currentPage + 5);
+
+      const filtered = ProductsInfo.filter((p) => p.description.includes(search));
+      return filtered.slice(currentPage, currentPage + 5);
    };
 
    const nextPage = () => {
-      if (ProductsInfo.length > currentPage + 5) setCurrentPage(currentPage + 5);
+      if (ProductsInfo.filter((p) => p.description.includes(search)).length > currentPage + 5)
+         return setCurrentPage(currentPage + 5);
    };
 
    const prevPage = () => {
       if (currentPage > 0) setCurrentPage(currentPage - 5);
    };
 
+   const onSearchChange = ({ target }) => {
+      setCurrentPage(0);
+      setSearch(target.value);
+   };
+
    return (
       <div>
          <div className={inputStyle.inputContainer}>
-            <input type="text" placeholder="Search Product" />
+            <input type="text" placeholder="Search Product" onChange={onSearchChange} />
          </div>
 
          <ProductTable filterProducts={filterProducts} />
