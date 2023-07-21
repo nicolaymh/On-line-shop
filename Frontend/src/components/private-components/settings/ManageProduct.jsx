@@ -7,23 +7,24 @@ import ProductTable from "./ProductTable";
 import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 
 // Components.
-import SearchProduct from "../../generic-components/SearchProduct";
-import PaginationButton from "../../generic-components/PaginationButton";
+import GenericComponents from "../../generic-components";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
+
+   console.log(categoryinfoAll);
 
    const { filterProducts, nextPage, prevPage, onSearchChange } =
       useProductsFiltering(ProductsInfo);
 
    return (
       <div>
-         <SearchProduct onSearchChange={onSearchChange} />
+         <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
          <ProductTable filterProducts={filterProducts} />
 
-         <PaginationButton prevPage={prevPage} nextPage={nextPage} />
+         <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
       </div>
    );
 };
