@@ -1,0 +1,39 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
+.inputContainer {
+   background-color: v.$backgroundPrimary;
+   width: 100%;
+   padding: 2rem;
+   display: flex;
+
+   input {
+      border: none;
+      border-radius: 9rem;
+      background-color: v.$backgroundBody;
+      margin: 1rem auto;
+      width: 90%;
+      padding: 1rem 2rem;
+      font-family: v.$fontSecondary;
+      font-style: italic;
+      font-size: 1.4rem;
+      outline: 0.3rem solid v.$borderLine;
+
+      &::placeholder {
+         color: rgba(0, 0, 0, 0.584);
+         font-size: 1.2rem;
+
+         @include m.headerMq(650px) {
+            font-size: 1.4rem;
+         }
+      }
+
+      &:focus {
+         outline: 2px solid v.$primary;
+
+         &::placeholder {
+            color: v.$backgroundBody;
+         }
+      }
+   }
+}

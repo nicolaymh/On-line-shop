@@ -1,5 +1,6 @@
 // CSS Styles ( SASS Modules ).
 import buttonsStyle from "../../../sass/settings/buttonsPreviousNextProducts.module.scss";
+import inputStyle from "../../../sass/forms/inputSearchProduct.module.scss";
 
 import { useState } from "react";
 
@@ -31,6 +32,10 @@ const ManageProduct = () => {
 
    return (
       <div>
+         <div className={inputStyle.inputContainer}>
+            <input type="text" placeholder="Search Product" />
+         </div>
+
          <ProductTable filterProducts={filterProducts} />
 
          <div className={buttonsStyle.containerButtons}>
