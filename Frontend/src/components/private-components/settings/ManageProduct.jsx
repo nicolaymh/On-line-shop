@@ -8,18 +8,38 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 
 // Components.
 import GenericComponents from "../../generic-components";
+import { useState } from "react";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
+
+   const [subcategoryList, setSubcategoryList] = useState([]);
 
    console.log(categoryinfoAll);
 
    const { filterProducts, nextPage, prevPage, onSearchChange } =
       useProductsFiltering(ProductsInfo);
 
+   const handleSelectCategory = () => {};
+   const handleSelectSubcategory = () => {};
+
    return (
       <div>
+         <div>
+            <GenericComponents.SelectOptions
+               handleSelected={handleSelectCategory}
+               arrayOptions={categoryinfoAll}
+               infoTitle="Category"
+            />
+
+            <GenericComponents.SelectOptions
+               handleSelected={handleSelectSubcategory}
+               arrayOptions={subcategoryList}
+               infoTitle={"Subcategory"}
+            />
+         </div>
+
          <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
          <ProductTable filterProducts={filterProducts} />
