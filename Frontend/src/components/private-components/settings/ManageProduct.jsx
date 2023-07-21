@@ -1,3 +1,6 @@
+// CSS Styles ( SASS Modules ).
+import style from "../../../sass/settings/manageProducts.module.scss";
+
 // Context.
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
@@ -25,8 +28,8 @@ const ManageProduct = () => {
    const handleSelectSubcategory = () => {};
 
    return (
-      <div>
-         <div>
+      <div className={style.container}>
+         <div className={style.selectContainer}>
             <GenericComponents.SelectOptions
                handleSelected={handleSelectCategory}
                arrayOptions={categoryinfoAll}

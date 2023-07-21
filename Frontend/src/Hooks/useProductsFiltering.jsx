@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useProductsFiltering = (productsContext = []) => {
+const useProductsFiltering = (productsContext = [], categoriesContext = []) => {
    const [currentPage, setCurrentPage] = useState(0);
    const [search, setSearch] = useState("");
 
