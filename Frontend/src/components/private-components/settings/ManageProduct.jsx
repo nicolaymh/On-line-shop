@@ -19,7 +19,7 @@ const ManageProduct = () => {
    const filterProducts = () => {
       if (search.length === 0) return ProductsInfo.slice(currentPage, currentPage + 5);
 
-      const filtered = ProductsInfo.filter((p) => p.description.includes(search));
+      const filtered = ProductsInfo.filter((p) => p.description.includes(search.toLowerCase()));
       return filtered.slice(currentPage, currentPage + 5);
    };
 
