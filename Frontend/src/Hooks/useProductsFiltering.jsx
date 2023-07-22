@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+/**
+ * The `useProductsFiltering` function is a custom React hook that provides filtering functionality for
+ * a list of products based on search, category, and subcategory.
+ * @returns The function `useProductsFiltering` returns an object with the following properties:
+ */
 const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
    const [currentPage, setCurrentPage] = useState(0);
    const [search, setSearch] = useState("");
