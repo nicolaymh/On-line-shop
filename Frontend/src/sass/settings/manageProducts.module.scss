@@ -1,9 +1,0 @@
-@use "../base/variables.scss" as v;
-
-.container {
-   .selectContainer {
-      background-color: v.$backgroundPrimary;
-      display: flex;
-      justify-content: center;
-   }
-}

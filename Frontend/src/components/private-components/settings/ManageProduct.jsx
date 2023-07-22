@@ -1,16 +1,16 @@
 // CSS Styles ( SASS Modules ).
-import style from "../../../sass/settings/manageProducts.module.scss";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
-import ProductTable from "./ProductTable";
 
 // Custom Hook.
 import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 
 // Components.
 import GenericComponents from "../../generic-components";
+import ProductTable from "./ProductTable";
+import FilterSelectComponent from "./FilterSelectComponent";
 
 const ManageProduct = () => {
    const { ProductsInfo, setProductsInfo } = useProducts();
@@ -27,20 +27,13 @@ const ManageProduct = () => {
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
    return (
-      <div className={style.container}>
-         <div className={style.selectContainer}>
-            <GenericComponents.SelectOptions
-               handleSelected={handleSelectCategory}
-               arrayOptions={categoryinfoAll}
-               infoTitle="Category"
-            />
-
-            <GenericComponents.SelectOptions
-               handleSelected={handleSelectSubcategory}
-               arrayOptions={subcategoriesList}
-               infoTitle={"Subcategories"}
-            />
-         </div>
+      <div>
+         <FilterSelectComponent
+            handleSelectCategory={handleSelectCategory}
+            categoryinfoAll={categoryinfoAll}
+            handleSelectSubcategory={handleSelectSubcategory}
+            subcategoriesList={subcategoriesList}
+         />
 
          <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
