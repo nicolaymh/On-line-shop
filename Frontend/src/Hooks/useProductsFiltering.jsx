@@ -40,6 +40,7 @@ const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
    const handleSelectCategory = ({ target }) => {
       if (target.value === "-1") {
          setFilteringOut(ProductsInfo);
+         setCurrentPage(0);
          return setsubcategoriesList([]);
       }
 
