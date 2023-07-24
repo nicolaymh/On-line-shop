@@ -1,4 +1,6 @@
 // CSS Styles ( SASS Modules ).
+import style from "../../../sass/settings/manageProducts.module.scss";
+import modalStyle from "../../../sass/settings/modalEditProduct.module.scss";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
@@ -27,20 +29,26 @@ const ManageProduct = () => {
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
    return (
-      <div>
-         <FilterSelectComponent
-            handleSelectCategory={handleSelectCategory}
-            categoryinfoAll={categoryinfoAll}
-            handleSelectSubcategory={handleSelectSubcategory}
-            subcategoriesList={subcategoriesList}
-         />
+      <>
+         <div className={style.containerManageProduct}>
+            <div className={modalStyle.modalContainer}>
+               <h5>Hola Mundo</h5>
+            </div>
 
-         <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
+            <FilterSelectComponent
+               handleSelectCategory={handleSelectCategory}
+               categoryinfoAll={categoryinfoAll}
+               handleSelectSubcategory={handleSelectSubcategory}
+               subcategoriesList={subcategoriesList}
+            />
 
-         <ProductTable filterProducts={filterProducts} />
+            <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
-         <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
-      </div>
+            <ProductTable filterProducts={filterProducts} />
+
+            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
+         </div>
+      </>
    );
 };
 
