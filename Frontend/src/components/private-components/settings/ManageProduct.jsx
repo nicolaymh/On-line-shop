@@ -1,6 +1,8 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/settings/manageProducts.module.scss";
-import modalStyle from "../../../sass/settings/modalEditProduct.module.scss";
+
+// React Hook.
+import { useState } from "react";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
@@ -13,8 +15,11 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 import GenericComponents from "../../generic-components";
 import ProductTable from "./ProductTable";
 import FilterSelectComponent from "./FilterSelectComponent";
+import ModalEditProduct from "./ModalEditProduct";
 
 const ManageProduct = () => {
+   const [openModal, setOpenModal] = useState(false);
+
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
 
@@ -29,26 +34,33 @@ const ManageProduct = () => {
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
    return (
-      <>
-         <div className={style.containerManageProduct}>
-            <div className={modalStyle.modalContainer}>
-               <h5>Hola Mundo</h5>
-            </div>
-
-            <FilterSelectComponent
-               handleSelectCategory={handleSelectCategory}
-               categoryinfoAll={categoryinfoAll}
-               handleSelectSubcategory={handleSelectSubcategory}
-               subcategoriesList={subcategoriesList}
+      <div className={style.containerManageProduct}>
+         {openModal && (
+            <ModalEditProduct
+               showModal={() => {
+                  setOpenModal(false);
+               }}
             />
+         )}
 
-            <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
+         <FilterSelectComponent
+            handleSelectCategory={handleSelectCategory}
+            categoryinfoAll={categoryinfoAll}
+            handleSelectSubcategory={handleSelectSubcategory}
+            subcategoriesList={subcategoriesList}
+         />
 
-            <ProductTable filterProducts={filterProducts} />
+         <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
-            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
-         </div>
-      </>
+         <ProductTable
+            filterProducts={filterProducts}
+            showModal={() => {
+               setOpenModal(true);
+            }}
+         />
+
+         <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
+      </div>
    );
 };
 

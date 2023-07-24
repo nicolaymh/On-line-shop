@@ -4,7 +4,7 @@ import style from "../../../sass/settings/tableProduct.module.scss";
 // React-Icons Library.
 import { FaEdit } from "react-icons/fa";
 
-const ProductTable = ({ filterProducts }) => {
+const ProductTable = ({ filterProducts, showModal }) => {
    console.log(filterProducts());
 
    return (
@@ -55,7 +55,7 @@ const ProductTable = ({ filterProducts }) => {
                            </span>
                         </td>
                         <td>
-                           <FaEdit className={style.icon} />
+                           <FaEdit onClick={showModal} className={style.icon} />
                         </td>
                      </tr>
                   );
