@@ -16,6 +16,7 @@ import { useForm } from "../../../Hooks/useForm";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
+import useProducts from "../../../Hooks/useProducts";
 
 // Generic Components.
 import GenericComponents from "../../generic-components";
@@ -30,6 +31,7 @@ const AddProducts = () => {
    const loadingRef = useRef(false);
 
    const { categoryinfoAll } = useCategory();
+   const { setProductsInfo } = useProducts();
 
    const { name, price, description, category, subcategory, setFormState, onInputChange } = useForm(
       {
@@ -111,6 +113,7 @@ const AddProducts = () => {
          fileInputRef.current.value = null;
          loadingRef.current = false;
          setSubcategoryList([]);
+         setProductsInfo(data.products);
       } catch (error) {
          const data = error.response.data.msg || error.response.data.errors[0].msg;
          setAlert({ msg: data, error: true });

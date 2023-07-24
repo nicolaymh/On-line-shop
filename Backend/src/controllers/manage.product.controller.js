@@ -57,9 +57,12 @@ const addProduct = async (req, res) => {
          },
       });
 
+      const products = await getAllProductsInfo();
+
       res.status(201).json({
          ok: true,
          msg: `The product ${newProduct.name} has been created successfully`,
+         products,
       });
    } catch (error) {
       deleteImageLocal(res);
