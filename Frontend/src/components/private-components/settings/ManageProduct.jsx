@@ -43,23 +43,25 @@ const ManageProduct = () => {
             />
          )}
 
-         <FilterSelectComponent
-            handleSelectCategory={handleSelectCategory}
-            categoryinfoAll={categoryinfoAll}
-            handleSelectSubcategory={handleSelectSubcategory}
-            subcategoriesList={subcategoriesList}
-         />
+         <>
+            <FilterSelectComponent
+               handleSelectCategory={handleSelectCategory}
+               categoryinfoAll={categoryinfoAll}
+               handleSelectSubcategory={handleSelectSubcategory}
+               subcategoriesList={subcategoriesList}
+            />
 
-         <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
+            <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
-         <ProductTable
-            filterProducts={filterProducts}
-            showModal={() => {
-               setOpenModal(true);
-            }}
-         />
+            <ProductTable
+               filterProducts={filterProducts}
+               showModal={() => {
+                  setOpenModal(true);
+               }}
+            />
 
-         <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
+            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
+         </>
       </div>
    );
 };
