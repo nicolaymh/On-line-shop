@@ -19,6 +19,7 @@ import ModalEditProduct from "./ModalEditProduct";
 
 const ManageProduct = () => {
    const [openModal, setOpenModal] = useState(false);
+   const [infoProductEdit, setInfoProductEdit] = useState({});
 
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
@@ -33,9 +34,20 @@ const ManageProduct = () => {
       handleSelectSubcategory,
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
+   const showEditProduct = (id) => {
+      setOpenModal(true);
+      setInfoProductEdit(ProductsInfo.filter((p) => p._id === id)[0]);
+   };
+
    return (
       <div className={style.containerManageProduct}>
-         {openModal && <ModalEditProduct showModal={() => setOpenModal(false)} />}
+         {openModal && (
+            <ModalEditProduct
+               showModal={() => setOpenModal(false)}
+               infoProductEdit={infoProductEdit}
+               categoryinfoAll={categoryinfoAll}
+            />
+         )}
 
          <>
             <FilterSelectComponent
@@ -47,7 +59,7 @@ const ManageProduct = () => {
 
             <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
-            <ProductTable filterProducts={filterProducts} showModal={() => setOpenModal(true)} />
+            <ProductTable filterProducts={filterProducts} showEditProduct={showEditProduct} />
 
             <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </>
