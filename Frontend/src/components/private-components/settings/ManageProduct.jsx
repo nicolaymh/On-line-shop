@@ -35,13 +35,7 @@ const ManageProduct = () => {
 
    return (
       <div className={style.containerManageProduct}>
-         {openModal && (
-            <ModalEditProduct
-               showModal={() => {
-                  setOpenModal(false);
-               }}
-            />
-         )}
+         {openModal && <ModalEditProduct showModal={() => setOpenModal(false)} />}
 
          <>
             <FilterSelectComponent
@@ -53,12 +47,7 @@ const ManageProduct = () => {
 
             <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
 
-            <ProductTable
-               filterProducts={filterProducts}
-               showModal={() => {
-                  setOpenModal(true);
-               }}
-            />
+            <ProductTable filterProducts={filterProducts} showModal={() => setOpenModal(true)} />
 
             <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </>
