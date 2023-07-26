@@ -4,9 +4,7 @@ import style from "../../../sass/settings/tableProduct.module.scss";
 // React-Icons Library.
 import { FaEdit } from "react-icons/fa";
 
-const ProductTable = ({ filterProducts, showEditProduct, infoProductEdit }) => {
-   // console.log(filterProducts());
-
+const ProductTable = ({ filterProducts, showEditProduct }) => {
    return (
       <div className={style.containerTable}>
          <table className={style.table}>
