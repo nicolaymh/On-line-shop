@@ -24,6 +24,10 @@
          font-size: 1.8rem;
          text-align: center;
          padding: 1rem;
+
+         @media (min-width: 700px) {
+            font-size: 2.8rem;
+         }
       }
 
       .selectContainer {
