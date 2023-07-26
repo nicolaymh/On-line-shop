@@ -14,7 +14,7 @@
       width: 80%;
       padding: 0.5rem;
       background-color: v.$backgroundPrimary;
-      box-shadow: 0px 10px 10px v.$secondary;
+      box-shadow: 0px 0px 17px 4px v.$secondary;
       border-radius: 10px;
       border: 1px solid v.$borderLine;
 
@@ -128,5 +128,47 @@
       color: v.$primary;
       font-size: 4rem;
       align-self: flex-end;
+   }
+}
+
+.editButton {
+   padding: 1rem;
+   text-align: center;
+
+   input {
+      border: none;
+      width: 80%;
+      padding: 1rem;
+      font-family: v.$fontSecondary;
+      font-style: italic;
+      font-size: 1.2rem;
+      outline: none;
+      margin-top: 0.5rem;
+
+      &:focus {
+         outline: 2px solid v.$primary;
+         &::placeholder {
+            color: v.$backgroundBody;
+         }
+      }
+
+      &::placeholder {
+         color: v.$secondary;
+      }
+   }
+
+   input[type="button"] {
+      background-color: v.$primary;
+      color: v.$backgroundBody;
+      font-size: 1.3rem;
+      font-weight: 800;
+      transition-property: transform background-color;
+      transition-duration: 0.5s;
+
+      &:hover {
+         cursor: pointer;
+         transform: scale(1.02);
+         background-color: #1e90ff;
+      }
    }
 }

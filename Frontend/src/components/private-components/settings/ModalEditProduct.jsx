@@ -13,6 +13,7 @@ import { useForm } from "../../../Hooks/useForm";
 
 // Generic Components.
 import GenericComponents from "../../generic-components";
+import axiosInstance from "../../../helpers/axiosInstance";
 
 const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    const [subcategoryList, setSubcategoryList] = useState(
@@ -20,6 +21,7 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    );
    const [imageFile, setImageFile] = useState(null);
    const [previewUrl, setPreviewUrl] = useState(null);
+   const [alert, setAlert] = useState({});
 
    const loadingRef = useRef(false);
 
@@ -53,6 +55,41 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
       if (target.files.length !== 0) {
          setPreviewUrl(URL.createObjectURL(file));
       }
+   };
+
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      setAlert({});
+
+      if ([name, price, description, category, subcategory].includes("")) {
+         return setAlert({ msg: "All fields are required", error: true });
+      }
+
+      if (price <= 0) {
+         return setAlert({ msg: "Enter a price valid", error: true });
+      }
+
+      loadingRef.current = true;
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("category", category);
+      formData.append("subcategory", subcategory);
+      formData.append("image", imageFile);
+
+      const data = await axiosInstance.put(
+         `/manage/product/edit-product/${infoProductEdit._id}`,
+         formData,
+         {
+            headers: {
+               "Content-Type": "multipart/form-data",
+               Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+         }
+      );
    };
 
    return (
@@ -142,16 +179,18 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
                </div>
             </div>
 
-            <div className={modalStyle.iconContainer}>
-               <RiLoader3Fill
-                  className={`${modalStyle.icon} animate__animated animate__rotateIn animate__infinite`}
-               />
-            </div>
-
-            <div className={inputStyle.field}>
-               <input type="submit" value="EDIT PRODUCT" />
-            </div>
+            {loadingRef.current ? (
+               <div className={modalStyle.iconContainer}>
+                  <RiLoader3Fill className={`${modalStyle.icon}`} />
+               </div>
+            ) : (
+               <div className={modalStyle.editButton}>
+                  <input onClick={handleSubmit} type="button" value="EDIT PRODUCT" />
+               </div>
+            )}
          </form>
+
+         {alert.msg && <GenericComponents.Alert {...alert} />}
       </div>
    );
 };
