@@ -2,34 +2,34 @@
 @use "../base/mixins.scss" as m;
 
 .alertContainer {
-  margin: 0 auto;
-  border-radius: 3rem;
-  background: rgb(255, 0, 0);
-  margin-bottom: 2rem;
-  width: 90%;
+   margin: 0 auto;
+   border-radius: 3rem;
+   background: rgb(255, 0, 0);
+   margin-bottom: 2rem;
+   width: 90%;
 
-  h2 {
-    font-family: v.$fontPrimary;
-    font-weight: lighter;
-    color: v.$backgroundPrimary;
-    text-align: center;
-    font-size: 1.3rem;
-    padding: 0.02rem 1rem;
+   h2 {
+      font-family: v.$fontPrimary;
+      font-weight: lighter;
+      color: v.$backgroundPrimary;
+      text-align: center;
+      font-size: 1.3rem;
+      padding: 0.5rem 1rem;
 
-    @include m.generalFormMq {
-      font-size: 1.6rem;
-    }
-  }
+      @include m.generalFormMq {
+         font-size: 1.6rem;
+      }
+   }
 }
 
 .alertColor1 {
-  background: #ff5858;
-  background: -webkit-linear-gradient(288deg, #ff5858 0%, #f857a6 100%);
-  background: linear-gradient(288deg, #ff5858 0%, #f857a6 100%);
+   background: #ff5858;
+   background: -webkit-linear-gradient(288deg, #ff5858 0%, #f857a6 100%);
+   background: linear-gradient(288deg, #ff5858 0%, #f857a6 100%);
 }
 
 .alertColor2 {
-  background: #1488cc;
-  background: -webkit-linear-gradient(360deg, #2196f3 0%, #2b32b2 100%);
-  background: linear-gradient(360deg, #2196f3 0%, #1488cc 100%);
+   background: #1488cc;
+   background: -webkit-linear-gradient(360deg, #2196f3 0%, #2b32b2 100%);
+   background: linear-gradient(360deg, #2196f3 0%, #1488cc 100%);
 }

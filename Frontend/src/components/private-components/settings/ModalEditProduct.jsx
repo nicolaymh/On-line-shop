@@ -49,7 +49,7 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    };
 
    const handleSelectStatus = ({ target }) => {
-      console.log(target.value);
+      setFormState((prev) => ({ ...prev, status: target.value }));
    };
 
    const handleImage = ({ target }) => {
@@ -203,9 +203,9 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
                   <input onClick={handleSubmit} type="button" value="EDIT PRODUCT" />
                </div>
             )}
-         </form>
 
-         {alert.msg && <GenericComponents.Alert {...alert} />}
+            {alert.msg && <GenericComponents.Alert {...alert} />}
+         </form>
       </div>
    );
 };

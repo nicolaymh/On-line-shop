@@ -9,6 +9,7 @@ const SelectOptions = ({ handleSelected, arrayOptions, infoTitle, defaultSelecti
                {infoTitle.toUpperCase()}
             </option>
          )}
+
          {arrayOptions.map(({ _id, name }) => (
             <option key={_id} value={_id} className={style.options}>
                {name.toUpperCase()}
