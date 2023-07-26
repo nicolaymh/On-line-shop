@@ -217,7 +217,9 @@ const ModalEditProduct = ({
 
             {loadingRef.current ? (
                <div className={modalStyle.iconContainer}>
-                  <RiLoader3Fill className={`${modalStyle.icon}`} />
+                  <RiLoader3Fill
+                     className={`${modalStyle.icon} animate__animated animate__rotateIn animate__infinite`}
+                  />
                </div>
             ) : (
                <div className={modalStyle.editButton}>
