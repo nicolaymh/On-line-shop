@@ -3,7 +3,7 @@ import modalStyle from "../../../sass/settings/modalEditProduct.module.scss";
 import inputStyle from "../../../sass/forms/formInputs.module.scss";
 
 // React Hooks.
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
 // React-Icons Library.
 import { RiUploadCloudFill } from "react-icons/ri";
@@ -15,16 +15,12 @@ import { useForm } from "../../../Hooks/useForm";
 import GenericComponents from "../../generic-components";
 
 const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
-   // console.log(infoProductEdit);
-
-   const [subcategoryList, setSubcategoryList] = useState([]);
+   const [subcategoryList, setSubcategoryList] = useState(
+      categoryinfoAll.filter((c) => c._id === infoProductEdit.category)[0].subcategories
+   );
 
    const { name, price, description, category, subcategory, setFormState, onInputChange } =
       useForm(infoProductEdit);
-
-   useLayoutEffect(() => {
-      setSubcategoryList(categoryinfoAll.filter((c) => c._id === category)[0].subcategories);
-   }, []);
 
    const handleSelectCategory = () => {};
    const handleSelectSubcategory = () => {};
@@ -88,7 +84,7 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
 
                <GenericComponents.SelectOptions
                   handleSelected={handleSelectSubcategory}
-                  arrayOptions={subcategoryList}
+                  arrayOptions={subcategoryList || []}
                   infoTitle="Choose Subcategory"
                   defaultSelection={infoProductEdit.subcategory}
                />

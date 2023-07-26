@@ -4,7 +4,7 @@ import style from "../../sass/forms/select.module.scss";
 const SelectOptions = ({ handleSelected, arrayOptions, infoTitle, defaultSelection = null }) => {
    const defaultValue = defaultSelection ? defaultSelection : "-1";
 
-   console.log(defaultSelection);
+   console.log(arrayOptions);
 
    return (
       <select className={style.select} defaultValue={defaultValue} onChange={handleSelected}>
