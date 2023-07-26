@@ -74,26 +74,27 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
          return setAlert({ msg: "Enter a price valid", error: true });
       }
 
-      // loadingRef.current = true;
+      loadingRef.current = true;
 
-      // const formData = new FormData();
-      // formData.append("name", name);
-      // formData.append("price", price);
-      // formData.append("description", description);
-      // formData.append("category", category);
-      // formData.append("subcategory", subcategory);
-      // formData.append("image", imageFile);
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("category", category);
+      formData.append("subcategory", subcategory);
+      formData.append("status", status);
+      formData.append("image", imageFile);
 
-      // const data = await axiosInstance.put(
-      //    `/manage/product/edit-product/${infoProductEdit._id}`,
-      //    formData,
-      //    {
-      //       headers: {
-      //          "Content-Type": "multipart/form-data",
-      //          Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //       },
-      //    }
-      // );
+      const data = await axiosInstance.put(
+         `/manage/product/edit-product/${infoProductEdit._id}`,
+         formData,
+         {
+            headers: {
+               "Content-Type": "multipart/form-data",
+               Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+         }
+      );
 
       console.log(infoProductEdit.status);
    };

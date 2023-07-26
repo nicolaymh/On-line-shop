@@ -131,7 +131,9 @@ const editProduct = async (req, res) => {
 
       console.log(editedProduct);
 
-      res.status(201).json({ ok: true, msg: "Product edited successfully" });
+      const products = await getAllProductsInfo();
+
+      res.status(201).json({ ok: true, msg: "Product edited successfully", products });
    } catch (error) {
       console.log(error);
       internalServerError(error, res);
