@@ -25,7 +25,7 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
 
    const loadingRef = useRef(false);
 
-   const { name, price, description, category, subcategory, setFormState, onInputChange } =
+   const { name, price, description, category, subcategory, status, setFormState, onInputChange } =
       useForm(infoProductEdit);
 
    const handleSelectCategory = ({ target }) => {
@@ -46,6 +46,10 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
 
    const handleSelectSubcategory = ({ target }) => {
       setFormState((prev) => ({ ...prev, subcategory: target.value }));
+   };
+
+   const handleSelectStatus = ({ target }) => {
+      console.log(target.value);
    };
 
    const handleImage = ({ target }) => {
@@ -70,26 +74,28 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
          return setAlert({ msg: "Enter a price valid", error: true });
       }
 
-      loadingRef.current = true;
+      // loadingRef.current = true;
 
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("price", price);
-      formData.append("description", description);
-      formData.append("category", category);
-      formData.append("subcategory", subcategory);
-      formData.append("image", imageFile);
+      // const formData = new FormData();
+      // formData.append("name", name);
+      // formData.append("price", price);
+      // formData.append("description", description);
+      // formData.append("category", category);
+      // formData.append("subcategory", subcategory);
+      // formData.append("image", imageFile);
 
-      const data = await axiosInstance.put(
-         `/manage/product/edit-product/${infoProductEdit._id}`,
-         formData,
-         {
-            headers: {
-               "Content-Type": "multipart/form-data",
-               Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-         }
-      );
+      // const data = await axiosInstance.put(
+      //    `/manage/product/edit-product/${infoProductEdit._id}`,
+      //    formData,
+      //    {
+      //       headers: {
+      //          "Content-Type": "multipart/form-data",
+      //          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      //       },
+      //    }
+      // );
+
+      console.log(infoProductEdit.status);
    };
 
    return (
@@ -154,6 +160,16 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
                   arrayOptions={subcategoryList || []}
                   infoTitle="Choose Subcategory"
                   defaultSelection={infoProductEdit.subcategory}
+               />
+
+               <GenericComponents.SelectOptions
+                  handleSelected={handleSelectStatus}
+                  arrayOptions={[
+                     { _id: true, name: "active" },
+                     { _id: false, name: "desactive" },
+                  ]}
+                  infoTitle="Status"
+                  defaultSelection={infoProductEdit.status}
                />
             </div>
 

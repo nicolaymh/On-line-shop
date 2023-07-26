@@ -36,8 +36,8 @@
          pad: 1rem;
 
          select {
-            &:first-child {
-               margin-bottom: 1rem;
+            &:nth-child(2) {
+               margin: 1rem auto;
             }
          }
       }
