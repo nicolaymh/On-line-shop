@@ -3,10 +3,10 @@ import modalStyle from "../../../sass/settings/modalEditProduct.module.scss";
 import inputStyle from "../../../sass/forms/formInputs.module.scss";
 
 // React Hooks.
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // React-Icons Library.
-import { RiUploadCloudFill } from "react-icons/ri";
+import { RiUploadCloudFill, RiLoader3Fill } from "react-icons/ri";
 
 // Custom-Hook to handle forms.
 import { useForm } from "../../../Hooks/useForm";
@@ -18,6 +18,10 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    const [subcategoryList, setSubcategoryList] = useState(
       categoryinfoAll.filter((c) => c._id === infoProductEdit.category)[0].subcategories
    );
+   const [imageFile, setImageFile] = useState(null);
+   const [previewUrl, setPreviewUrl] = useState(null);
+
+   const loadingRef = useRef(false);
 
    const { name, price, description, category, subcategory, setFormState, onInputChange } =
       useForm(infoProductEdit);
@@ -40,6 +44,15 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
 
    const handleSelectSubcategory = ({ target }) => {
       setFormState((prev) => ({ ...prev, subcategory: target.value }));
+   };
+
+   const handleImage = ({ target }) => {
+      const file = target.files[0];
+
+      setImageFile(file);
+      if (target.files.length !== 0) {
+         setPreviewUrl(URL.createObjectURL(file));
+      }
    };
 
    return (
@@ -112,12 +125,27 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
                   <p>
                      <RiUploadCloudFill className={modalStyle.icon} /> <span> Add Image</span>
                   </p>
-                  <input type="file" name="imageFile" required accept="image/" />
+                  <input
+                     type="file"
+                     name="imageFile"
+                     required
+                     accept="image/"
+                     onChange={handleImage}
+                  />
                </div>
 
                <div className={modalStyle.imgContainer}>
-                  <img src="" alt="image-product" />
+                  <img
+                     src={previewUrl ? previewUrl : infoProductEdit.image.url}
+                     alt="image-product"
+                  />
                </div>
+            </div>
+
+            <div className={modalStyle.iconContainer}>
+               <RiLoader3Fill
+                  className={`${modalStyle.icon} animate__animated animate__rotateIn animate__infinite`}
+               />
             </div>
 
             <div className={inputStyle.field}>
