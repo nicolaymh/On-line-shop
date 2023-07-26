@@ -22,8 +22,25 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    const { name, price, description, category, subcategory, setFormState, onInputChange } =
       useForm(infoProductEdit);
 
-   const handleSelectCategory = () => {};
-   const handleSelectSubcategory = () => {};
+   const handleSelectCategory = ({ target }) => {
+      if (target.value === "-1") {
+         setFormState((prev) => ({
+            ...prev,
+            category: infoProductEdit.category,
+            subcategory: infoProductEdit.subcategory,
+         }));
+         setSubcategoryList([]);
+      }
+
+      const subCat = categoryinfoAll.filter((c) => c._id === target.value);
+      setSubcategoryList(subCat[0].subcategories);
+      setFormState((prev) => ({ ...prev, category: subCat[0]._id }));
+      setFormState((prev) => ({ ...prev, subcategory: "" }));
+   };
+
+   const handleSelectSubcategory = ({ target }) => {
+      setFormState((prev) => ({ ...prev, subcategory: target.value }));
+   };
 
    return (
       <div
