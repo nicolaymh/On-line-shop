@@ -14,7 +14,7 @@ const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
 
    useEffect(() => {
       setFilteringOut(ProductsInfo);
-   }, []);
+   }, [ProductsInfo]);
 
    const filterProducts = () => {
       if (search.length === 0) return filteringOut.slice(currentPage, currentPage + 5);

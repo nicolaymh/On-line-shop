@@ -15,7 +15,7 @@ import { useForm } from "../../../Hooks/useForm";
 import GenericComponents from "../../generic-components";
 import axiosInstance from "../../../helpers/axiosInstance";
 
-const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
+const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit, setProductsInfo }) => {
    const [subcategoryList, setSubcategoryList] = useState(
       categoryinfoAll.filter((c) => c._id === infoProductEdit.category)[0].subcategories
    );
@@ -35,7 +35,7 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
             category: infoProductEdit.category,
             subcategory: infoProductEdit.subcategory,
          }));
-         setSubcategoryList([]);
+         return setSubcategoryList([]);
       }
 
       const subCat = categoryinfoAll.filter((c) => c._id === target.value);
@@ -45,6 +45,10 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
    };
 
    const handleSelectSubcategory = ({ target }) => {
+      if (target.value === "-1") {
+         return setFormState((prev) => ({ ...prev, subcategory: infoProductEdit.subcategory }));
+      }
+
       setFormState((prev) => ({ ...prev, subcategory: target.value }));
    };
 
@@ -74,29 +78,40 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
          return setAlert({ msg: "Enter a price valid", error: true });
       }
 
-      loadingRef.current = true;
+      try {
+         loadingRef.current = true;
 
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("price", price);
-      formData.append("description", description);
-      formData.append("category", category);
-      formData.append("subcategory", subcategory);
-      formData.append("status", status);
-      formData.append("image", imageFile);
+         const formData = new FormData();
+         formData.append("name", name);
+         formData.append("price", price);
+         formData.append("description", description);
+         formData.append("category", category);
+         formData.append("subcategory", subcategory);
+         formData.append("status", status);
+         formData.append("image", imageFile);
 
-      const data = await axiosInstance.put(
-         `/manage/product/edit-product/${infoProductEdit._id}`,
-         formData,
-         {
-            headers: {
-               "Content-Type": "multipart/form-data",
-               Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-         }
-      );
+         const { data } = await axiosInstance.put(
+            `/manage/product/edit-product/${infoProductEdit._id}`,
+            formData,
+            {
+               headers: {
+                  "Content-Type": "multipart/form-data",
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+               },
+            }
+         );
 
-      console.log(infoProductEdit.status);
+         console.log(data);
+
+         setAlert({ msg: data.msg, error: false });
+         loadingRef.current = false;
+         setProductsInfo(data.products);
+      } catch (error) {
+         console.log(error);
+         const data = error.response.data.msg || error.response.data.errors[0].msg;
+         setAlert({ msg: data, error: true });
+         loadingRef.current = false;
+      }
    };
 
    return (

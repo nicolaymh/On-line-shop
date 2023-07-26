@@ -46,6 +46,7 @@ const ManageProduct = () => {
                showModal={() => setOpenModal(false)}
                infoProductEdit={infoProductEdit}
                categoryinfoAll={categoryinfoAll}
+               setProductsInfo={setProductsInfo}
             />
          )}
 
