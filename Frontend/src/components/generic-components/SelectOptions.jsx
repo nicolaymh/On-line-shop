@@ -1,9 +1,20 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../sass/forms/select.module.scss";
 
-const SelectOptions = ({ handleSelected, arrayOptions, infoTitle, defaultSelection = "-1" }) => {
+const SelectOptions = ({
+   handleSelected,
+   arrayOptions,
+   infoTitle,
+   selectRef = null,
+   defaultSelection = "-1",
+}) => {
    return (
-      <select className={style.select} defaultValue={defaultSelection} onChange={handleSelected}>
+      <select
+         ref={selectRef ? selectRef : undefined}
+         className={style.select}
+         defaultValue={defaultSelection}
+         onChange={handleSelected}
+      >
          {infoTitle && (
             <option className={style.options} value="-1">
                {infoTitle.toUpperCase()}

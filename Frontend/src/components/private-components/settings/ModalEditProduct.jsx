@@ -15,7 +15,13 @@ import { useForm } from "../../../Hooks/useForm";
 import GenericComponents from "../../generic-components";
 import axiosInstance from "../../../helpers/axiosInstance";
 
-const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit, setProductsInfo }) => {
+const ModalEditProduct = ({
+   showModal,
+   categoryinfoAll,
+   infoProductEdit,
+   setProductsInfo,
+   selectRef,
+}) => {
    const [subcategoryList, setSubcategoryList] = useState(
       categoryinfoAll.filter((c) => c._id === infoProductEdit.category)[0].subcategories
    );
@@ -101,11 +107,10 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit, setProd
             }
          );
 
-         console.log(data);
-
          setAlert({ msg: data.msg, error: false });
          loadingRef.current = false;
          setProductsInfo(data.products);
+         selectRef.current.value = selectRef.current.options[0].value;
       } catch (error) {
          console.log(error);
          const data = error.response.data.msg || error.response.data.errors[0].msg;

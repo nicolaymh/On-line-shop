@@ -5,8 +5,13 @@ import style from "../../../sass/settings/FilterSelectComponent.module.scss";
 import GenericComponents from "../../generic-components";
 
 const FilterSelectComponent = (props) => {
-   const { handleSelectCategory, categoryinfoAll, handleSelectSubcategory, subcategoriesList } =
-      props;
+   const {
+      handleSelectCategory,
+      categoryinfoAll,
+      handleSelectSubcategory,
+      subcategoriesList,
+      selectRef,
+   } = props;
 
    return (
       <div className={style.selectContainer}>
@@ -14,6 +19,7 @@ const FilterSelectComponent = (props) => {
             handleSelected={handleSelectCategory}
             arrayOptions={categoryinfoAll}
             infoTitle="Category"
+            selectRef={selectRef}
          />
 
          <GenericComponents.SelectOptions

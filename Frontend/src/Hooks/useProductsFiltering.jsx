@@ -14,6 +14,7 @@ const useProductsFiltering = (ProductsInfo = [], categoryinfoAll = []) => {
 
    useEffect(() => {
       setFilteringOut(ProductsInfo);
+      setsubcategoriesList([]);
    }, [ProductsInfo]);
 
    const filterProducts = () => {

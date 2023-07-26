@@ -2,7 +2,7 @@
 import style from "../../../sass/settings/manageProducts.module.scss";
 
 // React Hook.
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // Context.
 import useCategory from "../../../Hooks/useCategory";
@@ -20,6 +20,8 @@ import ModalEditProduct from "./ModalEditProduct";
 const ManageProduct = () => {
    const [openModal, setOpenModal] = useState(false);
    const [infoProductEdit, setInfoProductEdit] = useState({});
+
+   const selectRef = useRef();
 
    const { ProductsInfo, setProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
@@ -47,6 +49,7 @@ const ManageProduct = () => {
                infoProductEdit={infoProductEdit}
                categoryinfoAll={categoryinfoAll}
                setProductsInfo={setProductsInfo}
+               selectRef={selectRef}
             />
          )}
 
@@ -56,6 +59,7 @@ const ManageProduct = () => {
                categoryinfoAll={categoryinfoAll}
                handleSelectSubcategory={handleSelectSubcategory}
                subcategoriesList={subcategoriesList}
+               selectRef={selectRef}
             />
 
             <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
