@@ -165,10 +165,9 @@ const ModalEditProduct = ({ showModal, categoryinfoAll, infoProductEdit }) => {
                <GenericComponents.SelectOptions
                   handleSelected={handleSelectStatus}
                   arrayOptions={[
-                     { _id: true, name: "active" },
-                     { _id: false, name: "desactive" },
+                     { _id: true, name: "activate" },
+                     { _id: false, name: "disabled" },
                   ]}
-                  infoTitle="Status"
                   defaultSelection={infoProductEdit.status}
                />
             </div>
