@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 
 // React-Icons Library.
 import { RiUploadCloudFill, RiLoader3Fill } from "react-icons/ri";
-import { AiFillCloseSquare } from "react-icons/ai";
+import { BiSolidDoorOpen } from "react-icons/bi";
 
 // Custom-Hook to handle forms.
 import { useForm } from "../../../Hooks/useForm";
@@ -235,7 +235,7 @@ const ModalEditProduct = ({
             {alert.msg && <GenericComponents.Alert {...alert} />}
 
             <div>
-               <AiFillCloseSquare onClick={() => showModal()} className={modalStyle.closeModal} />
+               <BiSolidDoorOpen onClick={() => showModal()} className={modalStyle.closeModal} />
             </div>
          </form>
       </div>
