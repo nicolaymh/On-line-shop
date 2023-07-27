@@ -86,12 +86,16 @@ const AddProducts = () => {
          loadingRef.current = true;
 
          const formData = new FormData();
-         formData.append("name", name);
-         formData.append("price", price);
-         formData.append("description", description);
-         formData.append("category", category);
-         formData.append("subcategory", subcategory);
-         formData.append("image", imageFile);
+         Object.entries({
+            name,
+            price,
+            description,
+            category,
+            subcategory,
+            image: imageFile,
+         }).forEach(([key, value]) => {
+            formData.append(key, value);
+         });
 
          const { data } = await axiosInstance.post("/manage/product/create-product", formData, {
             headers: {
