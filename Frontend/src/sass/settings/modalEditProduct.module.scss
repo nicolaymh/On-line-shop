@@ -11,6 +11,7 @@
    align-items: center;
 
    form {
+      position: relative;
       width: 80%;
       padding: 0.5rem;
       background-color: v.$backgroundPrimary;
@@ -175,5 +176,19 @@
          transform: scale(1.02);
          background-color: #1e90ff;
       }
+   }
+}
+
+.closeModal {
+   position: absolute;
+   top: 1.2%;
+   right: 1.5%;
+   font-size: 3.2rem;
+   color: v.$primary;
+   transition: all 0.6s ease;
+
+   &:hover {
+      color: red;
+      box-shadow: 0px 5px 5px v.$primary;
    }
 }
