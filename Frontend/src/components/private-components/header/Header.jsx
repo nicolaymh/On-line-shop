@@ -70,11 +70,11 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-               to="/shop/Categories"
+               to="/shop/products"
                onClick={() => setClicked(false)}
                className={({ isActive }) => (isActive ? style.activeLink : style.inactiveLink)}
             >
-               Categories
+               Products
             </NavLink>
 
             <NavLink
