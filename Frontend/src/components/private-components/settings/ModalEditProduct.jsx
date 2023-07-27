@@ -89,13 +89,17 @@ const ModalEditProduct = ({
          loadingRef.current = true;
 
          const formData = new FormData();
-         formData.append("name", name);
-         formData.append("price", price);
-         formData.append("description", description);
-         formData.append("category", category);
-         formData.append("subcategory", subcategory);
-         formData.append("status", status);
-         formData.append("image", imageFile);
+         Object.entries({
+            name,
+            price,
+            description,
+            category,
+            subcategory,
+            status,
+            image: imageFile,
+         }).forEach(([key, value]) => {
+            formData.append(key, value);
+         });
 
          const { data } = await axiosInstance.put(
             `/manage/product/edit-product/${infoProductEdit._id}`,
