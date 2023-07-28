@@ -1,0 +1,36 @@
+@use "../base/variables.scss" as v;
+
+.mainContainer {
+   .titleContainer {
+      background-color: v.$primary;
+      height: 6rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      figure {
+         padding: 0;
+         margin: 0;
+         border: none;
+         height: 4rem;
+         width: 4rem;
+
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+         }
+      }
+
+      h3 {
+         font-family: v.$fontSecondary;
+         font-style: italic;
+         color: v.$backgroundBody;
+         box-shadow: 0px 2px 2px v.$backgroundBody;
+      }
+   }
+
+   section {
+      display: flex;
+   }
+}
