@@ -1,0 +1,7 @@
+@use "../base/variables.scss" as v;
+
+.selectContainer {
+   background-color: v.$primary;
+   display: flex;
+   justify-content: space-evenly;
+}

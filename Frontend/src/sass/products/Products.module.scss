@@ -31,6 +31,13 @@
    }
 
    section {
-      display: flex;
+      background-color: v.$primary;
+
+      .searchContainer {
+         div {
+            background-color: v.$primary;
+            padding: 0;
+         }
+      }
    }
 }
