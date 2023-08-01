@@ -48,7 +48,9 @@
    .productsSection {
       background: linear-gradient(v.$primary, v.$hoverHeader);
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
 
       .gridContainer {
          padding: 2rem 0 4rem 0;
@@ -69,22 +71,28 @@
    flex-direction: column;
 
    .figure {
+      margin-bottom: 2rem;
+      height: 15rem;
+
       img {
          border: 1px solid v.$borderLine;
          border-radius: 1rem;
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
       }
    }
 
-   .price {
-      padding: 0;
-      font-family: v.$fontPrimary;
-      // font-style: oblique;
-      color: black;
+   .priceContainer {
+      p {
+         padding: 0;
+         font-family: v.$fontPrimary;
+         color: black;
+      }
    }
 
    .descriptionContainer {
-      margin-bottom: 1rem;
-      height: 7rem;
+      height: 8rem;
       background: v.$backgroundBody;
       border-radius: 2rem;
       display: flex;

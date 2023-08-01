@@ -68,16 +68,18 @@ const Products = () => {
                            <img src={p.image.url} alt={p.name} />
                         </figure>
 
-                        <p className={style.price}>
-                           {
-                              p.price
-                                 .toLocaleString("es-CO", {
-                                    style: "currency",
-                                    currency: "COP",
-                                 })
-                                 .split(",")[0]
-                           }
-                        </p>
+                        <div className={style.priceContainer}>
+                           <p className={style.price}>
+                              {
+                                 p.price
+                                    .toLocaleString("es-CO", {
+                                       style: "currency",
+                                       currency: "COP",
+                                    })
+                                    .split(",")[0]
+                              }
+                           </p>
+                        </div>
 
                         <div className={style.descriptionContainer}>
                            <p>{p.description}</p>
@@ -90,6 +92,8 @@ const Products = () => {
                   );
                })}
             </div>
+
+            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </section>
       </main>
    );
