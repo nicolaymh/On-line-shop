@@ -8,6 +8,7 @@ import RouterProvider from "./RouterProvider";
 import { AuthProvider } from "./context/AuthProvider";
 import { CategoryProvider } from "./context/CategoryProvider";
 import { ProductsProvider } from "./context/ProductsProvider";
+import { ShoppingCartProvider } from "./context/ShoppingCartProvider";
 
 function App() {
    return (
@@ -15,7 +16,9 @@ function App() {
          <AuthProvider>
             <CategoryProvider>
                <ProductsProvider>
-                  <RouterProvider />
+                  <ShoppingCartProvider>
+                     <RouterProvider />
+                  </ShoppingCartProvider>
                </ProductsProvider>
             </CategoryProvider>
          </AuthProvider>
