@@ -31,7 +31,7 @@
       }
    }
 
-   section {
+   .filterSection {
       background-color: v.$primary;
 
       .searchContainer {
@@ -43,6 +43,67 @@
             padding: 0;
             width: 90%;
          }
+      }
+   }
+   .productsSection {
+      background: linear-gradient(v.$primary, v.$hoverHeader);
+      display: flex;
+      justify-content: center;
+
+      .gridContainer {
+         padding: 2rem 0 4rem 0;
+         width: 90%;
+         display: grid;
+         gap: 1rem;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+   }
+}
+
+.cardContainer {
+   border-radius: 1.2rem;
+   min-height: 25rem;
+   text-align: center;
+   background: whitesmoke;
+   display: flex;
+   flex-direction: column;
+
+   .figure {
+      img {
+         border: 1px solid v.$borderLine;
+         border-radius: 1rem;
+      }
+   }
+
+   .price {
+      padding: 0;
+      font-family: v.$fontPrimary;
+      // font-style: oblique;
+      color: black;
+   }
+
+   .descriptionContainer {
+      margin-bottom: 1rem;
+      height: 7rem;
+      background: v.$backgroundBody;
+      border-radius: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: auto;
+
+      p {
+         padding: 0 2rem;
+         font-family: v.$fontSecondary;
+         font-size: 1.4rem;
+      }
+   }
+
+   .buttonContainer {
+      margin: 2rem 0;
+
+      button {
+         margin: o;
       }
    }
 }

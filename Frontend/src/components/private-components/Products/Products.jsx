@@ -30,6 +30,8 @@ const Products = () => {
       handleSelectSubcategory,
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
+   console.log(filterProducts());
+
    return (
       <main className={style.mainContainer}>
          <div className={style.titleContainer}>
@@ -44,7 +46,7 @@ const Products = () => {
             </figure>
          </div>
 
-         <section>
+         <section className={style.filterSection}>
             <FilterSelectProducts
                categoryinfoAll={categoryinfoAll}
                subcategoriesList={subcategoriesList}
@@ -54,6 +56,39 @@ const Products = () => {
 
             <div className={style.searchContainer}>
                <GenericComponents.SearchProduct onSearchChange={onSearchChange} />
+            </div>
+         </section>
+
+         <section className={style.productsSection}>
+            <div className={style.gridContainer}>
+               {filterProducts().map((p) => {
+                  return (
+                     <div key={p._id} className={style.cardContainer}>
+                        <figure className={style.figure}>
+                           <img src={p.image.url} alt={p.name} />
+                        </figure>
+
+                        <p className={style.price}>
+                           {
+                              p.price
+                                 .toLocaleString("es-CO", {
+                                    style: "currency",
+                                    currency: "COP",
+                                 })
+                                 .split(",")[0]
+                           }
+                        </p>
+
+                        <div className={style.descriptionContainer}>
+                           <p>{p.description}</p>
+                        </div>
+
+                        <div className={style.buttonContainer}>
+                           <button>ADD TO CART</button>
+                        </div>
+                     </div>
+                  );
+               })}
             </div>
          </section>
       </main>
