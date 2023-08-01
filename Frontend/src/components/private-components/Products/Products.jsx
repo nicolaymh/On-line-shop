@@ -63,9 +63,7 @@ const Products = () => {
          <section className={style.productsSection}>
             <ProductCard filterProducts={filterProducts} />
 
-            <div className={style.buttonsContainer}>
-               <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
-            </div>
+            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </section>
       </main>
    );
