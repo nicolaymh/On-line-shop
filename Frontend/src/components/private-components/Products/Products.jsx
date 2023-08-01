@@ -16,10 +16,16 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 import GenericComponents from "../../generic-components";
 import FilterSelectProducts from "./FilterSelectProducts";
 import ProductCard from "./ProductCard";
+import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 const Products = () => {
    const { ProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
+   const { cart, setCart } = useShoppingCart();
+
+   const addProductCart = (id) => {
+      setCart([...cart, ProductsInfo.filter((p) => p._id === id)]);
+   };
 
    const {
       filterProducts,
@@ -31,7 +37,7 @@ const Products = () => {
       handleSelectSubcategory,
    } = useProductsFiltering(ProductsInfo, categoryinfoAll);
 
-   console.log(filterProducts());
+   // console.log(filterProducts());
 
    return (
       <main className={style.mainContainer}>
@@ -61,7 +67,7 @@ const Products = () => {
          </section>
 
          <section className={style.productsSection}>
-            <ProductCard filterProducts={filterProducts} />
+            <ProductCard filterProducts={filterProducts} addProductCart={addProductCart} />
 
             <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </section>

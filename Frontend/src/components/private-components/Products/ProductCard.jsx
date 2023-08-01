@@ -1,6 +1,6 @@
 import style from "../../../sass/products/productCard.module.scss";
 
-const ProductCard = ({ filterProducts }) => {
+const ProductCard = ({ filterProducts, addProductCart }) => {
    return (
       <div className={style.gridContainer}>
          {filterProducts().map((p) => {
@@ -28,7 +28,7 @@ const ProductCard = ({ filterProducts }) => {
                   </div>
 
                   <div className={style.buttonContainer}>
-                     <button>ADD TO CART</button>
+                     <button onClick={() => addProductCart(p._id)}>ADD TO CART</button>
                   </div>
                </div>
             );
