@@ -15,6 +15,7 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 // Components.
 import GenericComponents from "../../generic-components";
 import FilterSelectProducts from "./FilterSelectProducts";
+import ProductCard from "./ProductCard";
 
 const Products = () => {
    const { ProductsInfo } = useProducts();
@@ -60,40 +61,11 @@ const Products = () => {
          </section>
 
          <section className={style.productsSection}>
-            <div className={style.gridContainer}>
-               {filterProducts().map((p) => {
-                  return (
-                     <div key={p._id} className={style.cardContainer}>
-                        <figure className={style.figure}>
-                           <img src={p.image.url} alt={p.name} />
-                        </figure>
+            <ProductCard filterProducts={filterProducts} />
 
-                        <div className={style.priceContainer}>
-                           <p className={style.price}>
-                              {
-                                 p.price
-                                    .toLocaleString("es-CO", {
-                                       style: "currency",
-                                       currency: "COP",
-                                    })
-                                    .split(",")[0]
-                              }
-                           </p>
-                        </div>
-
-                        <div className={style.descriptionContainer}>
-                           <p>{p.description}</p>
-                        </div>
-
-                        <div className={style.buttonContainer}>
-                           <button>ADD TO CART</button>
-                        </div>
-                     </div>
-                  );
-               })}
+            <div className={style.buttonsContainer}>
+               <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
             </div>
-
-            <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </section>
       </main>
    );

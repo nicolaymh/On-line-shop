@@ -1,0 +1,91 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
+.gridContainer {
+   padding: 2rem 0 4rem 0;
+   width: 90%;
+   display: grid;
+   gap: 2rem;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+   .cardContainer {
+      box-shadow: 5px 5px 5px v.$secondary;
+      border-radius: 1.2rem;
+      min-height: 25rem;
+      text-align: center;
+      background: whitesmoke;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s ease;
+
+      &:hover {
+         box-shadow: 5px 5px 5px v.$hoverHeader;
+      }
+
+      .figure {
+         margin-bottom: 2rem;
+         height: 15rem;
+
+         img {
+            border: 1px solid v.$borderLine;
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+         }
+      }
+
+      .priceContainer {
+         p {
+            padding: 0;
+            font-family: v.$fontPrimary;
+            font-weight: 300;
+            color: v.$primary;
+         }
+      }
+
+      .descriptionContainer {
+         height: 8rem;
+         background: v.$backgroundBody;
+         border-radius: 2rem;
+         overflow: auto;
+
+         p {
+            padding: 0 1rem;
+            font-family: v.$fontSecondary;
+            font-size: 1.4rem;
+         }
+      }
+
+      .buttonContainer {
+         background-color: v.$backgroundPrimary;
+         max-width: 100%;
+         padding: 1rem;
+         display: flex;
+         justify-content: center;
+
+         button {
+            margin: 0 0.3rem;
+            border: none;
+            border-radius: 10px;
+            background-color: v.$primary;
+            padding: 1rem;
+            color: v.$backgroundBody;
+            font-size: 1.3rem;
+            font-weight: 800;
+            transition-property: transform background-color;
+            transition-duration: 0.4s;
+
+            @include m.generalFormMq {
+               font-size: 1.3rem;
+            }
+
+            &:hover {
+               cursor: pointer;
+               transform: scale(1.02);
+               background-color: #1e90ff;
+            }
+         }
+      }
+   }
+}
