@@ -9,6 +9,10 @@ const ShoppingCartProvider = ({ children }) => {
 
    const { ProductsInfo } = useProducts();
 
+   /**
+    * The function `addProductCart` adds a product to the cart, incrementing the quantity if the
+    * product is already in the cart.
+    */
    const addProductCart = (id) => {
       const product = cart.find((p) => p._id === id);
 
@@ -19,8 +23,10 @@ const ShoppingCartProvider = ({ children }) => {
          setCart((prev) => prev.map((p) => (p._id === id ? { ...p, quantity: p.quantity++ } : p)));
    };
 
+   const emptyCart = () => setCart([]);
+
    return (
-      <ShoppingCartContext.Provider value={{ cart, setCart, addProductCart }}>
+      <ShoppingCartContext.Provider value={{ cart, setCart, addProductCart, emptyCart }}>
          {children}
       </ShoppingCartContext.Provider>
    );
