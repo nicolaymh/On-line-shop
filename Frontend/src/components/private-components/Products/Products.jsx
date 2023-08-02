@@ -8,6 +8,7 @@ import style from "../../../sass/products/Products.module.scss";
 // Context.
 import useProducts from "../../../Hooks/useProducts";
 import useCategory from "../../../Hooks/useCategory";
+import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 // Custom Hook.
 import useProductsFiltering from "../../../Hooks/useProductsFiltering";
@@ -16,16 +17,11 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 import GenericComponents from "../../generic-components";
 import FilterSelectProducts from "./FilterSelectProducts";
 import ProductCard from "./ProductCard";
-import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 const Products = () => {
    const { ProductsInfo } = useProducts();
    const { categoryinfoAll } = useCategory();
-   const { cart, setCart } = useShoppingCart();
-
-   const addProductCart = (id) => {
-      setCart([...cart, ProductsInfo.filter((p) => p._id === id)]);
-   };
+   const { cart, setCart, addProductCart } = useShoppingCart();
 
    const {
       filterProducts,
