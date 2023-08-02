@@ -14,13 +14,11 @@ const ShoppingCartProvider = ({ children }) => {
     * product is already in the cart.
     */
    const addProductCart = (id) => {
-      const product = cart.find((p) => p._id === id);
-
-      !product &&
-         setCart([...cart, { ...ProductsInfo.filter((p) => p._id === id)[0], quantity: 1 }]);
-
-      product &&
-         setCart((prev) => prev.map((p) => (p._id === id ? { ...p, quantity: p.quantity++ } : p)));
+      !cart.find((p) => p._id === id)
+         ? setCart([...cart, { ...ProductsInfo.filter((p) => p._id === id)[0], quantity: 1 }])
+         : setCart((prev) =>
+              prev.map((p) => (p._id === id ? { ...p, quantity: p.quantity++ } : p))
+           );
    };
 
    const decreaseProductCart = (id) => {};
