@@ -23,10 +23,26 @@ const ShoppingCartProvider = ({ children }) => {
          setCart((prev) => prev.map((p) => (p._id === id ? { ...p, quantity: p.quantity++ } : p)));
    };
 
+   const decreaseProductCart = (id) => {};
+
+   const removeProductCart = (id) => {};
+
+   /**
+    * The emptyCart function sets the cart array to an empty array.
+    */
    const emptyCart = () => setCart([]);
 
    return (
-      <ShoppingCartContext.Provider value={{ cart, setCart, addProductCart, emptyCart }}>
+      <ShoppingCartContext.Provider
+         value={{
+            cart,
+            setCart,
+            addProductCart,
+            decreaseProductCart,
+            removeProductCart,
+            emptyCart,
+         }}
+      >
          {children}
       </ShoppingCartContext.Provider>
    );
