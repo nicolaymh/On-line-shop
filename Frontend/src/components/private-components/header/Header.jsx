@@ -90,16 +90,14 @@ const Header = () => {
 
          <div className={style.shoppingCart}>
             <NavLink
-               to="/shop/shoping-cart"
+               to="/shop/shopping-cart"
                onClick={() => setClicked(false)}
                className={({ isActive }) => (isActive ? style.activeCart : style.inactiveCart)}
             >
                <BsCart className={style.cart} />
             </NavLink>
 
-            {
-               cart[0] && <span>{cart.length}</span>
-            }
+            {cart[0] && <span>{cart.length}</span>}
          </div>
 
          <div className={style.burgerButton}>

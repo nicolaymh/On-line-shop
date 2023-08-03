@@ -82,7 +82,7 @@ const RouterProvider = () => {
                         </>
                      )}
                   </Route>
-                  <Route path="shoping-cart" element={<ShoppingCart />} />
+                  <Route path="shopping-cart" element={<ShoppingCart />} />
                </Route>
             </Routes>
          )}
