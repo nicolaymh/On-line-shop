@@ -20,6 +20,7 @@ import useCategory from "../../../Hooks/useCategory";
 
 // Components.
 import BurgerButton from "./BurgerButton";
+import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 const Header = () => {
    const { auth, setAuth, setLoading } = useAuth();
@@ -28,6 +29,7 @@ const Header = () => {
    const [clicked, setClicked] = useState(false);
 
    const { setCategoryinfoAll } = useCategory();
+   const { cart } = useShoppingCart();
 
    useEffect(() => {
       const wide = () => window.innerWidth >= 650 && setClicked(false);
@@ -94,6 +96,10 @@ const Header = () => {
             >
                <BsCart className={style.cart} />
             </NavLink>
+
+            {
+               cart[0] && <span>{cart.length}</span>
+            }
          </div>
 
          <div className={style.burgerButton}>
