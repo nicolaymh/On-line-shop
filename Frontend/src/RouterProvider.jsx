@@ -26,7 +26,7 @@ import Home from "./components/private-components/home/Home";
 import EditUserInfo from "./components/private-components/settings/EditUserInfo";
 import ManageUsers from "./components/private-components/settings/ManageUsers";
 import ManageSubcategories from "./components/private-components/settings/ManageSubcategories";
-import ShopingCart from "./components/private-components/shoppingCart/ShopingCart";
+import ShoppingCart from "./components/private-components/shoppingCart/ShoppingCart";
 import AddProduct from "./components/private-components/settings/AddProduct";
 import ManageProduct from "./components/private-components/settings/ManageProduct";
 import Products from "./components/private-components/Products/Products";
@@ -82,7 +82,7 @@ const RouterProvider = () => {
                         </>
                      )}
                   </Route>
-                  <Route path="shoping-cart" element={<ShopingCart />} />
+                  <Route path="shoping-cart" element={<ShoppingCart />} />
                </Route>
             </Routes>
          )}
