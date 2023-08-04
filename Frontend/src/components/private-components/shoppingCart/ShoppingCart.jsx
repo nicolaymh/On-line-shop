@@ -7,7 +7,7 @@ const ShoppingCart = () => {
    const { cart } = useShoppingCart();
 
    const total = cart.reduce((accumulator, product) => {
-      return accumulator + product.price;
+      return accumulator + product.total;
    }, 0);
 
    console.log(cart);
@@ -21,11 +21,11 @@ const ShoppingCart = () => {
    );
 
    return (
-      <main>
+      <main className={style.mainContainer}>
          <section>
             <div>
                <p>
-                  Total: <span></span>
+                  Total: <span>{total}</span>
                </p>
             </div>
          </section>
