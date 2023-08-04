@@ -14,10 +14,17 @@ const ShoppingCartProvider = ({ children }) => {
     * product is already in the cart.
     */
    const addProductCart = (id) => {
-      !cart.find((p) => p._id === id)
-         ? setCart([...cart, { ...ProductsInfo.filter((p) => p._id === id)[0], quantity: 1 }])
+      const productToAdd = ProductsInfo.find((p) => p._id === id);
+      const isProductInCart = cart.some((p) => p._id === id);
+
+      !isProductInCart
+         ? setCart([...cart, { ...productToAdd, quantity: 1, total: productToAdd.price }])
          : setCart((prev) =>
-              prev.map((p) => (p._id === id ? { ...p, quantity: p.quantity++ } : p))
+              prev.map((p) =>
+                 p._id === id
+                    ? { ...p, quantity: p.quantity + 1, total: (p.quantity + 1) * p.price }
+                    : p
+              )
            );
    };
 
