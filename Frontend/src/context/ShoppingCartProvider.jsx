@@ -10,8 +10,8 @@ const ShoppingCartProvider = ({ children }) => {
    const { ProductsInfo } = useProducts();
 
    /**
-    * The function `addProductCart` adds a product to the cart, incrementing the quantity if the
-    * product is already in the cart.
+    * The function `addProductCart` adds a product to the cart, updating the quantity and total price
+    * if the product is already in the cart.
     */
    const addProductCart = (id) => {
       const productToAdd = ProductsInfo.find((p) => p._id === id);
