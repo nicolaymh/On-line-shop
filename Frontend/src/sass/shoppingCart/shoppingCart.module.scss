@@ -1,4 +1,70 @@
+@use "../base/variables.scss" as v;
+@use "../base/mixins.scss" as m;
+
 .mainContainer {
    display: flex;
    flex-direction: column;
+   align-items: center;
+
+   .sectionProducts {
+   }
+
+   .sectionPrices {
+      margin-top: 0.8rem;
+      background-color: v.$backgroundPrimary;
+      border-radius: 1rem;
+      width: 95%;
+
+      .containerPrices {
+         padding: 0rem 2rem;
+
+         p {
+            display: flex;
+            justify-content: space-between;
+            color: v.$secondary;
+            font-family: v.$secondary;
+
+            span {
+               color: v.$primary;
+            }
+
+            &:nth-child(2) {
+               padding-bottom: 1.2rem;
+               border-bottom: 1px solid v.$secondary;
+            }
+         }
+      }
+   }
+}
+
+.containerButton {
+   background-color: v.$backgroundPrimary;
+   max-width: 100%;
+   padding: 1rem 0 1.5rem 0;
+   display: flex;
+   justify-content: center;
+
+   button {
+      width: 90%;
+      margin: 0 0.3rem;
+      border: none;
+      border-radius: 10px;
+      background-color: v.$primary;
+      padding: 1rem;
+      color: v.$backgroundBody;
+      font-size: 1.3rem;
+      font-weight: 800;
+      transition-property: transform background-color;
+      transition-duration: 0.4s;
+
+      @include m.generalFormMq {
+         font-size: 1.3rem;
+      }
+
+      &:hover {
+         cursor: pointer;
+         transform: scale(1.02);
+         background-color: #1e90ff;
+      }
+   }
 }
