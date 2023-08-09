@@ -5,33 +5,33 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+}
 
-   .sectionProducts {
-   }
+.sectionProducts {
+}
 
-   .sectionPrices {
-      margin-top: 0.8rem;
-      background-color: v.$backgroundPrimary;
-      border-radius: 1rem;
-      width: 95%;
+.sectionPrices {
+   margin-top: 0.8rem;
+   background-color: v.$backgroundPrimary;
+   border-radius: 1rem;
+   width: 95%;
 
-      .containerPrices {
-         padding: 0rem 2rem;
+   .containerPrices {
+      padding: 0rem 2rem;
 
-         p {
-            display: flex;
-            justify-content: space-between;
+      p {
+         display: flex;
+         justify-content: space-between;
+         color: v.$primary;
+         font-family: v.$secondary;
+
+         span {
             color: v.$secondary;
-            font-family: v.$secondary;
+         }
 
-            span {
-               color: v.$primary;
-            }
-
-            &:nth-child(2) {
-               padding-bottom: 1.2rem;
-               border-bottom: 1px solid v.$secondary;
-            }
+         &:nth-child(2) {
+            padding-bottom: 1.2rem;
+            border-bottom: 0.5px solid v.$secondary;
          }
       }
    }
