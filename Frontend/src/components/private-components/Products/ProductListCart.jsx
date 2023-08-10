@@ -26,7 +26,7 @@ const ProductListCart = ({ cart }) => {
                <article key={_id}>
                   <div className={style.imgNameContainer}>
                      <figure>
-                        <img src={image.url} alt={`image-${image.name}`} />
+                        <img src={image.url} alt={`image-${name}`} />
                      </figure>
 
                      <p>{name}</p>
