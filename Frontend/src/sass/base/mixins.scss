@@ -51,3 +51,9 @@
       @content;
    }
 }
+
+@mixin ProductListCart($screen) {
+   @media (min-width: $screen) {
+      @content;
+   }
+}
