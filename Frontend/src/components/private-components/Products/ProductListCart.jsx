@@ -5,7 +5,7 @@ import style from "../../../sass/shoppingCart/shoppingCart.module.scss";
 import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
-const ProductListCart = ({ cart }) => {
+const ProductListCart = ({ cart, addProductCart }) => {
    const priceFormat = (price) => {
       return price
          .toLocaleString("es-CO", {
@@ -36,7 +36,12 @@ const ProductListCart = ({ cart }) => {
                      <div className={style.iconsContainer}>
                         <HiMinusCircle className={style.icons} />
                         <p className={style.quantity}>{quantity}</p>
-                        <HiPlusCircle className={style.icons} />
+                        <HiPlusCircle
+                           onClick={() => {
+                              addProductCart(_id);
+                           }}
+                           className={style.icons}
+                        />
                      </div>
 
                      <div className={style.pricesContainer}>

@@ -19,7 +19,7 @@ const Prices = ({ cart, prices, setPrices }) => {
       };
 
       calculatePrice();
-   }, []);
+   }, [cart]);
 
    return (
       <section className={style.sectionPrices}>

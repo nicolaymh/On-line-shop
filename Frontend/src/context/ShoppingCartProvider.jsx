@@ -44,7 +44,10 @@ const ShoppingCartProvider = ({ children }) => {
    /**
     * The emptyCart function sets the cart array to an empty array.
     */
-   const emptyCart = () => setCart([]);
+   const emptyCart = () => {
+      setCart([]);
+      localStorage.setItem("cart", JSON.stringify([]));
+   };
 
    return (
       <ShoppingCartContext.Provider
