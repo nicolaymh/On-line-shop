@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import useProducts from "../Hooks/useProducts";
 
@@ -9,6 +9,11 @@ const ShoppingCartProvider = ({ children }) => {
 
    const { ProductsInfo } = useProducts();
 
+   useEffect(() => {
+      const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      setCart(storedCart);
+   }, []);
+
    /**
     * The function `addProductCart` adds a product to the cart, updating the quantity and total price
     * if the product is already in the cart.
@@ -17,15 +22,19 @@ const ShoppingCartProvider = ({ children }) => {
       const productToAdd = ProductsInfo.find((p) => p._id === id);
       const isProductInCart = cart.some((p) => p._id === id);
 
-      !isProductInCart
-         ? setCart([...cart, { ...productToAdd, quantity: 1, total: productToAdd.price }])
-         : setCart((prev) =>
-              prev.map((p) =>
-                 p._id === id
-                    ? { ...p, quantity: p.quantity + 1, total: (p.quantity + 1) * p.price }
-                    : p
-              )
-           );
+      if (!isProductInCart) {
+         const car = [...cart, { ...productToAdd, quantity: 1, total: productToAdd.price }];
+         setCart(car);
+         localStorage.setItem("cart", JSON.stringify(car));
+      }
+
+      if (isProductInCart) {
+         const car = cart.map((p) =>
+            p._id === id ? { ...p, quantity: p.quantity + 1, total: (p.quantity + 1) * p.price } : p
+         );
+         setCart(car);
+         localStorage.setItem("cart", JSON.stringify(car));
+      }
    };
 
    const decreaseProductCart = (id) => {};

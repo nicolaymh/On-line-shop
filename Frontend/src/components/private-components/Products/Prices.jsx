@@ -1,3 +1,4 @@
+// CSS Styles ( SASS Modules ).
 import style from "../../../sass/shoppingCart/shoppingCart.module.scss";
 
 // React Hooks

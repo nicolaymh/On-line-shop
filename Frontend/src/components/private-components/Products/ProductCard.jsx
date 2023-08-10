@@ -1,3 +1,4 @@
+// CSS Styles ( SASS Modules ).
 import style from "../../../sass/products/productCard.module.scss";
 
 const ProductCard = ({ filterProducts, addProductCart }) => {
