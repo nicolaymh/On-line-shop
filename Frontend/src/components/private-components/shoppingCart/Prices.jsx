@@ -23,6 +23,10 @@ const Prices = ({ cart, prices, setPrices }) => {
 
    return (
       <section className={style.sectionPrices}>
+         <div className={style.containerButton}>
+            <button className={style.cleanCart}>Clean Cart</button>
+         </div>
+
          <div className={style.containerPrices}>
             <p>
                Total price:{" "}

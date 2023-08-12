@@ -86,7 +86,11 @@
             font-family: v.$fontSecondary;
             font-style: italic;
             font-weight: 600;
-            font-size: 1.7rem;
+            font-size: 1.4rem;
+
+            @include m.ProductListCart(1000px) {
+               font-size: 1.7rem;
+            }
          }
       }
 
@@ -121,7 +125,12 @@
                font-family: v.$fontPrimary;
                font-weight: 600;
                font-style: italic;
+               font-size: 1.2rem;
                color: black;
+
+               @include m.ProductListCart(1000px) {
+                  font-size: 1.7rem;
+               }
             }
          }
 
@@ -134,12 +143,20 @@
             p {
                &:first-child {
                   color: black;
-                  font-size: 1.5rem;
+                  font-size: 1.3rem;
+
+                  @include m.ProductListCart(1000px) {
+                     font-size: 1.5rem;
+                  }
                }
 
                &:last-child {
                   color: v.$secondary;
-                  font-size: 1.4rem;
+                  font-size: 1.2rem;
+
+                  @include m.ProductListCart(1000px) {
+                     font-size: 1.4rem;
+                  }
                }
             }
 
@@ -159,8 +176,12 @@
 
             .iconRemove {
                color: v.$primary;
-               font-size: 3rem;
+               font-size: 2.4rem;
                transition: all 0.4s ease;
+
+               @include m.ProductListCart(1000px) {
+                  font-size: 3rem;
+               }
 
                &:hover {
                   color: red;
@@ -172,6 +193,7 @@
 }
 
 .sectionPrices {
+   margin-top: 1.2rem;
    margin-bottom: 2rem;
    background-color: v.$backgroundPrimary;
    border: 1px inset v.$primary;
@@ -181,7 +203,6 @@
 
    @include m.ProductListCart(1000px) {
       height: 28rem;
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -225,7 +246,7 @@
       color: v.$backgroundBody;
       font-size: 1.3rem;
       font-weight: 800;
-      transition-property: transform background-color;
+      transition-property: transform background-color color;
       transition-duration: 0.4s;
 
       @include m.generalFormMq {
@@ -236,6 +257,15 @@
          cursor: pointer;
          transform: scale(1.02);
          background-color: #1e90ff;
+      }
+   }
+
+   .cleanCart {
+      &:hover {
+         cursor: pointer;
+         color: white;
+         transform: scale(1.02);
+         background-color: rgba(220, 17, 17, 0.69);
       }
    }
 }
