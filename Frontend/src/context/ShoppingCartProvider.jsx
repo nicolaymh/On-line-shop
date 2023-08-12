@@ -37,7 +37,22 @@ const ShoppingCartProvider = ({ children }) => {
       }
    };
 
-   const decreaseProductCart = (id) => {};
+   const decreaseProductQuantity = (id) => {
+      const subtractAmount = cart.map((p) => {
+         if (p._id === id) {
+            if (p.quantity > 1) {
+               return { ...p, quantity: p.quantity - 1, total: (p.quantity - 1) * p.price };
+            } else {
+               return p;
+            }
+         }
+
+         return p;
+      });
+
+      setCart(subtractAmount);
+      localStorage.setItem("cart", JSON.stringify(subtractAmount));
+   };
 
    const removeProductCart = (id) => {
       const removeProduct = cart.filter((p) => p._id !== id);
@@ -59,7 +74,7 @@ const ShoppingCartProvider = ({ children }) => {
             cart,
             setCart,
             addProductCart,
-            decreaseProductCart,
+            decreaseProductQuantity,
             removeProductCart,
             emptyCart,
          }}
