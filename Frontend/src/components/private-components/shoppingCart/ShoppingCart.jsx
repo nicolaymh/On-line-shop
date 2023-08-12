@@ -8,8 +8,8 @@ import { useState } from "react";
 import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 // Components.
-import Prices from "../Products/Prices";
-import ProductListCart from "../Products/ProductListCart";
+import Prices from "./Prices";
+import ProductListCart from "./ProductListCart";
 
 const ShoppingCart = () => {
    const [prices, setPrices] = useState({ grossPrice: 0, tax: 0, finalPrice: 0 });
