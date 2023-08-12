@@ -39,7 +39,11 @@ const ShoppingCartProvider = ({ children }) => {
 
    const decreaseProductCart = (id) => {};
 
-   const removeProductCart = (id) => {};
+   const removeProductCart = (id) => {
+      const removeProduct = cart.filter((p) => p._id !== id);
+      setCart(removeProduct);
+      localStorage.setItem("cart", JSON.stringify(car));
+   };
 
    /**
     * The emptyCart function sets the cart array to an empty array.

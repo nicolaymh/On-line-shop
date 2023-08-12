@@ -14,13 +14,17 @@ import ProductListCart from "./ProductListCart";
 const ShoppingCart = () => {
    const [prices, setPrices] = useState({ grossPrice: 0, tax: 0, finalPrice: 0 });
 
-   const { cart, addProductCart } = useShoppingCart();
+   const { cart, addProductCart, removeProductCart } = useShoppingCart();
 
    console.log(cart);
 
    return (
       <main className={style.mainContainer}>
-         <ProductListCart cart={cart} addProductCart={addProductCart} />
+         <ProductListCart
+            cart={cart}
+            addProductCart={addProductCart}
+            removeProductCart={removeProductCart}
+         />
 
          <Prices cart={cart} prices={prices} setPrices={setPrices} />
       </main>
