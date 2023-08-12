@@ -42,7 +42,7 @@ const ShoppingCartProvider = ({ children }) => {
    const removeProductCart = (id) => {
       const removeProduct = cart.filter((p) => p._id !== id);
       setCart(removeProduct);
-      localStorage.setItem("cart", JSON.stringify(car));
+      localStorage.setItem("cart", JSON.stringify(removeProduct));
    };
 
    /**
