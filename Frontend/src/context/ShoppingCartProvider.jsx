@@ -63,7 +63,7 @@ const ShoppingCartProvider = ({ children }) => {
    /**
     * The emptyCart function sets the cart array to an empty array.
     */
-   const emptyCart = () => {
+   const cleantCart = () => {
       setCart([]);
       localStorage.setItem("cart", JSON.stringify([]));
    };
@@ -76,7 +76,7 @@ const ShoppingCartProvider = ({ children }) => {
             addProductCart,
             decreaseProductQuantity,
             removeProductCart,
-            emptyCart,
+            cleantCart,
          }}
       >
          {children}

@@ -15,9 +15,8 @@ import EmptyCart from "./EmptyCart";
 const ShoppingCart = () => {
    const [prices, setPrices] = useState({ grossPrice: 0, tax: 0, finalPrice: 0 });
 
-   const { cart, addProductCart, removeProductCart, decreaseProductQuantity } = useShoppingCart();
-
-   console.log(cart.length);
+   const { cart, addProductCart, removeProductCart, decreaseProductQuantity, cleantCart } =
+      useShoppingCart();
 
    return (
       <main className={style.mainContainer}>
@@ -32,7 +31,7 @@ const ShoppingCart = () => {
                   decreaseProductQuantity={decreaseProductQuantity}
                />
 
-               <Prices cart={cart} prices={prices} setPrices={setPrices} />
+               <Prices cart={cart} prices={prices} setPrices={setPrices} cleantCart={cleantCart} />
             </>
          )}
       </main>
