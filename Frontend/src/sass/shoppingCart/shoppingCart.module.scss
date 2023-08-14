@@ -198,10 +198,11 @@
    background-color: v.$backgroundPrimary;
    border: 1px inset v.$primary;
    border-radius: 1rem;
-   width: 32rem;
+   width: 25rem;
    overflow: hidden;
 
    @include m.ProductListCart(1000px) {
+      width: 32rem;
       height: 28rem;
       display: flex;
       flex-direction: column;

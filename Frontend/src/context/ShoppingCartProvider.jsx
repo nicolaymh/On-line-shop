@@ -15,8 +15,8 @@ const ShoppingCartProvider = ({ children }) => {
    }, []);
 
    /**
-    * The function `addProductCart` adds a product to the cart, updating the quantity and total price
-    * if the product is already in the cart.
+    * The function `addProductCart` adds a product to the cart and updates the cart state and local
+    * storage accordingly.
     */
    const addProductCart = (id) => {
       const productToAdd = ProductsInfo.find((p) => p._id === id);
@@ -37,6 +37,10 @@ const ShoppingCartProvider = ({ children }) => {
       }
    };
 
+   /**
+    * The function decreases the quantity of a product in the cart by 1, updates the total price, and
+    * updates the cart state and local storage.
+    */
    const decreaseProductQuantity = (id) => {
       const subtractAmount = cart.map((p) => {
          if (p._id === id) {
@@ -54,6 +58,10 @@ const ShoppingCartProvider = ({ children }) => {
       localStorage.setItem("cart", JSON.stringify(subtractAmount));
    };
 
+   /**
+    * The function `removeProductCart` removes a product from the cart and updates the cart state and
+    * local storage.
+    */
    const removeProductCart = (id) => {
       const removeProduct = cart.filter((p) => p._id !== id);
       setCart(removeProduct);
@@ -61,7 +69,8 @@ const ShoppingCartProvider = ({ children }) => {
    };
 
    /**
-    * The emptyCart function sets the cart array to an empty array.
+    * The `cleantCart` function clears the cart by setting it to an empty array and updating the local
+    * storage accordingly.
     */
    const cleantCart = () => {
       setCart([]);
