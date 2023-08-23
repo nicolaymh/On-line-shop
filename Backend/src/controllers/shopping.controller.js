@@ -2,7 +2,7 @@ import mercadopago from "mercadopago";
 
 const createOrder = async (req, res) => {
    mercadopago.configure({
-      access_token: "TEST-5771685154102277-082313-58547c91a65780b08a54128f30a6e56e-1456203269",
+      access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN,
    });
 
    const result = await mercadopago.preferences.create({
@@ -24,7 +24,7 @@ const createOrder = async (req, res) => {
 
    console.log(result);
 
-   res.send(result.body);
+   res.json(result.body);
 };
 
 const receivedWebhook = async (req, res) => {
