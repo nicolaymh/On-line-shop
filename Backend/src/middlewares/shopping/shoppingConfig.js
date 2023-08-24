@@ -32,7 +32,7 @@ const shoppingConfig = async (req, res, next) => {
             failure: "http://localhost:3000/api/shopping/failure",
             pending: "http://localhost:3000/api/shopping/pending",
          },
-         notification_url: "https://38b6-186-155-112-111.ngrok.io/api/shopping/webhook",
+         notification_url: "https://6d83-186-155-112-111.ngrok.io/api/shopping/webhook",
          taxes: [
             {
                type: "IVA",

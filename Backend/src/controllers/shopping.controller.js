@@ -14,20 +14,22 @@ const createOrder = async (req, res) => {
 const receivedWebhook = async (req, res) => {
    const payment = req.query;
 
-   try {
-      if (payment.type === payment) {
-         const data = await mercadopago.payment.findById(payment[DataTransfer.id]);
+   console.log(req);
 
-         console.log(data);
+   // try {
+   //    if (payment.type === payment) {
+   //       const data = await mercadopago.payment.findById(payment[DataTransfer.id]);
 
-         // Store in database...
-      }
+   //       console.log(data);
 
-      res.sendStatus(204);
-   } catch (error) {
-      console.log(error);
-      return res.sendStatus(500).json({ error: error.message });
-   }
+   //       // Store in database...
+   //    }
+
+   //    res.sendStatus(204);
+   // } catch (error) {
+   //    console.log(error);
+   //    return res.sendStatus(500).json({ error: error.message });
+   // }
 };
 
 export { createOrder, receivedWebhook };
