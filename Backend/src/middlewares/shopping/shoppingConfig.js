@@ -3,9 +3,6 @@ import internalServerError from "../../helpers/internalServerError.js";
 
 const shoppingConfig = async (req, res, next) => {
    try {
-      // console.log(req.body);
-      // console.log(req.user);
-
       const { cart } = req.body;
 
       mercadopago.configure({
@@ -32,7 +29,7 @@ const shoppingConfig = async (req, res, next) => {
             failure: "http://localhost:3000/api/shopping/failure",
             pending: "http://localhost:3000/api/shopping/pending",
          },
-         notification_url: "https://6d83-186-155-112-111.ngrok.io/api/shopping/webhook",
+         notification_url: "https://ccc8-186-155-112-111.ngrok.io/api/shopping/webhook",
          taxes: [
             {
                type: "IVA",

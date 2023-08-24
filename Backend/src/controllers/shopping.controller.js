@@ -12,24 +12,12 @@ const createOrder = async (req, res) => {
 };
 
 const receivedWebhook = async (req, res) => {
-   const payment = req.query;
-
-   console.log(req);
-
-   // try {
-   //    if (payment.type === payment) {
-   //       const data = await mercadopago.payment.findById(payment[DataTransfer.id]);
-
-   //       console.log(data);
-
-   //       // Store in database...
-   //    }
-
-   //    res.sendStatus(204);
-   // } catch (error) {
-   //    console.log(error);
-   //    return res.sendStatus(500).json({ error: error.message });
-   // }
+   try {
+      console.log(req.body);
+      console.log(req.query);
+   } catch (error) {
+      console.log(error);
+   }
 };
 
 export { createOrder, receivedWebhook };
