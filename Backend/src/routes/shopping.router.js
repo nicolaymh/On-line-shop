@@ -2,9 +2,13 @@ import { Router } from "express";
 
 import * as shoppingController from "../controllers/shopping.controller.js";
 
+// Middlewares.
+import checkAuth from "../middlewares/auth/checkAuth.js";
+import shoppingConfig from "../middlewares/shopping/shoppingConfig.js";
+
 const router = Router();
 
-router.post("/create-order", shoppingController.createOrder);
+router.post("/create-order", checkAuth, shoppingConfig, shoppingController.createOrder);
 
 router.get("/success", (req, res) => res.send("Success"));
 router.get("/failure", (req, res) => res.send("Failure"));

@@ -1,6 +1,8 @@
 // CSS Styles ( SASS Modules ).
-import axiosInstance from "../../../helpers/axiosInstance";
 import style from "../../../sass/shoppingCart/shoppingCart.module.scss";
+
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
 
 // React Hooks
 import { useEffect } from "react";
@@ -24,11 +26,18 @@ const Prices = ({ cart, prices, setPrices, cleantCart }) => {
 
    const handlePay = async () => {
       try {
-         const { data } = await axiosInstance.post("/shopping/create-order");
+         const data = await axiosInstance.post(
+            "/shopping/create-order",
+            { cart },
+            {
+               headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+               },
+            }
+         );
 
          console.log(data);
-
-         window.location.href = data.init_point;
       } catch (error) {
          console.log(error);
       }
@@ -85,7 +94,7 @@ const Prices = ({ cart, prices, setPrices, cleantCart }) => {
          </div>
 
          <div className={style.containerButton}>
-            <button onClick={handlePay}>Make Purchase</button>
+            <button onClick={handlePay}>Create Order</button>
          </div>
       </section>
    );
