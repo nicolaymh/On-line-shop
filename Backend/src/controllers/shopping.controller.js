@@ -4,7 +4,8 @@ import internalServerError from "../helpers/internalServerError.js";
 
 const createOrder = async (req, res) => {
    try {
-      console.log(req.mercadoPagoInfo);
+      // console.log(req.mercadoPagoInfo);
+
       res.json(req.mercadoPagoInfo);
    } catch (error) {
       internalServerError(error, res);
@@ -13,10 +14,17 @@ const createOrder = async (req, res) => {
 
 const receivedWebhook = async (req, res) => {
    try {
-      console.log(req.body);
-      console.log(req.query);
+      const payment = req.query;
+
+      if (payment.type === "payment") {
+         const data = await mercadopago.payment.findById(payment["data.id"]);
+         console.log(data);
+      }
+
+      return res.sendStatus(204);
    } catch (error) {
       console.log(error);
+      return res.status(500).json({ ok: false, msg: error.message });
    }
 };
 
