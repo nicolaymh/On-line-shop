@@ -13,9 +13,9 @@ const createOrder = async (req, res) => {
 };
 
 const receivedWebhook = async (req, res) => {
-   try {
-      const payment = req.query;
+   const payment = req.query;
 
+   try {
       if (payment.type === "payment") {
          const data = await mercadopago.payment.findById(payment["data.id"]);
          console.log(data);

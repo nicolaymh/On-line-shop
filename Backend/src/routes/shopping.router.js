@@ -11,7 +11,7 @@ const router = Router();
 router.post("/create-order", checkAuth, shoppingConfig, shoppingController.createOrder);
 
 router.get("/success", (req, res) => res.send("successful payment"));
-router.get("/failure", (req, res) => res.json("Failed payment"));
+router.get("/failure", (req, res) => res.send("Failed payment"));
 router.get("/pending", (req, res) => res.send("Pending"));
 
 router.post("/webhook", shoppingController.receivedWebhook);
