@@ -1,5 +1,5 @@
 // React-router-Dom.
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 
 // Context.
 import useAuth from "./Hooks/useAuth";
@@ -82,6 +82,7 @@ const RouterProvider = () => {
                         </>
                      )}
                   </Route>
+
                   <Route path="shopping-cart" element={<ShoppingCart />} />
                </Route>
             </Routes>

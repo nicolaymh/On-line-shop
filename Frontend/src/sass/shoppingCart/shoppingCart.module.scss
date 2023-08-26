@@ -203,7 +203,7 @@
 
    @include m.ProductListCart(1000px) {
       width: 32rem;
-      height: 28rem;
+      // height: 28rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -258,6 +258,12 @@
          cursor: pointer;
          transform: scale(1.02);
          background-color: #1e90ff;
+      }
+
+      &.buttonPay {
+         color: #fff;
+         background-color: #28a745;
+         border-color: #28a745;
       }
    }
 

@@ -1,10 +1,20 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/shoppingCart/shoppingCart.module.scss";
 
+// Axios instance. ==> (helpers).
+import axiosInstance from "../../../helpers/axiosInstance";
+
 // React Hooks
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+// Generic Components.
+import GenericComponents from "../../generic-components";
 
 const Prices = ({ cart, prices, setPrices, cleantCart }) => {
+   const [ShowButtonPay, setShowButtonPay] = useState(false);
+   const [mercadopagoLink, setMercadopagoLink] = useState("");
+   const [alert, setAlert] = useState({});
+
    useEffect(() => {
       const calculatePrice = () => {
          let total = cart.reduce((accumulator, product) => {
@@ -20,6 +30,34 @@ const Prices = ({ cart, prices, setPrices, cleantCart }) => {
 
       calculatePrice();
    }, [cart]);
+
+   const handleCreateOrder = async () => {
+      setAlert({});
+
+      try {
+         const { data } = await axiosInstance.post(
+            "/shopping/create-order",
+            { cart, prices },
+            {
+               headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+               },
+            }
+         );
+
+         console.log(data);
+
+         setMercadopagoLink(data.init_point);
+         setShowButtonPay(true);
+      } catch (error) {
+         console.log(error);
+         const data = error.response.data.msg;
+         setAlert({ msg: data, error: true });
+      }
+   };
+
+   const handlePay = () => (window.location.href = mercadopagoLink);
 
    return (
       <section className={style.sectionPrices}>
@@ -72,8 +110,16 @@ const Prices = ({ cart, prices, setPrices, cleantCart }) => {
          </div>
 
          <div className={style.containerButton}>
-            <button>Make Purchase</button>
+            {!ShowButtonPay && <button onClick={handleCreateOrder}>Create Order</button>}
+
+            {ShowButtonPay && (
+               <button className={style.buttonPay} onClick={handlePay}>
+                  Pay
+               </button>
+            )}
          </div>
+
+         {alert.msg && <GenericComponents.Alert {...alert} />}
       </section>
    );
 };
