@@ -26,7 +26,6 @@ const receivedWebhook = async (req, res) => {
    try {
       if (payment.type === "payment") {
          const { body } = await mercadopago.payment.findById(payment["data.id"]);
-         console.log(body.date_created);
 
          // Store in DB.
          await Shopping.create({

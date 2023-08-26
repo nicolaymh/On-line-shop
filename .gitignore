@@ -1,4 +1,4 @@
 **/node_modules
 *.env
 .vscode/
-*/ngrok.exe
+/backend/ngrok.exe
