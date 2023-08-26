@@ -37,7 +37,7 @@ const Prices = ({ cart, prices, setPrices, cleantCart }) => {
       try {
          const { data } = await axiosInstance.post(
             "/shopping/create-order",
-            { cart },
+            { cart, prices },
             {
                headers: {
                   "Content-Type": "application/json",

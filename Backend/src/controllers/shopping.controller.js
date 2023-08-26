@@ -1,8 +1,18 @@
 import mercadopago from "mercadopago";
 
+import Shopping from "../models/shoppingModel.js";
+
 import internalServerError from "../helpers/internalServerError.js";
 
+let cart = [];
+let prices = [];
+let user = {};
+
 const createOrder = async (req, res) => {
+   cart = req.body.cart;
+   prices = req.body.prices;
+   user = req.user;
+
    try {
       res.json(req.mercadoPagoInfo);
    } catch (error) {
@@ -15,8 +25,19 @@ const receivedWebhook = async (req, res) => {
 
    try {
       if (payment.type === "payment") {
-         const data = await mercadopago.payment.findById(payment["data.id"]);
-         console.log(data);
+         const { body } = await mercadopago.payment.findById(payment["data.id"]);
+         console.log(body.date_created);
+
+         // Store in DB.
+         await Shopping.create({
+            shoppingId: payment["data.id"],
+            shopper: user._id,
+            cart,
+            grossPrice: prices.grossPrice,
+            tax: prices.tax,
+            finalPrice: prices.finalPrice,
+            date: body.date_created,
+         });
       }
 
       return res.sendStatus(204);
