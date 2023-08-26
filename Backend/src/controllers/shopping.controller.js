@@ -4,8 +4,6 @@ import internalServerError from "../helpers/internalServerError.js";
 
 const createOrder = async (req, res) => {
    try {
-      // console.log(req.mercadoPagoInfo);
-
       res.json(req.mercadoPagoInfo);
    } catch (error) {
       internalServerError(error, res);
