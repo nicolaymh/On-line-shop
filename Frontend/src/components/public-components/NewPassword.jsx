@@ -1,6 +1,6 @@
 // Assets.
 import logo from "../../assets/logo-final.png";
-import newPasswordImage from "../../assets/images/new-password.png";
+import { authImages } from "../../assets/img";
 
 // CSS styles ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
@@ -132,7 +132,7 @@ const NewPassword = () => {
          </div>
 
          <div className={styles.loginImg}>
-            <img height={420} src={newPasswordImage} alt="register-image" />
+            <img height={420} src={authImages.newPasswordImg} alt="register-image" />
          </div>
       </div>
    );

@@ -1,6 +1,6 @@
 // Assets.
 import logo from "../../assets/logo-final.png";
-import loginImage from "../../assets/images/login-image.png";
+import { authImages } from "../../assets/img";
 
 // CSS Styles ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
@@ -135,7 +135,7 @@ const LoginForm = () => {
                </div>
 
                <div className={styles.loginImg}>
-                  <img height={435} src={loginImage} alt="login-image" />
+                  <img height={435} src={authImages.loginImg} alt="login-image" />
                </div>
             </div>
          )}

@@ -1,6 +1,6 @@
 // Assets.
 import logo from "../../assets/logo-final.png";
-import confirmAccountImage from "../../assets/images/confirmAccount-image.png";
+import { authImages } from "../../assets/img";
 
 // CSS style ( SASS Modules ).
 import logoStyle from "../../sass/logo/logoStyle.module.scss";
@@ -49,7 +49,7 @@ const ConfirmAccount = () => {
    return (
       <div className={style.confirmAccountContainer}>
          <div className={style.containerImage}>
-            <img src={confirmAccountImage} alt="confirmAccount-image" />
+            <img src={authImages.confirmAccountImg} alt="confirmAccount-image" />
          </div>
 
          <div className={logoStyle.logoTitle2}>

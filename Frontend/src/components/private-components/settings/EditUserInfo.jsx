@@ -1,5 +1,5 @@
 // Assets.
-import registerImage from "../../../assets/images/register-image.png";
+import { authImages } from "../../../assets/img";
 
 // CSS formStyle ( SASS Modules ).
 import formStyle from "../../../sass/forms/generalFormStyle.module.scss";
@@ -183,7 +183,7 @@ const EditUserInfo = () => {
             </form>
 
             <div className={containerStyle.imgContainer}>
-               <img height="100%" src={registerImage} alt="register-image" />
+               <img height="100%" src={authImages.registerImg} alt="register-image" />
             </div>
          </section>
       </>
