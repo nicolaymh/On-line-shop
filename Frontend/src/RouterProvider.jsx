@@ -56,7 +56,9 @@ const RouterProvider = () => {
 
                <Route path="shop" element={<ShopLayout />}>
                   <Route index element={<Home />} />
+
                   <Route path="products" element={<Products />} />
+
                   <Route path="settings" element={<SettingsLayout />}>
                      <Route index element={<div>My shopping</div>} />
 
