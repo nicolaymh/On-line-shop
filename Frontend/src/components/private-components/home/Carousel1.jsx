@@ -1,5 +1,6 @@
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/home/home.module.scss";
+import styleButtons from "../../../sass/forms/buttonsPreviousNextProducts.module.scss";
 
 // React - Hooks.
 import { useEffect, useState } from "react";
@@ -11,7 +12,7 @@ const Carousel1 = ({ carousel }) => {
    useEffect(() => {
       const interval = setInterval(() => {
          changeImage("next");
-      }, 2000);
+      }, 2500);
 
       return () => {
          clearInterval(interval);
@@ -33,7 +34,7 @@ const Carousel1 = ({ carousel }) => {
                ? setSelectedIndex(carousel.length - 1)
                : setSelectedIndex(selectedIndex - 1);
          }
-      }, 500);
+      }, 1000);
    };
 
    return (
@@ -45,7 +46,7 @@ const Carousel1 = ({ carousel }) => {
             onLoad={() => setLoaded(true)}
          />
 
-         <div className={style.buttonsContainer}>
+         <div className={styleButtons.containerButtons}>
             <button onClick={() => changeImage("previous")}>{"<"}</button>
             <button onClick={() => changeImage("next")}>{">"}</button>
          </div>

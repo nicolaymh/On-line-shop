@@ -19,7 +19,7 @@
    .carousel1Container {
       margin: 1rem auto;
       width: 98%;
-      height: 18rem;
+      height: 20rem;
       outline: 1px solid v.$borderLine;
       border-radius: 1rem;
       overflow: hidden;
@@ -31,18 +31,11 @@
          border-radius: 1rem;
          object-fit: cover;
          opacity: 0;
-         transition: all 1s ease;
+         transition: all 2s ease;
 
          &.loaded {
             opacity: 1;
          }
-      }
-
-      .buttonsContainer {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         margin-top: 0.4rem;
       }
    }
 }
