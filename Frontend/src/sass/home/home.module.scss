@@ -2,6 +2,12 @@
 @use "../base//mixins" as m;
 
 .container {
-   margin-top: 0;
-   background-color: v.$primary;
+   .carousel1 {
+      margin: 0 auto;
+      height: 20rem;
+      max-width: 90%;
+      width: 100%;
+      background-color: red;
+      object-fit: cover;
+   }
 }
