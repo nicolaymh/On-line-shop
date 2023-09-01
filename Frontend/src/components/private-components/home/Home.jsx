@@ -12,6 +12,7 @@ import useProducts from "../../../Hooks/useProducts";
 
 // Components.
 import GenericComponents from "../../generic-components";
+import Discount from "./Discount";
 
 const Home = () => {
    const [loader, setLoader] = useState(false);
@@ -37,9 +38,7 @@ const Home = () => {
             <GenericComponents.Loader />
          ) : (
             <div className={style.container}>
-               <div className={style.discountContainer}>
-                  <img src={discount} alt="" />
-               </div>
+               <Discount />
             </div>
          )}
       </>
