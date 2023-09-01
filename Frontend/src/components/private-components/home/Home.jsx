@@ -12,7 +12,7 @@ import useProducts from "../../../Hooks/useProducts";
 
 // Components.
 import GenericComponents from "../../generic-components";
-import Discount from "./Marketing";
+import Marketing from "./Marketing";
 import Carousel1 from "./Carousel1";
 
 const Home = () => {
@@ -38,9 +38,11 @@ const Home = () => {
             <GenericComponents.Loader />
          ) : (
             <div className={style.container}>
-               <Discount imageLink={marketing.discount} />
+               <Marketing imageLink={marketing.discount} />
 
                <Carousel1 carousel={carousel1} />
+
+               <Marketing imageLink={marketing.onlineGaming} />
             </div>
          )}
       </>

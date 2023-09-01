@@ -30,7 +30,8 @@ export const discount =
 export const marketing = {
    discount:
       "https://res.cloudinary.com/dptaul20s/image/upload/v1693602712/images/Marketing/discount_yw3lmm.jpg",
-      onlineGaming: ""
+   onlineGaming:
+      "https://res.cloudinary.com/dptaul20s/image/upload/v1693603218/images/Marketing/gamingOnline_wndjmw.jpg",
 };
 
 export const carousel1 = [
