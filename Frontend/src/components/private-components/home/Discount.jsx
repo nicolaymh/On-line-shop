@@ -8,7 +8,7 @@ const Discount = () => {
    return (
       <div>
          <div className={style.discountContainer}>
-            <img src={discount} alt="" />
+            <img src={discount} alt="discount-img" />
          </div>
       </div>
    );

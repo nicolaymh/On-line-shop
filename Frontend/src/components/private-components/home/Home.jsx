@@ -13,17 +13,19 @@ import useProducts from "../../../Hooks/useProducts";
 // Components.
 import GenericComponents from "../../generic-components";
 import Discount from "./Discount";
+import Carousel1 from "./Carousel1";
 
 const Home = () => {
-   const [loader, setLoader] = useState(false);
+   const [loaderHome, setLoaderHome] = useState(false);
 
    const { ProductsInfo } = useProducts();
 
    useEffect(() => {
+      console.log("HEY!!!");
+
       if (ProductsInfo.length > 0) {
          const timer = setTimeout(() => {
-            console.log(ProductsInfo);
-            setLoader(true);
+            setLoaderHome(true);
          }, 500);
 
          return () => {
@@ -34,11 +36,13 @@ const Home = () => {
 
    return (
       <>
-         {!loader ? (
+         {!loaderHome ? (
             <GenericComponents.Loader />
          ) : (
             <div className={style.container}>
                <Discount />
+
+               <Carousel1 carousel={carousel1} />
             </div>
          )}
       </>
