@@ -1,5 +1,5 @@
 // Assets.
-import { carousel1 } from "../../../assets/img";
+import { carousel1, marketing } from "../../../assets/img";
 
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/home/home.module.scss";
@@ -12,7 +12,7 @@ import useProducts from "../../../Hooks/useProducts";
 
 // Components.
 import GenericComponents from "../../generic-components";
-import Discount from "./Discount";
+import Discount from "./Marketing";
 import Carousel1 from "./Carousel1";
 
 const Home = () => {
@@ -38,7 +38,7 @@ const Home = () => {
             <GenericComponents.Loader />
          ) : (
             <div className={style.container}>
-               <Discount />
+               <Discount imageLink={marketing.discount} />
 
                <Carousel1 carousel={carousel1} />
             </div>

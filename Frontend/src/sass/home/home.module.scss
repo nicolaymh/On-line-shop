@@ -25,6 +25,10 @@
       overflow: hidden;
       background-color: v.$backgroundPrimary;
 
+      @include m.HomeMq(600px) {
+         height: 35rem;
+      }
+
       img {
          width: 100%;
          height: 15rem;
@@ -35,6 +39,10 @@
 
          &.loaded {
             opacity: 1;
+         }
+
+         @include m.HomeMq(600px) {
+            height: 30rem;
          }
       }
    }

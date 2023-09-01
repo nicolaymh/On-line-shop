@@ -27,6 +27,12 @@ export const logoImage =
 export const discount =
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693587142/images/Discount/discount_qdsizp.jpg";
 
+export const marketing = {
+   discount:
+      "https://res.cloudinary.com/dptaul20s/image/upload/v1693602712/images/Marketing/discount_yw3lmm.jpg",
+      onlineGaming: ""
+};
+
 export const carousel1 = [
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693527578/images/Carousel-1/virtualReality_yuirpx.jpg",
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693586193/images/Carousel-1/pexels-stas-knop-1579240_ouhq71.jpg",
