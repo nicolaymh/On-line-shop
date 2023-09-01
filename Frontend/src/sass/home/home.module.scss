@@ -2,12 +2,15 @@
 @use "../base//mixins" as m;
 
 .container {
-   .carousel1 {
+   .discountContainer {
       margin: 0 auto;
-      height: 20rem;
-      max-width: 90%;
-      width: 100%;
-      background-color: red;
-      object-fit: cover;
+      outline: 2px solid black;
+      overflow: hidden;
+      width: 98%;
+      border-radius: 1rem;
+
+      img {
+         width: 100%;
+      }
    }
 }

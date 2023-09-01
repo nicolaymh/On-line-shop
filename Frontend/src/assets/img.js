@@ -24,8 +24,14 @@ export const shoppingCartImage =
 export const logoImage =
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693526935/images/Logo/logo-final_ujhg21.png";
 
+export const discount =
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693587142/images/Discount/discount_qdsizp.jpg";
+
 export const carousel1 = [
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693527767/images/Carousel-1/games_plq1xu.jpg",
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693527578/images/Carousel-1/virtualReality_yuirpx.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693586193/images/Carousel-1/pexels-stas-knop-1579240_ouhq71.jpg",
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693527355/images/Carousel-1/devices_bo7fbj.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693584495/images/Carousel-1/mario_eysoyc.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693586834/images/Carousel-1/discount_awuex4.jpg",
 ];
