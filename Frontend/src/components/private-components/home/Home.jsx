@@ -21,8 +21,6 @@ const Home = () => {
    const { ProductsInfo } = useProducts();
 
    useEffect(() => {
-      console.log("HEY!!!");
-
       if (ProductsInfo.length > 0) {
          const timer = setTimeout(() => {
             setLoaderHome(true);
