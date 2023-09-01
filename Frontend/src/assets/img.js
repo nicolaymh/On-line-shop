@@ -23,3 +23,9 @@ export const shoppingCartImage =
 
 export const logoImage =
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693526935/images/Logo/logo-final_ujhg21.png";
+
+export const carousel1 = [
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693527767/images/Carousel-1/games_plq1xu.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693527578/images/Carousel-1/virtualReality_yuirpx.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693527355/images/Carousel-1/devices_bo7fbj.jpg",
+];
