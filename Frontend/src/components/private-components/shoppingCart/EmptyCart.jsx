@@ -1,10 +1,10 @@
 // Assets.
-import imgEmptyCart from "../../../assets/images/emptyCart.png";
+import { shoppingCartImage } from "../../../assets/img";
 
 const EmptyCart = () => {
    return (
       <figure>
-         <img src={imgEmptyCart} alt="Empty-cart" />
+         <img src={shoppingCartImage} alt="Empty-cart" />
       </figure>
    );
 };
