@@ -1,5 +1,5 @@
 // Assets.
-import logo from "../../assets/logo-final.png";
+import { logoImage } from "../../assets/img";
 import { authImages } from "../../assets/img";
 
 // CSS style ( SASS Modules ).
@@ -54,7 +54,7 @@ const ConfirmAccount = () => {
 
          <div className={logoStyle.logoTitle2}>
             <div className={logoStyle.logo}>
-               <img src={logo} alt="logo" />
+               <img src={logoImage} alt="logo" />
             </div>
 
             <h1 className={style.h1}>

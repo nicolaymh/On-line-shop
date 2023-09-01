@@ -1,5 +1,5 @@
 // Assets.
-import logo from "../../../assets/logo-final.png";
+import { logoImage } from "../../../assets/img";
 
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/Header/header.module.scss";
@@ -53,7 +53,7 @@ const Header = () => {
       <div className={style.headerContainer}>
          <div className={style.containerLogo}>
             <div className={style.containerImg}>
-               <img src={logo} alt="logo" />
+               <img src={logoImage} alt="logo" />
             </div>
 
             <h1>

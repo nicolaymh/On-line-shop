@@ -2,7 +2,7 @@
 import style from "../../sass/screenLoader/loader.module.scss";
 
 // Assets.
-import logoImage from "../../assets/logo-final.png";
+import { logoImage } from "../../assets/img";
 
 const Loader = () => {
    return (

@@ -1,5 +1,5 @@
 // Assets
-import logo from "../../assets/logo-final.png";
+import { logoImage } from "../../assets/img";
 import { authImages } from "../../assets/img";
 
 // CSS styles ( SASS Modules )
@@ -89,7 +89,7 @@ const RegisterForm = () => {
             <div className={styles.loginBox}>
                <div className={logoStyle.logoTitle1}>
                   <div className={logoStyle.logo}>
-                     <img src={logo} alt="logo" />
+                     <img src={logoImage} alt="logo" />
                   </div>
 
                   <h1>

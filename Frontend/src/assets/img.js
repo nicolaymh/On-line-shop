@@ -20,3 +20,6 @@ export const productsImages = {
 
 export const shoppingCartImage =
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693526629/images/Cart/emptyCart_n87vev.png";
+
+export const logoImage =
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693526935/images/Logo/logo-final_ujhg21.png";
