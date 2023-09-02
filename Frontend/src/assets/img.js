@@ -39,4 +39,6 @@ export const carousel1 = [
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693586193/images/Carousel-1/pexels-stas-knop-1579240_ouhq71.jpg",
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693527355/images/Carousel-1/devices_bo7fbj.jpg",
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693584495/images/Carousel-1/mario_eysoyc.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693625739/images/Carousel-1/retro_ydtm8v.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693625984/images/Carousel-1/gamingTime_lxyt9p.jpg",
 ];
