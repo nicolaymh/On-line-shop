@@ -14,6 +14,7 @@ import useProducts from "../../../Hooks/useProducts";
 import GenericComponents from "../../generic-components";
 import Marketing from "./Marketing";
 import Carousel1 from "./Carousel1";
+import Carousel2 from "./Carousel2";
 
 const Home = () => {
    const [loaderHome, setLoaderHome] = useState(false);
@@ -38,9 +39,11 @@ const Home = () => {
             <GenericComponents.Loader />
          ) : (
             <div className={style.container}>
+               <Carousel1 carousel={carousel1} />
+
                <Marketing imageLink={marketing.discount} />
 
-               <Carousel1 carousel={carousel1} />
+               <Carousel2 ProductsInfo={ProductsInfo} />
             </div>
          )}
       </>
