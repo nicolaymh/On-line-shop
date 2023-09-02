@@ -13,7 +13,10 @@ import { useEffect, useState } from "react";
 import useShoppingCart from "../../../Hooks/useShoppingCart";
 
 const Carousel2 = ({ ProductsInfo }) => {
+   const color = [style.color1, style.color2, style.color3];
+
    const [lastAddedProducts, setlastAddedProducts] = useState([]);
+   const [titleColorIndex, setTitleColorIndex] = useState(0);
 
    const { addProductCart } = useShoppingCart();
 
@@ -21,9 +24,17 @@ const Carousel2 = ({ ProductsInfo }) => {
       setlastAddedProducts(ProductsInfo.slice(0, 12));
    }, []);
 
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setTitleColorIndex((prev) => (prev !== color.length - 1 ? prev + 1 : 0));
+      }, 1000);
+
+      return () => clearInterval(interval);
+   }, []);
+
    return (
       <div className={style.carousel2Container}>
-         <h3>Last Added Products</h3>
+         <h3 className={color[titleColorIndex]}>Last Added Products</h3>
 
          <Carousel
             responsive={responsive}
