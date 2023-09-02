@@ -25,7 +25,14 @@ const Carousel2 = ({ ProductsInfo }) => {
       <div className={style.carousel2Container}>
          <h3>Last Added Products</h3>
 
-         <Carousel responsive={responsive}>
+         <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            autoPlaySpeed={3000}
+            rewind={true}
+            infinite={true}
+            focusOnSelect={true}
+         >
             {lastAddedProducts.map((p) => {
                return (
                   <div key={p._id} className={style.cardContainer}>
