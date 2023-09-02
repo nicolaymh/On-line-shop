@@ -4,6 +4,7 @@ import style from "../../../sass/home/home.module.scss";
 // react-multi-carousel library.
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
+import responsive from "../../../helpers/responsive";
 
 // React - Hooks.
 import { useEffect, useState } from "react";
@@ -14,26 +15,6 @@ const Carousel2 = ({ ProductsInfo }) => {
    useEffect(() => {
       setlastAddedProducts(ProductsInfo.slice(0, 12));
    }, []);
-
-   const responsive = {
-      superLargeDesktop: {
-         // the naming can be any, depends on you.
-         breakpoint: { max: 4000, min: 3000 },
-         items: 5,
-      },
-      desktop: {
-         breakpoint: { max: 3000, min: 1024 },
-         items: 4,
-      },
-      tablet: {
-         breakpoint: { max: 1024, min: 464 },
-         items: 2,
-      },
-      mobile: {
-         breakpoint: { max: 464, min: 0 },
-         items: 1,
-      },
-   };
 
    return (
       <div className={style.carousel2Container}>
