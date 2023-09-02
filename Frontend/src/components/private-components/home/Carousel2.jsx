@@ -9,8 +9,13 @@ import responsive from "../../../helpers/responsive";
 // React - Hooks.
 import { useEffect, useState } from "react";
 
+// Context.
+import useShoppingCart from "../../../Hooks/useShoppingCart";
+
 const Carousel2 = ({ ProductsInfo }) => {
    const [lastAddedProducts, setlastAddedProducts] = useState([]);
+
+   const { addProductCart } = useShoppingCart();
 
    useEffect(() => {
       setlastAddedProducts(ProductsInfo.slice(0, 12));
