@@ -41,9 +41,9 @@ const Home = () => {
             <div className={style.container}>
                <Carousel1 carousel={carousel1} />
 
-               <Marketing imageLink={marketing.discount} />
-
                <Carousel2 ProductsInfo={ProductsInfo} />
+
+               <Marketing imageLink={marketing.discount} />
             </div>
          )}
       </>

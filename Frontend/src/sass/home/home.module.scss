@@ -16,11 +16,12 @@
       }
    }
 
+   //* Carousel-1.
    .carousel1Container {
       margin: 1.5rem auto;
       width: 98%;
       height: 20rem;
-      outline: 1px solid v.$secondary;
+      outline: 2px double v.$secondary;
       border-radius: 1rem;
       overflow: hidden;
       background-color: v.$backgroundPrimary;
@@ -47,22 +48,25 @@
       }
    }
 
+   //* Carousel-2.
    .carousel2Container {
       padding: 2rem 0 4rem 0;
-      margin: 5rem;
+      margin: 2rem;
       background-color: v.$backgroundPrimary;
+      border: 2px dotted v.$secondary;
+      border-radius: 2rem;
 
       h3 {
          text-align: center;
-         margin-bottom: 4rem;
          font-family: v.$fontSecondary;
+         color: v.$primary;
          font-size: 4rem;
          font-weight: 800;
       }
 
       .cardContainer {
-         margin: 0 2rem;
-         box-shadow: -4px 1px 33px 1px v.$borderLine;
+         margin: 2rem;
+         box-shadow: -4px 1px 33px 1px v.$secondary;
          border-radius: 1.2rem;
          min-height: 25rem;
          text-align: center;
@@ -72,7 +76,7 @@
          transition: all 0.4s ease;
 
          &:hover {
-            box-shadow: -4px 1px 33px 1px v.$hoverHeader;
+            box-shadow: -4px 1px 33px 1px v.$primary;
          }
 
          .imgContainer {
