@@ -41,8 +41,6 @@ const Home = () => {
                <Marketing imageLink={marketing.discount} />
 
                <Carousel1 carousel={carousel1} />
-
-               <Marketing imageLink={marketing.onlineGaming} />
             </div>
          )}
       </>
