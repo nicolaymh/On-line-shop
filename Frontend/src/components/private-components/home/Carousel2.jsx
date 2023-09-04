@@ -33,7 +33,7 @@ const Carousel2 = ({ ProductsInfo }) => {
    }, []);
 
    return (
-      <div className={style.carousel2Container}>
+      <section className={style.carousel2Container}>
          <h3 className={color[titleColorIndex]}>Last Added Products</h3>
 
          <Carousel
@@ -75,7 +75,7 @@ const Carousel2 = ({ ProductsInfo }) => {
                );
             })}
          </Carousel>
-      </div>
+      </section>
    );
 };
 

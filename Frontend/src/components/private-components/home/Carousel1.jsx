@@ -38,7 +38,7 @@ const Carousel1 = ({ carousel }) => {
    };
 
    return (
-      <div className={style.carousel1Container}>
+      <section className={style.carousel1Container}>
          <img
             src={carousel[selectedIndex]}
             alt="img-carousel-1"
@@ -50,7 +50,7 @@ const Carousel1 = ({ carousel }) => {
             <button onClick={() => changeImage("previous")}>{"<"}</button>
             <button onClick={() => changeImage("next")}>{">"}</button>
          </div>
-      </div>
+      </section>
    );
 };
 
