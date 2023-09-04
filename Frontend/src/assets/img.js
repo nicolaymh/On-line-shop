@@ -24,8 +24,11 @@ export const shoppingCartImage =
 export const logoImage =
    "https://res.cloudinary.com/dptaul20s/image/upload/v1693526935/images/Logo/logo-final_ujhg21.png";
 
-export const discount =
-   "https://res.cloudinary.com/dptaul20s/image/upload/v1693587142/images/Discount/discount_qdsizp.jpg";
+export const discountImages = [
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693587142/images/Discount/discount_qdsizp.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693847693/images/Marketing/gaming_streaming_zvfaxa.jpg",
+   "https://res.cloudinary.com/dptaul20s/image/upload/v1693847306/images/Marketing/tournamentgamer_oa1n70.svg",
+];
 
 export const marketing = {
    discount:

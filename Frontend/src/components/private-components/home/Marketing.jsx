@@ -1,13 +1,14 @@
-// CSS Styles ( SASS Modules ).
-import style from "../../../sass/home/home.module.scss";
+// Assets.
+import { discountImages } from "../../../assets/img";
 
-const Marketing = ({ imageLink }) => {
+// Components.
+import Discount from "./Discount";
+
+const Marketing = () => {
    return (
-      <div>
-         <div className={style.discountContainer}>
-            <img src={imageLink} alt="discount-img" />
-         </div>
-      </div>
+      <>
+         <Discount discountImages={discountImages} />
+      </>
    );
 };
 
