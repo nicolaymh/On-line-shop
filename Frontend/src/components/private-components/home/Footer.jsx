@@ -7,7 +7,6 @@ import {
    SiPlaystation,
    SiXbox,
    SiSega,
-   SiAsus,
    SiNvidia,
    SiMicrosoft,
    SiApple,
@@ -49,7 +48,7 @@ const Footer = () => {
             </div>
          </div>
 
-         <p>Copyright ©2022 All rights reserved | This Website is Developed by Nicolay Moreno</p>
+         <p>Copyright ©2023 All rights reserved | This Website is Developed by Nicolay Moreno</p>
       </div>
    );
 };
