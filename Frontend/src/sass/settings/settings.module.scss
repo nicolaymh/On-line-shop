@@ -4,6 +4,7 @@
 .settingsContainer {
    display: flex;
    background-color: v.$backgroundPrimary;
+   height: 100vh;
 
    main {
       flex-grow: 1;
