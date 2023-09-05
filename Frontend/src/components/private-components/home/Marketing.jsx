@@ -4,6 +4,7 @@ import { discountImages } from "../../../assets/img";
 // Components.
 import Discount from "./Discount";
 import Contact from "./Contact";
+import Footer from "./Footer";
 
 const Marketing = () => {
    return (
@@ -11,6 +12,8 @@ const Marketing = () => {
          <Discount discountImages={discountImages} />
 
          <Contact />
+
+         <Footer />
       </>
    );
 };
