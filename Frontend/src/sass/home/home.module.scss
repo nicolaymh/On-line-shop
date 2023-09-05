@@ -51,11 +51,11 @@
    //* Carousel-2.
    .carousel2Container {
       padding: 2rem 0 4rem 0;
-      margin: 2rem;
+      margin: 2rem auto;
       background-color: v.$backgroundPrimary;
       border: 2px dotted v.$secondary;
       border-radius: 2rem;
-      width: 97.4%;
+      width: 98%;
 
       h3 {
          text-align: center;
@@ -158,13 +158,14 @@
    }
 }
 
+//* Contact Section.
 .contactContainer {
    margin: 2rem auto;
    padding: 1rem;
    background-color: v.$backgroundPrimary;
    border: 1px dotted v.$secondary;
    border-radius: 2rem;
-   width: 90%;
+   width: 98%;
    text-align: center;
 
    h3 {
@@ -244,6 +245,71 @@
                   font-size: 1.5rem;
                   font-family: v.$fontPrimary;
                }
+            }
+         }
+      }
+   }
+}
+
+// Footer.
+.footerContainer {
+   background-color: #2e2626;
+   border: 4px dotted v.$secondary;
+   border-radius: 2rem;
+   width: 98%;
+   text-align: center;
+   margin: auto;
+   padding: 1rem 3rem;
+   margin-bottom: 4rem;
+
+   p {
+      color: v.$backgroundPrimary;
+      font-family: v.$fontSecondary;
+      margin: 2rem;
+   }
+
+   .gridContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include m.HomeMq(1200px) {
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .item {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         width: 90%;
+         height: 20rem;
+         // outline: 1px solid red;
+
+         h4 {
+            text-transform: uppercase;
+            color: v.$hoverHeader;
+            font-family: v.$fontPrimary;
+            font-size: 2rem;
+         }
+
+         p {
+            color: v.$backgroundPrimary;
+            font-family: v.$fontSecondary;
+            margin: 0;
+         }
+
+         .brandsContainer {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+
+            .icon {
+               color: v.$primary;
+               font-size: 2rem;
             }
          }
       }
