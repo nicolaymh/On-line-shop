@@ -1,7 +1,9 @@
 @use "../base/mixins.scss" as m;
+@use "../base/variables.scss" as v;
 
 .settingsContainer {
    display: flex;
+   background-color: v.$backgroundPrimary;
 
    main {
       flex-grow: 1;

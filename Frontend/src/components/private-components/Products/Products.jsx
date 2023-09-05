@@ -16,6 +16,7 @@ import useProductsFiltering from "../../../Hooks/useProductsFiltering";
 import GenericComponents from "../../generic-components";
 import FilterSelectProducts from "./FilterSelectProducts";
 import ProductCard from "./ProductCard";
+import Marketing from "../home/Marketing";
 
 const Products = () => {
    const { ProductsInfo } = useProducts();
@@ -66,6 +67,8 @@ const Products = () => {
 
             <GenericComponents.PaginationButton prevPage={prevPage} nextPage={nextPage} />
          </section>
+
+         <Marketing />
       </main>
    );
 };

@@ -1,5 +1,5 @@
 // Assets.
-import { carousel1, marketing } from "../../../assets/img";
+import { carousel1 } from "../../../assets/img";
 
 // CSS Styles ( SASS Modules ).
 import style from "../../../sass/home/home.module.scss";
@@ -43,7 +43,7 @@ const Home = () => {
 
                <Carousel2 ProductsInfo={ProductsInfo} />
 
-               <Marketing imageLink={marketing.discount} />
+               <Marketing />
             </div>
          )}
       </>

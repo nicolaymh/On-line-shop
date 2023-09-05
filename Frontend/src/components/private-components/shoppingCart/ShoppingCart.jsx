@@ -11,6 +11,7 @@ import useShoppingCart from "../../../Hooks/useShoppingCart";
 import Prices from "./Prices";
 import ProductListCart from "./ProductListCart";
 import EmptyCart from "./EmptyCart";
+import Marketing from "../home/Marketing";
 
 const ShoppingCart = () => {
    const [prices, setPrices] = useState({ grossPrice: 0, tax: 0, finalPrice: 0 });
@@ -19,22 +20,31 @@ const ShoppingCart = () => {
       useShoppingCart();
 
    return (
-      <main className={style.mainContainer}>
-         {cart.length === 0 ? (
-            <EmptyCart />
-         ) : (
-            <>
-               <ProductListCart
-                  cart={cart}
-                  addProductCart={addProductCart}
-                  removeProductCart={removeProductCart}
-                  decreaseProductQuantity={decreaseProductQuantity}
-               />
+      <>
+         <main className={style.mainContainer}>
+            {cart.length === 0 ? (
+               <EmptyCart />
+            ) : (
+               <>
+                  <ProductListCart
+                     cart={cart}
+                     addProductCart={addProductCart}
+                     removeProductCart={removeProductCart}
+                     decreaseProductQuantity={decreaseProductQuantity}
+                  />
 
-               <Prices cart={cart} prices={prices} setPrices={setPrices} cleantCart={cleantCart} />
-            </>
-         )}
-      </main>
+                  <Prices
+                     cart={cart}
+                     prices={prices}
+                     setPrices={setPrices}
+                     cleantCart={cleantCart}
+                  />
+               </>
+            )}
+         </main>
+
+         <Marketing />
+      </>
    );
 };
 
