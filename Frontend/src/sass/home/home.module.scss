@@ -254,13 +254,10 @@
 // Footer.
 .footerContainer {
    background-color: #2e2626;
-   border: 4px dotted v.$secondary;
-   border-radius: 2rem;
-   width: 98%;
+   width: 100%;
    text-align: center;
    margin: auto;
    padding: 1rem 3rem;
-   margin-bottom: 4rem;
 
    p {
       color: v.$backgroundPrimary;
