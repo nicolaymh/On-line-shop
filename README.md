@@ -1,6 +1,7 @@
-## Demo of a Ecommerce :clipboard: :calendar: :chart:
-
-<img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088492/logo-wide-removebg-preview_wzoavk.png" width="90" height="30">
+<div style="display: flex; align-items: center;">
+  <h2>Demo of a Ecommerce</h2>
+  <img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" width="90" height="30" style="margin-left: 10px;">
+</div>
 
 ### Features:
 
