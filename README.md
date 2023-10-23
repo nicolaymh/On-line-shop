@@ -1,5 +1,5 @@
 <div style="display: flex; align-items: center;">
-  <h2>Demo of a Ecommerce</h2>
+  <h2>Demo of a Ecommerce - [Gamer Store](https://gamerstore.nimohe.dev/ "Gamer Store")</h2>
 </div>
 
 <div align="center">
