@@ -1,6 +1,6 @@
 ## Demo of a Ecommerce :clipboard: :calendar: :chart:
 
-![Gamer-Store]https://res.cloudinary.com/dptaul20s/image/upload/v1693526935/images/Logo/logo-final_ujhg21.png)
+<img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088492/logo-wide-removebg-preview_wzoavk.png" width="90" height="30">
 
 ### Features:
 
