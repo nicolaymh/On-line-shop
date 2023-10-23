@@ -2,7 +2,7 @@
   <h2>Demo of a Ecommerce</h2>
 </div>
 
-<img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" style="width: 100%">
+<img align="center" src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" style="width: 70%">
 
 ### Features:
 
