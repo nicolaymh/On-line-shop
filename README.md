@@ -1,5 +1,6 @@
 <div style="display: flex; align-items: center;">
-  <h2 style="color: blue;">Demo of a Ecommerce </h2>
+  <h2> <span style="color: blue;">Demo of a Ecommerce</span> </h2>
+
 </div>
 
 <div align="center">
