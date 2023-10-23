@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;">
   <h2>Demo of a Ecommerce</h2>
-  <img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" width="90" height="30" style="margin-left: 10px;">
+  <img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" width="1800" height="90" style="margin-left: 10px;">
 </div>
 
 ### Features:
