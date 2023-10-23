@@ -1,5 +1,5 @@
 <div style="display: flex; align-items: center;">
-  <h2 style="color: green;">Demo of a Ecommerce </h2>
+  <h2 style="color: blue;">Demo of a Ecommerce </h2>
 </div>
 
 <div align="center">
