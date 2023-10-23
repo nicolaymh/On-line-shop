@@ -1,6 +1,7 @@
 <div style="display: flex; align-items: center;">
-  <h2>Demo of a Ecommerce - [Gamer Store](https://gamerstore.nimohe.dev/ "Gamer Store")</h2>
+  <h2>Demo of a Ecommerce </h2>
 </div>
+[Gamer Store](https://gamerstore.nimohe.dev/ "Gamer Store")
 
 <div align="center">
   <img src="https://res.cloudinary.com/dptaul20s/image/upload/v1698088629/logo-wide_m9zv3b.png" style="width: 50%" />
